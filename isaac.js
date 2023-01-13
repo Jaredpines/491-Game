@@ -24,21 +24,21 @@ class Isaac {
 		if(this.count < 2){
 			ctx.drawImage(ASSET_MANAGER.getAsset("./crying_isaac.png"),this.x,this.y,130,85);
 			if(this.count < 0.25){
-				this.x = this.x-0.5
+				this.x = this.x-50*this.game.clockTick
 			}else if(this.count < 0.5){
-				this.x = this.x+0.5
+				this.x = this.x+50*this.game.clockTick
 			}else if(this.count < 0.75){
-				this.x = this.x-0.5
+				this.x = this.x-50*this.game.clockTick
 			}else if(this.count < 1){
-				this.x = this.x+0.5
+				this.x = this.x+50*this.game.clockTick
 			}else if(this.count < 1.25){
-				this.x = this.x-0.5
+				this.x = this.x-50*this.game.clockTick
 			}else if(this.count < 1.5){
-				this.x = this.x+0.5
+				this.x = this.x+50*this.game.clockTick
 			}else if(this.count < 1.75){
-				this.x = this.x-0.5
+				this.x = this.x-50*this.game.clockTick
 			}else if(this.count < 2){
-				this.x = this.x+0.5
+				this.x = this.x+50*this.game.clockTick
 			}
 			
 			
