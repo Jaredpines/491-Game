@@ -2,7 +2,7 @@ class Isaac {
 	constructor(game){
 		this.game = game;
 		this.count = 0;
-		//this.animator = new Animator(ASSET_MANAGER.getAsset("./samus_run_animation.png"), -6, 0, 42.6, 49, 10, 0.1);
+		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
 		this.xPosition = 690;
 		this.yPosition = 400;
 		this.movementSpeed = 5;
@@ -61,8 +61,11 @@ class Isaac {
 			}
 			
 			
-		}
-		else{
+		}else if(this.game.keys.ArrowDown){
+			ctx.drawImage(ASSET_MANAGER.getAsset("./down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
+			//ctx.drawImage(ASSET_MANAGER.getAsset("./down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
+		}else{
+			ctx.drawImage(ASSET_MANAGER.getAsset("./down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 			ctx.drawImage(ASSET_MANAGER.getAsset("./isaac_idle.png"),this.xPosition+10,this.yPosition-50,95,120);
 		}
 		
