@@ -18,6 +18,7 @@ ASSET_MANAGER.queueDownload("./e.png")
 ASSET_MANAGER.queueDownload("./space.png")
 ASSET_MANAGER.queueDownload("./down_shot_open.png")
 ASSET_MANAGER.queueDownload("./down_shot_close.png")
+ASSET_MANAGER.queueDownload("./isaac.png")
 
 ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
