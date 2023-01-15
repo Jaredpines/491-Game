@@ -77,25 +77,7 @@ class GameEngine {
     };
 
     findInput() {
-        let isaac = this.entities[0];
-        if (this.keys.w) {
-            if (isaac.yPosition >= isaac.moveBoundsUp) {
-                isaac.yPosition -= isaac.movementSpeed;
-            }
-        } else if (this.keys.s) {
-            if (isaac.yPosition <= isaac.moveBoundsDown) {
-                isaac.yPosition += isaac.movementSpeed;
-            }
-        }
-        if (this.keys.a) {
-            if (isaac.xPosition >= isaac.moveBoundsLeft) {
-                isaac.xPosition -= isaac.movementSpeed;
-            }
-        } else if (this.keys.d) {
-            if (isaac.xPosition <= isaac.moveBoundsRight) {
-                isaac.xPosition += isaac.movementSpeed;
-            }
-        }
+        
     }
 
 

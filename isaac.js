@@ -7,18 +7,32 @@ class Isaac {
 		this.yPosition = 400;
 		this.movementSpeed = 5;
 		this.moveBoundsLeft = 140;
-		this.moveBoundsRight = 1350;
+		this.moveBoundsRight = 1210;
 		this.moveBoundsUp = 140;
 		this.moveBoundsDown = 740;
 	};
 
 
 	update(){
-		//this.x += this.speed*this.game.clockTick;
-		if(this.xPosition > 1024){
-			this.xPosition = -100;
-			this.count = 0
-		}
+		//let isaac = this.entities[0];
+        if (this.game.keys.w) {
+            if (this.yPosition >= this.moveBoundsUp) {
+                this.yPosition -= this.movementSpeed;
+            }
+        } else if (this.game.keys.s) {
+            if (this.yPosition <= this.moveBoundsDown) {
+                this.yPosition += this.movementSpeed;
+            }
+        }
+        if (this.game.keys.a) {
+            if (this.xPosition >= this.moveBoundsLeft) {
+                this.xPosition -= this.movementSpeed;
+            }
+        } else if (this.game.keys.d) {
+            if (this.xPosition <= this.moveBoundsRight) {
+                this.xPosition += this.movementSpeed;
+            }
+        }
 	};
 
 
