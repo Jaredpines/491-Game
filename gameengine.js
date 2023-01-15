@@ -76,6 +76,29 @@ class GameEngine {
         this.ctx.canvas.addEventListener("keyup", event => this.keys[event.key] = false);
     };
 
+    findInput() {
+        let isaac = this.entities[0];
+        if (this.keys.w) {
+            if (isaac.yPosition >= isaac.moveBoundsUp) {
+                isaac.yPosition -= isaac.movementSpeed;
+            }
+        } else if (this.keys.s) {
+            if (isaac.yPosition <= isaac.moveBoundsDown) {
+                isaac.yPosition += isaac.movementSpeed;
+            }
+        }
+        if (this.keys.a) {
+            if (isaac.xPosition >= isaac.moveBoundsLeft) {
+                isaac.xPosition -= isaac.movementSpeed;
+            }
+        } else if (this.keys.d) {
+            if (isaac.xPosition <= isaac.moveBoundsRight) {
+                isaac.xPosition += isaac.movementSpeed;
+            }
+        }
+    }
+
+
     addEntity(entity) {
         this.entities.push(entity);
     };
@@ -110,6 +133,7 @@ class GameEngine {
 
     loop() {
         this.clockTick = this.timer.tick();
+        this.findInput();
         this.update();
         this.draw();
     };
