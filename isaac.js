@@ -14,25 +14,26 @@ class Isaac {
 
 
 	update(){
-		//let isaac = this.entities[0];
-        if (this.game.keys.w) {
-            if (this.yPosition >= this.moveBoundsUp) {
-                this.yPosition -= this.movementSpeed;
-            }
-        } else if (this.game.keys.s) {
-            if (this.yPosition <= this.moveBoundsDown) {
-                this.yPosition += this.movementSpeed;
-            }
-        }
-        if (this.game.keys.a) {
-            if (this.xPosition >= this.moveBoundsLeft) {
-                this.xPosition -= this.movementSpeed;
-            }
-        } else if (this.game.keys.d) {
-            if (this.xPosition <= this.moveBoundsRight) {
-                this.xPosition += this.movementSpeed;
-            }
-        }
+		if(this.count>2){
+			if (this.game.keys.w) {
+				if (this.yPosition >= this.moveBoundsUp) {
+					this.yPosition -= this.movementSpeed;
+				}
+			} else if (this.game.keys.s) {
+				if (this.yPosition <= this.moveBoundsDown) {
+					this.yPosition += this.movementSpeed;
+				}
+			}
+			if (this.game.keys.a) {
+				if (this.xPosition >= this.moveBoundsLeft) {
+					this.xPosition -= this.movementSpeed;
+				}
+			} else if (this.game.keys.d) {
+				if (this.xPosition <= this.moveBoundsRight) {
+					this.xPosition += this.movementSpeed;
+				}
+			}
+		}
 	};
 
 
