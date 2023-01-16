@@ -37,7 +37,7 @@ class Isaac {
 		//Facing Down = 2
 		this.animations[2][0] = new Animator(this.isaacSpritesheet, 2, 80, 40, 20, 1, 0.1);
 		//Facing Left = 3
-		this.animations[3][0] = new Animator(this.isaacSpritesheet, 2, 122, 40, 20, 1, 0.1);
+		this.animations[3][0] = new Animator(this.isaacSpritesheet, 2, 145, 40, 20, 1, 0.1);
 
 		//Walking Animation state = 1
 		//Facing Up = 0
@@ -47,7 +47,7 @@ class Isaac {
 		//Facing Down = 2
 		this.animations[2][1] = new Animator(this.isaacSpritesheet, 2, 80, 32, 20, 10, 0.1);
 		//Facing Left = 3
-		this.animations[3][1] = new Animator(this.isaacSpritesheet, 2, 122, 32, 20, 10, 0.1);
+		this.animations[3][1] = new Animator(this.isaacSpritesheet, 2, 145, 32, 20, 10, 0.1);
 
 
 
