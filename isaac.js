@@ -68,6 +68,9 @@ class Isaac {
 				}
 				this.facing = 2;
 				this.state = 1;
+			} else {
+				this.facing = 2;
+				this.state = 0;
 			}
 			if (this.game.keys.a) {
 				if (this.xPosition >= this.moveBoundsLeft) {
@@ -82,8 +85,8 @@ class Isaac {
 				this.facing = 1;
 				this.state = 1;
 			} else {
-				this.state = 0;
 				this.facing = 2;
+				this.state = 0;
 			}
 		}
 
