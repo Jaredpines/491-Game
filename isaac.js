@@ -83,7 +83,7 @@ class Isaac {
 				this.state = 1;
 			} else {
 				this.state = 0;
-				this.facing = 0;
+				this.facing = 2;
 			}
 		}
 
@@ -91,8 +91,8 @@ class Isaac {
 
 
 	draw(ctx){
-		this.count += (1*this.game.clockTick);
 		this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+		this.count += (1*this.game.clockTick);
 		//console.log(this.count)
 		if(this.count < 2){
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./crying_isaac.png"),this.xPosition,this.yPosition,130,85);
