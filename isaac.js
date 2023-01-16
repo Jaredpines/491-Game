@@ -11,8 +11,8 @@ class Isaac {
 		this.moveBoundsUp = 140;
 		this.moveBoundsDown = 740;
 
-		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./isaac.png");
-		this.animator = new Animator(ASSET_MANAGER.getAsset("./isaac.png"), 2, 80, 40, 20, 10, 0.1);
+		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
+		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 10, 0.1);
 
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
