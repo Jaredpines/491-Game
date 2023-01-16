@@ -41,7 +41,7 @@ class Isaac {
 		this.count += (1*this.game.clockTick);
 		//console.log(this.count)
 		if(this.count < 2){
-			ctx.drawImage(ASSET_MANAGER.getAsset("./crying_isaac.png"),this.xPosition,this.yPosition,130,85);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
 			if(this.count < 0.25){
 				this.xPosition = this.xPosition-50*this.game.clockTick
 			}else if(this.count < 0.5){
@@ -62,11 +62,11 @@ class Isaac {
 			
 			
 		}else if(this.game.keys.ArrowDown){
-			ctx.drawImage(ASSET_MANAGER.getAsset("./down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 		}else{
-			ctx.drawImage(ASSET_MANAGER.getAsset("./down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
-			ctx.drawImage(ASSET_MANAGER.getAsset("./isaac_idle.png"),this.xPosition+10,this.yPosition-50,95,120);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/isaac_idle.png"),this.xPosition+10,this.yPosition-50,95,120);
 		}
 		
 	};
