@@ -7,12 +7,12 @@ class Isaac {
 		this.yPosition = 400;
 		this.movementSpeed = 5;
 		this.moveBoundsLeft = 140;
-		this.moveBoundsRight = 1210;
-		this.moveBoundsUp = 140;
-		this.moveBoundsDown = 740;
+		this.moveBoundsRight = 1240;
+		this.moveBoundsUp = 160;
+		this.moveBoundsDown = 790;
 
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
-		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 10, 0.05);
+		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"));
 
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
@@ -35,7 +35,7 @@ class Isaac {
 		//Facing Right = 1
 		this.animations[1][0] = new Animator(this.isaacSpritesheet, 2, 122, 40, 20, 1, 0.1);
 		//Facing Down = 2
-		this.animations[2][0] = new Animator(this.isaacSpritesheet, 2, 80, 40, 20, 1, 0.1);
+		this.animations[2][0] = new Animator(this.isaacSpritesheet, 2, 189, 40, 20, 1, 0.1);
 		//Facing Left = 3
 		this.animations[3][0] = new Animator(this.isaacSpritesheet, 2, 145, 40, 20, 1, 0.1);
 
@@ -45,7 +45,7 @@ class Isaac {
 		//Facing Right = 1
 		this.animations[1][1] = new Animator(this.isaacSpritesheet, 2, 122, 32, 20, 10, 0.1);
 		//Facing Down = 2
-		this.animations[2][1] = new Animator(this.isaacSpritesheet, 2, 80, 32, 20, 10, 0.1);
+		this.animations[2][1] = new Animator(this.isaacSpritesheet, 2, 189, 32, 20, 10, 0.1);
 		//Facing Left = 3
 		this.animations[3][1] = new Animator(this.isaacSpritesheet, 2, 145, 32, 20, 10, 0.1);
 
