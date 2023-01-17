@@ -57,7 +57,7 @@ class Isaac {
 	update(){
 		this.state = 0;
 		if(this.count>2){
-			if (this.game.keys.w) {
+			if (this.game.keys.w || this.game.keys.W) {
 				if (this.yPosition >= this.moveBoundsUp) {
 					this.yPosition -= this.movementSpeed;
 				}
@@ -118,7 +118,7 @@ class Isaac {
 			
 			
 		}else if(this.game.keys.ArrowDown){
-			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 		}else{
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
