@@ -84,7 +84,6 @@ class Isaac {
 				this.facing = 1;
 				this.state = 1;
 			} else if (this.game.keys.w && !this.game.keys.s) {
-				
 				this.facing = 0;
 				this.state = 1;
 			} else if (this.game.keys.s && !this.game.keys.w) {
