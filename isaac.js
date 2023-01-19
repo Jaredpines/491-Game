@@ -75,8 +75,6 @@ class Isaac {
 					this.yPosition += this.movementSpeed;
 				}
 			}
-		}
-		if(this.count > 2){
 			if (this.game.keys.a && !this.game.keys.d) {
 				this.facing = 3;
 				this.state = 1;
