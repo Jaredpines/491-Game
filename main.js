@@ -29,7 +29,9 @@ ASSET_MANAGER.downloadAll(() => {
 	const ctx = canvas.getContext("2d");
 
 	gameEngine.addEntity(new Isaac(gameEngine));
-	gameEngine.addEntity(new Room());
+	gameEngine.addEntity(new Controls(0,0,gameEngine));
+	gameEngine.addEntity(new Room(0,0,gameEngine));
+	gameEngine.addEntity(new Room(1471,0,gameEngine));
 	
 
 	gameEngine.init(ctx);
