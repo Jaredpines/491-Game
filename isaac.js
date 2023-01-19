@@ -12,7 +12,7 @@ class Isaac {
 		this.moveBoundsDown = 790;
 
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
-		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"));
+		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 1, 0.1, 2);
 
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
@@ -31,23 +31,23 @@ class Isaac {
 
 		//Idle Animation state = 0
 		//Facing Up = 0
-		this.animations[0][0] = new Animator(this.isaacSpritesheet, 2, 80, 40, 20, 1, 0.1);
+		this.animations[0][0] = new Animator(this.isaacSpritesheet, 4, 80, 40, 20, 1, 0.1, 3.5);
 		//Facing Right = 1
-		this.animations[1][0] = new Animator(this.isaacSpritesheet, 2, 122, 40, 20, 1, 0.1);
+		this.animations[1][0] = new Animator(this.isaacSpritesheet, 2, 122, 40, 20, 1, 0.1, 3.5);
 		//Facing Down = 2
-		this.animations[2][0] = new Animator(this.isaacSpritesheet, 2, 189, 40, 20, 1, 0.1);
+		this.animations[2][0] = new Animator(this.isaacSpritesheet, 4, 189, 40, 20, 1, 0.1, 3.5);
 		//Facing Left = 3
-		this.animations[3][0] = new Animator(this.isaacSpritesheet, 2, 145, 40, 20, 1, 0.1);
+		this.animations[3][0] = new Animator(this.isaacSpritesheet, 2, 145, 40, 20, 1, 0.1, 3.5);
 
 		//Walking Animation state = 1
 		//Facing Up = 0
-		this.animations[0][1] = new Animator(this.isaacSpritesheet, 2, 80, 32, 20, 10, 0.1);
+		this.animations[0][1] = new Animator(this.isaacSpritesheet, 4, 80, 32, 20, 10, 0.1, 3.5);
 		//Facing Right = 1
-		this.animations[1][1] = new Animator(this.isaacSpritesheet, 2, 122, 32, 20, 10, 0.1);
+		this.animations[1][1] = new Animator(this.isaacSpritesheet, 2, 122, 32, 20, 10, 0.1, 3.5);
 		//Facing Down = 2
-		this.animations[2][1] = new Animator(this.isaacSpritesheet, 2, 189, 32, 20, 10, 0.1);
+		this.animations[2][1] = new Animator(this.isaacSpritesheet, 4, 189, 32, 20, 10, 0.1, 3.5);
 		//Facing Left = 3
-		this.animations[3][1] = new Animator(this.isaacSpritesheet, 2, 145, 32, 20, 10, 0.1);
+		this.animations[3][1] = new Animator(this.isaacSpritesheet, 2, 145, 32, 20, 10, 0.1, 3.5);
 
 
 
@@ -56,30 +56,34 @@ class Isaac {
 
 	update(){
 		this.state = 0;
-		if(this.count>2){
-			if (this.game.keys.w || this.game.keys.W) {
-				if (this.yPosition >= this.moveBoundsUp) {
-					this.yPosition -= this.movementSpeed;
-				}
-				this.facing = 0;
-				this.state = 1;
-			} else if (this.game.keys.s) {
-				if (this.yPosition <= this.moveBoundsDown) {
-					this.yPosition += this.movementSpeed;
-				}
-				this.facing = 2;
-				this.state = 1;
-			} else if (this.game.keys.a) {
+		if(this.count > 2){
+			if (this.game.keys.a && !this.game.keys.d) {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed;
 				}
 				this.facing = 3;
 				this.state = 1;
-			} else if (this.game.keys.d) {
+			} else if (this.game.keys.d && !this.game.keys.a) {
 				if (this.xPosition <= this.moveBoundsRight) {
 					this.xPosition += this.movementSpeed;
 				}
 				this.facing = 1;
+				this.state = 1;
+			} else {
+				this.facing = 2;
+				this.state = 0;
+			}
+			if (this.game.keys.w && !this.game.keys.s) {
+				if (this.yPosition >= this.moveBoundsUp) {
+					this.yPosition -= this.movementSpeed;
+				}
+				this.facing = 0;
+				this.state = 1;
+			} else if (this.game.keys.s && !this.game.keys.w) {
+				if (this.yPosition <= this.moveBoundsDown) {
+					this.yPosition += this.movementSpeed;
+				}
+				this.facing = 2;
 				this.state = 1;
 			} else {
 				this.facing = 2;
