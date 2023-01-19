@@ -31,23 +31,23 @@ class Isaac {
 
 		//Idle Animation state = 0
 		//Facing Up = 0
-		this.animations[0][0] = new Animator(this.isaacSpritesheet, 4, 80, 40, 20, 1, 0.1, 3.5);
+		this.animations[0][0] = new Animator(this.isaacSpritesheet, 0, 79, 32, 20, 1, 0.1, 3.5);
 		//Facing Right = 1
-		this.animations[1][0] = new Animator(this.isaacSpritesheet, 2, 122, 40, 20, 1, 0.1, 3.5);
+		this.animations[1][0] = new Animator(this.isaacSpritesheet, 0, 122, 32, 20, 1, 0.1, 3.5);
 		//Facing Down = 2
-		this.animations[2][0] = new Animator(this.isaacSpritesheet, 4, 189, 40, 20, 1, 0.1, 3.5);
+		this.animations[2][0] = new Animator(this.isaacSpritesheet, 0, 188, 32, 20, 1, 0.1, 3.5);
 		//Facing Left = 3
-		this.animations[3][0] = new Animator(this.isaacSpritesheet, 2, 145, 40, 20, 1, 0.1, 3.5);
+		this.animations[3][0] = new Animator(this.isaacSpritesheet, 0, 144, 32, 20, 1, 0.1, 3.5);
 
 		//Walking Animation state = 1
 		//Facing Up = 0
-		this.animations[0][1] = new Animator(this.isaacSpritesheet, 4, 80, 32, 20, 10, 0.1, 3.5);
+		this.animations[0][1] = new Animator(this.isaacSpritesheet, 0, 79, 32, 20, 10, 0.1, 3.5);
 		//Facing Right = 1
-		this.animations[1][1] = new Animator(this.isaacSpritesheet, 2, 122, 32, 20, 10, 0.1, 3.5);
+		this.animations[1][1] = new Animator(this.isaacSpritesheet, 0, 122, 32, 20, 10, 0.1, 3.5);
 		//Facing Down = 2
-		this.animations[2][1] = new Animator(this.isaacSpritesheet, 4, 189, 32, 20, 10, 0.1, 3.5);
+		this.animations[2][1] = new Animator(this.isaacSpritesheet, 0, 188, 32, 20, 10, 0.1, 3.5);
 		//Facing Left = 3
-		this.animations[3][1] = new Animator(this.isaacSpritesheet, 2, 145, 32, 20, 10, 0.1, 3.5);
+		this.animations[3][1] = new Animator(this.isaacSpritesheet, 0, 144, 32, 20, 10, 0.1, 3.5);
 
 
 
@@ -127,12 +127,12 @@ class Isaac {
 			
 			
 		}else if(this.game.keys.ArrowDown){
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition-12, this.yPosition+25);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+1, this.yPosition+24);
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
 			
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 		}else{
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition-12, this.yPosition+25);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+1, this.yPosition+24);
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/isaac_idle.png"),this.xPosition+10,this.yPosition-50,95,120);
 		}
