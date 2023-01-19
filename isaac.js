@@ -61,28 +61,33 @@ class Isaac {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed;
 				}
-				this.facing = 3;
-				this.state = 1;
 			} else if (this.game.keys.d && !this.game.keys.a) {
 				if (this.xPosition <= this.moveBoundsRight) {
 					this.xPosition += this.movementSpeed;
 				}
-				this.facing = 1;
-				this.state = 1;
-			} else {
-				this.facing = 2;
-				this.state = 0;
-			}
+			} 
 			if (this.game.keys.w && !this.game.keys.s) {
 				if (this.yPosition >= this.moveBoundsUp) {
 					this.yPosition -= this.movementSpeed;
 				}
-				this.facing = 0;
-				this.state = 1;
 			} else if (this.game.keys.s && !this.game.keys.w) {
 				if (this.yPosition <= this.moveBoundsDown) {
 					this.yPosition += this.movementSpeed;
 				}
+			}
+		}
+		if(this.count > 2){
+			if (this.game.keys.a && !this.game.keys.d) {
+				this.facing = 3;
+				this.state = 1;
+			} else if (this.game.keys.d && !this.game.keys.a) {
+				this.facing = 1;
+				this.state = 1;
+			} else if (this.game.keys.w && !this.game.keys.s) {
+				
+				this.facing = 0;
+				this.state = 1;
+			} else if (this.game.keys.s && !this.game.keys.w) {
 				this.facing = 2;
 				this.state = 1;
 			} else {
