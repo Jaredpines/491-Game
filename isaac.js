@@ -127,11 +127,13 @@ class Isaac {
 			
 			
 		}else if(this.game.keys.ArrowDown){
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition-15, this.yPosition+25);
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-50,95,91);
+			
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 		}else{
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
-			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition-12, this.yPosition+25);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
 			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/isaac_idle.png"),this.xPosition+10,this.yPosition-50,95,120);
 		}
 		
