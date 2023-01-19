@@ -7,9 +7,9 @@ class Isaac {
 		this.yPosition = 400;
 		this.movementSpeed = 5;
 		this.moveBoundsLeft = 140;
-		this.moveBoundsRight = 1240;
-		this.moveBoundsUp = 160;
-		this.moveBoundsDown = 790;
+		this.moveBoundsRight = 1210;
+		this.moveBoundsUp = 140;
+		this.moveBoundsDown = 740;
 
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
 		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 1, 0.1, 2);
