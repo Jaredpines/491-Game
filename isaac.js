@@ -5,7 +5,7 @@ class Isaac {
 		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
 		this.xPosition = 690;
 		this.yPosition = 400;
-		this.movementSpeed = 5;
+		this.movementSpeed = 500;
 		this.moveBoundsLeft = 140;
 		this.moveBoundsRight = 1210;
 		this.moveBoundsUp = 140;
@@ -59,20 +59,20 @@ class Isaac {
 		if(this.count > 2){
 			if (this.game.keys.a && !this.game.keys.d) {
 				if (this.xPosition >= this.moveBoundsLeft) {
-					this.xPosition -= this.movementSpeed;
+					this.xPosition -= this.movementSpeed*this.game.clockTick;
 				}
 			} else if (this.game.keys.d && !this.game.keys.a) {
 				if (this.xPosition <= this.moveBoundsRight) {
-					this.xPosition += this.movementSpeed;
+					this.xPosition += this.movementSpeed*this.game.clockTick;
 				}
 			} 
 			if (this.game.keys.w && !this.game.keys.s) {
 				if (this.yPosition >= this.moveBoundsUp) {
-					this.yPosition -= this.movementSpeed;
+					this.yPosition -= this.movementSpeed*this.game.clockTick;
 				}
 			} else if (this.game.keys.s && !this.game.keys.w) {
 				if (this.yPosition <= this.moveBoundsDown) {
-					this.yPosition += this.movementSpeed;
+					this.yPosition += this.movementSpeed*this.game.clockTick;
 				}
 			}
 			if (this.game.keys.a && !this.game.keys.d) {
