@@ -1,13 +1,52 @@
 class SceneManager {
     constructor(game) {
         this.game = game;
+        this.game.camera = this;
         this.x = 0;
+
+        this.gameOver = false;
+
+        this.title = true;
+        this.credits = false;
+        this.level = null;
+
         this.coins = 0;
         this.bombs = 0;
         this.keys = 0;
 
 
+    };
+
+    clearEntities() {
+        this.game.entities.forEach(function (entity) {
+            entity.removeFromWorld = true;
+        })
     }
+
+    loadFloor(floor, x, y, transition, title) {
+        this.title = title;
+        this.floor = floor;
+        //this.clearEntities();
+        this.x = 0;
+
+    }
+
+    update() {
+        this.menuButtonTimer += this.game.clockTick;
+
+        if (!this.title && !this.transition && !this.paused) {
+            if (this.timer === undefined) {
+                this.timer = 0;
+            } else {
+                this.timer += this.game.clockTick;
+            }
+
+            if (this.timer > 0.4) {
+                this.time -= 1;
+                this.timer = undefined;
+            }
+        }
+    };
 
     draw(ctx) {
         if (this.title && !this.credits) {
