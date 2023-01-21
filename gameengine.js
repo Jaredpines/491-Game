@@ -76,10 +76,6 @@ class GameEngine {
         this.ctx.canvas.addEventListener("keyup", event => this.keys[event.key] = false);
     };
 
-    findInput() {
-        
-    }
-
 
     addEntity(entity) {
         this.entities.push(entity);
@@ -115,7 +111,6 @@ class GameEngine {
 
     loop() {
         this.clockTick = this.timer.tick();
-        this.findInput();
         this.update();
         this.draw();
     };
