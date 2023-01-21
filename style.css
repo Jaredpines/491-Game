@@ -2,3 +2,12 @@
     font-family: 'Upheaval';
     src: url(res/upheavtt.ttf) format('tff') ;
 }
+
+.center-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}

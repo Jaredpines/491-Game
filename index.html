@@ -1,19 +1,41 @@
 ﻿
 <!DOCTYPE html>
-<html>
+<html lang="">
 <head>
     <meta charset="utf-8">
-    <title>Game Project Title Goes Here</title>
-  
+    <title>Binding of Isaac</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+
+    <style>
+        body {
+            font-family: 'The Binding of Isaac', Upheaval;
+            font-size: 24px;
+        }
+        canvas {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            font-size: 20px;
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+
     <script type="text/javascript" src="./assetmanager.js"></script>
-    <script type="text/javascript" src="./timer.js"></script>
     <script type="text/javascript" src="./gameengine.js"></script>
+    <script type="text/javascript" src="./timer.js"></script>
+    <script type="text/javascript" src="./scenemanager.js"></script>
     <script type="text/javascript" src="./util.js"></script>
     <script type="text/javascript" src="./animator.js"></script>
     <script type="text/javascript" src="./room.js"></script>
     <script type="text/javascript" src="./controls.js"></script>
     <script type="text/javascript" src="./isaac.js"></script>
     <script type="text/javascript" src="./main.js"></script>
+
+
 </head>
 <body scroll="no" style="overflow: hidden">
     <canvas id="gameWorld" width="1471" height="997" style="background: white; border: 1px solid black" tabindex="0" autofocus></canvas>

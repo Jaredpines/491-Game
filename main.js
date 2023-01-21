@@ -1,9 +1,7 @@
-const gameEngine = new GameEngine();
-
 const ASSET_MANAGER = new AssetManager();
 
-//const sceneManager = new SceneManager();
-
+ASSET_MANAGER.queueDownload("./res/hud_stats.png");
+ASSET_MANAGER.queueDownload("./res/title_menu_sprites.png")
 ASSET_MANAGER.queueDownload("./res/01_basement_basic.png")
 ASSET_MANAGER.queueDownload("./res/controls.png")
 ASSET_MANAGER.queueDownload("./res/crying_isaac.png")
@@ -30,6 +28,11 @@ ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
 	const ctx = canvas.getContext("2d");
 
+
+	const gameEngine = new GameEngine();
+
+
+	//gameEngine.addEntity(new SceneManager(gameEngine));
 	gameEngine.addEntity(new Isaac(gameEngine));
 	gameEngine.addEntity(new Controls(0,0,gameEngine));
 	gameEngine.addEntity(new Room(0,0,gameEngine));
@@ -38,7 +41,6 @@ ASSET_MANAGER.downloadAll(() => {
 
 	gameEngine.init(ctx);
 
-	//sceneManager.draw(ctx);
-
 	gameEngine.start();
+
 });
