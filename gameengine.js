@@ -86,17 +86,22 @@ class GameEngine {
     swapTearEntity(entity) {
         let list = this.entities;
         list.reverse();
-        let e = list.pop();
+        let e
+        for (let index = 0; index < list.length; index++) {
+            if(list[index] instanceof Isaac_Head){
+                console.log(index)
+                 e = list.splice(index,1);
+            }
+            
+        }
+        
+        console.log(e)
         list.push(entity);
-        list.push(e);
+        list.push(e[0]);
         list.reverse();
         this.entities = list;
+        console.log(this.entities)
     };
-    removeTearEntity(){
-        this.entities.reverse();
-        this.entities.splice(4, 1);
-        this.entities.reverse();
-    }
     
 
 

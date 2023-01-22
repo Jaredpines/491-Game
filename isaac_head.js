@@ -58,7 +58,7 @@ class Isaac_Head {
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
 				if(this.tearspawned == 0){
 				let e = new Tears(this.xPosition+10,this.yPosition-45,"down",this.game)
-				this.game.swapTearEntity(e);
+				this.game.addEntity(e);
 				}
 				this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){

@@ -40,7 +40,7 @@ class Tears {
             this.range -= (1*this.game.clockTick);
         }else if(this.direction == "up"){
             if(this.range > 0){
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/normal_tears.png"),this.locX,this.locY-50, 51,51);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/normal_tears.png"),this.locX,this.locY-30, 51,51);
                 this.locY -= this.shotSpeed*this.game.clockTick;
             }else if(this.range <= 0){
                 if(this.animator.isDone() == false){
@@ -94,7 +94,7 @@ class Tears {
             this.range -= (1*this.game.clockTick);
         }else{
             
-                this.game.removeTearEntity();
+                this.removeFromWorld= true;
         }
         
     };
