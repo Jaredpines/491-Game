@@ -3,6 +3,10 @@
     src: url(res/upheavtt.ttf) format('tff') ;
 }
 
+.Hud {
+    font-family: Upheaval;
+}
+
 .center-screen {
     display: flex;
     flex-direction: column;
