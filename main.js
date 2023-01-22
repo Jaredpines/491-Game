@@ -20,6 +20,12 @@ ASSET_MANAGER.queueDownload("./res/door_frame.png")
 ASSET_MANAGER.queueDownload("./res/door_frame_left.png")
 ASSET_MANAGER.queueDownload("./res/door_way.png")
 ASSET_MANAGER.queueDownload("./res/door_way_left.png")
+ASSET_MANAGER.queueDownload("./res/up_shot_open.png")
+ASSET_MANAGER.queueDownload("./res/up_shot_close.png")
+ASSET_MANAGER.queueDownload("./res/left_shot_open.png")
+ASSET_MANAGER.queueDownload("./res/left_shot_close.png")
+ASSET_MANAGER.queueDownload("./res/right_shot_open.png")
+ASSET_MANAGER.queueDownload("./res/right_shot_close.png")
 ASSET_MANAGER.queueDownload("./res/down_shot_open.png")
 ASSET_MANAGER.queueDownload("./res/down_shot_close.png")
 ASSET_MANAGER.queueDownload("./res/isaac.png")
@@ -33,10 +39,13 @@ ASSET_MANAGER.downloadAll(() => {
 
 
 	//gameEngine.addEntity(new SceneManager(gameEngine));
-	gameEngine.addEntity(new Isaac(gameEngine));
-	gameEngine.addEntity(new Controls(0,0,gameEngine));
-	gameEngine.addEntity(new Room(0,0,gameEngine));
 	gameEngine.addEntity(new Room(1471,0,gameEngine));
+	gameEngine.addEntity(new Room(0,0,gameEngine));
+	gameEngine.addEntity(new Controls(0,0,gameEngine));
+	gameEngine.addEntity(new Isaac(gameEngine));
+	
+	
+	
 
 
 	gameEngine.init(ctx);

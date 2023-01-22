@@ -2,6 +2,7 @@ class Isaac {
 	constructor(game){
 		this.game = game;
 		this.count = 0;
+		this.tearcount = 0;
 		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
 		this.xPosition = 690;
 		this.yPosition = 400;
@@ -127,9 +128,53 @@ class Isaac {
 			
 		}else if(this.game.keys.ArrowDown){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
-			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+			this.tearcount += (1*this.game.clockTick);
+			if(this.tearcount < 0.1 ){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+				//this.game.addEntity(new Controls(0,0,this.game));
+			}else if(this.tearcount < 0.5){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else{
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				this.tearcount = 0;
+			}
 			
-			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-50,95,91);
+		}else if(this.game.keys.ArrowRight){
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.tearcount += (1*this.game.clockTick);
+			if(this.tearcount < 0.1 ){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else if(this.tearcount < 0.5){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else{
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				this.tearcount = 0;
+			}
+			
+		}else if(this.game.keys.ArrowLeft){
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.tearcount += (1*this.game.clockTick);
+			if(this.tearcount < 0.1 ){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else if(this.tearcount < 0.5){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else{
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				this.tearcount = 0;
+			}
+			
+		}else if(this.game.keys.ArrowUp){
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.tearcount += (1*this.game.clockTick);
+			if(this.tearcount < 0.1 ){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else if(this.tearcount < 0.5){
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+			}else{
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				this.tearcount = 0;
+			}
+			
 		}else{
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);

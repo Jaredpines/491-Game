@@ -79,7 +79,9 @@ class GameEngine {
 
 
     addEntity(entity) {
+        this.entities.reverse();
         this.entities.push(entity);
+        this.entities.reverse();
     };
 
     draw() {
