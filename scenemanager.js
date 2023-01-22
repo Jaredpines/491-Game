@@ -10,11 +10,6 @@ class SceneManager {
         this.credits = false;
         this.level = null;
 
-        this.coins = 0;
-        this.bombs = 0;
-        this.keys = 0;
-
-
     };
 
     clearEntities() {
