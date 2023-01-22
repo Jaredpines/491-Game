@@ -20,10 +20,20 @@ ASSET_MANAGER.queueDownload("./res/door_frame.png")
 ASSET_MANAGER.queueDownload("./res/door_frame_left.png")
 ASSET_MANAGER.queueDownload("./res/door_way.png")
 ASSET_MANAGER.queueDownload("./res/door_way_left.png")
+ASSET_MANAGER.queueDownload("./res/up_shot_open.png")
+ASSET_MANAGER.queueDownload("./res/up_shot_close.png")
+ASSET_MANAGER.queueDownload("./res/left_shot_open.png")
+ASSET_MANAGER.queueDownload("./res/left_shot_close.png")
+ASSET_MANAGER.queueDownload("./res/right_shot_open.png")
+ASSET_MANAGER.queueDownload("./res/right_shot_close.png")
 ASSET_MANAGER.queueDownload("./res/down_shot_open.png")
 ASSET_MANAGER.queueDownload("./res/down_shot_close.png")
 ASSET_MANAGER.queueDownload("./res/normal_tears.png")
+ASSET_MANAGER.queueDownload("./res/tear_animation_three.png")
+ASSET_MANAGER.queueDownload("./res/tear_animation_two.png")
+ASSET_MANAGER.queueDownload("./res/tear_animation_one.png")
 ASSET_MANAGER.queueDownload("./res/isaac.png")
+
 
 ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
@@ -32,13 +42,14 @@ ASSET_MANAGER.downloadAll(() => {
 
 	const gameEngine = new GameEngine();
 
-
-	//gameEngine.addEntity(new SceneManager(gameEngine));
 	gameEngine.addEntity(new Room(1471,0,gameEngine));
 	gameEngine.addEntity(new Room(0,0,gameEngine));
 	gameEngine.addEntity(new Controls(0,0,gameEngine));
-	let isaac = new Isaac(gameEngine)
-	gameEngine.addEntity(isaac);
+	let isaac_body = new Isaac_Body(gameEngine)
+	let isaac_head = new Isaac_Head(gameEngine)
+	gameEngine.addEntity(isaac_body);
+	gameEngine.addEntity(isaac_head);
+	//gameEngine.addEntity(new SceneManager(gameEngine));
 	
 	
 	

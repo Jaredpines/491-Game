@@ -83,6 +83,22 @@ class GameEngine {
         this.entities.push(entity);
         this.entities.reverse();
     };
+    swapTearEntity(entity) {
+        let list = this.entities;
+        list.reverse();
+        let e = list.pop();
+        list.push(entity);
+        list.push(e);
+        list.reverse();
+        this.entities = list;
+    };
+    removeTearEntity(){
+        this.entities.reverse();
+        this.entities.splice(4, 1);
+        this.entities.reverse();
+    }
+    
+
 
     draw() {
         // Clear the whole canvas with transparent color (rgba(0, 0, 0, 0))

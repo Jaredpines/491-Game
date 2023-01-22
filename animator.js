@@ -27,6 +27,6 @@ class Animator {
 	};
 
 	isDone(){
-		return (this.elapsedTime >= this.totalTime)
+		return (this.elapsedTime >= this.totalTime-0.02)
 	};
 };
