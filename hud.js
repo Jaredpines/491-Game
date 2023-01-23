@@ -17,7 +17,7 @@ class Hud {
         ctx.font = 'Upheaval';
         ctx.fontSize = "150%";
         ctx.fillStyle = "White";
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 100, 100, 1000, 500);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),100, 100, 1000, 500);
         console.log("in hud draw");
     };
 
