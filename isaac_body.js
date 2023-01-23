@@ -94,7 +94,7 @@ class Isaac_Body {
 				this.state = 0;
 			}
 		}
-
+		
 	};
 
 
@@ -142,6 +142,6 @@ class Isaac_Body {
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
 			
 		}
-		
+	
 	};
 }

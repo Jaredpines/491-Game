@@ -5,6 +5,7 @@ class SceneManager {
         this.x = 0;
 
         this.gameOver = false;
+        this.activated = false;
 
         this.title = true;
         this.credits = false;
@@ -15,9 +16,10 @@ class SceneManager {
 
         this.titleSpritesheet = ASSET_MANAGER.getAsset("./res/title_menu_sprites.png");
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 540, 0, 0, this.titleWidth, this.titleHeight);
-
+        this.isaac_body = new Isaac_Body(this.game)
         this.animations = [];
         this.loadAnimations();
+        this.once = false
 
     };
 
@@ -30,14 +32,19 @@ class SceneManager {
     loadFloor(floor, x, y, transition, title) {
         this.title = title;
         this.floor = floor;
-        this.clearEntities();
         this.x = 0;
-        this.game.addEntity(new Room(1471,0,this.game));
-        this.game.addEntity(new Room(0,0,this.game));
+        //this.game.addEntity(new Normal_Room(1471,0,this.game));
+        let floor1 = new Floor(this.game);
+        if(this.once = true){
+            floor1.addBaseRoom();
+            floor1.addRoom("left");
+            //floor1.addRoom("right");
+            //floor1.moveRoom("left");
+        }
+        
         this.game.addEntity(new Controls(0,0,this.game));
-        let isaac_body = new Isaac_Body(this.game)
         let isaac_head = new Isaac_Head(this.game)
-        this.game.addEntity(isaac_body);
+        this.game.addEntity(this.isaac_body);
         this.game.addEntity(isaac_head);
         let fly_enemy = new Fly(this.game)
         this.game.addEntity(fly_enemy);
@@ -61,7 +68,6 @@ class SceneManager {
 
     update() {
         this.menuButtonTimer += this.game.clockTick;
-
         if (!this.title && !this.transition && !this.paused) {
             if (this.timer === undefined) {
                 this.timer = 0;
@@ -74,8 +80,9 @@ class SceneManager {
                 this.timer = undefined;
             }
         }
-
-        if (this.game.keys.Enter) {
+        
+        //console.log(this.isaac_body.xPosition)
+        if (this.game.keys.Enter&&this.title == true) {
             this.title = false;
             console.log("Enter key pressed");
             this.loadFloor();
@@ -98,8 +105,6 @@ class SceneManager {
         } else if (!this.title && this.credits) {
 
         } else if (!this.title) {
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 100, 100, 0.5 * this.titleWidth, 0.5 * this.titleHeight);
-            console.log("entered hud conditions")
         }
 
 
