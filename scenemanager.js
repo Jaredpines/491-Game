@@ -4,18 +4,17 @@ class SceneManager {
         this.game.camera = this;
         this.x = 0;
 
-        const titleWidth = document.getElementById('gameWorld').width;
-        const titleHeight = document.getElementById('gameWorld').height;
-
-
         this.gameOver = false;
 
         this.title = true;
         this.credits = false;
         this.level = null;
 
+        this.titleWidth = document.getElementById('gameWorld').width;
+        this.titleHeight = document.getElementById('gameWorld').height;
+
         this.titleSpritesheet = ASSET_MANAGER.getAsset("./res/title_menu_sprites.png");
-        this.animator = new Animator(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 540, 0, 0, titleWidth, titleHeight);
+        this.animator = new Animator(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 540, 0, 0, this.titleWidth, this.titleHeight);
 
         this.animations = [];
         this.loadAnimations();
@@ -57,8 +56,6 @@ class SceneManager {
 
     };
 
-
-
     update() {
         this.menuButtonTimer += this.game.clockTick;
 
@@ -77,29 +74,29 @@ class SceneManager {
 
         if (this.game.keys.Enter) {
             this.title = false;
-            console.log("Enter key pressed")
-            this.loadFloor()
+            console.log("Enter key pressed");
+            this.loadFloor();
         }
 
     };
 
     draw(ctx) {
         this.count += (1*this.game.clockTick);
-        const titleWidth = document.getElementById('gameWorld').width;
-        const titleHeight = document.getElementById('gameWorld').height;
+
         if (this.title && !this.credits) {
 
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 272, 0, 0, titleWidth, titleHeight);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 272, 0, 0, this.titleWidth, this.titleHeight);
 
-            this.animations[0].drawFrame(this.game.clockTick, ctx, titleWidth * .3, titleHeight * 0.35);
-            this.animations[1].drawFrame(this.game.clockTick, ctx, titleWidth * .73, titleHeight * 0.4);
-            this.animations[2].drawFrame(this.game.clockTick, ctx, titleWidth * .235, titleHeight * 0.09);
+            this.animations[0].drawFrame(this.game.clockTick, ctx, this.titleWidth * .3, this.titleHeight * 0.35);
+            this.animations[1].drawFrame(this.game.clockTick, ctx, this.titleWidth * .73, this.titleHeight * 0.4);
+            this.animations[2].drawFrame(this.game.clockTick, ctx, this.titleWidth * .235, this.titleHeight * 0.09);
 
 
         } else if (!this.title && this.credits) {
 
-        } else if (!this.title && !this.credits) {
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 0, 0, 0.1 * titleWidth, 0.1 * titleHeight);
+        } else if (!this.title) {
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 100, 100, 0.5 * this.titleWidth, 0.5 * this.titleHeight);
+            console.log("entered hud conditions")
         }
 
 

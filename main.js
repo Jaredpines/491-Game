@@ -46,7 +46,6 @@ ASSET_MANAGER.downloadAll(() => {
 	gameEngine.addEntity(new SceneManager(gameEngine));
 
 
-
 	gameEngine.init(ctx);
 
 	gameEngine.start();
