@@ -17,15 +17,8 @@ class Hud {
         ctx.font = 'Upheaval';
         ctx.fontSize = "150%";
         ctx.fillStyle = "White";
-        // var hud_stats = new Image();
-        // hud_stats.src = "./res/hud_stats.png"
-        //
-        // ctx.fillText("Test", 150, 150);
-        //
-        // hud_stats.onload = function () {
-        //     ctx.drawImage(ASSET_MANAGER.getAsset(hud_stats),2,2,12,12, 300, 300);
-        // };
-
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 100, 100, 1000, 500);
+        console.log("in hud draw");
     };
 
 }
