@@ -33,6 +33,7 @@ ASSET_MANAGER.queueDownload("./res/tear_animation_three.png")
 ASSET_MANAGER.queueDownload("./res/tear_animation_two.png")
 ASSET_MANAGER.queueDownload("./res/tear_animation_one.png")
 ASSET_MANAGER.queueDownload("./res/isaac.png")
+ASSET_MANAGER.queueDownload("./res/monster_fly.png")
 
 
 ASSET_MANAGER.downloadAll(() => {
