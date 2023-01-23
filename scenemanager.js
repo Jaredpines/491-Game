@@ -39,6 +39,8 @@ class SceneManager {
         let isaac_head = new Isaac_Head(this.game)
         this.game.addEntity(isaac_body);
         this.game.addEntity(isaac_head);
+        let fly_enemy = new Fly(this.game)
+        this.game.addEntity(fly_enemy);
 
     };
 
