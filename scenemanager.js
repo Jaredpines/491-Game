@@ -31,8 +31,15 @@ class SceneManager {
     loadFloor(floor, x, y, transition, title) {
         this.title = title;
         this.floor = floor;
-        //this.clearEntities();
+        this.clearEntities();
         this.x = 0;
+        this.game.addEntity(new Room(1471,0,this.game));
+        this.game.addEntity(new Room(0,0,this.game));
+        this.game.addEntity(new Controls(0,0,this.game));
+        let isaac_body = new Isaac_Body(this.game)
+        let isaac_head = new Isaac_Head(this.game)
+        this.game.addEntity(isaac_body);
+        this.game.addEntity(isaac_head);
 
     };
 
@@ -67,6 +74,13 @@ class SceneManager {
                 this.timer = undefined;
             }
         }
+
+        if (this.game.keys.Enter) {
+            this.title = false;
+            console.log("Enter key pressed")
+            this.loadFloor()
+        }
+
     };
 
     draw(ctx) {
@@ -82,13 +96,12 @@ class SceneManager {
             this.animations[2].drawFrame(this.game.clockTick, ctx, titleWidth * .235, titleHeight * 0.09);
 
 
-
-
         } else if (!this.title && this.credits) {
 
+        } else if (!this.title && !this.credits) {
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 0, 0, 0.1 * titleWidth, 0.1 * titleHeight);
         }
 
-        //ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),2,2,12,12, 0, 0, 0.1 * titleWidth, 0.1 * titleHeight);
 
     };
 }

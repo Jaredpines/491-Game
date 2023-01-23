@@ -42,17 +42,9 @@ ASSET_MANAGER.downloadAll(() => {
 
 	const gameEngine = new GameEngine();
 
-	gameEngine.addEntity(new Room(1471,0,gameEngine));
-	gameEngine.addEntity(new Room(0,0,gameEngine));
-	gameEngine.addEntity(new Controls(0,0,gameEngine));
-	let isaac_body = new Isaac_Body(gameEngine)
-	let isaac_head = new Isaac_Head(gameEngine)
-	gameEngine.addEntity(isaac_body);
-	gameEngine.addEntity(isaac_head);
-	//gameEngine.addEntity(new SceneManager(gameEngine));
-	
-	
-	
+
+	gameEngine.addEntity(new SceneManager(gameEngine));
+
 
 
 	gameEngine.init(ctx);
