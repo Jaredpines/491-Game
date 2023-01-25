@@ -21,7 +21,9 @@ class SceneManager {
         this.animations = [];
         this.loadAnimations();
         this.once = false;
+        this.moveBounds = false;
         this.floor1 = new Floor(this.game);
+        this.hud = new Hud(this.game)
 
     };
 
@@ -44,7 +46,7 @@ class SceneManager {
         this.game.addEntity(this.isaac_head);
         let fly_enemy = new Fly(this.game)
         this.game.addEntity(fly_enemy);
-        this.game.addEntity(new Hud(this.game));
+        this.game.addEntity(this.hud);
 
     };
 
@@ -86,11 +88,18 @@ class SceneManager {
 
         if(this.isaac_body.boundingBox.collide(this.floor1.door.boundingBox)|| (this.floor1.camera.slide < 1471&&this.once == true)){
             this.floor1.moveRoom("left");
+            if(this.moveBounds == false){
+                this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - this.floor1.farthestLeft;
+                this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - this.floor1.farthestLeft;
+                this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - this.floor1.farthestLeft;
+                this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - this.floor1.farthestLeft;
+                this.hud.x = -this.floor1.farthestLeft;
+                this.moveBounds = true;
+            }
             this.once = true;
         }else{
             this.once = false;
         }
-        console.log(this.floor1.camera.slide)
 
     };
 
