@@ -6,13 +6,14 @@ class Isaac_Head {
 		this.tearspawned = 0;
 		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
         
-		this.xPosition = 690;
-		this.yPosition = 400;
+		this.xPosition = 700;
+		this.yPosition = 355;
 		this.movementSpeed = 500;
-		this.moveBoundsLeft = 140;
-		this.moveBoundsRight = 1210;
-		this.moveBoundsUp = 140;
-		this.moveBoundsDown = 740;
+		this.moveBoundsLeft = 147;
+		this.moveBoundsRight = 1242;
+		this.moveBoundsUp = 68.5;
+		this.moveBoundsDown = 695;
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,95,91);
 	};
 
 	
@@ -40,7 +41,7 @@ class Isaac_Head {
 				}
 			}
 		}
-
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,95,91);
 	};
 
 
@@ -55,16 +56,16 @@ class Isaac_Head {
 
 			this.tearcount += (1*this.game.clockTick);
 			if(this.tearcount < 0.1 ){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-				let e = new Tears(this.xPosition+10,this.yPosition-45,"down",this.game)
+				let e = new Tears(this.xPosition,this.yPosition,"down",this.game)
 				this.game.addEntity(e);
 				}
 				this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition,this.yPosition,95,91);
 			}else{
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition,this.yPosition,95,91);
 				this.tearspawned = 0;
 				this.tearcount = 0;
 			}
@@ -72,16 +73,16 @@ class Isaac_Head {
 		}else if(this.game.keys.ArrowRight){
 			this.tearcount += (1*this.game.clockTick);
 			if(this.tearcount < 0.1 ){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-					let e = new Tears(this.xPosition+10,this.yPosition-45,"right",this.game)
+					let e = new Tears(this.xPosition,this.yPosition,"right",this.game)
 					this.game.swapTearEntity(e);
 					}
 					this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_open.png"),this.xPosition,this.yPosition,95,91);
 			}else{
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_open.png"),this.xPosition,this.yPosition,95,91);
 				this.tearspawned = 0;
 				this.tearcount = 0;
 				
@@ -90,16 +91,16 @@ class Isaac_Head {
 		}else if(this.game.keys.ArrowLeft){
 			this.tearcount += (1*this.game.clockTick);
 			if(this.tearcount < 0.1 ){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-					let e = new Tears(this.xPosition+10,this.yPosition-45,"left",this.game)
+					let e = new Tears(this.xPosition,this.yPosition,"left",this.game)
 					this.game.swapTearEntity(e);
 					}
 					this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_open.png"),this.xPosition,this.yPosition,95,91);
 			}else{
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_open.png"),this.xPosition,this.yPosition,95,91);
 				this.tearspawned = 0;
 				this.tearcount = 0;
 			}
@@ -107,23 +108,22 @@ class Isaac_Head {
 		}else if(this.game.keys.ArrowUp){
 			this.tearcount += (1*this.game.clockTick);
 			if(this.tearcount < 0.1 ){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_close.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-					let e = new Tears(this.xPosition+10,this.yPosition-45,"up",this.game)
+					let e = new Tears(this.xPosition,this.yPosition,"up",this.game)
 					this.game.swapTearEntity(e);
 					}
 					this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_open.png"),this.xPosition,this.yPosition,95,91);
 			}else{
-				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_open.png"),this.xPosition,this.yPosition,95,91);
 				this.tearspawned = 0;
 				this.tearcount = 0;
 			}
 			
 		}else{
-			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition+10,this.yPosition-45,95,91);
-			//ctx.drawImage(ASSET_MANAGER.getAsset("./res/isaac_idle.png"),this.xPosition+10,this.yPosition-50,95,120);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition,this.yPosition,95,91);
 		}
 		
 	};

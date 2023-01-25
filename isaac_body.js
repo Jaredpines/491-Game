@@ -3,17 +3,16 @@ class Isaac_Body {
 		this.game = game;
 		this.count = 0;
 		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
-		this.xPosition = 690;
-		this.yPosition = 400;
+		this.xPosition = 692;
+		this.yPosition = 424;
 		this.movementSpeed = 500;
-		this.moveBoundsLeft = 140;
-		this.moveBoundsRight = 1210;
-		this.moveBoundsUp = 140;
-		this.moveBoundsDown = 740;
-
+		this.moveBoundsLeft = 138;
+		this.moveBoundsRight = 1234;
+		this.moveBoundsUp = 138;
+		this.moveBoundsDown = 764;
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
 		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 1, 0.1, 2);
-
+		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
 
@@ -94,7 +93,7 @@ class Isaac_Body {
 				this.state = 0;
 			}
 		}
-		
+		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
 	};
 
 
@@ -126,20 +125,20 @@ class Isaac_Body {
 			
 			
 		}else if(this.game.keys.ArrowDown){
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 		}else if(this.game.keys.ArrowRight){
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 		}else if(this.game.keys.ArrowLeft){
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 		}else if(this.game.keys.ArrowUp){
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 			
 		}else{
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition+2, this.yPosition+24);
+			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 		}
 	

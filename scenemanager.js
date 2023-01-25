@@ -17,9 +17,11 @@ class SceneManager {
         this.titleSpritesheet = ASSET_MANAGER.getAsset("./res/title_menu_sprites.png");
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 540, 0, 0, this.titleWidth, this.titleHeight);
         this.isaac_body = new Isaac_Body(this.game)
+        this.isaac_head = new Isaac_Head(this.game)
         this.animations = [];
         this.loadAnimations();
-        this.once = false
+        this.once = false;
+        this.floor1 = new Floor(this.game);
 
     };
 
@@ -34,18 +36,12 @@ class SceneManager {
         this.floor = floor;
         this.x = 0;
         //this.game.addEntity(new Normal_Room(1471,0,this.game));
-        let floor1 = new Floor(this.game);
-        if(this.once = true){
-            floor1.addBaseRoom();
-            floor1.addRoom("left");
-            //floor1.addRoom("right");
-            //floor1.moveRoom("left");
-        }
+        this.floor1.addBaseRoom();
+        this.floor1.addRoom("left");
         
         this.game.addEntity(new Controls(0,0,this.game));
-        let isaac_head = new Isaac_Head(this.game)
         this.game.addEntity(this.isaac_body);
-        this.game.addEntity(isaac_head);
+        this.game.addEntity(this.isaac_head);
         let fly_enemy = new Fly(this.game)
         this.game.addEntity(fly_enemy);
         this.game.addEntity(new Hud(this.game));
@@ -87,6 +83,14 @@ class SceneManager {
             console.log("Enter key pressed");
             this.loadFloor();
         }
+
+        if(this.isaac_body.boundingBox.collide(this.floor1.door.boundingBox)|| (this.floor1.camera.slide < 1471&&this.once == true)){
+            this.floor1.moveRoom("left");
+            this.once = true;
+        }else{
+            this.once = false;
+        }
+        console.log(this.floor1.camera.slide)
 
     };
 
