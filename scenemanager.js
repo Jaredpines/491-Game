@@ -23,7 +23,7 @@ class SceneManager {
         this.once = false;
         this.moveBounds = false;
         this.floor1 = new Floor(this.game);
-        this.hud = new Hud(this.game)
+        this.hud = new Hud(this.game, this.isaac_body);
 
     };
 

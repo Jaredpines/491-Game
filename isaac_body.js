@@ -5,7 +5,6 @@ class Isaac_Body {
 		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
 		this.xPosition = 692;
 		this.yPosition = 424;
-		this.movementSpeed = 500;
 		this.moveBoundsLeft = 138;
 		this.moveBoundsRight = 1234;
 		this.moveBoundsUp = 138;
@@ -15,6 +14,23 @@ class Isaac_Body {
 		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
+
+		//stats
+		this.health = 3;
+		this.movementSpeed = 500;
+		this.fireRate = 0;
+		this.damage = 1;
+		this.range = 0;
+		this.shotSpeed = 0;
+		this.luck = 0;
+		this.devilChance = 0;
+		this.angelChance = 0;
+		this.planetariumChance = 0;
+
+		//pickups
+		this.coinPickup = 0;
+		this.keyPickup = 1;
+		this.bombPickup = 1;
 
 		this.animations = [];
 		this.loadAnimations();
