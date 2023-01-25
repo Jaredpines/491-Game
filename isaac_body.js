@@ -17,6 +17,7 @@ class Isaac_Body {
 
 		//stats
 		this.health = 3;
+		this.maxHealth = 3;
 		this.movementSpeed = 500;
 		this.fireRate = 0;
 		this.damage = 1;

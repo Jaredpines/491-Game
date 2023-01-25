@@ -1,8 +1,11 @@
 class Hud {
     constructor(game, isaac) {
         this.game = game;
+        this.game.camera = this;
         this.character = isaac;
 
+        this.hudHealthX = 80;
+        this.hudHealthY = 30;
         this.hudStatsX = 0
         this.hudStatsY = 330
         this.hudPickupsX = 20;
@@ -14,6 +17,14 @@ class Hud {
     };
 
     drawHealth(ctx) {
+        const allRedHeartSY = 1;
+        const fullHeartSX = 1;
+        const halfHeartSX = 17;
+        const emptyHeartSX = 33;
+        const allHeartSWidth = 15;
+        const allHeartSHeight = 14;
+
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), fullHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, this.hudHealthX, this.hudHealthY, 50, 50);
 
     }
 
@@ -51,7 +62,7 @@ class Hud {
         ctx.fillStyle = "White";
 
         //hud health
-
+        this.drawHealth(ctx);
 
         //hud pickups
         this.drawPickups(ctx);
