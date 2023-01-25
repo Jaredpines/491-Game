@@ -13,14 +13,11 @@ class Hud {
 
     };
 
+    drawHealth(ctx) {
 
+    }
 
-    draw(ctx) {
-        ctx.font = '25px Calibri';
-        ctx.fontSize = "100pt";
-        ctx.fillStyle = "White";
-
-        //hud pickups
+    drawPickups(ctx) {
         const pickupX = this.hudPickupsX + 50;
         const pickupY = this.hudPickupsY + 30;
         const pickupYGap = 48;
@@ -30,8 +27,9 @@ class Hud {
         ctx.fillText(this.character.coinPickup, pickupX, pickupY);
         ctx.fillText(this.character.keyPickup, pickupX, pickupY + pickupYGap);
         ctx.fillText(this.character.bombPickup, pickupX, pickupY + (pickupYGap * 2));
+    }
 
-        //hud stats
+    drawStats(ctx) {
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_stats.png"),this.hudStatsX,this.hudStatsY);
         const statX = this.hudStatsX + 75;
         const statY = this.hudStatsY + 40;
@@ -45,6 +43,21 @@ class Hud {
         ctx.fillText(this.character.devilChance + "%", statX, statY + (statYGap * 6));
         ctx.fillText(this.character.angelChance + "%", statX, statY + (statYGap * 7));
         ctx.fillText(this.character.planetariumChance + "%", statX, statY + (statYGap * 8));
+    }
+
+    draw(ctx) {
+        ctx.font = '25px Calibri';
+        ctx.fontSize = "100pt";
+        ctx.fillStyle = "White";
+
+        //hud health
+
+
+        //hud pickups
+        this.drawPickups(ctx);
+
+        //hud stats
+        this.drawStats(ctx);
 
 
     };
