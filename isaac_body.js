@@ -29,7 +29,7 @@ class Isaac_Body {
 		this.planetariumChance = 0;
 
 		//pickups
-		this.coinPickup = 0;
+		this.coinPickup = 5;
 		this.keyPickup = 1;
 		this.bombPickup = 1;
 

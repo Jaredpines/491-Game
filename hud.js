@@ -13,7 +13,7 @@ class Hud {
     }
 
     update(ctx) {
-
+        // this.draw(ctx);
     };
 
     drawHealth(ctx) {

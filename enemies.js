@@ -54,6 +54,7 @@ class Fly {
                 }
             });
         }
+
     };
 
     draw(ctx) {
