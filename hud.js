@@ -4,11 +4,11 @@ class Hud {
         this.game.camera = this;
         this.character = isaac;
 
-        this.hudHealthX = 80;
+        this.hudHealthX = 200;
         this.hudHealthY = 30;
         this.hudStatsX = 0
         this.hudStatsY = 330
-        this.hudPickupsX = 20;
+        this.hudPickupsX = 30;
         this.hudPickupsY = 170;
     }
 
@@ -23,21 +23,47 @@ class Hud {
         const emptyHeartSX = 33;
         const allHeartSWidth = 15;
         const allHeartSHeight = 14;
+        const heartXGap = 45;
+        let currHeartY = this.hudHealthY;
+        let currHeartX = this.hudHealthX;
+        let drawnHearts = 0;
 
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), fullHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, this.hudHealthX, this.hudHealthY, 50, 50);
+        while (drawnHearts < this.character.maxHealth) {
+            if (drawnHearts < 12) {
+                currHeartY = this.hudHealthY;
+                currHeartX = this.hudHealthX + (heartXGap * drawnHearts / 2)
+            } else {
+                currHeartY = this.hudHealthY + 45;
+                currHeartX = this.hudHealthX + (heartXGap * (drawnHearts - 12) / 2)
+            }
+
+            if (drawnHearts < this.character.health) {
+                if (this.character.health - drawnHearts > 1) {
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), fullHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                    drawnHearts = drawnHearts + 2;
+                } else {
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), halfHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                    drawnHearts = drawnHearts + 2;
+                }
+            } else {
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                drawnHearts = drawnHearts + 2;
+            }
+
+        }
 
     }
 
     drawPickups(ctx) {
         const pickupX = this.hudPickupsX + 50;
         const pickupY = this.hudPickupsY + 30;
-        const pickupYGap = 48;
+        const pickupYGap = 50;
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 4, 4, 9, 11, this.hudPickupsX, this.hudPickupsY, 40, 50);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 20, 2, 9, 12, this.hudPickupsX, this.hudPickupsY + 45, 40, 50);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 1, 16, 13, 13, this.hudPickupsX-10, this.hudPickupsY + 90, 50, 50);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 1, 16, 13, 13, this.hudPickupsX-10, this.hudPickupsY + 50, 50, 50);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 20, 2, 9, 12, this.hudPickupsX, this.hudPickupsY + 100, 40, 50);
         ctx.fillText(this.character.coinPickup, pickupX, pickupY);
-        ctx.fillText(this.character.keyPickup, pickupX, pickupY + pickupYGap);
-        ctx.fillText(this.character.bombPickup, pickupX, pickupY + (pickupYGap * 2));
+        ctx.fillText(this.character.bombPickup, pickupX, pickupY + pickupYGap);
+        ctx.fillText(this.character.keyPickup, pickupX, pickupY + (pickupYGap * 2));
     }
 
     drawStats(ctx) {
