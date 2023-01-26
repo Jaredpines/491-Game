@@ -93,6 +93,8 @@ class SceneManager {
                 this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - this.floor1.farthestLeft;
                 this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - this.floor1.farthestLeft;
                 this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - this.floor1.farthestLeft;
+                this.isaac_body.xPosition = this.isaac_body.xPosition - 350
+                this.isaac_head.xPosition = this.isaac_head.xPosition - 350
                 this.hud.x = -this.floor1.farthestLeft;
                 this.moveBounds = true;
             }
