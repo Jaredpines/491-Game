@@ -39,14 +39,17 @@ class Hud {
 
             if (drawnHearts < this.character.health) {
                 if (this.character.health - drawnHearts > 1) {
-                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), fullHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                        fullHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                     drawnHearts = drawnHearts + 2;
                 } else {
-                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), halfHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                        halfHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                     drawnHearts = drawnHearts + 2;
                 }
             } else {
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"), emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                    emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                 drawnHearts = drawnHearts + 2;
             }
 
