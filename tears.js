@@ -10,8 +10,14 @@ class Tears {
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_one.png"), 0, 0, 62, 52, 4, 0.1, 2);
         this.animator2 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_two.png"), 0, 0, 62, 73, 4, 0.1, 2);
         this.animator3 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_three.png"), 0, 0, 62, 53, 4, 0.1, 2);
+
+        this.updateBB();
     };
 
+    updateBB() {
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.locX, this.locY, 62, 53);
+    }
 
     update(){
 

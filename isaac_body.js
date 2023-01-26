@@ -33,6 +33,7 @@ class Isaac_Body {
 		this.keyPickup = 1;
 		this.bombPickup = 1;
 
+		this.updateBB();
 		this.animations = [];
 		this.loadAnimations();
 	};
@@ -69,9 +70,14 @@ class Isaac_Body {
 
 	};
 
+	updateBB() {
+		this.lastBB = this.BB;
+		this.BB = new BoundingBox(this.xPosition, this.yPosition, 32, 20);
+	}
 
 	update(){
 		this.state = 0;
+		var that = this;
 		if(this.count > 2){
 			if (this.game.keys.a && !this.game.keys.d) {
 				if (this.xPosition >= this.moveBoundsLeft) {
@@ -111,6 +117,8 @@ class Isaac_Body {
 			}
 		}
 		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
+
+
 	};
 
 
