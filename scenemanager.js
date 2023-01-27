@@ -95,7 +95,9 @@ class SceneManager {
                 this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - this.floor1.farthestLeft;
                 this.isaac_body.xPosition = this.isaac_body.xPosition - 350
                 this.isaac_head.xPosition = this.isaac_head.xPosition - 350
-                this.hud.x = -this.floor1.farthestLeft;
+                this.hud.hudStatsX = this.hud.hudStatsX-this.floor1.farthestLeft;
+                this.hud.hudPickupsX = this.hud.hudPickupsX-this.floor1.farthestLeft;
+                this.hud.hudHealthX = this.hud.hudHealthX-this.floor1.farthestLeft;
                 this.moveBounds = true;
             }
             this.once = true;
