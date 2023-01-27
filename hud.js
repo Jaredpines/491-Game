@@ -18,8 +18,13 @@ class Hud {
 
     drawHealth(ctx) {
         const allRedHeartSY = 1;
-        const fullHeartSX = 1;
-        const halfHeartSX = 17;
+        const fullRedHeartSX = 1;
+        const halfRedHeartSX = 17;
+        const allBlueBlackSY = 17;
+        const fullBlueHeartSX = 1;
+        const halfBlueHeartSX = 17;
+        const fullBlackHeartSX = 33;
+        const halfBlackHeartSX = 49;
         const emptyHeartSX = 33;
         const allHeartSWidth = 15;
         const allHeartSHeight = 14;
@@ -28,7 +33,8 @@ class Hud {
         let currHeartX = this.hudHealthX;
         let drawnHearts = 0;
 
-        while (drawnHearts < this.character.maxHealth) {
+        //draw red hearts and empty heart containers
+        while (drawnHearts < this.character.maxRedHearts) { //could potentially be < maxHearts
             if (drawnHearts < 12) {
                 currHeartY = this.hudHealthY;
                 currHeartX = this.hudHealthX + (heartXGap * drawnHearts / 2)
@@ -37,14 +43,14 @@ class Hud {
                 currHeartX = this.hudHealthX + (heartXGap * (drawnHearts - 12) / 2)
             }
 
-            if (drawnHearts < this.character.health) {
-                if (this.character.health - drawnHearts > 1) {
+            if (drawnHearts < this.character.redHearts) {
+                if (this.character.redHearts - drawnHearts > 1) {
                     ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-                        fullHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                        fullRedHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                     drawnHearts = drawnHearts + 2;
                 } else {
                     ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-                        halfHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                        halfRedHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                     drawnHearts = drawnHearts + 2;
                 }
             } else {
@@ -52,6 +58,60 @@ class Hud {
                     emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                 drawnHearts = drawnHearts + 2;
             }
+            //TODO: add condition so this only runs after empty hearts are drawn
+            if (drawnHearts >= this.character.maxRedHearts && (this.character.blueHearts > 0 || this.character.blackHearts > 0)) {
+                //draw blue and black hearts here if while loop is changed to maxHearts instead of maxRedHearts
+                if (drawnHearts === this.character.maxRedHearts) {
+                    if (drawnHearts < 12) {
+                        currHeartY = this.hudHealthY;
+                        currHeartX = this.hudHealthX + (heartXGap * drawnHearts / 2)
+                    } else {
+                        currHeartY = this.hudHealthY + 45;
+                        currHeartX = this.hudHealthX + (heartXGap * (drawnHearts - 12) / 2)
+                    }
+                }
+                if (this.character.blackHearts > 0) {
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                        fullBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                    drawnHearts = drawnHearts + 2;
+                } else if (drawnHearts < this.character.maxHearts && this.character.blueHearts > 0) {
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                        fullBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                    drawnHearts = drawnHearts + 2;
+                }
+            }
+
+            // if (drawnHearts < this.character.redHearts) {
+            //     console.log("in red hearts");
+            //     if (this.character.redHearts - drawnHearts > 1) {
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+            //             fullRedHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+            //         drawnHearts = drawnHearts + 2;
+            //     } else {
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+            //             halfRedHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+            //         drawnHearts = drawnHearts + 2;
+            //     }
+            // } else if (drawnHearts >= this.character.maxRedHearts && (this.character.blueHearts > 0 || this.character.blackHearts > 0)) {
+            //     //draw blue and black hearts here if while loop is changed to maxHearts instead of maxRedHearts
+            //     if (this.character.blueHearts > 0) {
+            //         console.log("in blue hearts");
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+            //             fullBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+            //         drawnHearts = drawnHearts + 2;
+            //     } else if (drawnHearts < this.character.maxHearts && this.character.blackHearts > 0) {
+            //         console.log("in black hearts");
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+            //             fullBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+            //         drawnHearts = drawnHearts + 2;
+            //     }
+            // } else {
+            //     console.log("in empty hearts");
+            //     ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+            //         emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+            //     drawnHearts = drawnHearts + 2;
+            // }
+            // // TODO: add condition so this only runs after empty hearts are drawn
 
         }
 
