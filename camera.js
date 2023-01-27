@@ -15,10 +15,11 @@ class Camera {
             this.game.ctx.translate(2000*this.game.clockTick,0)
         }else{
             let diff = this.slide - 1471
+            console.log(diff)
             this.game.ctx.translate(-diff,0)
             this.slide = 0;
         }
-        console.log(this.slide)
+        //console.log(this.slide)
     }
     cameraRight(){
         this.game.ctx.translate(-1471,0)

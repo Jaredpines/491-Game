@@ -86,7 +86,7 @@ class SceneManager {
             this.loadFloor();
         }
 
-        if(this.isaac_body.boundingBox.collide(this.floor1.door.boundingBox)|| (this.floor1.camera.slide < 1471&&this.once == true)){
+        if(this.isaac_body.boundingBox.collide(this.floor1.door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
             this.floor1.moveRoom("left");
             if(this.moveBounds == false){
                 this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - this.floor1.farthestLeft;
