@@ -2,6 +2,7 @@ class Camera {
     constructor(game){
         this.game = game;
         this.slide = 0;
+        this.slideR = 1471
     };
     cameraUp(){
         this.game.ctx.translate(0,997)
@@ -15,14 +16,21 @@ class Camera {
             this.game.ctx.translate(2000*this.game.clockTick,0)
         }else{
             let diff = this.slide - 1471
-            console.log(diff)
             this.game.ctx.translate(-diff,0)
             this.slide = 0;
         }
         //console.log(this.slide)
     }
     cameraRight(){
-        this.game.ctx.translate(-1471,0)
+        if(this.slideR > 0){
+            this.slideR -= 2000*this.game.clockTick;
+            this.game.ctx.translate(-2000*this.game.clockTick,0)
+        }else{
+            let diff = this.slideR
+            console.log(diff);
+            this.game.ctx.translate(-diff,0)
+            this.slideR = 1471;
+        }
     }
     
 

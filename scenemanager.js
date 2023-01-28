@@ -21,9 +21,13 @@ class SceneManager {
         this.animations = [];
         this.loadAnimations();
         this.once = false;
+        this.onceR = false;
         this.moveBounds = false;
+        this.moveBoundsR = false;
         this.floor1 = new Floor(this.game);
         this.hud = new Hud(this.game, this.isaac_body);
+        this.i = 1;
+        this.coolDown = 0;
 
     };
 
@@ -39,7 +43,6 @@ class SceneManager {
         this.x = 0;
         //this.game.addEntity(new Normal_Room(1471,0,this.game));
         this.floor1.addBaseRoom();
-        this.floor1.addRoom("left");
         
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
@@ -84,27 +87,70 @@ class SceneManager {
             this.title = false;
             console.log("Enter key pressed");
             this.loadFloor();
+            this.floor1.addRoom("left");
+            this.floor1.addRoom("left");
         }
-
-        if(this.isaac_body.boundingBox.collide(this.floor1.door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
-            this.floor1.moveRoom("left");
-            if(this.moveBounds == false){
-                this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - this.floor1.farthestLeft;
-                this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - this.floor1.farthestLeft;
-                this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - this.floor1.farthestLeft;
-                this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - this.floor1.farthestLeft;
-                this.isaac_body.xPosition = this.isaac_body.xPosition - 350
-                this.isaac_head.xPosition = this.isaac_head.xPosition - 350
-                this.hud.hudStatsX = this.hud.hudStatsX-this.floor1.farthestLeft;
-                this.hud.hudPickupsX = this.hud.hudPickupsX-this.floor1.farthestLeft;
-                this.hud.hudHealthX = this.hud.hudHealthX-this.floor1.farthestLeft;
-                this.moveBounds = true;
+        console.log(this.slideR)
+        if(this.floor1.rooms[this.i] != null && this.floor1.camera.slideR == 1471){
+            if(this.floor1.rooms[this.i].door.boundingBox != null){
+                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[this.i].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                    this.floor1.moveRoom("left");
+                    if(this.moveBounds == false){
+                        this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1471;
+                        this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1471;
+                        this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1471;
+                        this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1471;
+                        this.isaac_body.xPosition = this.isaac_body.xPosition - 450
+                        this.isaac_head.xPosition = this.isaac_head.xPosition - 450
+                        this.hud.hudStatsX = this.hud.hudStatsX-1471;
+                        this.hud.hudPickupsX = this.hud.hudPickupsX-1471;
+                        this.hud.hudHealthX = this.hud.hudHealthX-1471;
+                        this.moveBounds = true;
+                    }
+                    this.once = true;
+                }else if(this.floor1.camera.slide == 0 &&this.once == true){
+                    this.i++;
+                    console.log(this.i)
+                    this.once = false;
+                    this.moveBoundsR = false;
+                }else{
+                    this.moveBounds = false;
+                    this.once = false;
+                }
+                
+        
             }
-            this.once = true;
-        }else{
-            this.once = false;
         }
-
+        if(this.floor1.rooms[this.i-1] != null && (this.floor1.camera.slide == 0 )){
+            if(this.floor1.rooms[this.i-1].doorOp.boundingBox != null){
+                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[this.i-1].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1471 &&this.onceR == true)){
+                    this.floor1.moveRoom("right");
+                    console.log(this.moveBoundsR)
+                    if(this.moveBoundsR == false){
+                        this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1471;
+                        this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1471;
+                        this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1471;
+                        this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1471;
+                        this.isaac_body.xPosition = this.isaac_body.xPosition + 450
+                        this.isaac_head.xPosition = this.isaac_head.xPosition + 450
+                        this.hud.hudStatsX = this.hud.hudStatsX+1471;
+                        this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
+                        this.hud.hudHealthX = this.hud.hudHealthX+1471;
+                        this.moveBoundsR = true;
+                    }
+                    this.onceR = true;
+                }else if(this.floor1.camera.slideR == 1471 &&this.onceR == true && this.floor1.rooms[this.i-1] != null){
+                    this.i--;
+                    console.log(this.i)
+                    this.onceR = false;
+                    this.moveBounds = false;
+                }else{
+                    this.onceR = false;
+                    this.moveBoundsR = false;
+                }
+            }
+        }
+        
     };
 
     draw(ctx) {

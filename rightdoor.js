@@ -16,12 +16,8 @@ class Right_Door {
 
 
     draw(ctx){
-        ctx.save();
-        ctx.scale(-1,1)
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_left.png"),80-this.locX,(this.height/2)-(125/2),92,125);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_frame_left.png"),50-this.locX,(this.height/2)-(196/2),132,196);
-        ctx.restore();
-        
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_right.png"),60-this.locX,(this.height/2)-(125/2),92,125);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_frame_right.png"),50-this.locX,(this.height/2)-(196/2),132,196);
     };
 
 }
