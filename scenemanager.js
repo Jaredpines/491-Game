@@ -97,7 +97,9 @@ class SceneManager {
                 //console.log(this.floor1.roomMax)
                 //max -= this.game.clockTick*100
             }
-            
+            while(this.floor1.TRoomMax > 0){
+                this.floor1.addTreasureRoom("T");
+            }
             //this.game.ctx.translate(0,-200)
             console.log(this.floor1.rooms.toString())
             //console.log(this.game.entities)
