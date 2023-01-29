@@ -16,10 +16,10 @@ class Isaac_Body {
 		this.state = 0; // 0 = idle, 1 = walking
 
 		//stats
-		this.redHearts = 17;
-		this.maxRedHearts = 20;
-		this.blueHearts = 1;
-		this.blackHearts = 1;
+		this.redHearts = 13;
+		this.maxRedHearts = 16;
+		this.blueHearts = 2;
+		this.blackHearts = 4;
 		this.maxHearts = 24;
 		this.movementSpeed = 500;
 		this.fireRate = 0;

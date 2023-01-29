@@ -33,7 +33,6 @@ class Hud {
         let currHeartX = this.hudHealthX;
         let drawnHearts = 0;
 
-        //draw red hearts and empty heart containers
         while (drawnHearts < this.character.maxRedHearts) { //could potentially be < maxHearts
             if (drawnHearts < 12) {
                 currHeartY = this.hudHealthY;
@@ -58,60 +57,50 @@ class Hud {
                     emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                 drawnHearts = drawnHearts + 2;
             }
-            //TODO: add condition so this only runs after empty hearts are drawn
-            if (drawnHearts >= this.character.maxRedHearts && (this.character.blueHearts > 0 || this.character.blackHearts > 0)) {
-                //draw blue and black hearts here if while loop is changed to maxHearts instead of maxRedHearts
-                if (drawnHearts === this.character.maxRedHearts) {
-                    if (drawnHearts < 12) {
-                        currHeartY = this.hudHealthY;
-                        currHeartX = this.hudHealthX + (heartXGap * drawnHearts / 2)
+        }
+
+        if (this.character.blueHearts > 0 || this.character.blackHearts > 0) {
+            let drawnBlueHearts = 0
+            let drawnBlackHearts = 0
+            while (drawnHearts < this.character.maxHearts
+               && (drawnBlueHearts < this.character.blueHearts || drawnBlackHearts < this.character.blackHearts)) {
+                if (drawnHearts < 12) {
+                    currHeartY = this.hudHealthY;
+                    currHeartX = this.hudHealthX + (heartXGap * drawnHearts / 2)
+                } else {
+                    currHeartY = this.hudHealthY + 45;
+                    currHeartX = this.hudHealthX + (heartXGap * (drawnHearts - 12) / 2)
+                }
+                if (this.character.blueHearts > 0 && drawnBlueHearts < this.character.blueHearts) {
+                    if (this.character.blueHearts - drawnBlueHearts > 1) {
+                        ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                            fullBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                        drawnBlueHearts = drawnBlueHearts + 2;
+                        drawnHearts = drawnHearts + 2;
+                        console.log("in blue")
                     } else {
-                        currHeartY = this.hudHealthY + 45;
-                        currHeartX = this.hudHealthX + (heartXGap * (drawnHearts - 12) / 2)
+                        ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                            halfBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                        drawnBlueHearts = drawnBlueHearts + 2;
+                        drawnHearts = drawnHearts + 2;
+                        console.log("in half blue")
+                    }
+                } else if (this.character.blackHearts > 0 && drawnBlackHearts < this.character.blackHearts) {
+                    if (this.character.blackHearts - drawnBlackHearts > 1) {
+                        ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                            fullBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                        drawnBlackHearts = drawnBlackHearts + 2;
+                        drawnHearts = drawnHearts + 2;
+                        console.log("in black")
+                    } else {
+                        ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
+                            halfBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
+                        drawnBlackHearts = drawnBlackHearts + 2;
+                        drawnHearts = drawnHearts + 2;
+                        console.log("in half black")
                     }
                 }
-                if (this.character.blackHearts > 0) {
-                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-                        fullBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-                    drawnHearts = drawnHearts + 2;
-                } else if (drawnHearts < this.character.maxHearts && this.character.blueHearts > 0) {
-                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-                        fullBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-                    drawnHearts = drawnHearts + 2;
-                }
             }
-
-            // if (drawnHearts < this.character.redHearts) {
-            //     console.log("in red hearts");
-            //     if (this.character.redHearts - drawnHearts > 1) {
-            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-            //             fullRedHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-            //         drawnHearts = drawnHearts + 2;
-            //     } else {
-            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-            //             halfRedHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-            //         drawnHearts = drawnHearts + 2;
-            //     }
-            // } else if (drawnHearts >= this.character.maxRedHearts && (this.character.blueHearts > 0 || this.character.blackHearts > 0)) {
-            //     //draw blue and black hearts here if while loop is changed to maxHearts instead of maxRedHearts
-            //     if (this.character.blueHearts > 0) {
-            //         console.log("in blue hearts");
-            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-            //             fullBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-            //         drawnHearts = drawnHearts + 2;
-            //     } else if (drawnHearts < this.character.maxHearts && this.character.blackHearts > 0) {
-            //         console.log("in black hearts");
-            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-            //             fullBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-            //         drawnHearts = drawnHearts + 2;
-            //     }
-            // } else {
-            //     console.log("in empty hearts");
-            //     ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
-            //         emptyHeartSX, allRedHeartSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
-            //     drawnHearts = drawnHearts + 2;
-            // }
-            // // TODO: add condition so this only runs after empty hearts are drawn
 
         }
 
@@ -121,9 +110,12 @@ class Hud {
         const pickupX = this.hudPickupsX + 50;
         const pickupY = this.hudPickupsY + 30;
         const pickupYGap = 50;
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 4, 4, 9, 11, this.hudPickupsX, this.hudPickupsY, 40, 50);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 1, 16, 13, 13, this.hudPickupsX-10, this.hudPickupsY + 50, 50, 50);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"), 20, 2, 9, 12, this.hudPickupsX, this.hudPickupsY + 100, 40, 50);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"),
+            4, 4, 9, 11, this.hudPickupsX, this.hudPickupsY, 40, 50);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"),
+            1, 16, 13, 13, this.hudPickupsX-10, this.hudPickupsY + 50, 50, 50);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"),
+            20, 2, 9, 12, this.hudPickupsX, this.hudPickupsY + 100, 40, 50);
         ctx.fillText(this.character.coinPickup, pickupX, pickupY);
         ctx.fillText(this.character.bombPickup, pickupX, pickupY + pickupYGap);
         ctx.fillText(this.character.keyPickup, pickupX, pickupY + (pickupYGap * 2));
@@ -143,6 +135,10 @@ class Hud {
         ctx.fillText(this.character.devilChance + "%", statX, statY + (statYGap * 6));
         ctx.fillText(this.character.angelChance + "%", statX, statY + (statYGap * 7));
         ctx.fillText(this.character.planetariumChance + "%", statX, statY + (statYGap * 8));
+    }
+
+    drawMinimap(ctx) {
+
     }
 
     draw(ctx) {
