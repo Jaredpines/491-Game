@@ -14,6 +14,7 @@ class Isaac_Head {
 		this.moveBoundsUp = 68.5;
 		this.moveBoundsDown = 695;
         this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,95,91);
+		this.tear;
 	};
 
 	
@@ -57,8 +58,8 @@ class Isaac_Head {
 			if(this.tearcount < 0.1 ){
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-				let e = new Tears(this.xPosition,this.yPosition,"down",this.game)
-				this.game.addEntity(e);
+				this.tear = new Tears(this.xPosition,this.yPosition,"down",this.game)
+				this.game.addEntity(this.tear);
 				}
 				this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
@@ -74,8 +75,8 @@ class Isaac_Head {
 			if(this.tearcount < 0.1 ){
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-					let e = new Tears(this.xPosition,this.yPosition,"right",this.game)
-					this.game.swapTearEntity(e);
+					this.tear = new Tears(this.xPosition,this.yPosition,"right",this.game)
+					this.game.swapTearEntity(this.tear);
 					}
 					this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
@@ -92,8 +93,8 @@ class Isaac_Head {
 			if(this.tearcount < 0.1 ){
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-					let e = new Tears(this.xPosition,this.yPosition,"left",this.game)
-					this.game.swapTearEntity(e);
+					this.tear = new Tears(this.xPosition,this.yPosition,"left",this.game)
+					this.game.swapTearEntity(this.tear);
 					}
 					this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
@@ -109,8 +110,8 @@ class Isaac_Head {
 			if(this.tearcount < 0.1 ){
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_close.png"),this.xPosition,this.yPosition,95,91);
 				if(this.tearspawned == 0){
-					let e = new Tears(this.xPosition,this.yPosition,"up",this.game)
-					this.game.swapTearEntity(e);
+					this.tear = new Tears(this.xPosition,this.yPosition,"up",this.game)
+					this.game.swapTearEntity(this.tear);
 					}
 					this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){

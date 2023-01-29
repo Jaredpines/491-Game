@@ -14,7 +14,8 @@ class Fly {
 
         this.animations = [];
         this.loadAnimations();
-        this.updateBB();
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,32,24)
+        this.flyHealth = 100
     };
 
     loadAnimations() {
@@ -29,37 +30,39 @@ class Fly {
 
     };
 
-    updateBB() {
-        this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.xPosition, this.yPosition, 32, 24);
-
-    };
-
     update() {
+
         if (this.dead) {
+            this.boundingBox = new BoundingBox(0,0,0,0);
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
             }
-            if (this.deadTime > 1.2) {
+            if (this.deadTime > 1.1) {
+                console.log("runs")
                 this.removeFromWorld = true;
+                
             }
         }
         if (!this.paused && !this.dead) {
             var that = this;
-            this.game.entities.forEach(function (entity) {
+            /*this.game.entities.forEach(function (entity) {
                 if (entity.BB && that.BB.collide(entity.BB)) {
                     if (entity instanceof Isaac_Body) {
                         entity.health -= 1;
                     };
                 }
-            });
+            });*/
+        }
+        if(this.flyHealth<=0){
+            this.dead = true;
+            this.deadTime += 1*this.game.clockTick
         }
 
     };
 
     draw(ctx) {
         if (this.dead) {
-            this.animations[1].drawFrame(this.game.clockTick, this.xPosition, this.yPosition);
+            this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition,this.yPosition);
         }
