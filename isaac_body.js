@@ -128,7 +128,6 @@ class Isaac_Body {
 	draw(ctx){
 		
 		this.count += (1*this.game.clockTick);
-		//console.log(this.count)
 		if(this.count < 2){
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
 			if(this.count < 0.25){

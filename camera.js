@@ -12,22 +12,20 @@ class Camera {
     }
     cameraLeft(){
         if(this.slide < 1471){
-            this.slide += 2000*this.game.clockTick;
-            this.game.ctx.translate(2000*this.game.clockTick,0)
+            this.slide += 1500*this.game.clockTick;
+            this.game.ctx.translate(1500*this.game.clockTick,0)
         }else{
             let diff = this.slide - 1471
             this.game.ctx.translate(-diff,0)
             this.slide = 0;
         }
-        //console.log(this.slide)
     }
     cameraRight(){
         if(this.slideR > 0){
-            this.slideR -= 2000*this.game.clockTick;
-            this.game.ctx.translate(-2000*this.game.clockTick,0)
+            this.slideR -= 1500*this.game.clockTick;
+            this.game.ctx.translate(-1500*this.game.clockTick,0)
         }else{
             let diff = this.slideR
-            console.log(diff);
             this.game.ctx.translate(-diff,0)
             this.slideR = 1471;
         }

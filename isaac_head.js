@@ -49,7 +49,6 @@ class Isaac_Head {
 		
 		this.count += (1*this.game.clockTick);
 
-		//console.log(this.count)
 		if(this.count < 2){
 			
 		}else if(this.game.keys.ArrowDown){

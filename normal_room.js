@@ -23,12 +23,14 @@ class Normal_Room {
             this.doorOp = new Right_Door(this.locX-1250,0,this.game)
             this.game.addEntity(this.door);
             this.game.addEntity(this.doorOp);
-            console.log(this.game.entities);
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "right"){
             this.door = new Left_Door(this.locX,0,this.game)
+            this.doorOp = new Right_Door(this.locX+221,0,this.game)
             this.game.addEntity(this.door);
+            this.game.addEntity(this.doorOp);
+            this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "up"){
             this.door = new Left_Door(0,this.locX,this.game)

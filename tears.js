@@ -34,7 +34,6 @@ class Tears {
                     this.animator.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY+35)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
                     this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-20, this.locY+20)
-                    console.log(this.animator2.isDone())
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
                     this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY+35)
                 }else if(this.animator3.isDone() === true){
@@ -52,7 +51,6 @@ class Tears {
                     this.animator.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY-60)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
                     this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-20, this.locY-75)
-                    console.log(this.animator2.isDone())
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
                     this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY-60)
                 }else if(this.animator3.isDone() === true){
@@ -70,7 +68,6 @@ class Tears {
                     this.animator.drawFrame(this.game.clockTick, ctx, this.locX+45, this.locY-15)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
                     this.animator2.drawFrame(this.game.clockTick, ctx, this.locX+30, this.locY-30)
-                    console.log(this.animator2.isDone())
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
                     this.animator3.drawFrame(this.game.clockTick, ctx, this.locX+45, this.locY-15)
                 }else if(this.animator3.isDone() === true){
@@ -88,7 +85,6 @@ class Tears {
                     this.animator.drawFrame(this.game.clockTick, ctx, this.locX-15, this.locY-15)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
                     this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-30, this.locY-30)
-                    console.log(this.animator2.isDone())
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
                     this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-15, this.locY-15)
                 }else if(this.animator3.isDone() === true){

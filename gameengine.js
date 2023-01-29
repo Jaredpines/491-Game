@@ -80,12 +80,10 @@ class GameEngine {
 
 
     addEntity(entity) {
-        console.log(this.entities)
         this.entities.reverse();
         let b
         for (let index = 0; index < this.entities.length; index++) {
             if(this.entities[index] instanceof Hud){
-                console.log(index)
                 b = this.entities.splice(index,1);
             }
         }
@@ -94,7 +92,6 @@ class GameEngine {
             this.entities.push(b[0]);
         }
         this.entities.reverse();
-        console.log(this.entities)
     };
     orderCorrecter(){
         let list = this.entities;
@@ -104,17 +101,14 @@ class GameEngine {
         let o
         for (let index = 0; index < list.length; index++) {
             if(list[index] instanceof Isaac_Head){
-                console.log(index)
                 e = list.splice(index,1);
                 index--;
             }
             if(list[index] instanceof Isaac_Body){
-                console.log(index)
                 o = list.splice(index,1);
                 index--;
             }
             if(list[index] instanceof Hud){
-                console.log(index)
                 b = list.splice(index,1);
                 index--;
             }
@@ -133,22 +127,18 @@ class GameEngine {
         let b
         for (let index = 0; index < list.length; index++) {
             if(list[index] instanceof Isaac_Head){
-                console.log(index)
                 e = list.splice(index,1);
             }
             if(list[index] instanceof Hud){
-                console.log(index)
                 b = list.splice(index,1);
             }
         }
         
-        console.log(e)
         list.push(entity);
         list.push(e[0]);
         list.push(b[0]);
         list.reverse();
         this.entities = list;
-        console.log(this.entities)
     };
     
 
