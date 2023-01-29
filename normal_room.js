@@ -21,29 +21,29 @@ class Normal_Room {
 
     update(){
         if(this.direction === "left"){
-            this.door = new Left_Door(this.locX-1471,0,this.game)
-            this.doorOp = new Right_Door(this.locX-1250,0,this.game)
+            this.door = new Left_Door(this.locX-1471,this.locY,this.game)
+            this.doorOp = new Right_Door(this.locX-1250,this.locY,this.game)
             this.game.addEntity(this.door);
             this.game.addEntity(this.doorOp);
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "right"){
-            this.door = new Left_Door(this.locX,0,this.game)
-            this.doorOp = new Right_Door(this.locX+221,0,this.game)
+            this.door = new Left_Door(this.locX,this.locY,this.game)
+            this.doorOp = new Right_Door(this.locX+221,this.locY,this.game)
             this.game.addEntity(this.door);
             this.game.addEntity(this.doorOp);
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "up"){
-            this.doorU = new Up_Door(0,(-this.locY)-987,this.game)
-            this.doorOpD = new Down_Door(0,(-this.locY)-997,this.game)
+            this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game)
+            this.doorOpD = new Down_Door(this.locX,(-this.locY)-997,this.game)
             this.game.addEntity(this.doorU);
             this.game.addEntity(this.doorOpD);
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "down"){
-            this.doorU = new Up_Door(0,-this.locY,this.game)
-            this.doorOpD = new Down_Door(0,-this.locY,this.game)
+            this.doorU = new Up_Door(this.locX,-this.locY,this.game)
+            this.doorOpD = new Down_Door(this.locX,-this.locY,this.game)
             this.game.addEntity(this.doorU);
             this.game.addEntity(this.doorOpD);
             this.game.orderCorrecter();

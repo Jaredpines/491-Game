@@ -8,8 +8,8 @@ class Camera {
     };
     cameraUp(){
         if(this.slideU < 997){
-            this.slideU += 1000*this.game.clockTick;
-            this.game.ctx.translate(0,1000*this.game.clockTick)
+            this.slideU += 1500*this.game.clockTick;
+            this.game.ctx.translate(0,1500*this.game.clockTick)
         }else{
             let diff = this.slideU - 997
             this.game.ctx.translate(0,-diff)
@@ -19,8 +19,8 @@ class Camera {
     }
     cameraDown(){
         if(this.slideD > 0){
-            this.slideD -= 1000*this.game.clockTick;
-            this.game.ctx.translate(0,-1000*this.game.clockTick)
+            this.slideD -= 1500*this.game.clockTick;
+            this.game.ctx.translate(0,-1500*this.game.clockTick)
         }else{
             let diff = this.slideD
             this.game.ctx.translate(0,-diff)

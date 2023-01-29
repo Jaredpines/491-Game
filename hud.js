@@ -77,13 +77,13 @@ class Hud {
                             fullBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                         drawnBlueHearts = drawnBlueHearts + 2;
                         drawnHearts = drawnHearts + 2;
-                        console.log("in blue")
+                        //console.log("in blue")
                     } else {
                         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
                             halfBlueHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                         drawnBlueHearts = drawnBlueHearts + 2;
                         drawnHearts = drawnHearts + 2;
-                        console.log("in half blue")
+                        //console.log("in half blue")
                     }
                 } else if (this.character.blackHearts > 0 && drawnBlackHearts < this.character.blackHearts) {
                     if (this.character.blackHearts - drawnBlackHearts > 1) {
@@ -91,13 +91,13 @@ class Hud {
                             fullBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                         drawnBlackHearts = drawnBlackHearts + 2;
                         drawnHearts = drawnHearts + 2;
-                        console.log("in black")
+                        //console.log("in black")
                     } else {
                         ctx.drawImage(ASSET_MANAGER.getAsset("./res/ui_hearts.png"),
                             halfBlackHeartSX, allBlueBlackSY, allHeartSWidth, allHeartSHeight, currHeartX, currHeartY, 50, 50);
                         drawnBlackHearts = drawnBlackHearts + 2;
                         drawnHearts = drawnHearts + 2;
-                        console.log("in half black")
+                        //console.log("in half black")
                     }
                 }
             }

@@ -91,24 +91,30 @@ class SceneManager {
             this.loadFloor();
             while(this.floor1.roomMax > 0){
                 this.floor1.addRoom("left");
-                this.floor1.addRoom("right");
                 this.floor1.addRoom("up");
+                this.floor1.addRoom("right");            
                 this.floor1.addRoom("down");
-                console.log(this.floor1.roomMax)
-                
+                //console.log(this.floor1.roomMax)
+                //max -= this.game.clockTick*100
             }
             
             //this.game.ctx.translate(0,-200)
             console.log(this.floor1.rooms.toString())
-            console.log(this.game.entities)
-            console.log(this.floor1.entityCount)
+            //console.log(this.game.entities)
+            //console.log(this.floor1.entityCount)
             //this.floor1.addRoom("right");
         }
-        if(this.game.keys.j){
-            this.game.ctx.translate(0,-200*this.game.clockTick)
-        }
         if(this.game.keys.k){
-            this.game.ctx.translate(0,200*this.game.clockTick)
+            this.game.ctx.translate(0,-2000*this.game.clockTick)
+        }
+        if(this.game.keys.i){
+            this.game.ctx.translate(0,2000*this.game.clockTick)
+        }
+        if(this.game.keys.j){
+            this.game.ctx.translate(2000*this.game.clockTick,0)
+        }
+        if(this.game.keys.l){
+            this.game.ctx.translate(-2000*this.game.clockTick,0)
         }
         if(this.floor1.rooms != null){
             for (let index = 0; index < this.floor1.rooms.length; index++) {
@@ -170,8 +176,8 @@ class SceneManager {
                                     this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 997;
                                     this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 997;
                                     this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 997;
-                                    this.isaac_body.yPosition = this.isaac_body.yPosition - 450
-                                    this.isaac_head.yPosition = this.isaac_head.yPosition - 450
+                                    this.isaac_body.yPosition = this.isaac_body.yPosition - 500
+                                    this.isaac_head.yPosition = this.isaac_head.yPosition - 500
                                     this.hud.hudStatsY = this.hud.hudStatsY-997;
                                     this.hud.hudPickupsY = this.hud.hudPickupsY-997;
                                     this.hud.hudHealthY = this.hud.hudHealthY-997;
@@ -194,8 +200,8 @@ class SceneManager {
                                     this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 997;
                                     this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 997;
                                     this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 997;
-                                    this.isaac_body.yPosition = this.isaac_body.yPosition + 450
-                                    this.isaac_head.yPosition = this.isaac_head.yPosition + 450
+                                    this.isaac_body.yPosition = this.isaac_body.yPosition + 500
+                                    this.isaac_head.yPosition = this.isaac_head.yPosition + 500
                                     this.hud.hudStatsY = this.hud.hudStatsY+997;
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+997;
                                     this.hud.hudHealthY = this.hud.hudHealthY+997;
