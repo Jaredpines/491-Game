@@ -13,7 +13,9 @@ class Normal_Room {
         this.locBLY = Math.floor(-997-this.locY)
         this.locBRY = Math.floor(-997-this.locY)
         this.door = 0;
+        this.doorU = 0;
         this.doorOp = 0;
+        this.doorOpD = 0;
     };
 
 
@@ -33,12 +35,18 @@ class Normal_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "up"){
-            this.door = new Left_Door(0,this.locX,this.game)
-            this.game.addEntity(this.door);
+            this.doorU = new Up_Door(0,(-this.locY)-987,this.game)
+            this.doorOpD = new Down_Door(0,(-this.locY)-997,this.game)
+            this.game.addEntity(this.doorU);
+            this.game.addEntity(this.doorOpD);
+            this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "down"){
-            this.door = new Left_Door(0,this.locX,this.game)
-            this.game.addEntity(this.door);
+            this.doorU = new Up_Door(0,-this.locY,this.game)
+            this.doorOpD = new Down_Door(0,-this.locY,this.game)
+            this.game.addEntity(this.doorU);
+            this.game.addEntity(this.doorOpD);
+            this.game.orderCorrecter();
             this.direction = "";
         }else{
             this.direction = "";

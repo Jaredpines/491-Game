@@ -22,8 +22,12 @@ class SceneManager {
         this.loadAnimations();
         this.once = false;
         this.onceR = false;
+        this.onceU = false;
+        this.onceD = false;
         this.moveBounds = false;
         this.moveBoundsR = false;
+        this.moveBoundsU = false;
+        this.moveBoundsD = false;
         this.floor1 = new Floor(this.game,1);
         this.hud = new Hud(this.game, this.isaac_body);
         this.i = 1;
@@ -85,14 +89,27 @@ class SceneManager {
         if (this.game.keys.Enter&&this.title == true) {
             this.title = false;
             this.loadFloor();
-            while(this.floor1.roomMax != 0 || this.game.keys.j){
+            while(this.floor1.roomMax > 0){
                 this.floor1.addRoom("left");
                 this.floor1.addRoom("right");
+                this.floor1.addRoom("up");
+                this.floor1.addRoom("down");
+                console.log(this.floor1.roomMax)
+                
             }
+            
+            //this.game.ctx.translate(0,-200)
             console.log(this.floor1.rooms.toString())
+            console.log(this.game.entities)
+            console.log(this.floor1.entityCount)
             //this.floor1.addRoom("right");
         }
-        
+        if(this.game.keys.j){
+            this.game.ctx.translate(0,-200*this.game.clockTick)
+        }
+        if(this.game.keys.k){
+            this.game.ctx.translate(0,200*this.game.clockTick)
+        }
         if(this.floor1.rooms != null){
             for (let index = 0; index < this.floor1.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.floor1.rooms.length; index2++) {
@@ -141,6 +158,54 @@ class SceneManager {
                             else{
                                 this.onceR = false;
                                 this.moveBoundsR = false;
+                            }
+                        }
+                    }
+                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 997 )){
+                        if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                                this.floor1.moveRoom("up");
+                                if(this.moveBoundsU == false){
+                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 997;
+                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 997;
+                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 997;
+                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 997;
+                                    this.isaac_body.yPosition = this.isaac_body.yPosition - 450
+                                    this.isaac_head.yPosition = this.isaac_head.yPosition - 450
+                                    this.hud.hudStatsY = this.hud.hudStatsY-997;
+                                    this.hud.hudPickupsY = this.hud.hudPickupsY-997;
+                                    this.hud.hudHealthY = this.hud.hudHealthY-997;
+                                    this.moveBoundsU = true;
+                                }
+                                this.onceU = true;
+                            }
+                            else{
+                                this.onceU = false;
+                                this.moveBoundsU = false;
+                            }
+                        }
+                    }
+                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
+                        if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideD != 997 &&this.onceD == true)){
+                                this.floor1.moveRoom("down");
+                                if(this.moveBoundsD == false){
+                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 997;
+                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 997;
+                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 997;
+                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 997;
+                                    this.isaac_body.yPosition = this.isaac_body.yPosition + 450
+                                    this.isaac_head.yPosition = this.isaac_head.yPosition + 450
+                                    this.hud.hudStatsY = this.hud.hudStatsY+997;
+                                    this.hud.hudPickupsY = this.hud.hudPickupsY+997;
+                                    this.hud.hudHealthY = this.hud.hudHealthY+997;
+                                    this.moveBoundsD = true;
+                                }
+                                this.onceD = true;
+                            }
+                            else{
+                                this.onceD = false;
+                                this.moveBoundsD = false;
                             }
                         }
                     }

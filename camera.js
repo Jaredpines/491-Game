@@ -2,13 +2,30 @@ class Camera {
     constructor(game){
         this.game = game;
         this.slide = 0;
-        this.slideR = 1471
+        this.slideR = 1471;
+        this.slideU = 0;
+        this.slideD = 997;
     };
     cameraUp(){
-        this.game.ctx.translate(0,997)
+        if(this.slideU < 997){
+            this.slideU += 1000*this.game.clockTick;
+            this.game.ctx.translate(0,1000*this.game.clockTick)
+        }else{
+            let diff = this.slideU - 997
+            this.game.ctx.translate(0,-diff)
+            this.slideU = 0;
+        }
+        
     }
     cameraDown(){
-        this.game.ctx.translate(0,-997)
+        if(this.slideD > 0){
+            this.slideD -= 1000*this.game.clockTick;
+            this.game.ctx.translate(0,-1000*this.game.clockTick)
+        }else{
+            let diff = this.slideD
+            this.game.ctx.translate(0,-diff)
+            this.slideD = 997;
+        }
     }
     cameraLeft(){
         if(this.slide < 1471){

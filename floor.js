@@ -13,6 +13,7 @@ class Floor {
         this.col = 0;
         this.level = level;
         this.roomMax = 5*this.level;
+        this.entityCount = 0;
 
     };
     addBaseRoom(){
@@ -43,6 +44,7 @@ class Floor {
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
                 this.col = 21;
+                this.entityCount++;
             }
             
             
@@ -72,19 +74,61 @@ class Floor {
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
                 this.col = 21;
+                this.entityCount++;
             }
             
             
         }else if(direction === "up"){
-            this.farthestUp -= 997;
-            this.rooms.push(new Normal_Room(0,this.farthestUp,"up",this.game));
-            this.game.addEntity(this.rooms[this.i]);
-            this.i++;
+            let r = Math.floor(Math.random() * 10);
+            let roomAdded = false;
+            for (let index = 0; index < this.rooms.length; index++) {
+                for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
+                    if(index-1 > 0 && index+1 < this.rooms.length){
+                        if(this.rooms[index+1][index2] != null && this.rooms[index-1][index2] == null){
+                            if(r == 4 && roomAdded == false){
+                                this.farthestUp -= 997;
+                                this.rooms[index-1][index2] = new Normal_Room(0,this.farthestUp,"up",this.game)
+                                this.row = index-1;
+                                this.col = index2;
+                                this.roomMax--;
+                                roomAdded = true;
+                            }
+                        }
+                    } 
+                
+                }
+            }
+            if(this.col != 21 &&this.rooms[this.row][this.col] != null){
+                this.game.addEntity(this.rooms[this.row][this.col]);
+                this.col = 21;
+                this.entityCount++;
+            }
         }else if(direction === "down"){
-            this.farthestDown += 997;
-            this.rooms.push(new Normal_Room(0,this.farthestDown,"down",this.game));
-            this.game.addEntity(this.rooms[this.i]);
-            this.i++;
+            let r = Math.floor(Math.random() * 10);
+            let roomAdded = false;
+            for (let index = 0; index < this.rooms.length; index++) {
+                for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
+                    if(index+1 < this.rooms.length && index-1 > 0){
+                        if(this.rooms[index-1][index2] != null && this.rooms[index+1][index2] == null){
+                            if(r == 4 && roomAdded == false){
+                                this.farthestDown += 997;
+                                this.rooms[index+1][index2] = new Normal_Room(0,this.farthestDown,"down",this.game)
+                                this.row = index+1;
+                                this.col = index2;
+                                this.roomMax--;
+                                roomAdded = true;
+                            }
+                        }
+                    } 
+                
+                }
+            }
+            if(this.col != 21 &&this.rooms[this.row][this.col] != null){
+                this.game.addEntity(this.rooms[this.row][this.col]);
+                this.col = 21;
+                this.entityCount++;
+            }
+
         }
     }
     moveRoom(direction){
