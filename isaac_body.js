@@ -18,10 +18,10 @@ class Isaac_Body {
 		this.tempCount = 0;
 
 		//stats
-		this.redHearts = 2;
-		this.maxRedHearts = 16;
-		this.blueHearts = 0;
-		this.blackHearts = 0;
+		this.redHearts = 5;
+		this.maxRedHearts = 8;
+		this.blueHearts = 4;
+		this.blackHearts = 2;
 		this.maxHearts = 24;
 		this.movementSpeed = 500;
 		this.fireRate = 0;
