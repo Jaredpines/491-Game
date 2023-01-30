@@ -89,6 +89,8 @@ class SceneManager {
         }
 
         if (this.game.camera.gameOver === true) {
+            this.title = false;
+            this.credits = false;
             this.gameOver = true;
         }
 
@@ -241,8 +243,8 @@ class SceneManager {
             }
         }
         if (this.isaac_head != null && this.isaac_body != null) {
-            if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox
-                || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox))) {
+            if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox)
+                || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox)) {
                 this.isaac_body.takeDamage(2);
                 console.log("took 2 damage");
             }
@@ -264,11 +266,6 @@ class SceneManager {
 
 
         } else if (!this.title && this.credits) {
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 0, 0, this.titleWidth, this.titleHeight);
-
-        } else if (!this.title && !this.credits && this.game.camera.gameOver) {
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 0, 0, this.titleWidth, this.titleHeight);
-
         }
 
 

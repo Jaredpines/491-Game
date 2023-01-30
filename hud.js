@@ -10,6 +10,9 @@ class Hud {
         this.hudStatsY = 330
         this.hudPickupsX = 30;
         this.hudPickupsY = 170;
+
+        this.titleWidth = document.getElementById('gameWorld').width;
+        this.titleHeight = document.getElementById('gameWorld').height;
     }
 
     update(ctx) {
@@ -137,6 +140,10 @@ class Hud {
         ctx.fillText(this.character.planetariumChance + "%", statX, statY + (statYGap * 8));
     }
 
+    drawDeathScreen(ctx) {
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 0, 0, this.titleWidth, this.titleHeight);
+    }
+
     drawMinimap(ctx) {
 
     }
@@ -154,6 +161,10 @@ class Hud {
 
         //hud stats
         this.drawStats(ctx);
+
+        if (!this.game.camera.title && !this.game.camera.credits && this.game.camera.gameOver) {
+            this.drawDeathScreen(ctx);
+        }
 
 
     };
