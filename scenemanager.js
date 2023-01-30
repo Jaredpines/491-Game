@@ -3,8 +3,10 @@ class SceneManager {
         this.game = game;
         this.game.camera = this;
         this.x = 0;
+        this.y = 0;
 
         this.gameOver = false;
+        this.game.camera.gameOver = false;
         this.activated = false;
 
         this.title = true;
@@ -73,7 +75,7 @@ class SceneManager {
 
     update() {
         this.menuButtonTimer += this.game.clockTick;
-        if (!this.title && !this.transition && !this.paused) {
+        if (!this.title && !this.paused) {
             if (this.timer === undefined) {
                 this.timer = 0;
             } else {
@@ -85,8 +87,12 @@ class SceneManager {
                 this.timer = undefined;
             }
         }
-        
-        if (this.game.keys.Enter&&this.title == true) {
+
+        if (this.game.camera.gameOver === true) {
+            this.gameOver = true;
+        }
+
+        if (this.game.keys.Enter && this.title === true) {
             this.title = false;
             this.loadFloor();
             while(this.floor1.roomMax > 0){
@@ -105,6 +111,13 @@ class SceneManager {
             //console.log(this.game.entities)
             //console.log(this.floor1.entityCount)
             //this.floor1.addRoom("right");
+        } else if (this.game.keys.Shift && this.gameOver === true) {
+            this.game.camera.gameOver = false;
+            this.gameOver = false;
+
+            this.clearEntities();
+            this.game.addEntity(new SceneManager(this.game));
+
         }
         if(this.game.keys.k){
             this.game.ctx.translate(0,-2000*this.game.clockTick)
@@ -235,6 +248,7 @@ class SceneManager {
             }
         }
 
+
     };
 
     draw(ctx) {
@@ -250,8 +264,11 @@ class SceneManager {
 
 
         } else if (!this.title && this.credits) {
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 0, 0, this.titleWidth, this.titleHeight);
 
-        } else if (!this.title) {
+        } else if (!this.title && !this.credits && this.game.camera.gameOver) {
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 0, 0, this.titleWidth, this.titleHeight);
+
         }
 
 

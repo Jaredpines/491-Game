@@ -22,7 +22,7 @@ class Isaac_Head {
 
 	update(){
 		this.state = 0;
-		if(this.count > 2){
+		if(this.count > 2 && !this.game.camera.gameOver){
 			if (this.game.keys.a && !this.game.keys.d) {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed*this.game.clockTick;
@@ -50,7 +50,7 @@ class Isaac_Head {
 		
 		this.count += (1*this.game.clockTick);
 
-		if(this.count < 2){
+		if(this.count < 2 && !this.game.camera.gameOver){
 			
 		}else if(this.game.keys.ArrowDown){
 
@@ -122,8 +122,10 @@ class Isaac_Head {
 				this.tearcount = 0;
 			}
 			
-		}else{
+		}else if (this.game.camera.gameOver) {
+		} else {
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/down_shot_open.png"),this.xPosition,this.yPosition,95,91);
+
 		}
 		
 	};

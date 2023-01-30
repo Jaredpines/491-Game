@@ -2,7 +2,7 @@ class Isaac_Body {
 	constructor(game){
 		this.game = game;
 		this.count = 0;
-		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
+		this.dead = false;
 		this.xPosition = 692;
 		this.yPosition = 424;
 		this.moveBoundsLeft = 138;
@@ -10,16 +10,17 @@ class Isaac_Body {
 		this.moveBoundsUp = 138;
 		this.moveBoundsDown = 764;
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
+		this.isaacDeadSprite = ASSET_MANAGER.getAsset("./res/crying_isaac.png");
 		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 1, 0.1, 2);
 		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
 
 		//stats
-		this.redHearts = 13;
+		this.redHearts = 2;
 		this.maxRedHearts = 16;
-		this.blueHearts = 2;
-		this.blackHearts = 4;
+		this.blueHearts = 0;
+		this.blackHearts = 0;
 		this.maxHearts = 24;
 		this.movementSpeed = 500;
 		this.fireRate = 0;
@@ -69,6 +70,11 @@ class Isaac_Body {
 				damage = 0;
 			}
 		}
+
+		if (this.redHearts <= 0) {
+			this.dead = true;
+			this.game.camera.gameOver = true;
+		}
 	}
 
 	loadAnimations() {
@@ -111,7 +117,7 @@ class Isaac_Body {
 	update(){
 		this.state = 0;
 		var that = this;
-		if(this.count > 2){
+		if(this.count > 2 && !this.dead){
 			if (this.game.keys.a && !this.game.keys.d) {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed*this.game.clockTick;
@@ -131,7 +137,7 @@ class Isaac_Body {
 				}
 			}
 		}
-		if(this.count > 2){
+		if(this.count > 2 && !this.dead){
 			if (this.game.keys.a && !this.game.keys.d) {
 				this.facing = 3;
 				this.state = 1;
@@ -151,6 +157,10 @@ class Isaac_Body {
 		}
 		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
 
+		if (this.dead) {
+			this.game.camera.gameOver = true;
+		}
+
 
 	};
 
@@ -158,9 +168,9 @@ class Isaac_Body {
 	draw(ctx){
 		
 		this.count += (1*this.game.clockTick);
-		if(this.count < 2){
+		if(this.count < 2) {
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
-			if(this.count < 0.25){
+			if(this.count < 0.25) {
 				this.xPosition = this.xPosition-50*this.game.clockTick
 			}else if(this.count < 0.5){
 				this.xPosition = this.xPosition+50*this.game.clockTick
@@ -181,23 +191,28 @@ class Isaac_Body {
 
 			
 			
-		}else if(this.game.keys.ArrowDown){
+		}else if(this.game.keys.ArrowDown && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
-		}else if(this.game.keys.ArrowRight){
+		}else if(this.game.keys.ArrowRight && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
-		}else if(this.game.keys.ArrowLeft){
+		}else if(this.game.keys.ArrowLeft && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
-		}else if(this.game.keys.ArrowUp){
+		}else if(this.game.keys.ArrowUp && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 			
-		}else{
+		}else if (this.dead) {
+			this.tempCount = this.count;
+
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
+
+		} else {
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
-			
+
 		}
-	
+
 	};
 }
