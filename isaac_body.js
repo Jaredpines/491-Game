@@ -41,6 +41,36 @@ class Isaac_Body {
 		this.loadAnimations();
 	};
 
+	takeDamage(damage) {
+		if (this.blackHearts > 0) {
+			if (this.blackHearts - damage < 0) {
+				damage = damage*this.game.clockTick - this.blackHearts*this.game.clockTick;
+				this.blackHearts = 0;
+			} else {
+				this.blackHearts -= damage*this.game.clockTick;
+				damage = 0;
+			}
+		}
+		if (this.blueHearts > 0) {
+			if (this.blueHearts - damage < 0) {
+				damage = damage*this.game.clockTick - this.blueHearts*this.game.clockTick
+				this.blueHearts = 0;
+			} else {
+				this.blueHearts -= damage*this.game.clockTick;
+				damage = 0;
+			}
+		}
+		if (this.redHearts > 0) {
+			if (this.redHearts - damage < 0) {
+				damage = damage*this.game.clockTick - this.redHearts*this.game.clockTick
+				this.redHearts = 0;
+			} else {
+				this.redHearts -= damage*this.game.clockTick;
+				damage = 0;
+			}
+		}
+	}
+
 	loadAnimations() {
 		for (var i = 0; i < 4; i++) { // Four Directions
 			this.animations.push([]);

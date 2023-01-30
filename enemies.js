@@ -5,7 +5,7 @@ class Fly {
         this.dead = false;
         this.deadTime = 0;
 
-        this.xPosition = 690;
+        this.xPosition = 900;
         this.yPosition = 400;
         this.movementSpeed = 500;
 

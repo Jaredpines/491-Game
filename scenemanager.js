@@ -227,6 +227,14 @@ class SceneManager {
                 this.isaac_head.tear.range = 0;
             }
         }
+        if (this.isaac_head != null && this.isaac_body != null) {
+            if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox
+                || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox))) {
+                this.isaac_body.takeDamage(2);
+                console.log("took 2 damage");
+            }
+        }
+
     };
 
     draw(ctx) {

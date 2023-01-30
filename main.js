@@ -3,6 +3,8 @@ const ASSET_MANAGER = new AssetManager();
 ASSET_MANAGER.queueDownload("./res/hud_stats.png");
 ASSET_MANAGER.queueDownload("./res/hud_pickups.png");
 ASSET_MANAGER.queueDownload("./res/ui_hearts.png");
+ASSET_MANAGER.queueDownload("./res/minimap1.png");
+ASSET_MANAGER.queueDownload("./res/minimap2.png");
 ASSET_MANAGER.queueDownload("./res/title_menu_sprites.png")
 ASSET_MANAGER.queueDownload("./res/01_basement_basic.png")
 ASSET_MANAGER.queueDownload("./res/controls.png")
