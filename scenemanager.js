@@ -224,7 +224,7 @@ class SceneManager {
         if(this.isaac_head.tear != null){
             if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
                 this.fly_enemy.flyHealth -= this.isaac_head.tear.damage*this.game.clockTick
-                this.isaac_head.tear.removeFromWorld = true;
+                this.isaac_head.tear.range = 0;
             }
         }
     };
