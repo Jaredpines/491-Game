@@ -15,6 +15,7 @@ class Isaac_Body {
 		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
+		this.tempCount = 0;
 
 		//stats
 		this.redHearts = 2;
@@ -205,9 +206,28 @@ class Isaac_Body {
 			
 			
 		}else if (this.dead) {
-			this.tempCount = this.count;
+			this.tempCount += (1*this.game.clockTick);
 
-			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
+			if(this.tempCount < 2) {
+				ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
+				if(this.tempCount < 0.25) {
+					this.xPosition = this.xPosition-50*this.game.clockTick
+				}else if(this.tempCount < 0.5){
+					this.xPosition = this.xPosition+50*this.game.clockTick
+				}else if(this.tempCount < 0.75){
+					this.xPosition = this.xPosition-50*this.game.clockTick
+				}else if(this.tempCount < 1){
+					this.xPosition = this.xPosition+50*this.game.clockTick
+				}else if(this.tempCount < 1.25){
+					this.xPosition = this.xPosition-50*this.game.clockTick
+				}else if(this.tempCount < 1.5){
+					this.xPosition = this.xPosition+50*this.game.clockTick
+				}else if(this.tempCount < 1.75){
+					this.xPosition = this.xPosition-50*this.game.clockTick
+				}else if(this.tempCount < 2){
+					this.xPosition = this.xPosition+50*this.game.clockTick
+				}
+			}
 
 		} else {
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);

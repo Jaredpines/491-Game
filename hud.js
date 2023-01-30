@@ -3,6 +3,7 @@ class Hud {
         this.game = game;
         this.game.camera = this;
         this.character = isaac;
+        this.tempCount = 0;
 
         this.hudHealthX = 200;
         this.hudHealthY = 30;
@@ -163,7 +164,13 @@ class Hud {
         this.drawStats(ctx);
 
         if (!this.game.camera.title && !this.game.camera.credits && this.game.camera.gameOver) {
-            this.drawDeathScreen(ctx);
+            this.tempCount += 1*this.game.clockTick;
+
+            if (this.tempCount < 2) {
+
+            } else {
+                this.drawDeathScreen(ctx);
+            }
         }
 
 
