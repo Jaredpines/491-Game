@@ -23,6 +23,10 @@ class Right_Door {
         }else if(this.skin == "t"){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_right.png"),50-this.locX,(this.height/2)-(125/2)+this.locY,112,125);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_way_right.png"),40-this.locX,(this.height/2)-(196/2)+this.locY,152,196);
+        }else if(this.skin == "b"){        
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_right.png"),60-this.locX,(this.height/2)-(165/2)+this.locY,112,165);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_light_right.png"),-60-this.locX,(this.height/2)-(236/2)+this.locY,152,236);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_right.png"),50-this.locX,(this.height/2)-(236/2)+this.locY,152,236);
         }
         
     };

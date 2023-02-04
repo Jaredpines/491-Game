@@ -1,4 +1,4 @@
-class Normal_Room {
+class Boss_Room {
     constructor(locX, locY, direction, game){
         this.game = game;
         this.locX = locX;
@@ -16,7 +16,7 @@ class Normal_Room {
         this.doorU = 0;
         this.doorOp = 0;
         this.doorOpD = 0;
-        this.skin = "n"
+        this.skin = "b"
     };
 
 
@@ -49,8 +49,6 @@ class Normal_Room {
             this.game.addEntity(this.doorOpD);
             this.game.orderCorrecter();
             this.direction = "";
-        }else if(this.direction === "TL"||this.direction === "TR"||this.direction === "TU"||this.direction === "TD"){
-            this.treasureRoom()
         }else if(this.direction === "BL"||this.direction === "BR"||this.direction === "BU"||this.direction === "BD"){
             this.bossRoom()
         }else{
@@ -58,22 +56,6 @@ class Normal_Room {
         }
         
     };
-
-    treasureRoom(){
-        if(this.direction === "TL"){
-            this.direction = "left";
-            this.skin = "t"
-        }else if(this.direction === "TR"){
-            this.direction = "right";
-            this.skin = "t"
-        }else if(this.direction === "TU"){
-            this.direction = "up";
-            this.skin = "t"
-        }else if(this.direction === "TD"){
-            this.direction = "down";
-            this.skin = "t"
-        }
-    }
 
     bossRoom(){
         if(this.direction === "BL"){
