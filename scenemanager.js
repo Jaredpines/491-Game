@@ -51,11 +51,12 @@ class SceneManager {
         this.x = 0;
         //this.game.addEntity(new Normal_Room(1471,0,this.game));
         this.floor1.addBaseRoom();
-        
+
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
         this.game.addEntity(this.fly_enemy);
+        this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
 
     };
@@ -259,9 +260,13 @@ class SceneManager {
                     console.log(this.fly_enemy.flyHealth)
                     this.isaac_head.tear.range = 0;
                     this.isaac_head.tear.boundingBox = undefined;
-                }else if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
+                }
+            }
+            if (this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null) {
+                if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
                     this.spider_enemy.health -= this.isaac_head.tear.damage*this.game.clockTick
                     this.isaac_head.tear.range = 0;
+                    this.isaac_head.tear.boundingBox = undefined;
                 }
             }
         }
