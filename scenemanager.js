@@ -262,7 +262,7 @@ class SceneManager {
                     this.isaac_head.tear.boundingBox = undefined;
                 }
             }
-            if (this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null) {
+            if (this.isaac_head.tear.boundingBox != null && this.spider_enemy.boundingBox != null) {
                 if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
                     this.spider_enemy.health -= this.isaac_head.tear.damage*this.game.clockTick
                     this.isaac_head.tear.range = 0;
