@@ -33,6 +33,7 @@ class SceneManager {
         this.floor1 = new Floor(this.game,1);
         this.hud = new Hud(this.game, this.isaac_body);
         this.fly_enemy = new Fly(this.game)
+        this.spider_enemy = new Spider(this.game)
         this.i = 1;
         this.coolDown = 0;
 
@@ -108,8 +109,11 @@ class SceneManager {
             while(this.floor1.TRoomMax > 0){
                 this.floor1.addTreasureRoom("T");
             }
+            while(this.floor1.BRoomMax > 0){
+                this.floor1.addBossRoom("B");
+            }
+            this.floor1.toString();
             //this.game.ctx.translate(0,-200)
-            console.log(this.floor1.rooms.toString())
             //console.log(this.game.entities)
             //console.log(this.floor1.entityCount)
             //this.floor1.addRoom("right");
@@ -139,6 +143,9 @@ class SceneManager {
                     if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1471){
                         if(this.floor1.rooms[index][index2].door.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                                if(this.isaac_head.tear != null){
+                                    this.isaac_head.tear.removeFromWorld = true;
+                                }
                                 this.floor1.moveRoom("left");
                                 if(this.moveBounds == false){
                                     this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1471;
@@ -163,6 +170,9 @@ class SceneManager {
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
                         if(this.floor1.rooms[index][index2].doorOp.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1471 &&this.onceR == true)){
+                                if(this.isaac_head.tear != null){
+                                    this.isaac_head.tear.removeFromWorld = true;
+                                }
                                 this.floor1.moveRoom("right");
                                 if(this.moveBoundsR == false){
                                     this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1471;
@@ -187,6 +197,9 @@ class SceneManager {
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 997 )){
                         if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                                if(this.isaac_head.tear != null){
+                                    this.isaac_head.tear.removeFromWorld = true;
+                                }
                                 this.floor1.moveRoom("up");
                                 if(this.moveBoundsU == false){
                                     this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 997;
@@ -211,6 +224,9 @@ class SceneManager {
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
                         if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideD != 997 &&this.onceD == true)){
+                                if(this.isaac_head.tear != null){
+                                    this.isaac_head.tear.removeFromWorld = true;
+                                }
                                 this.floor1.moveRoom("down");
                                 if(this.moveBoundsD == false){
                                     this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 997;
@@ -237,16 +253,25 @@ class SceneManager {
             }
         }
         if(this.isaac_head.tear != null){
-            if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
-                this.fly_enemy.flyHealth -= this.isaac_head.tear.damage*this.game.clockTick
-                this.isaac_head.tear.range = 0;
+            if(this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null){
+                if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
+                    this.fly_enemy.flyHealth -= this.isaac_head.tear.damage*this.game.clockTick
+                    console.log(this.fly_enemy.flyHealth)
+                    this.isaac_head.tear.range = 0;
+                    this.isaac_head.tear.boundingBox = undefined;
+                }else if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
+                    this.spider_enemy.health -= this.isaac_head.tear.damage*this.game.clockTick
+                    this.isaac_head.tear.range = 0;
+                }
             }
         }
         if (this.isaac_head != null && this.isaac_body != null) {
-            if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox)
-                || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox)) {
-                this.isaac_body.takeDamage(2);
-                console.log("took 2 damage");
+            if(this.fly_enemy.boundingBox != null){
+                if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox)
+                    || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox)) {
+                    this.isaac_body.takeDamage(2);
+                    console.log("took 2 damage");
+                }
             }
         }
 

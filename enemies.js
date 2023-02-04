@@ -120,12 +120,12 @@ class Spider {
     update() {
 
         if (this.dead) {
-            this.boundingBox = new BoundingBox(0,0,0,0);
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
+                this.boundingBox = undefined;
                 this.removeFromWorld = true;
 
             }
