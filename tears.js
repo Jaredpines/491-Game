@@ -11,7 +11,7 @@ class Tears {
         this.animator2 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_two.png"), 0, 0, 62, 73, 4, 0.1, 2);
         this.animator3 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_three.png"), 0, 0, 62, 53, 4, 0.1, 2);
         this.boundingBox = new BoundingBox(this.locX,this.locY+50, 20,20)
-        this.damage = 200;
+        this.damage = 2000;
     };
 
     update(){
@@ -93,7 +93,7 @@ class Tears {
             }
             this.range -= (1*this.game.clockTick);
         }else{
-            
+                this.boundingBox = undefined;
                 this.removeFromWorld= true;
         }
         

@@ -33,7 +33,6 @@ class SceneManager {
         this.floor1 = new Floor(this.game,1);
         this.hud = new Hud(this.game, this.isaac_body);
         this.fly_enemy = new Fly(this.game)
-        this.spider_enemy = new Spider(this.game)
         this.i = 1;
         this.coolDown = 0;
 
@@ -56,7 +55,6 @@ class SceneManager {
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
         this.game.addEntity(this.fly_enemy);
-        this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
 
     };
@@ -241,9 +239,6 @@ class SceneManager {
         if(this.isaac_head.tear != null){
             if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
                 this.fly_enemy.flyHealth -= this.isaac_head.tear.damage*this.game.clockTick
-                this.isaac_head.tear.range = 0;
-            } else if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
-                this.spider_enemy.health -= this.isaac_head.tear.damage*this.game.clockTick
                 this.isaac_head.tear.range = 0;
             }
         }
