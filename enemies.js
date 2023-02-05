@@ -1,13 +1,21 @@
+
+//TODO ATTACH BOUNDING BOXES TO MOVING ENEMIES
+
 class Fly {
-    constructor(game) {
+    constructor(locX, locY, game, isaac) {
         this.game = game;
-        this.paused = true;
+        this.isaac = isaac
+        this.paused = false;
         this.dead = false;
         this.deadTime = 0;
         this.clocktick = game.clocktick;
 
-        this.xPosition = 900;
-        this.yPosition = 400;
+        this.xPosition = locX;
+        this.yPosition = locY;
+        this.moveBoundsRight = this.isaac.moveBoundsRight
+        this.moveBoundsLeft = this.isaac.moveBoundsLeft
+        this.moveBoundsUp = this.isaac.moveBoundsUp
+        this.moveBoundsDown = this.isaac.moveBoundsDown
         this.movementSpeed = 500;
 
         this.flySpritesheet = ASSET_MANAGER.getAsset("./res/monster_fly.png");
@@ -33,7 +41,7 @@ class Fly {
     update() {
 
         if (this.dead) {
-            
+
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
             }
@@ -41,18 +49,34 @@ class Fly {
                 console.log("runs")
                 this.boundingBox = undefined;
                 this.removeFromWorld = true;
-                
+
             }
         }
         if (!this.paused && !this.dead) {
-            var that = this;
-            /*this.game.entities.forEach(function (entity) {
-                if (entity.BB && that.BB.collide(entity.BB)) {
-                    if (entity instanceof Isaac_Body) {
-                        entity.health -= 1;
-                    };
-                }
-            });*/
+
+            let distX =  this.isaac.xPosition - this.xPosition
+            let distY =  this.isaac.yPosition - this.yPosition
+            if(this.xPosition < this.moveBoundsRight && this.xPosition < this.isaac.xPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityX = distX/distance*this.movementSpeed
+                this.xPosition += velocityX*this.game.clockTick/2;
+            }
+            if(this.xPosition > this.moveBoundsLeft && this.xPosition > this.isaac.xPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityX = distX/distance*this.movementSpeed
+                this.xPosition -= -velocityX*this.game.clockTick/2;
+            }
+            if(this.yPosition > this.moveBoundsUp && this.yPosition > this.isaac.yPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityY = distY/distance*this.movementSpeed
+                this.yPosition += velocityY*this.game.clockTick/2;
+            }
+            if(this.yPosition < this.moveBoundsDown && this.yPosition < this.isaac.yPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityY = distY/distance*this.movementSpeed
+                this.yPosition += velocityY*this.game.clockTick/2;
+            }
+
         }
         if(this.flyHealth<=0){
             this.dead = true;
@@ -71,15 +95,20 @@ class Fly {
 }
 
 class Spider {
-    constructor(game) {
+    constructor(locX, locY, game, isaac) {
+        this.isaac = isaac
         this.game = game;
         this.paused = false;
         this.dead = false;
         this.walking = false;
         this.deadTime = 0;
 
-        this.xPosition = 400;
-        this.yPosition = 400;
+        this.xPosition = locX;
+        this.yPosition = locY;
+        this.moveBoundsRight = this.isaac.moveBoundsRight
+        this.moveBoundsLeft = this.isaac.moveBoundsLeft
+        this.moveBoundsUp = this.isaac.moveBoundsUp
+        this.moveBoundsDown = this.isaac.moveBoundsDown
         this.movementSpeed = 200;
 
         this.spiderSpriteSheet = ASSET_MANAGER.getAsset("./res/monster_spider.png");
@@ -88,7 +117,7 @@ class Spider {
 
         this.animations = [];
         this.loadAnimations();
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,21,15)
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition-20 ,30,30)
         this.health = 100
     };
 
@@ -130,37 +159,54 @@ class Spider {
 
             }
         }
+
+        //TODO walk only when moving for anim
+        this.walking = true
         if (!this.paused && !this.dead) {
+            let r = Math.floor(Math.random() * 100);
+            if(r===4){
+                this.up = false;
+                this.down = false;
+                this.left = true;
+                this.right = false;
+            }else if(r===8){
+                this.up = false;
+                this.down = false;
+                this.left = false;
+                this.right = true;
+            }else if(r===16){
+                this.up = true;
+                this.down = false;
+                this.left = false;
+                this.right = false;
+            }else if(r===20){
+                this.up = false;
+                this.down = true;
+                this.left = false;
+                this.right = false;
+            }
+            if(this.xPosition < this.moveBoundsRight && this.left === true){
+                this.xPosition += this.game.clockTick*500;
+                this.yPosition += this.game.clockTick*r
+            }
+            if(this.xPosition > this.moveBoundsLeft && this.right === true){
+                this.xPosition -= this.game.clockTick*500;
+                this.yPosition -= this.game.clockTick*r;
+            }
+            if(this.yPosition > this.moveBoundsUp && this.up === true){
+                this.yPosition -= this.game.clockTick*500;
 
-            // function walk() {
-            //     window.walking = true;
-            //     console.log("walking")
-            //     window.xPosition += window.clocktick * window.movementSpeed
-            //     window.yPosition += window.clocktick * window.movementSpeed
-            //     window.walking = false;
-            //     setTimeout(walk, 2000)
-            // }
-            // setInterval(walk, 2000)
-            // walk()
-
-            // this.walking = true;
-            // console.log("walking")
-            // this.xPosition += this.game.clocktick
-            // this.yPosition += this.game.clockTick
-
-
-            // var that = this;
-            /*this.game.entities.forEach(function (entity) {
-                if (entity.BB && that.BB.collide(entity.BB)) {
-                    if (entity instanceof Isaac_Body) {
-                        entity.health -= 1;
-                    };
-                }
-            });*/
+                this.xPosition -= this.game.clockTick*r;
+            }
+            if(this.yPosition < this.moveBoundsDown && this.down === true){
+                this.yPosition += this.game.clockTick*500;
+                this.xPosition -= this.game.clockTick*r;
+            }
         }
+
         if(this.health<=0){
             this.dead = true;
-            this.deadTime += 1*this.game.clockTick
+            this.deadTime += 1*this.game.clockTick;
         }
 
     };

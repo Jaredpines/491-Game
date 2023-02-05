@@ -32,8 +32,8 @@ class SceneManager {
         this.moveBoundsD = false;
         this.floor1 = new Floor(this.game,1);
         this.hud = new Hud(this.game, this.isaac_body);
-        this.fly_enemy = new Fly(this.game)
-        this.spider_enemy = new Spider(this.game)
+        this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
+        this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
         this.gurgling;
         this.gurgling2;
         this.i = 1;
