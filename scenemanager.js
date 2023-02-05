@@ -34,6 +34,8 @@ class SceneManager {
         this.hud = new Hud(this.game, this.isaac_body);
         this.fly_enemy = new Fly(this.game)
         this.spider_enemy = new Spider(this.game)
+        this.gurgling;
+        this.gurgling2;
         this.i = 1;
         this.coolDown = 0;
 
@@ -159,6 +161,14 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX-1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX-1471;
                                     this.moveBounds = true;
+                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling);
+                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling2);
+                                        console.log(this.gurgling.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.once = true;
                             }
@@ -186,6 +196,14 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1471;
                                     this.moveBoundsR = true;
+                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling);
+                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling2);
+                                        console.log(this.gurgling.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.onceR = true;
                             }
@@ -213,6 +231,14 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY-997;
                                     this.hud.hudHealthY = this.hud.hudHealthY-997;
                                     this.moveBoundsU = true;
+                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling);
+                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling2);
+                                        console.log(this.gurgling.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.onceU = true;
                             }
@@ -240,10 +266,19 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+997;
                                     this.hud.hudHealthY = this.hud.hudHealthY+997;
                                     this.moveBoundsD = true;
+                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling);
+                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                        this.game.addEntity(this.gurgling2);
+                                        console.log(this.gurgling.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.onceD = true;
                             }
                             else{
+                                
                                 this.onceD = false;
                                 this.moveBoundsD = false;
                             }
