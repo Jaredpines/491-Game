@@ -30,10 +30,10 @@ class Gurgling {
         this.animationsFeet = [];
         this.animationsFace = [];
         this.loadAnimations();
-        this.bbWidth = 38
-        this.bbHeight = 40
+        this.bbWidth = 114
+        this.bbHeight = 120
         this.boundingBox = new BoundingBox(this.locX,this.locY,this.bbWidth,this.bbHeight)
-        this.gurglingHealth = 50
+        this.health = 10
     };
 
     loadAnimations() {
@@ -88,6 +88,13 @@ class Gurgling {
     };
 
     update(){
+
+        if (this.health <= 0) {
+            this.dead = true;
+            this.deadTime += 1 * this.game.clockTick;
+            this.state = 4;
+        }
+
         if (this.dead) {
 
             if (this.deadTime === 0) {
@@ -166,7 +173,7 @@ class Gurgling {
             }
         }
 
-        if (this.gurglingHealth <= 0) {
+        if (this.health <= 0) {
             this.dead = true;
             this.deadTime += 1 * this.game.clockTick;
             this.state = 4;
@@ -180,8 +187,8 @@ class Gurgling {
 
         this.count += (1*this.game.clockTick);
         if(this.dead) {
-            this.animationsFace[this.state].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
-            this.animationsFeet[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.locX+33, this.locY+70);
+            this.animationsFace[0].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
+            this.animationsFeet[2][0].drawFrame(this.game.clockTick, ctx, this.locX+33, this.locY+70);
 
         } else if(this.down && !this.dead){
             this.animationsFace[this.state].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);

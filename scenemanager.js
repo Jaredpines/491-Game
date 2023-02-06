@@ -34,9 +34,9 @@ class SceneManager {
         this.hud = new Hud(this.game, this.isaac_body);
         this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
-        this.gurgling = null;
-        this.gurgling2 = null;
-        this.itemP = null;
+        this.gurgling
+        this.gurgling2
+        this.itemP
         this.i = 1;
         this.coolDown = 0;
 
@@ -58,8 +58,8 @@ class SceneManager {
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
-        // this.game.addEntity(this.fly_enemy);
-        // this.game.addEntity(this.spider_enemy);
+        this.game.addEntity(this.fly_enemy);
+        this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
     };
 
@@ -439,6 +439,41 @@ class SceneManager {
                     this.spider_enemy.health -= this.isaac_head.tear.damage*this.game.clockTick
                     this.isaac_head.tear.range = 0;
                     this.isaac_head.tear.boundingBox = undefined;
+                }
+            }
+            if (this.gurgling != null) {
+
+                if (this.isaac_head.tear.boundingBox != null && this.gurgling.boundingBox != null) {
+                    if (this.isaac_head.tear.boundingBox.collide(this.gurgling.boundingBox)) {
+                        this.gurgling.health -= this.isaac_head.tear.damage * this.game.clockTick
+                        this.isaac_head.tear.range = 0;
+                        this.isaac_head.tear.boundingBox = undefined;
+                    }
+                }
+                if (this.isaac_head.tear.boundingBox != null && this.gurgling2.boundingBox != null) {
+                    if (this.isaac_head.tear.boundingBox.collide(this.gurgling2.boundingBox)) {
+                        this.gurgling2.health -= this.isaac_head.tear.damage * this.game.clockTick
+                        this.isaac_head.tear.range = 0;
+                        this.isaac_head.tear.boundingBox = undefined;
+                    }
+                }
+                if (this.isaac_head != null && this.isaac_body != null) {
+                    if(this.gurgling.boundingBox != null){
+                        if (this.isaac_head.boundingBox.collide(this.gurgling.boundingBox)
+                            || this.isaac_body.boundingBox.collide(this.gurgling.boundingBox)) {
+                            this.isaac_body.takeDamage(2);
+                            console.log("took 2 damage");
+                        }
+                    }
+                }
+                if (this.isaac_head != null && this.isaac_body != null) {
+                    if(this.gurgling2.boundingBox != null){
+                        if (this.isaac_head.boundingBox.collide(this.gurgling2.boundingBox)
+                            || this.isaac_body.boundingBox.collide(this.gurgling2.boundingBox)) {
+                            this.isaac_body.takeDamage(2);
+                            console.log("took 2 damage");
+                        }
+                    }
                 }
             }
         }
