@@ -3,6 +3,7 @@ class Isaac_Body {
 		this.game = game;
 		this.count = 0;
 		this.dead = false;
+		this.crying = true;
 		this.xPosition = 692;
 		this.yPosition = 424;
 		this.moveBoundsLeft = 138;
@@ -193,6 +194,7 @@ class Isaac_Body {
 				this.xPosition = 692;
 			}
 
+			this.crying = false
 
 			
 			

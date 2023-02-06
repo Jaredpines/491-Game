@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="121d7a36-5ac0-4199-8eff-bc7ba4978d4b" name="Changes" comment="started on minimap, implemented isaac/fly collision, added takeDamage() method to isaac. needs some work">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KL2lI3WEgw81sMGgUSkOuIlKBD" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SuperMarioBros-master" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cagep.DESKTOP-9EV0I6P\OneDrive\Desktop\School Assignments\WI23\TCSS 491 - Computational Worlds\491-Game\res" />
+      <recent name="C:\Users\cagep.DESKTOP-9EV0I6P\OneDrive\Desktop\School Assignments\WI23\TCSS 491 - Computational Worlds\491-Game" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/491-Game/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="121d7a36-5ac0-4199-8eff-bc7ba4978d4b" name="Changes" comment="" />
+      <created>1673739692017</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1673739692017</updated>
+      <workItem from="1673739695415" duration="120000" />
+      <workItem from="1673739817539" duration="1403000" />
+      <workItem from="1673829955886" duration="567000" />
+      <workItem from="1673830536529" duration="1784000" />
+      <workItem from="1673838758104" duration="2172000" />
+      <workItem from="1673845596029" duration="656000" />
+      <workItem from="1674106018365" duration="3878000" />
+      <workItem from="1674111185520" duration="36000" />
+      <workItem from="1674267700658" duration="9784000" />
+      <workItem from="1674277623409" duration="122000" />
+      <workItem from="1674338534084" duration="7368000" />
+      <workItem from="1674433586073" duration="7608000" />
+      <workItem from="1674450211347" duration="26550000" />
+    </task>
+    <task id="LOCAL-00001" summary="implemented movement and movement bounds for isaac entity. active bug when walking to the right: isaac teleports to the left side of the screen and initiates crying anim">
+      <created>1673740848476</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673740848476</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added res file for organization of resource files">
+      <created>1673831020406</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673831020406</updated>
+    </task>
+    <task id="LOCAL-00003" summary="took out res file hah">
+      <created>1673833176006</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1673833176006</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added scenemanager.js, style.css, custom font">
+      <created>1674268200486</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674268200486</updated>
+    </task>
+    <task id="LOCAL-00005" summary="started implementation of title screen and hud">
+      <created>1674277388066</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674277388066</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Changes by TJ-PC">
+      <created>1674277401735</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674277401735</updated>
+    </task>
+    <task id="LOCAL-00007" summary="hud class (probably temporary) the code that is commented out causes a failure (overload resolution failed)">
+      <created>1674360701837</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674360701837</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed &quot;==&quot; operators to &quot;===&quot;">
+      <created>1674424327271</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674424327271</updated>
+    </task>
+    <task id="LOCAL-00009" summary="enter key starts game from title screen">
+      <created>1674441012729</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674441012729</updated>
+    </task>
+    <task id="LOCAL-00010" summary="moved hud stats draw to hud class">
+      <created>1674451093588</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674451093588</updated>
+    </task>
+    <task id="LOCAL-00011" summary="moved stats and cropped hud_stats.png">
+      <created>1674452296615</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674452296615</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added displaying extra hearts partially">
+      <created>1674775131581</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674775131581</updated>
+    </task>
+    <task id="LOCAL-00013" summary="red, blue, and black hearts implemented">
+      <created>1674955642351</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1674955642351</updated>
+    </task>
+    <task id="LOCAL-00014" summary="started on minimap, implemented isaac/fly collision, added takeDamage() method to isaac. needs some work">
+      <created>1675043530972</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675043530972</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="implemented movement and movement bounds for isaac entity. active bug when walking to the right: isaac teleports to the left side of the screen and initiates crying anim" />
+    <MESSAGE value="added res file for organization of resource files" />
+    <MESSAGE value="took out res file hah" />
+    <MESSAGE value="added scenemanager.js, style.css, custom font" />
+    <MESSAGE value="started implementation of title screen and hud" />
+    <MESSAGE value="Changes by TJ-PC" />
+    <MESSAGE value="hud class (probably temporary) the code that is commented out causes a failure (overload resolution failed)" />
+    <MESSAGE value="changed &quot;==&quot; operators to &quot;===&quot;" />
+    <MESSAGE value="enter key starts game from title screen" />
+    <MESSAGE value="moved hud stats draw to hud class" />
+    <MESSAGE value="moved stats and cropped hud_stats.png" />
+    <MESSAGE value="added displaying extra hearts partially" />
+    <MESSAGE value="red, blue, and black hearts implemented" />
+    <MESSAGE value="started on minimap, implemented isaac/fly collision, added takeDamage() method to isaac. needs some work" />
+    <option name="LAST_COMMIT_MESSAGE" value="started on minimap, implemented isaac/fly collision, added takeDamage() method to isaac. needs some work" />
+  </component>
+</project>

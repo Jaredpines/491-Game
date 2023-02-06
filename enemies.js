@@ -16,13 +16,15 @@ class Fly {
         this.moveBoundsLeft = this.isaac.moveBoundsLeft
         this.moveBoundsUp = this.isaac.moveBoundsUp
         this.moveBoundsDown = this.isaac.moveBoundsDown
-        this.movementSpeed = 500;
+        this.movementSpeed = 300;
 
         this.flySpritesheet = ASSET_MANAGER.getAsset("./res/monster_fly.png");
 
         this.animations = [];
         this.loadAnimations();
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,32,24)
+        this.bbWidth = 32
+        this.bbHeight = 24
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight)
         this.flyHealth = 100
     };
 
@@ -52,7 +54,7 @@ class Fly {
 
             }
         }
-        if (!this.paused && !this.dead) {
+        if (!this.paused && !this.dead && !this.isaac.crying) {
 
             let distX =  this.isaac.xPosition - this.xPosition
             let distY =  this.isaac.yPosition - this.yPosition
@@ -77,7 +79,10 @@ class Fly {
                 this.yPosition += velocityY*this.game.clockTick/2;
             }
 
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
+
         }
+
         if(this.flyHealth<=0){
             this.dead = true;
             this.deadTime += 1*this.game.clockTick
@@ -117,7 +122,9 @@ class Spider {
 
         this.animations = [];
         this.loadAnimations();
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition-20 ,30,30)
+        this.bbWidth = 30
+        this.bbHeight = 30
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition-20 ,this.bbWidth,this.bbHeight)
         this.health = 100
     };
 
@@ -162,7 +169,7 @@ class Spider {
 
         //TODO walk only when moving for anim
         this.walking = true
-        if (!this.paused && !this.dead) {
+        if (!this.paused && !this.dead && !this.isaac.crying) {
             let r = Math.floor(Math.random() * 100);
             if(r===4){
                 this.up = false;
@@ -186,22 +193,25 @@ class Spider {
                 this.right = false;
             }
             if(this.xPosition < this.moveBoundsRight && this.left === true){
-                this.xPosition += this.game.clockTick*500;
+                this.xPosition += this.game.clockTick*this.movementSpeed;
                 this.yPosition += this.game.clockTick*r
             }
             if(this.xPosition > this.moveBoundsLeft && this.right === true){
-                this.xPosition -= this.game.clockTick*500;
+                this.xPosition -= this.game.clockTick*this.movementSpeed;
                 this.yPosition -= this.game.clockTick*r;
             }
             if(this.yPosition > this.moveBoundsUp && this.up === true){
-                this.yPosition -= this.game.clockTick*500;
+                this.yPosition -= this.game.clockTick*this.movementSpeed;
 
                 this.xPosition -= this.game.clockTick*r;
             }
             if(this.yPosition < this.moveBoundsDown && this.down === true){
-                this.yPosition += this.game.clockTick*500;
+                this.yPosition += this.game.clockTick*this.movementSpeed;
                 this.xPosition -= this.game.clockTick*r;
             }
+
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
+
         }
 
         if(this.health<=0){
