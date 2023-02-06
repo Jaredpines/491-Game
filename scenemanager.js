@@ -161,7 +161,7 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX-1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX-1471;
                                     this.moveBounds = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -196,7 +196,7 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1471;
                                     this.moveBoundsR = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -232,7 +232,7 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX-1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX-1471;
                                     this.moveBounds = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -267,7 +267,8 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1471;
                                     this.moveBoundsR = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -303,7 +304,7 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY-997;
                                     this.hud.hudHealthY = this.hud.hudHealthY-997;
                                     this.moveBoundsU = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -338,7 +339,7 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+997;
                                     this.hud.hudHealthY = this.hud.hudHealthY+997;
                                     this.moveBoundsD = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -375,7 +376,7 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY-997;
                                     this.hud.hudHealthY = this.hud.hudHealthY-997;
                                     this.moveBoundsU = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -410,7 +411,7 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+997;
                                     this.hud.hudHealthY = this.hud.hudHealthY+997;
                                     this.moveBoundsD = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"){
+                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
                                         this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
