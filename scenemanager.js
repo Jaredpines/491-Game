@@ -36,6 +36,7 @@ class SceneManager {
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
         this.gurgling;
         this.gurgling2;
+        this.itemP;
         this.i = 1;
         this.coolDown = 0;
 
@@ -169,6 +170,12 @@ class SceneManager {
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
                                     }
+                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.game.addEntity(this.itemP);
+                                        console.log(this.itemP.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.once = true;
                             }
@@ -196,14 +203,6 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1471;
                                     this.moveBoundsR = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }
                                 }
                                 this.onceR = true;
                             }
@@ -240,6 +239,12 @@ class SceneManager {
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
                                     }
+                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.game.addEntity(this.itemP);
+                                        console.log(this.itemP.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.once = true;
                             }
@@ -267,15 +272,6 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1471;
                                     this.moveBoundsR = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }
                                 }
                                 this.onceR = true;
                             }
@@ -312,6 +308,12 @@ class SceneManager {
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
                                     }
+                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.game.addEntity(this.itemP);
+                                        console.log(this.itemP.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.onceU = true;
                             }
@@ -339,14 +341,6 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+997;
                                     this.hud.hudHealthY = this.hud.hudHealthY+997;
                                     this.moveBoundsD = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }
                                 }
                                 this.onceD = true;
                             }
@@ -384,6 +378,12 @@ class SceneManager {
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
                                     }
+                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.game.addEntity(this.itemP);
+                                        console.log(this.itemP.locX)
+                                        console.log(this.isaac_body.xPosition)
+                                    }
                                 }
                                 this.onceU = true;
                             }
@@ -411,14 +411,6 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+997;
                                     this.hud.hudHealthY = this.hud.hudHealthY+997;
                                     this.moveBoundsD = true;
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }
                                 }
                                 this.onceD = true;
                             }

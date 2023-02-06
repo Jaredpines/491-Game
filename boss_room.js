@@ -37,8 +37,8 @@ class Boss_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "right"){
-            this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
-            this.doorOpR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+            this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+            this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
             this.game.addEntity(this.doorR);
             this.game.addEntity(this.doorOpR);
             this.game.orderCorrecter();
@@ -51,8 +51,8 @@ class Boss_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "down"){
-            this.doorD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
-            this.doorOpD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+            this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+            this.doorOpD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             this.game.addEntity(this.doorD);
             this.game.addEntity(this.doorOpD);
             this.game.orderCorrecter();

@@ -37,8 +37,8 @@ class Normal_Room {
                 this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
             }
             if(this.up == true){
-                this.doorD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
-                this.doorOpD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+                this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+                this.doorOpD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             }
             this.game.addEntity(this.door);
             this.game.addEntity(this.doorOp);
@@ -53,15 +53,15 @@ class Normal_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "right"){
-            this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
-            this.doorOpR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+            this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+            this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
             if(this.down == true){
                 this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
                 this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
             }
             if(this.up == true){
-                this.doorD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
-                this.doorOpD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+                this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+                this.doorOpD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             }
             this.game.addEntity(this.doorR);
             this.game.addEntity(this.doorOpR);
@@ -79,8 +79,8 @@ class Normal_Room {
             this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
             this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
             if(this.right == true){
-                this.door = new Left_Door(this.locX-1471,this.locY,this.game,this.skin)
-                this.doorOp = new Right_Door(this.locX-1250,this.locY,this.game,this.skin)
+                this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+                this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
             }
             if(this.left == true){
                 this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
@@ -99,11 +99,11 @@ class Normal_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "down"){
-            this.doorD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
-            this.doorOpD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+            this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
+            this.doorOpD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             if(this.right == true){
-                this.door = new Left_Door(this.locX-1471,this.locY,this.game,this.skin)
-                this.doorOp = new Right_Door(this.locX-1250,this.locY,this.game,this.skin)
+                this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+                this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
             }
             if(this.left == true){
                 this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
