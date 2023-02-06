@@ -188,7 +188,7 @@ class Isaac_Body {
 				this.xPosition = this.xPosition-50*this.game.clockTick
 			}else if(this.count < 1.9){
 				this.xPosition = this.xPosition+50*this.game.clockTick
-				
+
 			}else if(this.count < 2){
 				console.log("yep")
 				this.xPosition = 692;

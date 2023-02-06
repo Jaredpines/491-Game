@@ -34,9 +34,9 @@ class SceneManager {
         this.hud = new Hud(this.game, this.isaac_body);
         this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
-        this.gurgling;
-        this.gurgling2;
-        this.itemP;
+        this.gurgling = null;
+        this.gurgling2 = null;
+        this.itemP = null;
         this.i = 1;
         this.coolDown = 0;
 
@@ -58,10 +58,9 @@ class SceneManager {
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
-        this.game.addEntity(this.fly_enemy);
-        this.game.addEntity(this.spider_enemy);
+        // this.game.addEntity(this.fly_enemy);
+        // this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
-
     };
 
     loadAnimations() {
