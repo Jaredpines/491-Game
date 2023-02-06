@@ -13,9 +13,17 @@ class Treasure_Room {
         this.locBLY = Math.floor(-997-this.locY)
         this.locBRY = Math.floor(-997-this.locY)
         this.door = 0;
-        this.doorU = 0;
         this.doorOp = 0;
+        this.doorR = 0;
+        this.doorOpR = 0;
+        this.doorU = 0;
+        this.doorOpU = 0;
+        this.doorD = 0;
         this.doorOpD = 0;
+        this.left = false;
+        this.right = false;
+        this.up = false;
+        this.down = false;
         this.skin = "t"
     };
 
@@ -29,23 +37,23 @@ class Treasure_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "right"){
-            this.door = new Left_Door(this.locX,this.locY,this.game,this.skin)
-            this.doorOp = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
-            this.game.addEntity(this.door);
-            this.game.addEntity(this.doorOp);
+            this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
+            this.doorOpR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+            this.game.addEntity(this.doorR);
+            this.game.addEntity(this.doorOpR);
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "up"){
             this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
-            this.doorOpD = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
+            this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
             this.game.addEntity(this.doorU);
-            this.game.addEntity(this.doorOpD);
+            this.game.addEntity(this.doorOpU);
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "down"){
-            this.doorU = new Up_Door(this.locX,-this.locY,this.game,this.skin)
+            this.doorD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             this.doorOpD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
-            this.game.addEntity(this.doorU);
+            this.game.addEntity(this.doorD);
             this.game.addEntity(this.doorOpD);
             this.game.orderCorrecter();
             this.direction = "";
