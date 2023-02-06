@@ -106,8 +106,8 @@ class Normal_Room {
                 this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
             }
             if(this.left == true){
-                this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
-                this.doorOpR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+                this.door = new Left_Door(this.locX,this.locY,this.game,this.skin)
+                this.doorOp = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
             }
             this.game.addEntity(this.doorD);
             this.game.addEntity(this.doorOpD);

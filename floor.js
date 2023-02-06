@@ -31,10 +31,6 @@ class Floor {
                     if(index2-1 > 0){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2-1] == null){
                             if(r == 4 && roomAdded == false){
-                                console.log(index)
-                                console.log(index2)
-                                console.log(this.farthestLeft-(1471*(index2-2)))
-                                console.log(this.farthestUp-(997*(index-1)))
                                 this.rooms[index][index2-1] = new Normal_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"left",this.game)
                                 if(this.rooms[index+1][index2-1] != null){
                                     this.rooms[index][index2-1].down = true;
@@ -172,10 +168,6 @@ class Floor {
                     if(index2-1 > 0){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2-1] == null){
                             if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
-                                console.log(index)
-                                console.log(index2)
-                                console.log(this.farthestLeft-(1471*(index2-2)))
-                                console.log(this.farthestUp-(997*(index-1)))
                                 this.rooms[index][index2-1] = new Treasure_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"TL",this.game)
                                   
                                 this.row = index;

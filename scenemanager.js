@@ -214,8 +214,8 @@ class SceneManager {
                     }
 
                     if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1471){
-                        if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                        if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
@@ -255,8 +255,8 @@ class SceneManager {
                         }
                     }
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
-                        if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slideR != 1471 &&this.onceR == true)){
+                        if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1471 &&this.onceR == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
@@ -353,8 +353,8 @@ class SceneManager {
                     }
 
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 997 )){
-                        if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                        if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
@@ -394,8 +394,8 @@ class SceneManager {
                         }
                     }
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
-                        if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideD != 997 &&this.onceD == true)){
+                        if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 997 &&this.onceD == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
