@@ -131,37 +131,7 @@ class Normal_Room {
         
     };
 
-    treasureRoom(){
-        if(this.direction === "TL"){
-            this.direction = "left";
-            this.skin = "t"
-        }else if(this.direction === "TR"){
-            this.direction = "right";
-            this.skin = "t"
-        }else if(this.direction === "TU"){
-            this.direction = "up";
-            this.skin = "t"
-        }else if(this.direction === "TD"){
-            this.direction = "down";
-            this.skin = "t"
-        }
-    }
-
-    bossRoom(){
-        if(this.direction === "BL"){
-            this.direction = "left";
-            this.skin = "b"
-        }else if(this.direction === "BR"){
-            this.direction = "right";
-            this.skin = "b"
-        }else if(this.direction === "BU"){
-            this.direction = "up";
-            this.skin = "b"
-        }else if(this.direction === "BD"){
-            this.direction = "down";
-            this.skin = "b"
-        }
-    }
+    
 
     draw(ctx){
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTLX,this.locTLY,769,532);
