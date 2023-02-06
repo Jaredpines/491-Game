@@ -68,6 +68,7 @@ ASSET_MANAGER.queueDownload("./res/monster_spider.png")
 ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
 	const ctx = canvas.getContext("2d");
+	ctx.imageSmoothingEnabled = false;
 
 
 	const gameEngine = new GameEngine();

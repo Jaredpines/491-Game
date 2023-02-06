@@ -130,6 +130,7 @@ class Hud {
         const statX = this.hudStatsX + 75;
         const statY = this.hudStatsY + 40;
         const statYGap = 48;
+
         ctx.fillText(this.character.movementSpeed, statX, statY);
         ctx.fillText(this.character.fireRate, statX, statY + statYGap);
         ctx.fillText(this.character.damage, statX, statY + (statYGap * 2));
