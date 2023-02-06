@@ -143,7 +143,7 @@ class Hud {
     }
 
     drawDeathScreen(ctx) {
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 0, 0, this.titleWidth, this.titleHeight);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 350, 100, 800, 800);
     }
 
     drawMinimap(ctx) {
