@@ -81,10 +81,12 @@ class Normal_Room {
             if(this.right == true){
                 this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
                 this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
+                console.log("flip1");
             }
             if(this.left == true){
-                this.doorR = new Left_Door(this.locX,this.locY,this.game,this.skin)
-                this.doorOpR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+                this.door = new Left_Door(this.locX,this.locY,this.game,this.skin)
+                this.doorOp = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+                console.log("flip2");
             }
             this.game.addEntity(this.doorU);
             this.game.addEntity(this.doorOpU);
@@ -102,12 +104,14 @@ class Normal_Room {
             this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
             this.doorOpD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             if(this.right == true){
-                this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
-                this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
+                this.doorR = new Right_Door(this.locX-1250,this.locY,this.game,this.skin)
+                this.doorOpR = new Left_Door(this.locX-1471,this.locY,this.game,this.skin)
+                console.log("flip3");
             }
             if(this.left == true){
                 this.door = new Left_Door(this.locX,this.locY,this.game,this.skin)
                 this.doorOp = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
+                console.log("flip4");
             }
             this.game.addEntity(this.doorD);
             this.game.addEntity(this.doorOpD);
