@@ -30,7 +30,7 @@ class Isaac_Body {
 		this.range = 0;
 		this.shotSpeed = 0;
 		this.luck = 0;
-		this.devilChance = 0;
+		this.devilChance = 100;
 		this.angelChance = 0;
 		this.planetariumChance = 0;
 
@@ -76,6 +76,7 @@ class Isaac_Body {
 			this.dead = true;
 			this.game.camera.gameOver = true;
 		}
+		//this.devilChance -= 25*this.game.clockTick;
 	}
 
 	loadAnimations() {

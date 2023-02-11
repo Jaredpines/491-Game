@@ -1,5 +1,10 @@
 /** Global Parameters Object */
-const params = { };
+const PARAMS = {
+    PLAY_AREA_WIDTH: 1096,
+    PLAY_AREA_HEIGHT: 626,
+    BLOCK_WIDTH: 84,
+    BLOCK_HEIGHT: 89
+};
 
 /**
  * @param {Number} n
