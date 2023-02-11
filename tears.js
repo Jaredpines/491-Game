@@ -10,7 +10,7 @@ class Tears {
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_one.png"), 0, 0, 62, 52, 4, 0.1, 2);
         this.animator2 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_two.png"), 0, 0, 62, 73, 4, 0.1, 2);
         this.animator3 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_three.png"), 0, 0, 62, 53, 4, 0.1, 2);
-        this.boundingBox = new BoundingBox(this.locX,this.locY+50, 20,20)
+        this.boundingBox = null;
         this.damage = 2000;
     };
 
@@ -20,10 +20,12 @@ class Tears {
 
 
     draw(ctx){
+        
         if(this.direction === "down"){
             if(this.range > 0){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/normal_tears.png"),this.locX,this.locY+50, 51,51);
-                this.boundingBox = new BoundingBox(this.locX,this.locY+50, 20,20)
+                this.boundingBox = new BoundingBox(this.locX+12.5,this.locY+67.5, 25,25)
+                ctx.strokeRect(this.locX+12.5,this.locY+67.5, 25,25);
                 this.locY += this.shotSpeed*this.game.clockTick;
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
@@ -41,7 +43,8 @@ class Tears {
         }else if(this.direction === "up"){
             if(this.range > 0){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/normal_tears.png"), this.locX, this.locY - 30, 51, 51);
-                this.boundingBox = new BoundingBox(this.locX,this.locY-30, 20,20)
+                this.boundingBox = new BoundingBox(this.locX+12.5,this.locY-12.5, 25,25)
+                ctx.strokeRect(this.locX+12.5,this.locY-12.5, 25,25);
                 this.locY -= this.shotSpeed*this.game.clockTick;
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
@@ -59,7 +62,8 @@ class Tears {
         }else if(this.direction === "right"){
             if(this.range > 0){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/normal_tears.png"),this.locX+50,this.locY, 51,51);
-                this.boundingBox = new BoundingBox(this.locX+50,this.locY, 20,20)
+                this.boundingBox = new BoundingBox(this.locX+65,this.locY+12.5, 25,25)
+                ctx.strokeRect(this.locX+65,this.locY+12.5, 25,25);
                 this.locX += this.shotSpeed*this.game.clockTick;
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
@@ -77,7 +81,8 @@ class Tears {
         }else if(this.direction === "left"){
             if(this.range > 0){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/normal_tears.png"),this.locX-20,this.locY, 51,51);
-                this.boundingBox = new BoundingBox(this.locX-20,this.locY, 20,20)
+                this.boundingBox = new BoundingBox(this.locX-7.5,this.locY+12.5, 25,25)
+                ctx.strokeRect(this.locX-7.5,this.locY+12.5, 25,25);
                 this.locX -= this.shotSpeed*this.game.clockTick;
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){

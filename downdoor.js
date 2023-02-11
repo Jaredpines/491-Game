@@ -5,7 +5,7 @@ class Down_Door {
         this.locY = locY;
         this.height = document.getElementById('gameWorld').height
         this.width = document.getElementById('gameWorld').width
-        this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX,-180-this.locY,125,92)
+        this.boundingBox = null;
         this.skin = skin;
     };
 
@@ -28,7 +28,8 @@ class Down_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_light_down.png"),(this.width/2)-(236/2)-this.locX,-300-this.locY,236,152);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_down.png"),(this.width/2)-(236/2)-this.locX,-190-this.locY,236,152);
         }
-        
+        this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX+10,-190-this.locY,110,92);
+        ctx.strokeRect((this.width/2)-(125/2)-this.locX+10,-190-this.locY,110,92);
     };
 
 }

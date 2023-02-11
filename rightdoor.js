@@ -5,7 +5,7 @@ class Right_Door {
         this.locY = locY;
         this.height = document.getElementById('gameWorld').height
         this.width = document.getElementById('gameWorld').width
-        this.boundingBox = new BoundingBox(50-locX,(this.height/2)-(125/2)+this.locY,92,125)
+        this.boundingBox = null;
         this.skin = skin;
     };
 
@@ -28,7 +28,8 @@ class Right_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_light_right.png"),-60-this.locX,(this.height/2)-(236/2)+this.locY,152,236);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_right.png"),50-this.locX,(this.height/2)-(236/2)+this.locY,152,236);
         }
-        
+        this.boundingBox = new BoundingBox(50-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
+        ctx.strokeRect(50-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
     };
 
 }

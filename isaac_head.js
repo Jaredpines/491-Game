@@ -13,7 +13,7 @@ class Isaac_Head {
 		this.moveBoundsRight = 1242;
 		this.moveBoundsUp = 68.5;
 		this.moveBoundsDown = 695;
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,95,91);
+        this.boundingBox = null;
 		this.tear;
 	};
 
@@ -42,12 +42,13 @@ class Isaac_Head {
 				}
 			}
 		}
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,95,91);
+        
 	};
 
 
 	draw(ctx){
-		
+		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,95,91);
+		ctx.strokeRect(this.xPosition,this.yPosition,95,91);
 		this.count += (1*this.game.clockTick);
 
 		if(this.count < 2 && !this.game.camera.gameOver){

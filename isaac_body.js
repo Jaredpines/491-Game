@@ -13,7 +13,7 @@ class Isaac_Body {
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
 		this.isaacDeadSprite = ASSET_MANAGER.getAsset("./res/crying_isaac.png");
 		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 1, 0.1, 2);
-		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
+		this.boundingBox = null;
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
 		this.tempCount = 0;
@@ -39,7 +39,6 @@ class Isaac_Body {
 		this.keyPickup = 1;
 		this.bombPickup = 1;
 
-		this.updateBB();
 		this.animations = [];
 		this.loadAnimations();
 	};
@@ -111,11 +110,6 @@ class Isaac_Body {
 
 	};
 
-	updateBB() {
-		this.lastBB = this.BB;
-		this.BB = new BoundingBox(this.xPosition, this.yPosition, 32, 20);
-	}
-
 	update(){
 		this.state = 0;
 		var that = this;
@@ -157,7 +151,7 @@ class Isaac_Body {
 				this.state = 0;
 			}
 		}
-		this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,130,85);
+
 
 		if (this.dead) {
 			this.game.camera.gameOver = true;
@@ -168,7 +162,8 @@ class Isaac_Body {
 
 
 	draw(ctx){
-		
+		this.boundingBox = new BoundingBox(this.xPosition+30,this.yPosition+5,55,40);
+		ctx.strokeRect(this.xPosition+30,this.yPosition+5,55,40);
 		this.count += (1*this.game.clockTick);
 		if(this.count < 2) {
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);

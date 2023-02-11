@@ -32,7 +32,7 @@ class Gurgling {
         this.loadAnimations();
         this.bbWidth = 114
         this.bbHeight = 120
-        this.boundingBox = new BoundingBox(this.locX,this.locY,this.bbWidth,this.bbHeight)
+        this.boundingBox = null;
         this.health = 10
     };
 
@@ -150,7 +150,7 @@ class Gurgling {
                 this.locY += this.game.clockTick * 500;
             }
 
-            this.boundingBox = new BoundingBox(this.locX, this.locY, this.bbWidth, this.bbHeight);
+            
         }
 
 
@@ -184,7 +184,8 @@ class Gurgling {
     
 
     draw(ctx){
-
+        this.boundingBox = new BoundingBox(this.locX, this.locY, this.bbWidth, this.bbHeight);
+        ctx.strokeRect(this.locX, this.locY, this.bbWidth, this.bbHeight);
         this.count += (1*this.game.clockTick);
         if(this.dead) {
             this.animationsFace[0].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);

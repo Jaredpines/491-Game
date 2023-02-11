@@ -12,6 +12,7 @@ class Controls {
 
 
     draw(ctx){
+        
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/controls.png"),190-this.locX,300,1100,340);
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/w.png"),200-this.locX,620,55,60);
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/a.png"),260-this.locX,625,55,60);
