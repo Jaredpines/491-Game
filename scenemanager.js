@@ -32,13 +32,16 @@ class SceneManager {
         this.moveBoundsD = false;
         this.floor1 = new Floor(this.game,1);
         this.hud = new Hud(this.game, this.isaac_body);
+        this.chest = new Chest(400,400,this.game);      
         this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
+        this.key = new Key(400,410,this.game);
         this.gurgling
         this.gurgling2
         this.itemP
         this.i = 1;
         this.coolDown = 0;
+        this.driftCounter = 0;
 
     };
 
@@ -58,9 +61,10 @@ class SceneManager {
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
-        this.game.addEntity(this.fly_enemy);
+        //this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
+        this.game.addEntity(this.chest);
     };
 
     loadAnimations() {
@@ -485,6 +489,49 @@ class SceneManager {
                     console.log("took 2 damage");
                 }
             }
+        }
+        if (this.isaac_body != null) {
+            if(this.chest.boundingBox != null){
+                if (this.isaac_body.boundingBox.collide(this.chest.boundingBox)) {
+                    this.chest.open = true;
+                    if(this.driftCounter < 0.1){
+                        this.game.addEntity(this.key);
+                    }
+                    if(this.isaac_body.boundingBox.right-80 > this.chest.boundingBox.left){
+                        this.chest.locX -= 10;
+                    }
+                    if(this.isaac_body.boundingBox.left+80 < this.chest.boundingBox.right){
+                        this.chest.locX += 10;
+                    }
+                    if(this.isaac_body.boundingBox.bottom-60 > this.chest.boundingBox.top){
+                        this.chest.locY -= 10;
+                    }
+                    if(this.isaac_body.boundingBox.top+60 < this.chest.boundingBox.bottom){
+                        this.chest.locY += 10;
+                    }
+                    
+                }
+            }
+            if (this.isaac_body != null) {
+                if(this.key.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.key.boundingBox)) {
+                       this.key.boundingBox = undefined;
+                       this.key.removeFromWorld = true;
+                       this.isaac_body.keyPickup += 1
+                        
+                    }
+                }
+            }
+            if(this.chest != null){
+                if(this.chest.open == true){
+                    this.driftCounter += 1*this.game.clockTick;
+                    if(this.driftCounter < 1){
+                        this.key.locX += 200*this.game.clockTick;
+                        this.key.locY += 200*this.game.clockTick;
+                    }
+                }
+            }
+            
         }
 
 
