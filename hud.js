@@ -114,6 +114,7 @@ class Hud {
         const pickupX = this.hudPickupsX + 50;
         const pickupY = this.hudPickupsY + 30;
         const pickupYGap = 50;
+        ctx.font = '16px "Press Start 2P"';
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"),
             4, 4, 9, 11, this.hudPickupsX, this.hudPickupsY, 40, 50);
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/hud_pickups.png"),
