@@ -82,6 +82,8 @@ class SceneManager {
     };
 
     update() {
+        this.isaac_body.damage = this.isaac_head.damage;
+        this.isaac_body.range = this.isaac_head.range;
         this.menuButtonTimer += this.game.clockTick;
         if (!this.title && !this.paused) {
             if (this.timer === undefined) {
@@ -174,7 +176,7 @@ class SceneManager {
                                         console.log(this.isaac_body.xPosition)
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
@@ -270,7 +272,7 @@ class SceneManager {
                                         console.log(this.isaac_body.xPosition)
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
@@ -312,7 +314,7 @@ class SceneManager {
                                         console.log(this.isaac_body.xPosition)
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
@@ -410,7 +412,7 @@ class SceneManager {
                                         console.log(this.isaac_body.xPosition)
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+561.5,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
@@ -432,7 +434,7 @@ class SceneManager {
         if(this.isaac_head.tear != null){
             if(this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null){
                 if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
-                    this.fly_enemy.flyHealth -= this.isaac_head.tear.damage*this.game.clockTick
+                    this.fly_enemy.flyHealth -= this.isaac_head.tear.damage
                     console.log(this.fly_enemy.flyHealth)
                     this.isaac_head.tear.range = 0;
                     this.isaac_head.tear.boundingBox = undefined;
@@ -440,7 +442,7 @@ class SceneManager {
             }
             if (this.isaac_head.tear.boundingBox != null && this.spider_enemy.boundingBox != null) {
                 if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
-                    this.spider_enemy.health -= this.isaac_head.tear.damage*this.game.clockTick
+                    this.spider_enemy.health -= this.isaac_head.tear.damage
                     this.isaac_head.tear.range = 0;
                     this.isaac_head.tear.boundingBox = undefined;
                 }
@@ -449,14 +451,14 @@ class SceneManager {
 
                 if (this.isaac_head.tear.boundingBox != null && this.gurgling.boundingBox != null) {
                     if (this.isaac_head.tear.boundingBox.collide(this.gurgling.boundingBox)) {
-                        this.gurgling.health -= this.isaac_head.tear.damage * this.game.clockTick
+                        this.gurgling.health -= this.isaac_head.tear.damage
                         this.isaac_head.tear.range = 0;
                         this.isaac_head.tear.boundingBox = undefined;
                     }
                 }
                 if (this.isaac_head.tear.boundingBox != null && this.gurgling2.boundingBox != null) {
                     if (this.isaac_head.tear.boundingBox.collide(this.gurgling2.boundingBox)) {
-                        this.gurgling2.health -= this.isaac_head.tear.damage * this.game.clockTick
+                        this.gurgling2.health -= this.isaac_head.tear.damage
                         this.isaac_head.tear.range = 0;
                         this.isaac_head.tear.boundingBox = undefined;
                     }
@@ -505,16 +507,16 @@ class SceneManager {
                         this.game.addEntity(this.key);
                     }
                     if(this.isaac_body.boundingBox.right-80 > this.chest.boundingBox.left){
-                        this.chest.locX -= 10;
+                        this.chest.locX -= 500*this.game.clockTick;
                     }
                     if(this.isaac_body.boundingBox.left+80 < this.chest.boundingBox.right){
-                        this.chest.locX += 10;
+                        this.chest.locX += 500*this.game.clockTick;
                     }
                     if(this.isaac_body.boundingBox.bottom-60 > this.chest.boundingBox.top){
-                        this.chest.locY -= 10;
+                        this.chest.locY -= 500*this.game.clockTick;
                     }
                     if(this.isaac_body.boundingBox.top+60 < this.chest.boundingBox.bottom){
-                        this.chest.locY += 10;
+                        this.chest.locY += 500*this.game.clockTick;
                     }
                     
                 }
@@ -538,7 +540,42 @@ class SceneManager {
                     }
                 }
             }
-            
+            if (this.isaac_body != null && this.itemP != null) {
+                if(this.itemP.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.itemP.boundingBox)) {
+                        if(this.itemP.stigmata == true && this.itemP.itemGet == false){
+                            this.isaac_head.damage += 0.3;
+                            this.isaac_body.maxRedHearts += 2;
+                            this.isaac_body.redHearts += 2;
+                        }
+                        if(this.itemP.synthoil == true && this.itemP.itemGet == false){
+                            this.isaac_head.damage += 1;
+                            this.isaac_head.range += 1.5;
+                        }
+                        this.itemP.itemGet = true;
+                        if(this.driftCounter < 0.1){
+                            this.game.addEntity(this.key);
+                        }
+                        if(this.isaac_body.boundingBox.right-80 > this.itemP.boundingBox.left){
+                            this.itemP.locX -= 500*this.game.clockTick;
+                        }
+                        if(this.isaac_body.boundingBox.left+80 < this.itemP.boundingBox.right){
+                            this.itemP.locX += 500*this.game.clockTick;
+                        }
+                        if(this.isaac_body.boundingBox.bottom-60 > this.itemP.boundingBox.top){
+                            this.itemP.locY -= 500*this.game.clockTick;
+                        }
+                        if(this.isaac_body.boundingBox.top+60 < this.itemP.boundingBox.bottom){
+                            this.itemP.locY += 500*this.game.clockTick;
+                        }
+                        
+                    }
+                    else{
+                        this.itemP.locX = this.itemP.locXOg;
+                        this.itemP.locY = this.itemP.locYOg;
+                    }
+                }
+            }
         }
 
 

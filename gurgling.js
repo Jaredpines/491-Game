@@ -33,7 +33,7 @@ class Gurgling {
         this.bbWidth = 114
         this.bbHeight = 120
         this.boundingBox = null;
-        this.health = 10
+        this.health = 60
     };
 
     loadAnimations() {

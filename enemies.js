@@ -25,7 +25,7 @@ class Fly {
         this.bbWidth = 32
         this.bbHeight = 24
         this.boundingBox = null;
-        this.flyHealth = 100
+        this.flyHealth = 5
     };
 
     loadAnimations() {
@@ -128,7 +128,7 @@ class Spider {
         this.bbWidth = 30
         this.bbHeight = 30
         this.boundingBox = null;
-        this.health = 100
+        this.health = 6.5
     };
 
 

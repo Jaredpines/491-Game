@@ -26,8 +26,8 @@ class Isaac_Body {
 		this.maxHearts = 24;
 		this.movementSpeed = 500;
 		this.fireRate = 0;
-		this.damage = 1;
-		this.range = 0;
+		this.damage = 3.5;
+		this.range = 6.5;
 		this.shotSpeed = 0;
 		this.luck = 0;
 		this.devilChance = 100;
