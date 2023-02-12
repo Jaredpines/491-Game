@@ -11,7 +11,7 @@ class ItemP {
         this.boundingBox = null;
         this.synthoil = false;
         this.stigmata = false;
-        this.rand = Math.floor(Math.random() * 2)
+        this.rand = Math.floor(Math.random() * 2)+1
     };
 
 
@@ -25,7 +25,7 @@ class ItemP {
     draw(ctx){
         this.boundingBox = new BoundingBox(this.locX,this.locY,116,100)
         ctx.strokeRect(this.locX,this.locY,116,100);
-        if(this.rand == 0){
+        if(this.rand == 1){
             if(this.bounceCount<0.5 && this.itemGet == false){
                 this.synthoil = true;
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
@@ -36,7 +36,7 @@ class ItemP {
             }else{
                 this.bounceCount = 0;
             }
-        }else if(this.rand == 1){
+        }else if(this.rand == 2){
             if(this.bounceCount<0.5 && this.itemGet == false){
                 this.stigmata = true;
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
