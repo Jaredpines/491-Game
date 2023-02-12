@@ -109,6 +109,7 @@ class Spider {
         this.dead = false;
         this.walking = false;
         this.deadTime = 0;
+        this.tempCount = 0;
 
         this.xPosition = locX;
         this.yPosition = locY;
@@ -146,13 +147,20 @@ class Spider {
         const spiderWalkingHeight = 15
         const spiderWalkingWidth = 21
 
+        const spiderDeathStartX = 68
+        const spiderDeathStartY = 8
+        const spiderDeathHeightAndWidth = 60
+
+
         //Idle = 0
         this.animations[0] = new Animator(this.spiderSpriteSheet,
             spiderIdleStartX, spiderIdleStartY, spiderIdleWidth, spiderIdleHeight, 1, 1, 2.5);
-        //Walking 1
+        //Walking = 1
         this.animations[1] = new VertAnimator(this.spiderSpriteSheet,
             spiderWalkingStartX, spiderWalkingStartY, spiderWalkingWidth, spiderWalkingHeight, 4, 0.1, 2.5);
-
+        //Dead = 2
+        this.animations[2] = new Animator(this.spiderSpriteSheet,
+            spiderDeathStartX, spiderDeathStartY, spiderDeathHeightAndWidth, spiderDeathHeightAndWidth, 12, 0.1, 2.5)
     };
 
     update() {
@@ -172,6 +180,7 @@ class Spider {
         //TODO walk only when moving for anim
         this.walking = true
         if (!this.paused && !this.dead && !this.isaac.crying) {
+
             let r = Math.floor(Math.random() * 100);
             if(r===4){
                 this.up = false;
@@ -204,15 +213,13 @@ class Spider {
             }
             if(this.yPosition > this.moveBoundsUp && this.up === true){
                 this.yPosition -= this.game.clockTick*this.movementSpeed;
-
                 this.xPosition -= this.game.clockTick*r;
+
             }
             if(this.yPosition < this.moveBoundsDown && this.down === true){
                 this.yPosition += this.game.clockTick*this.movementSpeed;
                 this.xPosition -= this.game.clockTick*r;
             }
-
-            
 
         }
 
@@ -227,9 +234,152 @@ class Spider {
         this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
         if (this.dead) {
-            this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
+            this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         } else if (this.walking) {
             this.animations[1].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+        } else {
+            this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+        }
+    }
+}
+
+class JumpingSpider {
+    constructor(locX, locY, game, isaac) {
+        this.isaac = isaac
+        this.game = game;
+        this.paused = false;
+        this.dead = false;
+        this.windUp = false;
+        this.jumpUp = false;
+        this.jumpDown = false;
+        this.jumpPeak = 0;
+        this.deadTime = 0;
+        this.tempCount = 0;
+
+        this.xPosition = locX;
+        this.yPosition = locY;
+        this.moveBoundsRight = this.isaac.moveBoundsRight
+        this.moveBoundsLeft = this.isaac.moveBoundsLeft
+        this.moveBoundsUp = this.isaac.moveBoundsUp
+        this.moveBoundsDown = this.isaac.moveBoundsDown
+        this.movementSpeed = 200;
+
+        this.jumpingSpiderSpriteSheet = ASSET_MANAGER.getAsset("./res/monster_jumping_spider.png");
+        this.spiderSpriteSheet = ASSET_MANAGER.getAsset("./res/monster_spider.png");
+
+        this.animations = [];
+        this.loadAnimations();
+        this.bbWidth = 30
+        this.bbHeight = 30
+        this.boundingBox = null;
+        this.health = 100
+    };
+
+
+    loadAnimations() {
+        for (var i = 0; i < 1; i++) { // Two States
+            this.animations.push([]);
+        }
+
+        const idleStartX = 5
+        const idleStartY = 16
+        const idleWidth = 37
+        const idleHeight = 23
+
+        const windUpStartX = 0
+        const windUpStartY = 16
+        const windUpHeight = 23
+        const windUpWidth = 47
+
+        const jumpUpStartX = 0
+        const jumpUpStartY = 51
+        const jumpUpWidth = 48
+        const jumpUpHeight = 37
+
+        const jumpDownStartX = 0
+        const jumpDownStartY = 99
+        const jumpDownWidth = 48
+        const jumpDownHeight = 37
+
+        const deathStartX = 68
+        const deathStartY = 8
+        const deathHeightAndWidth = 60
+
+
+        //Idle = 0
+        this.animations[0] = new Animator(this.jumpingSpiderSpriteSheet,
+            idleStartX, idleStartY, idleWidth, idleHeight, 1, 1, 2.5);
+        //Wind Up = 1
+        this.animations[1] = new VertAnimator(this.jumpingSpiderSpriteSheet,
+            windUpStartX, windUpStartY, windUpWidth, windUpHeight, 4, 0.2, 2.5);
+        //Jump Up = 2
+        this.animations[2] = new Animator(this.jumpingSpiderSpriteSheet,
+            jumpUpStartX, jumpUpStartY, jumpUpWidth, jumpUpHeight, 4, 0.2, 2.5);
+        //Jump Down = 3
+        this.animations[3] = new Animator(this.jumpingSpiderSpriteSheet,
+            jumpDownStartX, jumpDownStartY, jumpDownWidth, jumpDownHeight, 4, 0.2, 2.5);
+        //Dead = 4
+        this.animations[4] = new Animator(this.spiderSpriteSheet,
+            deathStartX, deathStartY, deathHeightAndWidth, deathHeightAndWidth, 12, 0.1, 2.5)
+    };
+
+    update() {
+
+        if (this.dead) {
+            if (this.deadTime === 0) {
+                this.deadTime += this.game.clockTick;
+            }
+            if (this.deadTime > 1.1) {
+                console.log("runs")
+                this.boundingBox = undefined;
+                this.removeFromWorld = true;
+
+            }
+        }
+
+        if (!this.paused && !this.dead && !this.isaac.crying) {
+            let lastIsaacXPosition = this.isaac.xPosition
+            let lastIsaacYPosition = this.isaac.yPosition
+
+            if (this.xPosition <= lastIsaacXPosition && this.yPosition <= lastIsaacYPosition) {
+                //above, left of isaac
+
+            } else if (this.xPosition >= lastIsaacXPosition && this.yPosition <= lastIsaacYPosition) {
+                //above, right of isaac
+
+            } else if (this.xPosition >= lastIsaacXPosition && this.yPosition >= lastIsaacYPosition) {
+                //below, right of isaac
+
+            } else if (this.xPosition <= lastIsaacXPosition && this.yPosition >= lastIsaacYPosition) {
+                //below, left of isaac
+
+            }
+
+            while(this.xPosition){
+                this.xPosition += this.game.clockTick*this.movementSpeed;
+                this.yPosition += this.game.clockTick*r;
+            }
+
+        }
+
+        if(this.health<=0){
+            this.dead = true;
+            this.deadTime += 1*this.game.clockTick;
+        }
+
+    };
+
+    draw(ctx) {
+        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
+        ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
+        if (this.dead) {
+            this.animations[4].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+        } else if (this.windUp) {
+            this.animations[1].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+        } else if (this.jumpUp) {
+            this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+        } else if (this.jumpDown) {
+            this.animations[3].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         }

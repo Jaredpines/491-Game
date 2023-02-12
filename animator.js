@@ -14,7 +14,6 @@ class Animator {
 		}
 		const frame = this.currentFrame();
 
-
 		ctx.drawImage(this.spriteSheet,
 			this.xStart + this.width*frame, this.yStart,
 			this.width, this.height,

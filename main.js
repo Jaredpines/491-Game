@@ -78,6 +78,7 @@ ASSET_MANAGER.queueDownload("./res/itemP.png")
 ASSET_MANAGER.queueDownload("./res/key.png")
 ASSET_MANAGER.queueDownload("./res/monster_fly.png")
 ASSET_MANAGER.queueDownload("./res/monster_spider.png")
+ASSET_MANAGER.queueDownload("./res/monster_jumping_spider.png")
 ASSET_MANAGER.queueDownload("./res/gurgling_spritesheet.png")
 
 

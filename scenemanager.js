@@ -61,7 +61,7 @@ class SceneManager {
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
-        //this.game.addEntity(this.fly_enemy);
+        this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
@@ -485,6 +485,13 @@ class SceneManager {
             if(this.fly_enemy.boundingBox != null){
                 if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox)
                     || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox)) {
+                    this.isaac_body.takeDamage(2);
+                    console.log("took 2 damage");
+                }
+            }
+            if(this.spider_enemy.boundingBox != null){
+                if (this.isaac_head.boundingBox.collide(this.spider_enemy.boundingBox)
+                    || this.isaac_body.boundingBox.collide(this.spider_enemy.boundingBox)) {
                     this.isaac_body.takeDamage(2);
                     console.log("took 2 damage");
                 }
