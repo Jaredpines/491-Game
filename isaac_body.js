@@ -16,6 +16,7 @@ class Isaac_Body {
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
 		this.tempCount = 0;
+		this.deadTime = 0;
 
 		//stats
 		this.redHearts = 5;
@@ -46,28 +47,28 @@ class Isaac_Body {
 	takeDamage(damage) {
 		if (this.blackHearts > 0) {
 			if (this.blackHearts - damage < 0) {
-				damage = damage*this.game.clockTick - this.blackHearts*this.game.clockTick;
+				damage = damage - this.blackHearts;
 				this.blackHearts = 0;
 			} else {
-				this.blackHearts -= damage*this.game.clockTick;
+				this.blackHearts -= damage;
 				damage = 0;
 			}
 		}
 		if (this.blueHearts > 0) {
 			if (this.blueHearts - damage < 0) {
-				damage = damage*this.game.clockTick - this.blueHearts*this.game.clockTick
+				damage = damage - this.blueHearts;
 				this.blueHearts = 0;
 			} else {
-				this.blueHearts -= damage*this.game.clockTick;
+				this.blueHearts -= damage;
 				damage = 0;
 			}
 		}
 		if (this.redHearts > 0) {
 			if (this.redHearts - damage < 0) {
-				damage = damage*this.game.clockTick - this.redHearts*this.game.clockTick
+				damage = damage - this.redHearts;
 				this.redHearts = 0;
 			} else {
-				this.redHearts -= damage*this.game.clockTick;
+				this.redHearts -= damage;
 				damage = 0;
 			}
 		}
@@ -77,6 +78,17 @@ class Isaac_Body {
 			this.game.camera.gameOver = true;
 		}
 		//this.devilChance -= 25*this.game.clockTick;
+		if (!this.dead) {
+			let c = Math.floor(Math.random() * (4 - 1) + 1);
+			if(c===1){
+				ASSET_MANAGER.playAsset("./sounds/hurt_grunt.wav");
+			}else if(c===2){
+				ASSET_MANAGER.playAsset("./sounds/hurt_grunt_1.wav");
+			}else if(c===3) {
+				ASSET_MANAGER.playAsset("./sounds/hurt_grunt_2.wav");
+			}
+		}
+
 	}
 
 	loadAnimations() {
@@ -153,9 +165,19 @@ class Isaac_Body {
 			}
 		}
 
-
 		if (this.dead) {
 			this.game.camera.gameOver = true;
+
+			if (this.deadTime === 0) {
+				this.deadTime += this.game.clockTick;
+				ASSET_MANAGER.playAsset("./sounds/isaac_dies_new.wav")
+			}
+			if (this.deadTime > 2) {
+				console.log("runs")
+				this.boundingBox = undefined;
+				this.removeFromWorld = true;
+
+			}
 		}
 
 

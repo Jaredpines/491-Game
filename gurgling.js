@@ -99,12 +99,13 @@ class Gurgling {
 
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
+                ASSET_MANAGER.playAsset("./sounds/boss_gurgle_lite.wav")
+
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
                 this.boundingBox = undefined;
                 this.removeFromWorld = true;
-
             }
         }
 

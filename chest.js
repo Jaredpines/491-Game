@@ -7,12 +7,12 @@ class Chest {
         this.width = document.getElementById('gameWorld').width
         this.boundingBox = null;
         this.open = false;
+        this.openSound = false;
     };
 
 
     update(){
-        
-        
+
     };
 
 

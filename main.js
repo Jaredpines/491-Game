@@ -96,6 +96,20 @@ ASSET_MANAGER.queueDownload("./res/monster_spider.png")
 ASSET_MANAGER.queueDownload("./res/monster_jumping_spider.png")
 ASSET_MANAGER.queueDownload("./res/gurgling_spritesheet.png")
 
+//music assets
+ASSET_MANAGER.queueDownload("./music/title_screen.ogg")
+ASSET_MANAGER.queueDownload("./music/the_cellar_alt.ogg")
+
+//sounds
+ASSET_MANAGER.queueDownload("./sounds/hurt_grunt.wav")
+ASSET_MANAGER.queueDownload("./sounds/hurt_grunt_1.wav")
+ASSET_MANAGER.queueDownload("./sounds/hurt_grunt_2.wav")
+ASSET_MANAGER.queueDownload("./sounds/isaac_dies_new.wav")
+ASSET_MANAGER.queueDownload("./sounds/animal_squish_1.wav")
+ASSET_MANAGER.queueDownload("./sounds/boss_gurgle_lite.wav")
+ASSET_MANAGER.queueDownload("./sounds/chest_open_1.wav")
+
+
 
 ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");

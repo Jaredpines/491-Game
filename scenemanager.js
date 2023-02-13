@@ -12,6 +12,7 @@ class SceneManager {
         this.title = true;
         this.credits = false;
         this.level = null;
+        this.titleMusic = true;
 
         this.titleWidth = document.getElementById('gameWorld').width;
         this.titleHeight = document.getElementById('gameWorld').height;
@@ -43,6 +44,10 @@ class SceneManager {
         this.i = 1;
         this.coolDown = 0;
         this.driftCounter = 0;
+        this.tempClock = 0;
+
+
+
 
     };
 
@@ -67,6 +72,9 @@ class SceneManager {
         //this.game.addEntity(this.jumping_spider_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
+        ASSET_MANAGER.pauseBackgroundMusic();
+        ASSET_MANAGER.playAsset("./music/the_cellar_alt.ogg");
+        ASSET_MANAGER.autoRepeat("./music/the_cellar_alt.ogg");
     };
 
     loadAnimations() {
@@ -83,10 +91,21 @@ class SceneManager {
 
     };
 
+    updateAudio() {
+        var mute = document.getElementById("mute").checked;
+        var volume = document.getElementById("volume").value;
+
+        ASSET_MANAGER.muteAudio(mute);
+        ASSET_MANAGER.adjustVolume(volume);
+    }
+
     update() {
+
+
         this.isaac_body.damage = this.isaac_head.damage;
         this.isaac_body.range = this.isaac_head.range;
-        this.menuButtonTimer += this.game.clockTick;
+
+
         if (!this.title && !this.paused) {
             if (this.timer === undefined) {
                 this.timer = 0;
@@ -139,6 +158,9 @@ class SceneManager {
             this.game.addEntity(new SceneManager(this.game));
 
         }
+
+        this.updateAudio();
+
         if(this.game.keys.k){
             this.game.ctx.translate(0,-2000*this.game.clockTick)
         }
@@ -436,6 +458,8 @@ class SceneManager {
                 
             }
         }
+        this.tempClock += 1*this.game.clockTick;
+
         if(this.isaac_head.tear != null){
             if(this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null){
                 if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
@@ -468,45 +492,52 @@ class SceneManager {
                         this.isaac_head.tear.boundingBox = undefined;
                     }
                 }
-                if (this.isaac_head != null && this.isaac_body != null) {
+                if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
                     if(this.gurgling.boundingBox != null){
                         if (this.isaac_head.boundingBox.collide(this.gurgling.boundingBox)
                             || this.isaac_body.boundingBox.collide(this.gurgling.boundingBox)) {
-                            this.isaac_body.takeDamage(2);
-                            console.log("took 2 damage");
+                            this.isaac_body.takeDamage(1);
+                            console.log("took 1 damage");
+                            this.tempClock = 0;
                         }
                     }
                 }
-                if (this.isaac_head != null && this.isaac_body != null) {
+                if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
                     if(this.gurgling2.boundingBox != null){
                         if (this.isaac_head.boundingBox.collide(this.gurgling2.boundingBox)
                             || this.isaac_body.boundingBox.collide(this.gurgling2.boundingBox)) {
-                            this.isaac_body.takeDamage(2);
-                            console.log("took 2 damage");
+                            this.isaac_body.takeDamage(1);
+                            console.log("took 1 damage");
+                            this.tempClock = 0;
                         }
                     }
                 }
             }
         }
-        if (this.isaac_head != null && this.isaac_body != null) {
+        if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
             if(this.fly_enemy.boundingBox != null){
                 if (this.isaac_head.boundingBox.collide(this.fly_enemy.boundingBox)
                     || this.isaac_body.boundingBox.collide(this.fly_enemy.boundingBox)) {
-                    this.isaac_body.takeDamage(2);
-                    console.log("took 2 damage");
+                    this.isaac_body.takeDamage(1);
+                    console.log("took 1 damage");
+                    this.tempClock = 0;
                 }
             }
             if(this.spider_enemy.boundingBox != null){
                 if (this.isaac_head.boundingBox.collide(this.spider_enemy.boundingBox)
                     || this.isaac_body.boundingBox.collide(this.spider_enemy.boundingBox)) {
-                    this.isaac_body.takeDamage(2);
-                    console.log("took 2 damage");
+                    this.isaac_body.takeDamage(1);
+                    console.log("took 1 damage");
+                    this.tempClock = 0;
                 }
             }
         }
         if (this.isaac_body != null) {
             if(this.chest.boundingBox != null){
                 if (this.isaac_body.boundingBox.collide(this.chest.boundingBox)) {
+                    if (this.chest.open == false) {
+                        ASSET_MANAGER.playAsset("./sounds/chest_open_1.wav")
+                    }
                     this.chest.open = true;
                     if(this.driftCounter < 0.1){
                         this.game.addEntity(this.key);
@@ -583,6 +614,12 @@ class SceneManager {
             }
         }
 
+        if (this.title === true && this.titleMusic === true && this.game.click) {
+            ASSET_MANAGER.pauseBackgroundMusic();
+            ASSET_MANAGER.playAsset("./music/title_screen.ogg");
+            ASSET_MANAGER.autoRepeat("./music/title_screen.ogg");
+            this.titleMusic = false;
+        }
 
     };
 

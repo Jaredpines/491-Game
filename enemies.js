@@ -46,6 +46,7 @@ class Fly {
 
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
+                ASSET_MANAGER.playAsset("./sounds/animal_squish_1.wav")
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
@@ -84,8 +85,8 @@ class Fly {
         }
 
         if(this.flyHealth<=0){
-            this.dead = true;
             this.deadTime += 1*this.game.clockTick
+            this.dead = true;
         }
 
     };
@@ -168,6 +169,8 @@ class Spider {
         if (this.dead) {
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
+                ASSET_MANAGER.playAsset("./sounds/animal_squish_1.wav")
+
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
@@ -334,6 +337,8 @@ class JumpingSpider {
         if (this.dead) {
             if (this.deadTime === 0) {
                 this.deadTime += this.game.clockTick;
+                ASSET_MANAGER.playAsset("./sounds/animal_squish_1.wav")
+
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
