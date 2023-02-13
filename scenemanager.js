@@ -61,7 +61,7 @@ class SceneManager {
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
-        this.game.addEntity(this.fly_enemy);
+        //this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);

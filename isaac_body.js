@@ -4,15 +4,14 @@ class Isaac_Body {
 		this.count = 0;
 		this.dead = false;
 		this.crying = true;
-		this.xPosition = 692;
-		this.yPosition = 424;
+		this.xPosition = 735.5;
+		this.yPosition = 498.5;
 		this.moveBoundsLeft = 138;
-		this.moveBoundsRight = 1234;
-		this.moveBoundsUp = 138;
-		this.moveBoundsDown = 764;
-		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac.png");
+		this.moveBoundsRight = 1214;
+		this.moveBoundsUp = 128;
+		this.moveBoundsDown = 724;
+		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac_walk.png");
 		this.isaacDeadSprite = ASSET_MANAGER.getAsset("./res/crying_isaac.png");
-		this.animator = new Animator(ASSET_MANAGER.getAsset("./res/isaac.png"), 2, 80, 40, 20, 1, 0.1, 2);
 		this.boundingBox = null;
 		this.facing = 2; // 0 = up, 1 = right, 2 = down, 3 = left
 		this.state = 0; // 0 = idle, 1 = walking
@@ -89,23 +88,23 @@ class Isaac_Body {
 
 		//Idle Animation state = 0
 		//Facing Up = 0
-		this.animations[0][0] = new Animator(this.isaacSpritesheet, 0, 79, 32, 20, 1, 0.1, 3.5);
+		this.animations[0][0] = new Animator(this.isaacSpritesheet, 0, 96, 32, 32, 1, 0.1, 4);
 		//Facing Right = 1
-		this.animations[1][0] = new Animator(this.isaacSpritesheet, 0, 122, 32, 20, 1, 0.1, 3.5);
+		this.animations[1][0] = new Animator(this.isaacSpritesheet, 0, 32, 32, 32, 1, 0.1, 4);
 		//Facing Down = 2
-		this.animations[2][0] = new Animator(this.isaacSpritesheet, 0, 188, 32, 20, 1, 0.1, 3.5);
+		this.animations[2][0] = new Animator(this.isaacSpritesheet, 0, 0, 32, 32, 1, 0.1, 4);
 		//Facing Left = 3
-		this.animations[3][0] = new Animator(this.isaacSpritesheet, 0, 144, 32, 20, 1, 0.1, 3.5);
+		this.animations[3][0] = new Animator(this.isaacSpritesheet, 0, 64, 32, 32, 1, 0.1, 4);
 
 		//Walking Animation state = 1
 		//Facing Up = 0
-		this.animations[0][1] = new Animator(this.isaacSpritesheet, 0, 79, 32, 20, 10, 0.1, 3.5);
+		this.animations[0][1] = new Animator(this.isaacSpritesheet, 0, 96, 32, 32, 10, 0.1, 4);
 		//Facing Right = 1
-		this.animations[1][1] = new Animator(this.isaacSpritesheet, 0, 122, 32, 20, 10, 0.1, 3.5);
+		this.animations[1][1] = new Animator(this.isaacSpritesheet, 0, 32, 32, 32, 10, 0.1, 4);
 		//Facing Down = 2
-		this.animations[2][1] = new Animator(this.isaacSpritesheet, 0, 188, 32, 20, 10, 0.1, 3.5);
+		this.animations[2][1] = new Animator(this.isaacSpritesheet, 0, 0, 32, 32, 10, 0.1, 4);
 		//Facing Left = 3
-		this.animations[3][1] = new Animator(this.isaacSpritesheet, 0, 144, 32, 20, 10, 0.1, 3.5);
+		this.animations[3][1] = new Animator(this.isaacSpritesheet, 0, 64, 32, 32, 10, 0.1, 4);
 
 
 
@@ -163,8 +162,8 @@ class Isaac_Body {
 
 
 	draw(ctx){
-		this.boundingBox = new BoundingBox(this.xPosition+30,this.yPosition+5,55,40);
-		ctx.strokeRect(this.xPosition+30,this.yPosition+5,55,40);
+		this.boundingBox = new BoundingBox(this.xPosition+32,this.yPosition+44,64,64);
+		//ctx.strokeRect(this.xPosition+32,this.yPosition+44,64,64);
 		this.count += (1*this.game.clockTick);
 		if(this.count < 2) {
 			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
@@ -186,24 +185,23 @@ class Isaac_Body {
 				this.xPosition = this.xPosition+50*this.game.clockTick
 
 			}else if(this.count < 2){
-				console.log("yep")
-				this.xPosition = 692;
+				this.xPosition = 735.5;
 			}
 
 			this.crying = false
 
 			
 			
-		}else if(this.game.keys.ArrowDown && !this.dead){
+		}else if(this.game.keys.s && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
-		}else if(this.game.keys.ArrowRight && !this.dead){
+		}else if(this.game.keys.d && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
-		}else if(this.game.keys.ArrowLeft && !this.dead){
-			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+		}else if(this.game.keys.a && !this.dead){
+			this.animations[this.facing][this.state].drawFrameReverse(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
-		}else if(this.game.keys.ArrowUp && !this.dead){
+		}else if(this.game.keys.w && !this.dead){
 			this.animations[this.facing][this.state].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
 			
 			

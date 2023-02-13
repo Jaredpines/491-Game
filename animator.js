@@ -20,6 +20,20 @@ class Animator {
 			x, y,
 			this.width * this.scale, this.height * this.scale);
 	};
+	drawFrameReverse(tick, ctx, x, y){
+
+		this.elapsedTime += tick
+		if(this.elapsedTime > this.totalTime){
+			this.elapsedTime -= this.totalTime;
+		}
+		const frame = this.currentFrame();
+
+		ctx.drawImage(this.spriteSheet,
+			288 - this.width*frame, this.yStart,
+			this.width, this.height,
+			x, y,
+			this.width * this.scale, this.height * this.scale);
+	};
 
 	currentFrame(){
 		return Math.floor(this.elapsedTime / this.frameDuration)

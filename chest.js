@@ -18,12 +18,12 @@ class Chest {
 
     draw(ctx){
         if(this.open == false){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/chest_closed.png"),this.locX,this.locY,96,75);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/chest_closed.png"),this.locX,this.locY,96,96);
         }else{
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/chest_open.png"),this.locX,this.locY,96,75);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/chest_open.png"),this.locX,this.locY,96,96);
         }
-        this.boundingBox = new BoundingBox(this.locX,this.locY,96,75);
-        ctx.strokeRect(this.locX,this.locY,96,75);
+        this.boundingBox = new BoundingBox(this.locX,this.locY,96,96);
+        ctx.strokeRect(this.locX,this.locY,96,96);
         
     };
 

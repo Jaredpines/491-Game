@@ -28,8 +28,8 @@ class Up_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_light.png"),(this.width/2)-(236/2)-this.locX,160-this.locY,236,152);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door.png"),(this.width/2)-(236/2)-this.locX,50-this.locY,236,152);
         }
-        this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX+10,80-this.locY,110,92);
-        ctx.strokeRect((this.width/2)-(125/2)-this.locX+10,80-this.locY,110,92);
+        this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX+10,100-this.locY,110,92);
+        ctx.strokeRect((this.width/2)-(125/2)-this.locX+10,100-this.locY,110,92);
     };
 
 }
