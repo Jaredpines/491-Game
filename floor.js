@@ -15,6 +15,7 @@ class Floor {
         this.roomMax = (5*this.level);
         this.entityCount = 0;
         this.TRoomMax = 1;
+        this.DRoomMax = 1;
         this.BRoomMax = 1;
 
     };
@@ -224,6 +225,87 @@ class Floor {
                                 this.row = index;
                                 this.col = index2;
                                 this.TRoomMax--;
+                                roomAdded = true;
+                            }
+                        }
+                    } 
+                
+                }
+            }
+            if(this.col != 21 &&this.rooms[this.row][this.col] != null){
+                this.game.addEntity(this.rooms[this.row][this.col]);
+                this.col = 21;
+                this.entityCount++;
+            }
+            
+        }
+    }
+
+    addDevilRoom(direction){
+        if(direction === "D"){
+            let r = Math.floor(Math.random() * 100);
+            let roomAdded = false;
+            for (let index = 0; index < this.rooms.length; index++) {
+                for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
+                    if(index2-1 > 0){
+                        if(this.rooms[index][index2] != null && this.rooms[index][index2].skin == "b" &&this.rooms[index][index2] != null && this.rooms[index][index2-1] == null){
+                            if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
+                                this.rooms[index][index2-1] = new Devil_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"DL",this.game)
+                                  
+                                this.row = index;
+                                this.col = index2-1;
+                                this.DRoomMax--;
+                                roomAdded = true;
+                            }
+                        }
+                    } 
+                
+                }
+            }
+            for (let index = 0; index < this.rooms.length; index++) {
+                for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
+                    if(index2+1 < this.rooms[index].length){
+                        if(this.rooms[index][index2] != null && this.rooms[index][index2].skin == "b" &&this.rooms[index][index2] != null && this.rooms[index][index2+1] == null){
+                            if(r == 5 && roomAdded == false&&this.rooms[index+1][index2+1] == null&&this.rooms[index-1][index2+1] == null){
+                                
+                                this.rooms[index][index2+1] = new Devil_Room(-(this.farthestRight+(1471*(index2))),-(this.farthestUp-(997*(index-1))),"DR",this.game);
+                                this.row = index;
+                                this.col = index2+1;
+                                this.DRoomMax--;
+                                roomAdded = true;
+                            }
+                        }
+                    } 
+                
+                }
+            }
+            for (let index = 0; index < this.rooms.length; index++) {
+                for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
+                    
+                    if(index-1 > 0 && index+1 < this.rooms.length){
+                        if(this.rooms[index+1][index2] != null && this.rooms[index+1][index2].skin == "b" &&this.rooms[index+1][index2] != null && this.rooms[index][index2] == null){
+                            if(r == 6 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
+                                this.rooms[index][index2] = new Devil_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"DU",this.game)
+                                this.row = index;
+                                this.col = index2;
+                                this.DRoomMax--;
+                                roomAdded = true;
+                            }
+                        }
+                    } 
+                
+                }
+            }
+            for (let index = 0; index < this.rooms.length; index++) {
+                for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
+                    if(index+1 < this.rooms.length && index-1 > 0){
+                        if(this.rooms[index-1][index2] != null && this.rooms[index-1][index2].skin == "b" &&this.rooms[index-1][index2] != null && this.rooms[index][index2] == null){
+                            if(r == 7 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
+                                
+                                this.rooms[index][index2] = new Devil_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"DD",this.game)
+                                this.row = index;
+                                this.col = index2;
+                                this.DRoomMax--;
                                 roomAdded = true;
                             }
                         }

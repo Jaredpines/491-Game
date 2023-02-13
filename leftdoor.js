@@ -29,6 +29,10 @@ class Left_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_light_left.png"),160-this.locX,(this.height/2)-(236/2)+this.locY,152,236);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_left.png"),50-this.locX,(this.height/2)-(236/2)+this.locY,152,236);
         }
+        else if(this.skin == "d"){        
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_door_way_left.png"),70-this.locX,(this.height/2)-(125/2)+this.locY,112,125);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_door_left.png"),40-this.locX,(this.height/2)-(196/2)+this.locY,152,196);
+        }
         this.boundingBox = new BoundingBox(80-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
         ctx.strokeRect(80-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
         

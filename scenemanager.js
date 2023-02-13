@@ -123,6 +123,9 @@ class SceneManager {
             while(this.floor1.BRoomMax > 0){
                 this.floor1.addBossRoom("B");
             }
+            while(this.floor1.DRoomMax > 0){
+                this.floor1.addDevilRoom("D");
+            }
             this.floor1.toString();
             //this.game.ctx.translate(0,-200)
             //console.log(this.game.entities)

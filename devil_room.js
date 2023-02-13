@@ -58,14 +58,14 @@ class Devil_Room {
             this.game.orderCorrecter();
             this.direction = "";
         }else if(this.direction === "DL"||this.direction === "DR"||this.direction === "DU"||this.direction === "DD"){
-            this.treasureRoom()
+            this.devilRoom()
         }else{
             this.direction = "";
         }
         
     };
 
-    treasureRoom(){
+    devilRoom(){
         if(this.direction === "DL"){
             this.direction = "left";
             this.skin = "d"
@@ -82,15 +82,15 @@ class Devil_Room {
     }
 
     draw(ctx){
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTLX,this.locTLY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_room.png"),this.locTLX,this.locTLY,769,532);
         ctx.scale(-1,1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTRX,this.locTRY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_room.png"),this.locTRX,this.locTRY,769,532);
         ctx.restore();
         ctx.scale(-1,-1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBLX,this.locBLY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_room.png"),this.locBLX,this.locBLY,769,532);
         ctx.restore();
         ctx.scale(-1,1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBRX,this.locBRY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_room.png"),this.locBRX,this.locBRY,769,532);
         ctx.scale(-1,-1);
         ctx.restore();
         
