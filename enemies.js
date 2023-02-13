@@ -34,7 +34,7 @@ class Fly {
         }
 
         //Alive = 0
-        this.animations[0] = new Animator(this.flySpritesheet, 0, 0, 32, 24, 2, 0.1, 2.5);
+        this.animations[0] = new Animator(this.flySpritesheet, 0, 32, 32, 32, 3, 0.08, 2.5);
         //Dead = 1
         this.animations[1] = new Animator(this.flySpritesheet, 0, 75, 64, 64, 12, 0.1, 2.5);
 
@@ -240,6 +240,7 @@ class Spider {
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         }
+        
     }
 }
 

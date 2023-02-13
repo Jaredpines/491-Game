@@ -166,7 +166,7 @@ class Isaac_Body {
 		//ctx.strokeRect(this.xPosition+32,this.yPosition+44,64,64);
 		this.count += (1*this.game.clockTick);
 		if(this.count < 2) {
-			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,130,85);
+			ctx.drawImage(ASSET_MANAGER.getAsset("./res/crying_isaac.png"),this.xPosition,this.yPosition,128,96);
 			if(this.count < 0.25) {
 				this.xPosition = this.xPosition-50*this.game.clockTick
 			}else if(this.count < 0.5){

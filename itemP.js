@@ -23,8 +23,8 @@ class ItemP {
     
 
     draw(ctx){
-        this.boundingBox = new BoundingBox(this.locX,this.locY,116,100)
-        ctx.strokeRect(this.locX,this.locY,116,100);
+        this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
+        ctx.strokeRect(this.locX,this.locY,128,128);
         if(this.rand == 1){
             if(this.bounceCount<0.5 && this.itemGet == false){
                 this.synthoil = true;
@@ -50,6 +50,6 @@ class ItemP {
         }
         
         
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,116,100);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
     };
 }
