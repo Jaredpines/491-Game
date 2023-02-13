@@ -33,7 +33,8 @@ class ItemP {
             }else if(this.bounceCount < 1 && this.itemGet == false){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
                 this.itemY -= 25*this.game.clockTick;
-            }else{
+            }else if(this.bounceCount >= 1 && this.itemGet == false){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
                 this.bounceCount = 0;
             }
         }else if(this.rand == 2){
@@ -44,7 +45,8 @@ class ItemP {
             }else if(this.bounceCount < 1 && this.itemGet == false){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
                 this.itemY -= 25*this.game.clockTick;
-            }else{
+            }else if(this.bounceCount >= 1 && this.itemGet == false){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
                 this.bounceCount = 0;
             }
         }

@@ -11,7 +11,7 @@ class Isaac_Head {
 		this.movementSpeed = 500;
 		this.moveBoundsLeft = 138;
 		this.moveBoundsRight = 1214;
-		this.moveBoundsUp = 128-44;
+		this.moveBoundsUp = 128-42;
 		this.moveBoundsDown = 724-44;
         this.boundingBox = null;
 		this.damage = 3.50;
