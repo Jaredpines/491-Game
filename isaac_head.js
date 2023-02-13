@@ -18,6 +18,12 @@ class Isaac_Head {
 		this.range = 6.5;
 		this.shotSpeed = 1;
 		this.tear;
+
+		//costumes
+		this.costumes = []
+		this.stigmataCostume = ASSET_MANAGER.getAsset("./res/costume_stigmata.png");
+		this.synthoilCostume = ASSET_MANAGER.getAsset("./res/costume_synthoil.png");
+
 	};
 
 	
