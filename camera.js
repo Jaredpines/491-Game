@@ -5,6 +5,8 @@ class Camera {
         this.slideR = 1471;
         this.slideU = 0;
         this.slideD = 997;
+        this.ogX = 0;
+        this.ogY = 0;
     };
     cameraUp(){
         if(this.slideU < 997){
@@ -14,6 +16,7 @@ class Camera {
             let diff = this.slideU - 997
             this.game.ctx.translate(0,-diff)
             this.slideU = 0;
+            this.ogY -= 997
         }
         
     }
@@ -25,6 +28,7 @@ class Camera {
             let diff = this.slideD
             this.game.ctx.translate(0,-diff)
             this.slideD = 997;
+            this.ogY += 997
         }
     }
     cameraLeft(){
@@ -35,6 +39,7 @@ class Camera {
             let diff = this.slide - 1471
             this.game.ctx.translate(-diff,0)
             this.slide = 0;
+            this.ogX -= 1471
         }
     }
     cameraRight(){
@@ -45,6 +50,7 @@ class Camera {
             let diff = this.slideR
             this.game.ctx.translate(-diff,0)
             this.slideR = 1471;
+            this.ogX += 1471
         }
     }
     

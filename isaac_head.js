@@ -57,7 +57,7 @@ class Isaac_Head {
 
 	draw(ctx){
 		this.boundingBox = new BoundingBox(this.xPosition+10,this.yPosition+10,110,96);
-		//ctx.strokeRect(this.xPosition+10,this.yPosition+10,110,96);
+		ctx.strokeRect(this.xPosition+10,this.yPosition+10,110,96);
 		this.count += (1*this.game.clockTick);
 
 		if(this.count < 2 && !this.game.camera.gameOver){

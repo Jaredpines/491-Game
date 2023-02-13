@@ -153,7 +153,7 @@ class SceneManager {
         } else if (this.game.keys.Shift && this.gameOver === true) {
             this.game.camera.gameOver = false;
             this.gameOver = false;
-
+            this.game.ctx.translate(this.floor1.camera.ogX,this.floor1.camera.ogY)
             this.clearEntities();
             this.game.addEntity(new SceneManager(this.game));
 
@@ -492,24 +492,26 @@ class SceneManager {
                         this.isaac_head.tear.boundingBox = undefined;
                     }
                 }
-                if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
-                    if(this.gurgling.boundingBox != null){
-                        if (this.isaac_head.boundingBox.collide(this.gurgling.boundingBox)
-                            || this.isaac_body.boundingBox.collide(this.gurgling.boundingBox)) {
-                            this.isaac_body.takeDamage(1);
-                            console.log("took 1 damage");
-                            this.tempClock = 0;
-                        }
+            }
+        }
+        if (this.gurgling != null) {
+            if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
+                if(this.gurgling.boundingBox != null){
+                    if (this.isaac_head.boundingBox.collide(this.gurgling.boundingBox)
+                        || this.isaac_body.boundingBox.collide(this.gurgling.boundingBox)) {
+                        this.isaac_body.takeDamage(1);
+                        console.log("took 1 damage");
+                        this.tempClock = 0;
                     }
                 }
-                if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
-                    if(this.gurgling2.boundingBox != null){
-                        if (this.isaac_head.boundingBox.collide(this.gurgling2.boundingBox)
-                            || this.isaac_body.boundingBox.collide(this.gurgling2.boundingBox)) {
-                            this.isaac_body.takeDamage(1);
-                            console.log("took 1 damage");
-                            this.tempClock = 0;
-                        }
+            }
+            if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
+                if(this.gurgling2.boundingBox != null){
+                    if (this.isaac_head.boundingBox.collide(this.gurgling2.boundingBox)
+                        || this.isaac_body.boundingBox.collide(this.gurgling2.boundingBox)) {
+                        this.isaac_body.takeDamage(1);
+                        console.log("took 1 damage");
+                        this.tempClock = 0;
                     }
                 }
             }
