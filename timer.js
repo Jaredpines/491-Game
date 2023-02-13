@@ -19,25 +19,4 @@ class Timer {
         return gameDelta;
     };
 
-    timerTick() {
-        if (this.started) {
-            const current = Date.now();
-            const delta = (current - this.lastTimestamp) / 1000;
-            this.lastTimestamp = current;
-
-            const gameDelta = Math.min(delta, this.maxStep);
-            this.timer -= gameDelta;
-        }
-    };
-
-    set(frames) {
-        this.timer = frames
-    }
-
-    cancel() {
-        this.timer = 0
-        this.started = false
-    }
-
-
 };

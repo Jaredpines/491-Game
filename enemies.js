@@ -250,12 +250,15 @@ class JumpingSpider {
         this.game = game;
         this.paused = false;
         this.dead = false;
+        this.idle = true;
         this.windUp = false;
         this.jumpUp = false;
         this.jumpDown = false;
         this.jumpPeak = 0;
         this.deadTime = 0;
-        this.tempCount = 0;
+        this.elapsedTime = 0;
+        this.intervalTime = 5;
+        this.windUpTime = 1;
 
         this.xPosition = locX;
         this.yPosition = locY;
@@ -264,6 +267,8 @@ class JumpingSpider {
         this.moveBoundsUp = this.isaac.moveBoundsUp
         this.moveBoundsDown = this.isaac.moveBoundsDown
         this.movementSpeed = 200;
+        this.lastIsaacXPosition = 0;
+        this.lastIsaacYPosition = 0;
 
         this.jumpingSpiderSpriteSheet = ASSET_MANAGER.getAsset("./res/monster_jumping_spider.png");
         this.spiderSpriteSheet = ASSET_MANAGER.getAsset("./res/monster_spider.png");
@@ -309,19 +314,19 @@ class JumpingSpider {
 
         //Idle = 0
         this.animations[0] = new Animator(this.jumpingSpiderSpriteSheet,
-            idleStartX, idleStartY, idleWidth, idleHeight, 1, 1, 2.5);
+            idleStartX, idleStartY, idleWidth, idleHeight, 1, 1, 3);
         //Wind Up = 1
         this.animations[1] = new VertAnimator(this.jumpingSpiderSpriteSheet,
-            windUpStartX, windUpStartY, windUpWidth, windUpHeight, 4, 0.2, 2.5);
+            windUpStartX, windUpStartY, windUpWidth, windUpHeight, 4, 0.2, 3);
         //Jump Up = 2
         this.animations[2] = new Animator(this.jumpingSpiderSpriteSheet,
-            jumpUpStartX, jumpUpStartY, jumpUpWidth, jumpUpHeight, 4, 0.2, 2.5);
+            jumpUpStartX, jumpUpStartY, jumpUpWidth, jumpUpHeight, 4, 0.2, 3);
         //Jump Down = 3
         this.animations[3] = new Animator(this.jumpingSpiderSpriteSheet,
-            jumpDownStartX, jumpDownStartY, jumpDownWidth, jumpDownHeight, 4, 0.2, 2.5);
+            jumpDownStartX, jumpDownStartY, jumpDownWidth, jumpDownHeight, 4, 0.2, 3);
         //Dead = 4
         this.animations[4] = new Animator(this.spiderSpriteSheet,
-            deathStartX, deathStartY, deathHeightAndWidth, deathHeightAndWidth, 12, 0.1, 2.5)
+            deathStartX, deathStartY, deathHeightAndWidth, deathHeightAndWidth, 12, 0.1, 3)
     };
 
     update() {
@@ -339,27 +344,60 @@ class JumpingSpider {
         }
 
         if (!this.paused && !this.dead && !this.isaac.crying) {
-            let lastIsaacXPosition = this.isaac.xPosition
-            let lastIsaacYPosition = this.isaac.yPosition
 
-            if (this.xPosition <= lastIsaacXPosition && this.yPosition <= lastIsaacYPosition) {
-                //above, left of isaac
+            this.elapsedTime += this.game.clockTick;
+            console.log(this.elapsedTime);
 
-            } else if (this.xPosition >= lastIsaacXPosition && this.yPosition <= lastIsaacYPosition) {
-                //above, right of isaac
-
-            } else if (this.xPosition >= lastIsaacXPosition && this.yPosition >= lastIsaacYPosition) {
-                //below, right of isaac
-
-            } else if (this.xPosition <= lastIsaacXPosition && this.yPosition >= lastIsaacYPosition) {
-                //below, left of isaac
-
+            if (this.idle && this.elapsedTime >= this.intervalTime) {
+                this.idle = false
+                this.windUp = true
+                this.elapsedTime = 0;
             }
 
-            while(this.xPosition){
-                this.xPosition += this.game.clockTick*this.movementSpeed;
-                this.yPosition += this.game.clockTick*r;
+            if (this.windUp) {
+                this.lastIsaacXPosition = this.isaac.xPosition;
+                this.lastIsaacYPosition = this.isaac.yPosition;
+                if (this.elapsedTime >= this.windUpTime) {
+                    this.windUp = false;
+                    this.jumpUp = true;
+
+                }
             }
+
+            if (this.jumpUp) {
+                while (this.xPosition !== this.lastIsaacXPosition && this.yPosition !== this.lastIsaacYPosition) {
+                    let distX =  Math.abs(this.isaac.xPosition - this.xPosition);
+                    let distY =  Math.abs(this.isaac.yPosition - this.yPosition);
+                    if(this.xPosition < this.moveBoundsRight && this.xPosition < this.isaac.xPosition){
+                        let distance = Math.sqrt(distX*distX+distY*distY)
+                        let velocityX = distX/distance*this.movementSpeed
+                        this.xPosition += velocityX*this.game.clockTick/2;
+                    }
+                    if(this.xPosition > this.moveBoundsLeft && this.xPosition > this.isaac.xPosition){
+                        let distance = Math.sqrt(distX*distX+distY*distY)
+                        let velocityX = distX/distance*this.movementSpeed
+                        this.xPosition -= -velocityX*this.game.clockTick/2;
+                    }
+                    if(this.yPosition > this.moveBoundsUp && this.yPosition > this.isaac.yPosition){
+                        let distance = Math.sqrt(distX*distX+distY*distY)
+                        let velocityY = distY/distance*this.movementSpeed
+                        this.yPosition += velocityY*this.game.clockTick/2;
+                    }
+                    if(this.yPosition < this.moveBoundsDown && this.yPosition < this.isaac.yPosition){
+                        let distance = Math.sqrt(distX*distX+distY*distY)
+                        let velocityY = distY/distance*this.movementSpeed
+                        this.yPosition += velocityY*this.game.clockTick/2;
+                    }
+                }
+                this.jumpUp = false;
+                this.idle = true;
+                this.elapsedTime = 0;
+            }
+
+            // while(this.xPosition){
+            //     this.xPosition += this.game.clockTick*this.movementSpeed;
+            //     this.yPosition += this.game.clockTick*r;
+            // }
 
         }
 
@@ -377,10 +415,22 @@ class JumpingSpider {
             this.animations[4].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         } else if (this.windUp) {
             this.animations[1].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            if (this.animations[1].isDone()) {
+                // this.windUp = false;
+                // this.jumpUp = true;
+            }
         } else if (this.jumpUp) {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            if (this.animations[2].isDone()) {
+                // this.jumpUp = false;
+                // this.jumpDown = true;
+            }
         } else if (this.jumpDown) {
             this.animations[3].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            if (this.animations[3].isDone()) {
+                // this.jumpDown = false;
+                // this.idle = true;
+            }
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         }

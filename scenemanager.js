@@ -35,6 +35,7 @@ class SceneManager {
         this.chest = new Chest(400,400,this.game);      
         this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
+        this.jumping_spider_enemy = new JumpingSpider(400, 600, this.game, this.isaac_body);
         this.key = new Key(400,410,this.game);
         this.gurgling
         this.gurgling2
@@ -63,6 +64,7 @@ class SceneManager {
         this.game.addEntity(this.isaac_head);
         this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
+        //this.game.addEntity(this.jumping_spider_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
     };
