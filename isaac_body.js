@@ -40,6 +40,7 @@ class Isaac_Body {
 
 		this.animations = [];
 		this.loadAnimations();
+
 	};
 
 	takeDamage(damage) {
