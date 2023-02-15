@@ -20,7 +20,7 @@ class SceneManager {
         this.titleSpritesheet = ASSET_MANAGER.getAsset("./res/title_menu_sprites.png");
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 540, 0, 0, this.titleWidth, this.titleHeight);
         this.isaac_body = new Isaac_Body(this.game)
-        this.isaac_head = new Isaac_Head(this.game)
+        this.isaac_head = new Isaac_Head(this.game,this.isaac_body)
         this.animations = [];
         this.loadAnimations();
         this.once = false;
@@ -38,9 +38,10 @@ class SceneManager {
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
         this.jumping_spider_enemy = new JumpingSpider(400, 600, this.game, this.isaac_body);
         this.key = new Key(400,410,this.game);
-        this.gurgling
-        this.gurgling2
-        this.itemP
+        this.gurgling;
+        this.gurgling2;
+        this.itemP;
+        this.trophy;
         this.i = 1;
         this.coolDown = 0;
         this.driftCounter = 0;
@@ -211,7 +212,11 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.trophy.bossItem = true;
+                                        this.game.addEntity(this.trophy);
+                                    } 
                                 }
                                 this.once = true;
                             }
@@ -307,7 +312,11 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.trophy.bossItem = true;
+                                        this.game.addEntity(this.trophy);
+                                    } 
                                 }
                                 this.onceR = true;
                             }
@@ -349,7 +358,11 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.trophy.bossItem = true;
+                                        this.game.addEntity(this.trophy);
+                                    } 
                                 }
                                 this.onceU = true;
                             }
@@ -447,7 +460,11 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        this.trophy.bossItem = true;
+                                        this.game.addEntity(this.trophy);
+                                    } 
                                 }
                                 this.onceD = true;
                             }

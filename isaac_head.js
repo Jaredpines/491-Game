@@ -1,18 +1,14 @@
 class Isaac_Head {
-	constructor(game){
+	constructor(game, body){
 		this.game = game;
 		this.count = 0;
 		this.tearcount = 0;
 		this.tearspawned = 0;
+		this.body = body;
 		//this.animator = new Animator(ASSET_MANAGER.getAsset("./down_shot.png"), -6, 0, 42.6, 49, 10, 0.1);
         
 		this.xPosition = 735.5;
-		this.yPosition = 498.5-44;
-		this.movementSpeed = 500;
-		this.moveBoundsLeft = 138;
-		this.moveBoundsRight = 1214;
-		this.moveBoundsUp = 128-42;
-		this.moveBoundsDown = 724-44;
+		this.yPosition = 454.5;
         this.boundingBox = null;
 		this.damage = 3.50;
 		this.range = 6.5;
@@ -31,33 +27,20 @@ class Isaac_Head {
 
 	update(){
 		this.state = 0;
-		if(this.count > 2 && !this.game.camera.gameOver){
-			if (this.game.keys.a && !this.game.keys.d) {
-				if (this.xPosition >= this.moveBoundsLeft) {
-					this.xPosition -= this.movementSpeed*this.game.clockTick;
-				}
-			} else if (this.game.keys.d && !this.game.keys.a) {
-				if (this.xPosition <= this.moveBoundsRight) {
-					this.xPosition += this.movementSpeed*this.game.clockTick;
-				}
-			} 
-			if (this.game.keys.w && !this.game.keys.s) {
-				if (this.yPosition >= this.moveBoundsUp) {
-					this.yPosition -= this.movementSpeed*this.game.clockTick;
-				}
-			} else if (this.game.keys.s && !this.game.keys.w) {
-				if (this.yPosition <= this.moveBoundsDown) {
-					this.yPosition += this.movementSpeed*this.game.clockTick;
-				}
-			}
+		this.xPosition = this.body.xPosition;
+		if(this.body.state == 1 && this.body.facing == 0){
+			this.yPosition = this.body.yPosition-42;
+		}else{
+			this.yPosition = this.body.yPosition-42;
 		}
+		
         
 	};
 
 
 	draw(ctx){
 		this.boundingBox = new BoundingBox(this.xPosition+10,this.yPosition+10,110,96);
-		ctx.strokeRect(this.xPosition+10,this.yPosition+10,110,96);
+		//ctx.strokeRect(this.xPosition+10,this.yPosition+10,110,96);
 		this.count += (1*this.game.clockTick);
 
 		if(this.count < 2 && !this.game.camera.gameOver){

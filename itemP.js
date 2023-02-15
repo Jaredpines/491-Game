@@ -25,48 +25,43 @@ class ItemP {
     
 
     draw(ctx){
-        this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
-        ctx.strokeRect(this.locX,this.locY,128,128);
-        if(this.rand == 1){
-            if(this.bounceCount<0.5 && this.itemGet == false){
-                this.synthoil = true;
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
-                this.itemY += 25*this.game.clockTick;
-            }else if(this.bounceCount < 1 && this.itemGet == false){
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
-                this.itemY -= 25*this.game.clockTick;
-            }else if(this.bounceCount >= 1 && this.itemGet == false){
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
-                this.bounceCount = 0;
+        if(this.bossItem == false){
+            if(this.rand == 1){
+                if(this.bounceCount<0.5 && this.itemGet == false){
+                    this.synthoil = true;
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
+                    this.itemY += 25*this.game.clockTick;
+                }else if(this.bounceCount < 1 && this.itemGet == false){
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
+                    this.itemY -= 25*this.game.clockTick;
+                }else if(this.bounceCount >= 1 && this.itemGet == false){
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/synthoil.png"),this.locX-5,this.itemY,128,128);
+                    this.bounceCount = 0;
+                }
+            }else if(this.rand == 2){
+                if(this.bounceCount<0.5 && this.itemGet == false){
+                    this.stigmata = true;
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
+                    this.itemY += 25*this.game.clockTick;
+                }else if(this.bounceCount < 1 && this.itemGet == false){
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
+                    this.itemY -= 25*this.game.clockTick;
+                }else if(this.bounceCount >= 1 && this.itemGet == false){
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
+                    this.bounceCount = 0;
+                }
             }
-        }else if(this.rand == 2){
-            if(this.bounceCount<0.5 && this.itemGet == false){
-                this.stigmata = true;
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
-                this.itemY += 25*this.game.clockTick;
-            }else if(this.bounceCount < 1 && this.itemGet == false){
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
-                this.itemY -= 25*this.game.clockTick;
-            }else if(this.bounceCount >= 1 && this.itemGet == false){
-                ctx.drawImage(ASSET_MANAGER.getAsset("./res/stigmata.png"),this.locX-5,this.itemY,128,128);
-                this.bounceCount = 0;
-            }
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
+            this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
+            ctx.strokeRect(this.locX,this.locY,128,128);
+        }else{
+            this.trophy = true;
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX,this.locY,128,256);
+            this.boundingBox = new BoundingBox(this.locX,this.locY,128,256)
+            ctx.strokeRect(this.locX,this.locY,128,256);
         }
-        // else if (this.bossItem) {
-        //     if(this.bounceCount<0.5 && this.itemGet == false){
-        //         this.trophy = true;
-        //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX-5,this.itemY,128,128);
-        //         this.itemY += 25*this.game.clockTick;
-        //     }else if(this.bounceCount < 1 && this.itemGet == false){
-        //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/trohpy.png"),this.locX-5,this.itemY,128,128);
-        //         this.itemY -= 25*this.game.clockTick;
-        //     }else if(this.bounceCount >= 1 && this.itemGet == false){
-        //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX-5,this.itemY,128,128);
-        //         this.bounceCount = 0;
-        //     }
-        // }
         
         
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
+        
     };
 }
