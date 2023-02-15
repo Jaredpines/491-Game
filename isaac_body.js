@@ -3,6 +3,7 @@ class Isaac_Body {
 		this.game = game;
 		this.count = 0;
 		this.dead = false;
+		this.isaacWin = false;
 		this.crying = true;
 		this.xPosition = 735.5;
 		this.yPosition = 498.5;
@@ -177,6 +178,20 @@ class Isaac_Body {
 				this.boundingBox = undefined;
 				this.removeFromWorld = true;
 
+			}
+		}
+
+		if (this.isaacWin) {
+			this.game.camera.gameOver = true;
+			this.game.camera.win = true;
+
+			if (this.deadTime === 0) {
+				this.deadTime += this.game.clockTick;
+			}
+			if (this.deadTime > 2) {
+				console.log("you win!")
+				this.boundingBox = undefined;
+				this.removeFromWorld = true;
 			}
 		}
 

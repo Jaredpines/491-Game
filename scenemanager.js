@@ -13,6 +13,7 @@ class SceneManager {
         this.credits = false;
         this.level = null;
         this.titleMusic = true;
+        this.win = false;
 
         this.titleWidth = document.getElementById('gameWorld').width;
         this.titleHeight = document.getElementById('gameWorld').height;
@@ -154,10 +155,11 @@ class SceneManager {
         } else if (this.game.keys.Shift && this.gameOver === true) {
             this.game.camera.gameOver = false;
             this.gameOver = false;
+            this.game.camera.win = false;
+            this.isaac_body.dead = false;
             this.game.ctx.translate(this.floor1.camera.ogX,this.floor1.camera.ogY)
             this.clearEntities();
             this.game.addEntity(new SceneManager(this.game));
-
         }
 
         this.updateAudio();
@@ -202,10 +204,6 @@ class SceneManager {
                                         this.game.addEntity(this.gurgling2);
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
-                                        // if (this.gurgling.dead && this.gurgling2.dead) {
-                                        //     this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        //     this.game.addEntity(this.itemP);
-                                        // }
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -591,23 +589,43 @@ class SceneManager {
                 }
             }
             if(this.chest != null){
-                if(this.chest.open == true){
-                    this.driftCounter += 1*this.game.clockTick;
+                if(this.chest.open === true){
+                    this.driftCounter += this.game.clockTick;
                     if(this.driftCounter < 1){
                         this.key.locX += 200*this.game.clockTick;
                         this.key.locY += 200*this.game.clockTick;
                     }
                 }
             }
+            if (this.isaac_body != null && this.trophy != null) {
+                if (this.trophy.boundingBox != null) {
+                    if (this.isaac_body.boundingBox.collide(this.trophy.boundingBox)) {
+                        if (this.trophy) {
+                            console.log("touched trophy");
+                            console.log(this.floor1.camera.ogX)
+                            console.log(this.floor1.camera.ogY)
+                            console.log(this.isaac_body.xPosition)
+                            console.log(this.isaac_body.yPosition)
+                            this.isaac_body.isaacWin = true;
+                            this.win = true;
+                            this.gameOver = true;
+                            this.title = false;
+                            this.credits = false;
+                            this.isaac_body.dead = true;
+
+                        }
+                    }
+                }
+            }
             if (this.isaac_body != null && this.itemP != null) {
                 if(this.itemP.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.itemP.boundingBox)) {
-                        if(this.itemP.stigmata == true && this.itemP.itemGet == false){
+                        if(this.itemP.stigmata && !this.itemP.itemGet){
                             this.isaac_head.damage += 0.3;
                             this.isaac_body.maxRedHearts += 2;
                             this.isaac_body.redHearts += 2;
                         }
-                        if(this.itemP.synthoil == true && this.itemP.itemGet == false){
+                        if(this.itemP.synthoil && !this.itemP.itemGet){
                             this.isaac_head.damage += 1;
                             this.isaac_head.range += 1.5;
                         }
@@ -644,6 +662,9 @@ class SceneManager {
             this.titleMusic = false;
         }
 
+        this.hud.x = this.floor1.camera.ogX
+        this.hud.y = this.floor1.camera.ogY
+
     };
 
     draw(ctx) {
@@ -658,7 +679,6 @@ class SceneManager {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.titleWidth * .235, this.titleHeight * 0.09);
 
 
-        } else if (!this.title && this.credits) {
         }
 
 

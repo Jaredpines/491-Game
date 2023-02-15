@@ -1,5 +1,5 @@
 class Hud {
-    constructor(game, isaac) {
+    constructor(game, isaac, x, y) {
         this.game = game;
         this.game.camera = this;
         this.character = isaac;
@@ -14,6 +14,10 @@ class Hud {
 
         this.titleWidth = document.getElementById('gameWorld').width;
         this.titleHeight = document.getElementById('gameWorld').height;
+
+        this.x = x;
+        this.y = y;
+
     }
 
     update(ctx) {
@@ -144,7 +148,7 @@ class Hud {
     }
 
     drawDeathScreen(ctx) {
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, 350, 100, 800, 800);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, this.x + 350, this.y + 100, 800, 800);
     }
 
     drawMinimap(ctx) {
@@ -165,7 +169,7 @@ class Hud {
         //hud stats
         this.drawStats(ctx);
 
-        if (!this.game.camera.title && !this.game.camera.credits && this.game.camera.gameOver) {
+        if (!this.game.camera.title && !this.game.camera.credits && this.game.camera.gameOver && !this.game.camera.win) {
             this.tempCount += 1*this.game.clockTick;
 
             if (this.tempCount < 2) {
@@ -173,6 +177,12 @@ class Hud {
             } else {
                 this.drawDeathScreen(ctx);
             }
+        }
+        if (!this.game.camera.title && !this.game.camera.credits && this.game.camera.gameOver && this.game.camera.win) {
+
+            ctx.font = '50px Calibri';
+            ctx.fillText("YOU WON! Press Shift to Restart", this.x + 400, this.y + 500);
+
         }
 
 
