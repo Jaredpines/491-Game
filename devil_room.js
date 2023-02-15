@@ -93,6 +93,8 @@ class Devil_Room {
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_room.png"),this.locBRX,this.locBRY,769,532);
         ctx.scale(-1,-1);
         ctx.restore();
+
+
         
     };
 }

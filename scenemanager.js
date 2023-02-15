@@ -201,6 +201,10 @@ class SceneManager {
                                         this.game.addEntity(this.gurgling2);
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
+                                        // if (this.gurgling.dead && this.gurgling2.dead) {
+                                        //     this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                        //     this.game.addEntity(this.itemP);
+                                        // }
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)

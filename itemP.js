@@ -11,6 +11,8 @@ class ItemP {
         this.boundingBox = null;
         this.synthoil = false;
         this.stigmata = false;
+        this.trophy = false;
+        this.bossItem = false;
         this.rand = Math.floor(Math.random() * 2)+1
     };
 
@@ -50,6 +52,19 @@ class ItemP {
                 this.bounceCount = 0;
             }
         }
+        // else if (this.bossItem) {
+        //     if(this.bounceCount<0.5 && this.itemGet == false){
+        //         this.trophy = true;
+        //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX-5,this.itemY,128,128);
+        //         this.itemY += 25*this.game.clockTick;
+        //     }else if(this.bounceCount < 1 && this.itemGet == false){
+        //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/trohpy.png"),this.locX-5,this.itemY,128,128);
+        //         this.itemY -= 25*this.game.clockTick;
+        //     }else if(this.bounceCount >= 1 && this.itemGet == false){
+        //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX-5,this.itemY,128,128);
+        //         this.bounceCount = 0;
+        //     }
+        // }
         
         
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
