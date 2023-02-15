@@ -21,6 +21,7 @@ class Gurgling {
         this.deadTime = 0;
         this.clocktick = game.clocktick;
         this.tempCount = 0;
+        this.deadS = false;
 
 
         this.gurlgingSpritesheet = ASSET_MANAGER.getAsset("./res/gurgling_spritesheet.png");
@@ -105,6 +106,7 @@ class Gurgling {
             if (this.deadTime > 1.1) {
                 console.log("runs")
                 this.boundingBox = undefined;
+                this.deadS = true;
                 this.removeFromWorld = true;
             }
         }

@@ -47,6 +47,7 @@ class SceneManager {
         this.coolDown = 0;
         this.driftCounter = 0;
         this.tempClock = 0;
+        this.devil = false;
 
 
 
@@ -144,9 +145,7 @@ class SceneManager {
             while(this.floor1.BRoomMax > 0){
                 this.floor1.addBossRoom("B");
             }
-            while(this.floor1.DRoomMax > 0){
-                this.floor1.addDevilRoom("D");
-            }
+            
             this.floor1.toString();
             //this.game.ctx.translate(0,-200)
             //console.log(this.game.entities)
@@ -204,6 +203,7 @@ class SceneManager {
                                         this.game.addEntity(this.gurgling2);
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
+                                        this.devil = true;
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -304,6 +304,7 @@ class SceneManager {
                                         this.game.addEntity(this.gurgling2);
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
+                                        this.devil = true;
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -350,6 +351,7 @@ class SceneManager {
                                         this.game.addEntity(this.gurgling2);
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
+                                        this.devil = true;
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -452,6 +454,7 @@ class SceneManager {
                                         this.game.addEntity(this.gurgling2);
                                         console.log(this.gurgling.locX)
                                         console.log(this.isaac_body.xPosition)
+                                        this.devil = true;
                                     }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -664,7 +667,13 @@ class SceneManager {
 
         this.hud.x = this.floor1.camera.ogX
         this.hud.y = this.floor1.camera.ogY
-
+        if(this.devil == true && this.gurgling.deadS == true && this.gurgling2.deadS == true){
+            while(this.floor1.DRoomMax > 0){
+                this.floor1.addDevilRoom("D");
+            }
+            this.devil = false;
+        }
+        
     };
 
     draw(ctx) {
