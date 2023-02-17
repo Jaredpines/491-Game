@@ -102,7 +102,7 @@ class SceneManager {
         ASSET_MANAGER.adjustVolume(volume);
     }
 
-    update() {
+    update(ctx) {
 
 
         this.isaac_body.damage = this.isaac_head.damage;
@@ -487,14 +487,18 @@ class SceneManager {
                 if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
                     this.fly_enemy.flyHealth -= this.isaac_head.tear.damage
                     console.log(this.fly_enemy.flyHealth)
-                    this.isaac_head.tear.range = 0;
+                    if (!this.isaac_head.piercing) {
+                        this.isaac_head.tear.range = 0;
+                    }
                     this.isaac_head.tear.boundingBox = undefined;
                 }
             }
             if (this.isaac_head.tear.boundingBox != null && this.spider_enemy.boundingBox != null) {
                 if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
                     this.spider_enemy.health -= this.isaac_head.tear.damage
-                    this.isaac_head.tear.range = 0;
+                    if (!this.isaac_head.piercing) {
+                        this.isaac_head.tear.range = 0;
+                    }
                     this.isaac_head.tear.boundingBox = undefined;
                 }
             }
@@ -503,14 +507,18 @@ class SceneManager {
                 if (this.isaac_head.tear.boundingBox != null && this.gurgling.boundingBox != null) {
                     if (this.isaac_head.tear.boundingBox.collide(this.gurgling.boundingBox)) {
                         this.gurgling.health -= this.isaac_head.tear.damage
-                        this.isaac_head.tear.range = 0;
+                        if (!this.isaac_head.piercing) {
+                            this.isaac_head.tear.range = 0;
+                        }
                         this.isaac_head.tear.boundingBox = undefined;
                     }
                 }
                 if (this.isaac_head.tear.boundingBox != null && this.gurgling2.boundingBox != null) {
                     if (this.isaac_head.tear.boundingBox.collide(this.gurgling2.boundingBox)) {
                         this.gurgling2.health -= this.isaac_head.tear.damage
-                        this.isaac_head.tear.range = 0;
+                        if (!this.isaac_head.piercing) {
+                            this.isaac_head.tear.range = 0;
+                        }
                         this.isaac_head.tear.boundingBox = undefined;
                     }
                 }
@@ -620,17 +628,45 @@ class SceneManager {
                     }
                 }
             }
+            //TODO: give isaac_head a reference to tears.js object
+            //TODO: add jesusjuice costume
             if (this.isaac_body != null && this.itemP != null) {
                 if(this.itemP.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.itemP.boundingBox)) {
                         if(this.itemP.stigmata && !this.itemP.itemGet){
-                            this.isaac_head.damage += 0.3;
+                            this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
                             this.isaac_body.maxRedHearts += 2;
                             this.isaac_body.redHearts += 2;
+                            this.isaac_head.costumes.push("./res/costume_stigmata.png");
                         }
                         if(this.itemP.synthoil && !this.itemP.itemGet){
-                            this.isaac_head.damage += 1;
-                            this.isaac_head.range += 1.5;
+                            this.isaac_head.damage += 1; this.hud.updateStats(ctx, "damage", 1);
+                            this.isaac_head.range += 1.5; this.hud.updateStats(ctx, "range", 1.5);
+                            this.isaac_head.costumes.push("./res/costume_synthoil.png");
+                        }
+                        if(this.itemP.cupidsarrow && !this.itemP.itemGet){
+                            this.isaac_head.piercing = true;
+                            this.isaac_head.tearSkin = "./res/cupids_arrow_tear_right.png"
+                            this.isaac_head.costumes.push("./res/costume_cupidsarrow.png");
+                        }
+                        if(this.itemP.jesusjuice && !this.itemP.itemGet){
+                            this.isaac_head.damage += 0.5; this.hud.updateStats(ctx, "damage", 0.5);
+                            this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
+                            this.isaac_head.costumes.push("./res/costume_jesusjuice.png");
+                        }
+                        if(this.itemP.thehalo && !this.itemP.itemGet){
+                            this.isaac_body.maxRedHearts += 2;
+                            this.isaac_body.redHearts += 2;
+                            this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
+                            this.isaac_head.tears += 0.2; this.hud.updateStats(ctx, "tears", 0.2);
+                            this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
+                            this.isaac_body.movementSpeed += 0.3; this.hud.updateStats(ctx, "movementSpeed", 0.3);
+                            this.isaac_head.costumes.push("./res/costume_thehalo.png");
+                        }
+                        if(this.itemP.squeezy && !this.itemP.itemGet){
+                            this.isaac_body.blueHearts += 4;
+                            this.isaac_head.tears += 0.4;
+                            this.isaac_head.costumes.push("./res/costume_squeezy.png");
                         }
                         this.itemP.itemGet = true;
                         if(this.driftCounter < 0.1){

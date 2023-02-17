@@ -147,6 +147,60 @@ class Hud {
         ctx.fillText(this.character.planetariumChance + "%", statX, statY + (statYGap * 8));
     }
 
+    //TODO: fix context!!
+    updateStats(ctx, statName, value) {
+        console.log('drawing stat inc');
+        const statX = this.hudStatsX + 75;
+        const statY = this.hudStatsY + 40;
+        const statYGap = 48;
+        let gapModifier = 0;
+        let textColor = "";
+        let valueSign = "";
+        const ctxs = document.getElementById('gameWorld').getContext('2d');
+
+        switch (statName) {
+            case 'movementSpeed':
+                gapModifier = 0;
+                break;
+            case 'fireRate':
+                gapModifier = 1;
+                break;
+            case 'damage':
+                gapModifier = 2;
+                break;
+            case 'range':
+                gapModifier = 3;
+                break;
+            case 'shotSpeed':
+                gapModifier = 4;
+                break;
+            case 'luck':
+                gapModifier = 5;
+                break;
+            case 'devilChance':
+                gapModifier = 6;
+                break;
+            case 'angelChance':
+                gapModifier = 7;
+                break;
+            case 'planetariumChance':
+                gapModifier = 8;
+                break;
+
+        }
+
+        if (value >= 0) {
+            textColor = "Green";
+            valueSign = "+";
+        } else {
+            textColor = "Red";
+            valueSign = "-";
+        }
+
+        ctxs.fillStyle = textColor;
+        ctxs.fillText((valueSign + value), statX + 30, statY + (statYGap * gapModifier));
+    }
+
     drawDeathScreen(ctx) {
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/death_portraits.png"), 200, 7, 217, 252, this.x + 350, this.y + 100, 800, 800);
     }

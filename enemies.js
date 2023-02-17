@@ -362,11 +362,6 @@ class JumpingSpider {
             if (this.windUp) {
                 this.lastIsaacXPosition = this.isaac.xPosition;
                 this.lastIsaacYPosition = this.isaac.yPosition;
-                if (this.elapsedTime >= this.windUpTime) {
-                    this.windUp = false;
-                    this.jumpUp = true;
-
-                }
             }
 
             if (this.jumpUp) {
@@ -421,20 +416,20 @@ class JumpingSpider {
         } else if (this.windUp) {
             this.animations[1].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
             if (this.animations[1].isDone()) {
-                // this.windUp = false;
-                // this.jumpUp = true;
+                this.windUp = false;
+                this.jumpUp = true;
             }
         } else if (this.jumpUp) {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
             if (this.animations[2].isDone()) {
-                // this.jumpUp = false;
-                // this.jumpDown = true;
+                this.jumpUp = false;
+                this.jumpDown = true;
             }
         } else if (this.jumpDown) {
             this.animations[3].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
             if (this.animations[3].isDone()) {
-                // this.jumpDown = false;
-                // this.idle = true;
+                this.jumpDown = false;
+                this.idle = true;
             }
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
