@@ -98,6 +98,7 @@ ASSET_MANAGER.queueDownload("./res/item_cupidsarrow.png")
 ASSET_MANAGER.queueDownload("./res/item_thehalo.png")
 ASSET_MANAGER.queueDownload("./res/item_squeezy.png")
 ASSET_MANAGER.queueDownload("./res/item_jesusjuice.png")
+ASSET_MANAGER.queueDownload("./res/toothpicks.png")
 
 //costumes
 ASSET_MANAGER.queueDownload("./res/costume_stigmata.png")

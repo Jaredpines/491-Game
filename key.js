@@ -19,7 +19,7 @@ class Key {
     draw(ctx){
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/key.png"),this.locX,this.locY,48,66);
         this.boundingBox = new BoundingBox(this.locX,this.locY,48,66);
-        ctx.strokeRect(this.locX,this.locY,48,66);
+        //ctx.strokeRect(this.locX,this.locY,48,66);
         
     };
 

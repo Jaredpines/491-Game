@@ -15,9 +15,10 @@ class ItemP {
         this.thehalo = false;
         this.squeezy = false;
         this.jesusjuice = false;
+        this.toothpicks = false;
         this.trophy = false;
         this.bossItem = false;
-        this.rand = Math.floor(Math.random() * 5)+1
+        this.rand = Math.floor(Math.random() * 6)+1
     };
 
 
@@ -90,15 +91,27 @@ class ItemP {
                     ctx.drawImage(ASSET_MANAGER.getAsset("./res/item_thehalo.png"),this.locX-5,this.itemY,128,128);
                     this.bounceCount = 0;
                 }
+            }else if(this.rand == 6){
+                if(this.bounceCount<0.5 && this.itemGet == false){
+                    this.toothpicks = true;
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/toothpicks.png"),this.locX-5,this.itemY,128,128);
+                    this.itemY += 25*this.game.clockTick;
+                }else if(this.bounceCount < 1 && this.itemGet == false){
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/toothpicks.png"),this.locX-5,this.itemY,128,128);
+                    this.itemY -= 25*this.game.clockTick;
+                }else if(this.bounceCount >= 1 && this.itemGet == false){
+                    ctx.drawImage(ASSET_MANAGER.getAsset("./res/toothpicks.png"),this.locX-5,this.itemY,128,128);
+                    this.bounceCount = 0;
+                }
             }
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
             this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
-            ctx.strokeRect(this.locX,this.locY,128,128);
+            //ctx.strokeRect(this.locX,this.locY,128,128);
         }else{
             this.trophy = true;
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX,this.locY,128,256);
             this.boundingBox = new BoundingBox(this.locX,this.locY,128,256)
-            ctx.strokeRect(this.locX,this.locY,128,256);
+            //ctx.strokeRect(this.locX,this.locY,128,256);
         }
         
         

@@ -32,7 +32,7 @@ class Right_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_door_right.png"),40-this.locX,(this.height/2)-(196/2)+this.locY,152,196);
         }
         this.boundingBox = new BoundingBox(50-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
-        ctx.strokeRect(50-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
+        //ctx.strokeRect(50-this.locX,(this.height/2)-(125/2)+this.locY+10,92,110);
     };
 
 }

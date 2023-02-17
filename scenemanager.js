@@ -107,7 +107,8 @@ class SceneManager {
 
         this.isaac_body.damage = this.isaac_head.damage;
         this.isaac_body.range = this.isaac_head.range;
-
+        this.isaac_body.shotSpeed = this.isaac_head.shotSpeed;
+        this.isaac_body.tears = this.isaac_head.tears;
 
         if (!this.title && !this.paused) {
             if (this.timer === undefined) {
@@ -210,7 +211,7 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
                                         this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.trophy.bossItem = true;
                                         this.game.addEntity(this.trophy);
@@ -311,7 +312,7 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
                                         this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.trophy.bossItem = true;
                                         this.game.addEntity(this.trophy);
@@ -358,7 +359,7 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
                                         this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.trophy.bossItem = true;
                                         this.game.addEntity(this.trophy);
@@ -461,7 +462,7 @@ class SceneManager {
                                         this.game.addEntity(this.itemP);
                                         console.log(this.itemP.locX)
                                         console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&&this.itemP == null){
+                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
                                         this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.trophy.bossItem = true;
                                         this.game.addEntity(this.trophy);
@@ -612,11 +613,6 @@ class SceneManager {
                 if (this.trophy.boundingBox != null) {
                     if (this.isaac_body.boundingBox.collide(this.trophy.boundingBox)) {
                         if (this.trophy) {
-                            console.log("touched trophy");
-                            console.log(this.floor1.camera.ogX)
-                            console.log(this.floor1.camera.ogY)
-                            console.log(this.isaac_body.xPosition)
-                            console.log(this.isaac_body.yPosition)
                             this.isaac_body.isaacWin = true;
                             this.win = true;
                             this.gameOver = true;
@@ -668,10 +664,12 @@ class SceneManager {
                             this.isaac_head.tears += 0.4;
                             this.isaac_head.costumes.push("./res/costume_squeezy.png");
                         }
-                        this.itemP.itemGet = true;
-                        if(this.driftCounter < 0.1){
-                            this.game.addEntity(this.key);
+                        if(this.itemP.toothpicks && !this.itemP.itemGet){
+                            this.isaac_head.shotSpeed += 0.16;
+                            this.isaac_head.tears += 0.70;
+                            this.isaac_head.tears = (Math.ceil(this.isaac_head.tears*100))/100
                         }
+                        this.itemP.itemGet = true;
                         if(this.isaac_body.boundingBox.right-80 > this.itemP.boundingBox.left){
                             this.itemP.locX -= 500*this.game.clockTick;
                         }

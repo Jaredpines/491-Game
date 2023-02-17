@@ -23,7 +23,7 @@ class Chest {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/chest_open.png"),this.locX,this.locY,96,96);
         }
         this.boundingBox = new BoundingBox(this.locX,this.locY,96,96);
-        ctx.strokeRect(this.locX,this.locY,96,96);
+        //ctx.strokeRect(this.locX,this.locY,96,96);
         
     };
 

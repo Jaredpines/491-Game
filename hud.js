@@ -137,7 +137,7 @@ class Hud {
         const statYGap = 48;
 
         ctx.fillText(this.character.movementSpeed, statX, statY);
-        ctx.fillText(this.character.fireRate, statX, statY + statYGap);
+        ctx.fillText(this.character.tears, statX, statY + statYGap);
         ctx.fillText(this.character.damage, statX, statY + (statYGap * 2));
         ctx.fillText(this.character.range, statX, statY + (statYGap * 3));
         ctx.fillText(this.character.shotSpeed, statX, statY + (statYGap * 4));

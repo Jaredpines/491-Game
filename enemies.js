@@ -93,7 +93,7 @@ class Fly {
 
     draw(ctx) {
         this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
-        ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
+        //ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         if (this.dead) {
             this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
         } else {
@@ -235,7 +235,7 @@ class Spider {
 
     draw(ctx) {
         this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
-        ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
+        //ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
         if (this.dead) {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         } else if (this.walking) {
@@ -410,7 +410,7 @@ class JumpingSpider {
 
     draw(ctx) {
         this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
-        ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
+        //ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
         if (this.dead) {
             this.animations[4].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
         } else if (this.windUp) {

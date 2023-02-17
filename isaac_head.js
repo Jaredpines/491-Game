@@ -13,6 +13,7 @@ class Isaac_Head {
 		this.damage = 3.50;
 		this.range = 6.5;
 		this.shotSpeed = 1;
+		this.tears = 2.73;
 		this.tear;
 		this.tearSkin = "./res/normal_tears.png";
 		this.piercing = false;

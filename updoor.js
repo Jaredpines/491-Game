@@ -32,7 +32,7 @@ class Up_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_door.png"),(this.width/2)-(196/2)-this.locX,50-this.locY,196,152);
         }
         this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX+10,100-this.locY,110,92);
-        ctx.strokeRect((this.width/2)-(125/2)-this.locX+10,100-this.locY,110,92);
+        //ctx.strokeRect((this.width/2)-(125/2)-this.locX+10,100-this.locY,110,92);
     };
 
 }
