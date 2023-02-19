@@ -5,13 +5,13 @@ class Treasure_Room {
         this.locY = locY;
         this.direction = direction
         this.locTLX = Math.floor(0-this.locX)
-        this.locTRX = Math.floor(-1471+this.locX)
+        this.locTRX = Math.floor(-1472+this.locX)
         this.locBLX = Math.floor(0-this.locX)
-        this.locBRX = Math.floor(-1471+this.locX)
+        this.locBRX = Math.floor(-1472+this.locX)
         this.locTLY = Math.floor(0+this.locY)
         this.locTRY = Math.floor(0+this.locY)
-        this.locBLY = Math.floor(-997-this.locY)
-        this.locBRY = Math.floor(-997-this.locY)
+        this.locBLY = Math.floor(-992-this.locY)
+        this.locBRY = Math.floor(-992-this.locY)
         this.door = 0;
         this.doorOp = 0;
         this.doorR = 0;
@@ -30,7 +30,7 @@ class Treasure_Room {
 
     update(){
         if(this.direction === "left"){
-            this.door = new Left_Door(this.locX-1471,this.locY,this.game,this.skin)
+            this.door = new Left_Door(this.locX-1472,this.locY,this.game,this.skin)
             this.doorOp = new Right_Door(this.locX-1250,this.locY,this.game,this.skin)
             this.game.addEntity(this.door);
             this.game.addEntity(this.doorOp);
@@ -45,7 +45,7 @@ class Treasure_Room {
             this.direction = "";
         }else if(this.direction === "up"){
             this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
-            this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
+            this.doorOpU = new Down_Door(this.locX,(-this.locY)-992,this.game,this.skin)
             this.game.addEntity(this.doorU);
             this.game.addEntity(this.doorOpU);
             this.game.orderCorrecter();

@@ -9,8 +9,8 @@ class Isaac_Body {
 		this.yPosition = 498.5;
 		this.moveBoundsLeft = 138;
 		this.moveBoundsRight = 1214;
-		this.moveBoundsUp = 128;
-		this.moveBoundsDown = 724;
+		this.moveBoundsUp = 123;
+		this.moveBoundsDown = 719;
 		this.isaacSpritesheet = ASSET_MANAGER.getAsset("./res/isaac_walk.png");
 		this.isaacDeadSprite = ASSET_MANAGER.getAsset("./res/crying_isaac.png");
 		this.boundingBox = null;

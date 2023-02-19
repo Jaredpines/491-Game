@@ -2,10 +2,10 @@ class Floor {
     constructor(game, level){
         this.game = game;
         this.camera = new Camera(this.game);
-        this.farthestLeft = 13239;
-        this.farthestRight = -13239;
-        this.farthestUp = 8973;
-        this.farthestDown = -8973;
+        this.farthestLeft = 13248;
+        this.farthestRight = -13248;
+        this.farthestUp = 8928;
+        this.farthestDown = -8928;
         let height = 20;
         let width = 20;
         this.rooms = Array.from({length: height}, () => new Array(width));
@@ -32,7 +32,7 @@ class Floor {
                     if(index2-1 > 0){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2-1] == null){
                             if(r == 4 && roomAdded == false){
-                                this.rooms[index][index2-1] = new Normal_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"left",this.game)
+                                this.rooms[index][index2-1] = new Normal_Room(this.farthestLeft-(1472*(index2-2)),-(this.farthestUp-(992*(index-1))),"left",this.game)
                                 if(this.rooms[index+1][index2-1] != null){
                                     this.rooms[index][index2-1].down = true;
                                 }
@@ -68,7 +68,7 @@ class Floor {
                         if(this.rooms[index][index2] != null && this.rooms[index][index2+1] == null){
                             if(r == 4 && roomAdded == false){
                                 
-                                this.rooms[index][index2+1] = new Normal_Room(-(this.farthestRight+(1471*(index2))),-(this.farthestUp-(997*(index-1))),"right",this.game);
+                                this.rooms[index][index2+1] = new Normal_Room(-(this.farthestRight+(1472*(index2))),-(this.farthestUp-(992*(index-1))),"right",this.game);
                                 if(this.rooms[index+1][index2+1] != null){
                                     this.rooms[index][index2+1].down = true;
                                 }
@@ -101,7 +101,7 @@ class Floor {
                     if(index-1 > 0 && index+1 < this.rooms.length){
                         if(this.rooms[index+1][index2] != null && this.rooms[index][index2] == null){
                             if(r == 4 && roomAdded == false){
-                                this.rooms[index][index2] = new Normal_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"up",this.game)
+                                this.rooms[index][index2] = new Normal_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"up",this.game)
                                 if(this.rooms[index][index2-1] != null){
                                     this.rooms[index][index2].left = true;
                                 }
@@ -132,7 +132,7 @@ class Floor {
                         if(this.rooms[index-1][index2] != null && this.rooms[index][index2] == null){
                             if(r == 4 && roomAdded == false){
                                 
-                                this.rooms[index][index2] = new Normal_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"down",this.game)
+                                this.rooms[index][index2] = new Normal_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"down",this.game)
                                 if(this.rooms[index][index2-1] != null){
                                     this.rooms[index][index2].left = true;
                                 }
@@ -169,7 +169,7 @@ class Floor {
                     if(index2-1 > 0){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2-1] == null){
                             if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
-                                this.rooms[index][index2-1] = new Treasure_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"TL",this.game)
+                                this.rooms[index][index2-1] = new Treasure_Room(this.farthestLeft-(1472*(index2-2)),-(this.farthestUp-(992*(index-1))),"TL",this.game)
                                   
                                 this.row = index;
                                 this.col = index2-1;
@@ -187,7 +187,7 @@ class Floor {
                         if(this.rooms[index][index2] != null && this.rooms[index][index2+1] == null){
                             if(r == 5 && roomAdded == false&&this.rooms[index+1][index2+1] == null&&this.rooms[index-1][index2+1] == null){
                                 
-                                this.rooms[index][index2+1] = new Treasure_Room(-(this.farthestRight+(1471*(index2))),-(this.farthestUp-(997*(index-1))),"TR",this.game);
+                                this.rooms[index][index2+1] = new Treasure_Room(-(this.farthestRight+(1472*(index2))),-(this.farthestUp-(992*(index-1))),"TR",this.game);
                                 this.row = index;
                                 this.col = index2+1;
                                 this.TRoomMax--;
@@ -204,7 +204,7 @@ class Floor {
                     if(index-1 > 0 && index+1 < this.rooms.length){
                         if(this.rooms[index+1][index2] != null && this.rooms[index][index2] == null){
                             if(r == 6 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
-                                this.rooms[index][index2] = new Treasure_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"TU",this.game)
+                                this.rooms[index][index2] = new Treasure_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"TU",this.game)
                                 this.row = index;
                                 this.col = index2;
                                 this.TRoomMax--;
@@ -221,7 +221,7 @@ class Floor {
                         if(this.rooms[index-1][index2] != null && this.rooms[index][index2] == null){
                             if(r == 7 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
                                 
-                                this.rooms[index][index2] = new Treasure_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"TD",this.game)
+                                this.rooms[index][index2] = new Treasure_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"TD",this.game)
                                 this.row = index;
                                 this.col = index2;
                                 this.TRoomMax--;
@@ -250,7 +250,7 @@ class Floor {
                     if(index2-1 > 0){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2].skin == "b" &&this.rooms[index][index2] != null && this.rooms[index][index2-1] == null){
                             if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
-                                this.rooms[index][index2-1] = new Devil_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"DL",this.game)
+                                this.rooms[index][index2-1] = new Devil_Room(this.farthestLeft-(1472*(index2-2)),-(this.farthestUp-(992*(index-1))),"DL",this.game)
                                   
                                 this.row = index;
                                 this.col = index2-1;
@@ -268,7 +268,7 @@ class Floor {
                         if(this.rooms[index][index2] != null && this.rooms[index][index2].skin == "b" &&this.rooms[index][index2] != null && this.rooms[index][index2+1] == null){
                             if(r == 5 && roomAdded == false&&this.rooms[index+1][index2+1] == null&&this.rooms[index-1][index2+1] == null){
                                 
-                                this.rooms[index][index2+1] = new Devil_Room(-(this.farthestRight+(1471*(index2))),-(this.farthestUp-(997*(index-1))),"DR",this.game);
+                                this.rooms[index][index2+1] = new Devil_Room(-(this.farthestRight+(1472*(index2))),-(this.farthestUp-(992*(index-1))),"DR",this.game);
                                 this.row = index;
                                 this.col = index2+1;
                                 this.DRoomMax--;
@@ -285,7 +285,7 @@ class Floor {
                     if(index-1 > 0 && index+1 < this.rooms.length){
                         if(this.rooms[index+1][index2] != null && this.rooms[index+1][index2].skin == "b" &&this.rooms[index+1][index2] != null && this.rooms[index][index2] == null){
                             if(r == 6 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
-                                this.rooms[index][index2] = new Devil_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"DU",this.game)
+                                this.rooms[index][index2] = new Devil_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"DU",this.game)
                                 this.row = index;
                                 this.col = index2;
                                 this.DRoomMax--;
@@ -302,7 +302,7 @@ class Floor {
                         if(this.rooms[index-1][index2] != null && this.rooms[index-1][index2].skin == "b" &&this.rooms[index-1][index2] != null && this.rooms[index][index2] == null){
                             if(r == 7 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
                                 
-                                this.rooms[index][index2] = new Devil_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"DD",this.game)
+                                this.rooms[index][index2] = new Devil_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"DD",this.game)
                                 this.row = index;
                                 this.col = index2;
                                 this.DRoomMax--;
@@ -333,9 +333,9 @@ class Floor {
                             if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
                                 console.log(index)
                                 console.log(index2)
-                                console.log(this.farthestLeft-(1471*(index2-2)))
-                                console.log(this.farthestUp-(997*(index-1)))
-                                this.rooms[index][index2-1] = new Boss_Room(this.farthestLeft-(1471*(index2-2)),-(this.farthestUp-(997*(index-1))),"BL",this.game)
+                                console.log(this.farthestLeft-(1472*(index2-2)))
+                                console.log(this.farthestUp-(992*(index-1)))
+                                this.rooms[index][index2-1] = new Boss_Room(this.farthestLeft-(1472*(index2-2)),-(this.farthestUp-(992*(index-1))),"BL",this.game)
                                 
                                 this.row = index;
                                 this.col = index2-1;
@@ -353,7 +353,7 @@ class Floor {
                     if(index2+1 < this.rooms[index].length){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2].skin != "t" && this.rooms[index][index2+1] == null){
                             if(r == 5 && roomAdded == false&&this.rooms[index+1][index2+1] == null&&this.rooms[index-1][index2+1] == null){
-                                this.rooms[index][index2+1] = new Boss_Room(-(this.farthestRight+(1471*(index2))),-(this.farthestUp-(997*(index-1))),"BR",this.game);
+                                this.rooms[index][index2+1] = new Boss_Room(-(this.farthestRight+(1472*(index2))),-(this.farthestUp-(992*(index-1))),"BR",this.game);
                                 this.row = index;
                                 this.col = index2+1;
                                 this.BRoomMax--;
@@ -370,7 +370,7 @@ class Floor {
                     if(index-1 > 0 && index+1 < this.rooms.length){
                         if(this.rooms[index+1][index2] != null && this.rooms[index+1][index2].skin != "t" && this.rooms[index][index2] == null){
                             if(r == 6 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
-                                this.rooms[index][index2] = new Boss_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"BU",this.game)
+                                this.rooms[index][index2] = new Boss_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"BU",this.game)
                                 this.row = index;
                                 this.col = index2;
                                 this.BRoomMax--;
@@ -386,7 +386,7 @@ class Floor {
                     if(index+1 < this.rooms.length && index-1 > 0){
                         if(this.rooms[index-1][index2] != null && this.rooms[index-1][index2].skin != "t" && this.rooms[index][index2] == null){
                             if(r == 7 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
-                                this.rooms[index][index2] = new Boss_Room(this.farthestLeft-(1471*(index2-1)),this.farthestDown+(997*(index-1)),"BD",this.game)
+                                this.rooms[index][index2] = new Boss_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"BD",this.game)
                                 this.row = index;
                                 this.col = index2;
                                 this.BRoomMax--;

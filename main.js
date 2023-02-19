@@ -90,6 +90,9 @@ ASSET_MANAGER.queueDownload("./res/boss_door_way_light_down.png")
 ASSET_MANAGER.queueDownload("./res/treasure_door_way_left.png")
 ASSET_MANAGER.queueDownload("./res/treasure_door_way_right.png")
 ASSET_MANAGER.queueDownload("./res/treasure_door_way_down.png")
+ASSET_MANAGER.queueDownload("./res/rock1.png")
+ASSET_MANAGER.queueDownload("./res/rock2.png")
+ASSET_MANAGER.queueDownload("./res/rock3.png")
 
 //items
 ASSET_MANAGER.queueDownload("./res/item_synthoil.png")

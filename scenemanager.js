@@ -48,6 +48,7 @@ class SceneManager {
         this.driftCounter = 0;
         this.tempClock = 0;
         this.devil = false;
+        this.premade = new Premade_Rooms(160,160,this.game)
 
 
 
@@ -64,12 +65,12 @@ class SceneManager {
         this.title = title;
         this.floor = floor;
         this.x = 0;
-        //this.game.addEntity(new Normal_Room(1471,0,this.game));
+        //this.game.addEntity(new Normal_Room(1472,0,this.game));
         this.floor1.addBaseRoom();
-
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
+        this.premade.addObstacles();
         this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
         //this.game.addEntity(this.jumping_spider_enemy);
@@ -179,7 +180,7 @@ class SceneManager {
         if(this.floor1.rooms != null){
             for (let index = 0; index < this.floor1.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.floor1.rooms.length; index2++) {
-                    if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1471){
+                    if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
                         if(this.floor1.rooms[index][index2].door.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
                                 if(this.isaac_head.tear != null){
@@ -187,15 +188,15 @@ class SceneManager {
                                 }
                                 this.floor1.moveRoom("left");
                                 if(this.moveBounds == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1471;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1471;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1471;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1471;
+                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
+                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
+                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
+                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1472;
                                     this.isaac_body.xPosition = this.isaac_body.xPosition - 450
                                     this.isaac_head.xPosition = this.isaac_head.xPosition - 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX-1471;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX-1471;
-                                    this.hud.hudHealthX = this.hud.hudHealthX-1471;
+                                    this.hud.hudStatsX = this.hud.hudStatsX-1472;
+                                    this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
+                                    this.hud.hudHealthX = this.hud.hudHealthX-1472;
                                     this.moveBounds = true;
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
@@ -227,21 +228,21 @@ class SceneManager {
                     }
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
                         if(this.floor1.rooms[index][index2].doorOp.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1471 &&this.onceR == true)){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
                                 this.floor1.moveRoom("right");
                                 if(this.moveBoundsR == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1471;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1471;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1471;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1471;
+                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
+                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
+                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
+                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1472;
                                     this.isaac_body.xPosition = this.isaac_body.xPosition + 450
                                     this.isaac_head.xPosition = this.isaac_head.xPosition + 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX+1471;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
-                                    this.hud.hudHealthX = this.hud.hudHealthX+1471;
+                                    this.hud.hudStatsX = this.hud.hudStatsX+1472;
+                                    this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
+                                    this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                     this.moveBoundsR = true;
                                 }
                                 this.onceR = true;
@@ -253,7 +254,7 @@ class SceneManager {
                         }
                     }
 
-                    if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1471){
+                    if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
                         if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
                                 if(this.isaac_head.tear != null){
@@ -261,15 +262,15 @@ class SceneManager {
                                 }
                                 this.floor1.moveRoom("left");
                                 if(this.moveBounds == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1471;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1471;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1471;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1471;
+                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
+                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
+                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
+                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1472;
                                     this.isaac_body.xPosition = this.isaac_body.xPosition - 450
                                     this.isaac_head.xPosition = this.isaac_head.xPosition - 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX-1471;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX-1471;
-                                    this.hud.hudHealthX = this.hud.hudHealthX-1471;
+                                    this.hud.hudStatsX = this.hud.hudStatsX-1472;
+                                    this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
+                                    this.hud.hudHealthX = this.hud.hudHealthX-1472;
                                     this.moveBounds = true;
                                 }
                                 this.once = true;
@@ -282,21 +283,21 @@ class SceneManager {
                     }
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
                         if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1471 &&this.onceR == true)){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
                                 this.floor1.moveRoom("right");
                                 if(this.moveBoundsR == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1471;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1471;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1471;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1471;
+                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
+                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
+                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
+                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1472;
                                     this.isaac_body.xPosition = this.isaac_body.xPosition + 450
                                     this.isaac_head.xPosition = this.isaac_head.xPosition + 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX+1471;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX+1471;
-                                    this.hud.hudHealthX = this.hud.hudHealthX+1471;
+                                    this.hud.hudStatsX = this.hud.hudStatsX+1472;
+                                    this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
+                                    this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                     this.moveBoundsR = true;
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
@@ -327,7 +328,7 @@ class SceneManager {
                         }
                     }
 
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 997 )){
+                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
                         if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
                                 if(this.isaac_head.tear != null){
@@ -335,15 +336,15 @@ class SceneManager {
                                 }
                                 this.floor1.moveRoom("up");
                                 if(this.moveBoundsU == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 997;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 997;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 997;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 997;
+                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
+                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
+                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
+                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 992;
                                     this.isaac_body.yPosition = this.isaac_body.yPosition - 500
                                     this.isaac_head.yPosition = this.isaac_head.yPosition - 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY-997;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY-997;
-                                    this.hud.hudHealthY = this.hud.hudHealthY-997;
+                                    this.hud.hudStatsY = this.hud.hudStatsY-992;
+                                    this.hud.hudPickupsY = this.hud.hudPickupsY-992;
+                                    this.hud.hudHealthY = this.hud.hudHealthY-992;
                                     this.moveBoundsU = true;
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
@@ -375,21 +376,21 @@ class SceneManager {
                     }
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
                         if(this.floor1.rooms[index][index2].doorOpU.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD != 997 &&this.onceD == true)){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
                                 this.floor1.moveRoom("down");
                                 if(this.moveBoundsD == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 997;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 997;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 997;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 997;
+                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
+                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
+                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
+                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 992;
                                     this.isaac_body.yPosition = this.isaac_body.yPosition + 500
                                     this.isaac_head.yPosition = this.isaac_head.yPosition + 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY+997;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY+997;
-                                    this.hud.hudHealthY = this.hud.hudHealthY+997;
+                                    this.hud.hudStatsY = this.hud.hudStatsY+992;
+                                    this.hud.hudPickupsY = this.hud.hudPickupsY+992;
+                                    this.hud.hudHealthY = this.hud.hudHealthY+992;
                                     this.moveBoundsD = true;
                                 }
                                 this.onceD = true;
@@ -402,7 +403,7 @@ class SceneManager {
                         }
                     }
 
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 997 )){
+                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
                         if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
                                 if(this.isaac_head.tear != null){
@@ -410,15 +411,15 @@ class SceneManager {
                                 }
                                 this.floor1.moveRoom("up");
                                 if(this.moveBoundsU == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 997;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 997;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 997;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 997;
+                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
+                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
+                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
+                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 992;
                                     this.isaac_body.yPosition = this.isaac_body.yPosition - 500
                                     this.isaac_head.yPosition = this.isaac_head.yPosition - 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY-997;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY-997;
-                                    this.hud.hudHealthY = this.hud.hudHealthY-997;
+                                    this.hud.hudStatsY = this.hud.hudStatsY-992;
+                                    this.hud.hudPickupsY = this.hud.hudPickupsY-992;
+                                    this.hud.hudHealthY = this.hud.hudHealthY-992;
                                     this.moveBoundsU = true;
                                     
                                 }
@@ -432,21 +433,21 @@ class SceneManager {
                     }
                     if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
                         if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 997 &&this.onceD == true)){
+                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
                                 if(this.isaac_head.tear != null){
                                     this.isaac_head.tear.removeFromWorld = true;
                                 }
                                 this.floor1.moveRoom("down");
                                 if(this.moveBoundsD == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 997;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 997;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 997;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 997;
+                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
+                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
+                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
+                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 992;
                                     this.isaac_body.yPosition = this.isaac_body.yPosition + 500
                                     this.isaac_head.yPosition = this.isaac_head.yPosition + 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY+997;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY+997;
-                                    this.hud.hudHealthY = this.hud.hudHealthY+997;
+                                    this.hud.hudStatsY = this.hud.hudStatsY+992;
+                                    this.hud.hudPickupsY = this.hud.hudPickupsY+992;
+                                    this.hud.hudHealthY = this.hud.hudHealthY+992;
                                     this.moveBoundsD = true;
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)

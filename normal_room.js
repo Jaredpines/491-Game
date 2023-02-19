@@ -5,13 +5,13 @@ class Normal_Room {
         this.locY = locY;
         this.direction = direction
         this.locTLX = Math.floor(0-this.locX)
-        this.locTRX = Math.floor(-1471+this.locX)
+        this.locTRX = Math.floor(-1472+this.locX)
         this.locBLX = Math.floor(0-this.locX)
-        this.locBRX = Math.floor(-1471+this.locX)
+        this.locBRX = Math.floor(-1472+this.locX)
         this.locTLY = Math.floor(0+this.locY)
         this.locTRY = Math.floor(0+this.locY)
-        this.locBLY = Math.floor(-997-this.locY)
-        this.locBRY = Math.floor(-997-this.locY)
+        this.locBLY = Math.floor(-992-this.locY)
+        this.locBRY = Math.floor(-992-this.locY)
         this.door = 0;
         this.doorOp = 0;
         this.doorR = 0;
@@ -30,11 +30,11 @@ class Normal_Room {
 
     update(){
         if(this.direction === "left"){
-            this.door = new Left_Door(this.locX-1471,this.locY,this.game,this.skin)
+            this.door = new Left_Door(this.locX-1472,this.locY,this.game,this.skin)
             this.doorOp = new Right_Door(this.locX-1250,this.locY,this.game,this.skin)
             if(this.down == true){
                 this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
-                this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
+                this.doorOpU = new Down_Door(this.locX,(-this.locY)-992,this.game,this.skin)
             }
             if(this.up == true){
                 this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
@@ -57,7 +57,7 @@ class Normal_Room {
             this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
             if(this.down == true){
                 this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
-                this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
+                this.doorOpU = new Down_Door(this.locX,(-this.locY)-992,this.game,this.skin)
             }
             if(this.up == true){
                 this.doorD = new Down_Door(this.locX,-this.locY,this.game,this.skin)
@@ -77,7 +77,7 @@ class Normal_Room {
             this.direction = "";
         }else if(this.direction === "up"){
             this.doorU = new Up_Door(this.locX,(-this.locY)-987,this.game,this.skin)
-            this.doorOpU = new Down_Door(this.locX,(-this.locY)-997,this.game,this.skin)
+            this.doorOpU = new Down_Door(this.locX,(-this.locY)-992,this.game,this.skin)
             if(this.right == true){
                 this.doorR = new Right_Door(this.locX+221,this.locY,this.game,this.skin)
                 this.doorOpR = new Left_Door(this.locX,this.locY,this.game,this.skin)
@@ -105,7 +105,7 @@ class Normal_Room {
             this.doorOpD = new Up_Door(this.locX,-this.locY,this.game,this.skin)
             if(this.right == true){
                 this.doorR = new Right_Door(this.locX-1250,this.locY,this.game,this.skin)
-                this.doorOpR = new Left_Door(this.locX-1471,this.locY,this.game,this.skin)
+                this.doorOpR = new Left_Door(this.locX-1472,this.locY,this.game,this.skin)
                 console.log("flip3");
             }
             if(this.left == true){
@@ -125,10 +125,6 @@ class Normal_Room {
             }
             this.game.orderCorrecter();
             this.direction = "";
-        }else if(this.direction === "TL"||this.direction === "TR"||this.direction === "TU"||this.direction === "TD"){
-            this.treasureRoom()
-        }else if(this.direction === "BL"||this.direction === "BR"||this.direction === "BU"||this.direction === "BD"){
-            this.bossRoom()
         }else{
             this.direction = "";
         }
@@ -138,15 +134,15 @@ class Normal_Room {
     
 
     draw(ctx){
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTLX,this.locTLY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTLX,this.locTLY,768,544);
         ctx.scale(-1,1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTRX,this.locTRY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTRX,this.locTRY,768,544);
         ctx.restore();
         ctx.scale(-1,-1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBLX,this.locBLY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBLX,this.locBLY,768,544);
         ctx.restore();
         ctx.scale(-1,1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBRX,this.locBRY,769,532);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBRX,this.locBRY,768,544);
         ctx.scale(-1,-1);
         ctx.restore();
         
