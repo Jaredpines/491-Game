@@ -125,6 +125,48 @@ class Tears {
 
             }
             this.range -= (10*this.game.clockTick);
+        }else if(this.direction === "isaacL") {
+
+            if (this.range > 0) {
+                ctx.drawImage(ASSET_MANAGER.getAsset(this.skin), 0, 0, 32, 32, this.locX + 10, this.locY - 45, 90, 90);
+                this.boundingBox = new BoundingBox(this.locX + 12.5, this.locY - 12.5, 25, 25)
+                //ctx.strokeRect(this.locX+42,this.locY-12.5, 25,25);
+                this.locX -= this.shotSpeed * (1000 * this.game.clockTick);
+            } else if (this.range <= 0) {
+                if (this.animator.isDone() === false) {
+                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX - 5, this.locY - 60)
+                } else if (this.animator.isDone() === true && this.animator2.isDone() === false) {
+                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX - 20, this.locY - 75)
+                } else if (this.animator2.isDone() === true && this.animator3.isDone() === false) {
+                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX - 5, this.locY - 60)
+                } else if (this.animator3.isDone() === true) {
+                    this.direction = null;
+                }
+
+            }
+            this.range -= (10 * this.game.clockTick);
+
+
+        }else if(this.direction === "isaacR") {
+
+            if (this.range > 0) {
+                ctx.drawImage(ASSET_MANAGER.getAsset(this.skin), 0, 0, 32, 32, this.locX + 10, this.locY - 45, 90, 90);
+                this.boundingBox = new BoundingBox(this.locX + 12.5, this.locY - 12.5, 25, 25)
+                //ctx.strokeRect(this.locX+42,this.locY-12.5, 25,25);
+                this.locX += this.shotSpeed * (1000 * this.game.clockTick);
+            } else if (this.range <= 0) {
+                if (this.animator.isDone() === false) {
+                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX - 5, this.locY - 60)
+                } else if (this.animator.isDone() === true && this.animator2.isDone() === false) {
+                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX - 20, this.locY - 75)
+                } else if (this.animator2.isDone() === true && this.animator3.isDone() === false) {
+                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX - 5, this.locY - 60)
+                } else if (this.animator3.isDone() === true) {
+                    this.direction = null;
+                }
+
+            }
+            this.range -= (10 * this.game.clockTick);
         }else{
                 this.boundingBox = undefined;
                 this.removeFromWorld= true;

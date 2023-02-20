@@ -39,6 +39,7 @@ class SceneManager {
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
         this.jumping_spider_enemy = new JumpingSpider(400, 600, this.game, this.isaac_body);
         this.sucker_enemy = new Sucker(400, 600, this.game, this.isaac_body);
+        this.pooter_enemy = new Pooter(500, 600, this.game, this.isaac_body);
         this.key = new Key(400,410,this.game);
         this.gurgling;
         this.gurgling2;
@@ -71,10 +72,11 @@ class SceneManager {
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
         
-        this.game.addEntity(this.fly_enemy);
-        this.game.addEntity(this.spider_enemy);
+        // this.game.addEntity(this.fly_enemy);
+        // this.game.addEntity(this.spider_enemy);
         //this.game.addEntity(this.jumping_spider_enemy);
-        this.game.addEntity(this.sucker_enemy);
+        // this.game.addEntity(this.sucker_enemy);
+        this.game.addEntity(this.pooter_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
         ASSET_MANAGER.pauseBackgroundMusic();
@@ -527,6 +529,16 @@ class SceneManager {
                     this.isaac_head.tear.boundingBox = undefined;
                 }
             }
+            if(this.isaac_head.tear.boundingBox != null && this.pooter_enemy.boundingBox != null){
+                if(this.isaac_head.tear.boundingBox.collide(this.pooter_enemy.boundingBox)){
+                    this.pooter_enemy.pooterHealth -= this.isaac_head.tear.damage
+                    console.log(this.pooter_enemy.pooterHealth)
+                    if (!this.isaac_head.piercing) {
+                        this.isaac_head.tear.range = 0;
+                    }
+                    this.isaac_head.tear.boundingBox = undefined;
+                }
+            }
             if (this.isaac_head.tear.boundingBox != null && this.spider_enemy.boundingBox != null) {
                 if (this.isaac_head.tear.boundingBox.collide(this.spider_enemy.boundingBox)) {
                     this.spider_enemy.health -= this.isaac_head.tear.damage
@@ -609,6 +621,16 @@ class SceneManager {
             if(this.sucker_enemy.boundingBox != null){
                 if (this.isaac_head.boundingBox.collide(this.sucker_enemy.boundingBox)
                     || this.isaac_body.boundingBox.collide(this.sucker_enemy.boundingBox)) {
+                    this.isaac_body.takeDamage(1);
+                    console.log("took 1 damage");
+                    this.tempClock = 0;
+                }
+            }
+            if(this.pooter_enemy.boundingBox != null && this.pooter_enemy.tear.boundingBox != null){
+                if (this.isaac_head.boundingBox.collide(this.pooter_enemy.boundingBox)
+                    || this.isaac_body.boundingBox.collide(this.pooter_enemy.boundingBox)
+                    || this.isaac_head.boundingBox.collide(this.pooter_enemy.tear.boundingBox)
+                    || this.isaac_body.boundingBox.collide(this.pooter_enemy.tear.boundingBox)) {
                     this.isaac_body.takeDamage(1);
                     console.log("took 1 damage");
                     this.tempClock = 0;
