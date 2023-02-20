@@ -22,6 +22,6 @@ class Rocks {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/rock3.png"),this.locX,this.locY,128,128);
         }
         this.boundingBox = new BoundingBox(this.locX+16,this.locY+16,96,96);
-        ctx.strokeRect(this.locX+16,this.locY+16,96,96);
+        //ctx.strokeRect(this.locX+16,this.locY+16,96,96);
     };
 }

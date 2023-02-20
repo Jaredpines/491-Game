@@ -17,7 +17,7 @@ class Floor {
         this.TRoomMax = 1;
         this.DRoomMax = 1;
         this.BRoomMax = 1;
-        this.premade = new Premade_Rooms(160,160,this.game, this.floor1)
+        this.premade = Array.from({length: height}, () => new Array(width));
 
     };
     addBaseRoom(){
@@ -52,7 +52,8 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade.addObstacles(-(this.farthestLeft-(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));              
+                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
+                this.premade[this.row][this.col].addObstacles(-(this.farthestLeft-(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));                            
                 this.col = 21;
                 this.entityCount++;
                 
@@ -89,8 +90,8 @@ class Floor {
                 }
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
-                this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade.addObstacles((this.farthestRight+(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));
+                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
+                this.premade[this.row][this.col].addObstacles((this.farthestRight+(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));
                 this.col = 21;
                 this.entityCount++;
                 
@@ -125,7 +126,8 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade.addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));
+                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
+                this.premade[this.row][this.col].addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));
                 this.col = 21;
                 this.entityCount++;
             }
@@ -157,7 +159,8 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade.addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));               
+                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
+                this.premade[this.row][this.col].addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));               
                 this.col = 21;
                 this.entityCount++;
             }

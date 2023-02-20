@@ -487,39 +487,34 @@ class SceneManager {
 
 
         if(this.floor1.premade != null){
-            let c = false;
-            for (let index = 0; index < this.floor1.premade.obstacles.length; index++) {
-                for (let index2 = 0; index2 < this.floor1.premade.obstacles[0].length; index2++) {
-                    if(this.floor1.premade.obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
-                        if(this.isaac_body.boundingBox.collide(this.floor1.premade.obstacles[index][index2].boundingBox)){
-                            if(this.isaac_body.xPosition > this.floor1.premade.obstacles[index][index2].locX){
-                                this.isaac_body.L = false
-                                console.log(this.isaac_body.xPosition)
-                                console.log(this.floor1.premade.obstacles[index][index2].locX)
-                            }
-                            if(this.isaac_body.xPosition <= this.floor1.premade.obstacles[index][index2].locX){
-                                this.isaac_body.R = false
-                            }
-                            if(this.isaac_body.yPosition > this.floor1.premade.obstacles[index][index2].locY){
-                                this.isaac_body.U = false
-                            }
-                            if(this.isaac_body.yPosition <= this.floor1.premade.obstacles[index][index2].locY){
-                                this.isaac_body.D = false
-                            }
-                            c = true;
-                            if(this.isaac_body.L == false&&this.isaac_body.R == false&&this.isaac_body.U == false&&this.isaac_body.D == false){
-                                c = false
+            for (let r = 0; r < this.floor1.premade.length; r++) {
+                for (let c = 0; c < this.floor1.premade[0].length; c++) {
+                    if(this.floor1.premade[r][c] != null){
+                        for (let index = 0; index < this.floor1.premade[r][c].obstacles.length; index++) {
+                            for (let index2 = 0; index2 < this.floor1.premade[r][c].obstacles[0].length; index2++) {
+                                if(this.floor1.premade[r][c].obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
+                                    if(this.isaac_body.boundingBox.collide(this.floor1.premade[r][c].obstacles[index][index2].boundingBox)){
+                                        if(this.isaac_body.boundingBox.right > this.floor1.premade[r][c].obstacles[index][index2].locX && this.isaac_body.boundingBox.right < this.floor1.premade[r][c].obstacles[index][index2].locX+40){
+                                            this.isaac_body.xPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                        }
+                                        if(this.isaac_body.boundingBox.left < this.floor1.premade[r][c].obstacles[index][index2].locX+128 && this.isaac_body.boundingBox.left > this.floor1.premade[r][c].obstacles[index][index2].locX+128-40){
+                                            this.isaac_body.xPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                        }
+                                        if(this.isaac_body.boundingBox.bottom > this.floor1.premade[r][c].obstacles[index][index2].locY && this.isaac_body.boundingBox.bottom < this.floor1.premade[r][c].obstacles[index][index2].locY+40){
+                                            this.isaac_body.yPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                        }
+                                        if(this.isaac_body.boundingBox.top < this.floor1.premade[r][c].obstacles[index][index2].locY+128 && this.isaac_body.boundingBox.top > this.floor1.premade[r][c].obstacles[index][index2].locY+128-40){
+                                            this.isaac_body.yPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                        }
+                                    
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
-            if(c == false){
-                this.isaac_body.L = true
-                this.isaac_body.R = true
-                this.isaac_body.U = true
-                this.isaac_body.D = true
-            }
+            
             
         }
 
