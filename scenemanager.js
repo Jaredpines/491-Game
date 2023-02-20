@@ -513,9 +513,7 @@ class SceneManager {
                         }
                     }
                 }
-            }
-            
-            
+            }           
         }
 
         if(this.isaac_head.tear != null){
@@ -709,7 +707,7 @@ class SceneManager {
                             this.isaac_head.tears += 0.2; this.hud.updateStats(ctx, "tears", 0.2);
                             this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
                             this.isaac_body.movementSpeed += 0.3; this.hud.updateStats(ctx, "movementSpeed", 0.3);
-                            this.isaac_head.costumes.push("./res/costume_thehalo.png");
+                            this.isaac_head.costumes.push("./res/costume_halo.png");
                         }
                         if(this.itemP.squeezy && !this.itemP.itemGet){
                             this.isaac_body.blueHearts += 4;

@@ -69,9 +69,12 @@ class Isaac_Head {
 				this.costumeSpriteModifier = 7
 				break;
 		}
-		for (let i = 0; i < this.costumes.length; i++) {
-			ctx.drawImage(ASSET_MANAGER.getAsset(this.costumes[i]),32 * this.costumeSpriteModifier, 0, this.xPosition,this.yPosition,128,128);
+		if(this.costumes != null){
+			for (let i = 0; i < this.costumes.length; i++) {
+				ctx.drawImage(ASSET_MANAGER.getAsset(this.costumes[i]),32*this.costumeSpriteModifier,0,32, 32,this.xPosition,this.yPosition,128,128);
+			}
 		}
+		
 	}
 
 
