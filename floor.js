@@ -90,6 +90,7 @@ class Floor {
                 }
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
+                this.game.addEntity(this.rooms[this.row][this.col]);
                 this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
                 this.premade[this.row][this.col].addObstacles((this.farthestRight+(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));
                 this.col = 21;
