@@ -135,6 +135,7 @@ ASSET_MANAGER.queueDownload("./sounds/chest_open_1.wav")
 ASSET_MANAGER.queueDownload("./res/monster_spider.png")
 ASSET_MANAGER.queueDownload("./res/monster_jumping_spider.png")
 ASSET_MANAGER.queueDownload("./res/monster_fly.png")
+ASSET_MANAGER.queueDownload("./res/monster_sucker.png")
 
 
 ASSET_MANAGER.downloadAll(() => {

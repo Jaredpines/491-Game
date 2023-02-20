@@ -38,6 +38,7 @@ class SceneManager {
         this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
         this.spider_enemy = new Spider(400, 400, this.game, this.isaac_body)
         this.jumping_spider_enemy = new JumpingSpider(400, 600, this.game, this.isaac_body);
+        this.sucker_enemy = new Sucker(400, 600, this.game, this.isaac_body);
         this.key = new Key(400,410,this.game);
         this.gurgling;
         this.gurgling2;
@@ -73,6 +74,7 @@ class SceneManager {
         this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
         //this.game.addEntity(this.jumping_spider_enemy);
+        this.game.addEntity(this.sucker_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
         ASSET_MANAGER.pauseBackgroundMusic();
@@ -541,6 +543,15 @@ class SceneManager {
                     this.isaac_head.tear.boundingBox = undefined;
                 }
             }
+            if (this.isaac_head.tear.boundingBox != null && this.sucker_enemy.boundingBox != null) {
+                if (this.isaac_head.tear.boundingBox.collide(this.sucker_enemy.boundingBox)) {
+                    this.sucker_enemy.health -= this.isaac_head.tear.damage
+                    if (!this.isaac_head.piercing) {
+                        this.isaac_head.tear.range = 0;
+                    }
+                    this.isaac_head.tear.boundingBox = undefined;
+                }
+            }
             if (this.gurgling != null) {
 
                 if (this.isaac_head.tear.boundingBox != null && this.gurgling.boundingBox != null) {
@@ -597,6 +608,14 @@ class SceneManager {
             if(this.spider_enemy.boundingBox != null){
                 if (this.isaac_head.boundingBox.collide(this.spider_enemy.boundingBox)
                     || this.isaac_body.boundingBox.collide(this.spider_enemy.boundingBox)) {
+                    this.isaac_body.takeDamage(1);
+                    console.log("took 1 damage");
+                    this.tempClock = 0;
+                }
+            }
+            if(this.sucker_enemy.boundingBox != null){
+                if (this.isaac_head.boundingBox.collide(this.sucker_enemy.boundingBox)
+                    || this.isaac_body.boundingBox.collide(this.sucker_enemy.boundingBox)) {
                     this.isaac_body.takeDamage(1);
                     console.log("took 1 damage");
                     this.tempClock = 0;

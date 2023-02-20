@@ -102,6 +102,108 @@ class Fly {
     }
 }
 
+class Sucker {
+    constructor(locX, locY, game, isaac) {
+        this.game = game;
+        this.isaac = isaac
+        this.paused = false;
+        this.dead = false;
+        this.deadTime = 0;
+        this.clocktick = game.clocktick;
+
+        this.xPosition = locX;
+        this.yPosition = locY;
+        this.moveBoundsRight = this.isaac.moveBoundsRight
+        this.moveBoundsLeft = this.isaac.moveBoundsLeft
+        this.moveBoundsUp = this.isaac.moveBoundsUp
+        this.moveBoundsDown = this.isaac.moveBoundsDown
+        this.movementSpeed = 100;
+
+        this.flySpritesheet = ASSET_MANAGER.getAsset("./res/monster_fly.png");
+        this.suckerSpritesheet = ASSET_MANAGER.getAsset("./res/monster_sucker.png");
+
+        this.animations = [];
+        this.loadAnimations();
+        this.bbWidth = 32
+        this.bbHeight = 24
+        this.boundingBox = null;
+        this.health = 5
+    };
+
+    loadAnimations() {
+        for (var i = 0; i < 1; i++) { // Two States
+            this.animations.push([]);
+        }
+
+        //Alive = 0
+        this.animations[0] = new Animator(this.suckerSpritesheet, 0, 0, 32, 32, 2, 0.08, 2.5);
+        //Dead = 1
+        this.animations[1] = new Animator(this.flySpritesheet, 0, 75, 64, 64, 12, 0.1, 2.5);
+
+    };
+
+    update() {
+
+        if (this.dead) {
+
+            if (this.deadTime === 0) {
+                this.deadTime += this.game.clockTick;
+                ASSET_MANAGER.playAsset("./sounds/animal_squish_1.wav")
+            }
+            if (this.deadTime > 1.1) {
+                console.log("runs")
+                this.boundingBox = undefined;
+                this.removeFromWorld = true;
+
+            }
+        }
+        if (!this.paused && !this.dead && !this.isaac.crying) {
+
+            let distX =  this.isaac.xPosition - this.xPosition
+            let distY =  this.isaac.yPosition - this.yPosition
+            if(this.xPosition < this.moveBoundsRight && this.xPosition < this.isaac.xPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityX = distX/distance*this.movementSpeed
+                this.xPosition += velocityX*this.game.clockTick/2;
+            }
+            if(this.xPosition > this.moveBoundsLeft && this.xPosition > this.isaac.xPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityX = distX/distance*this.movementSpeed
+                this.xPosition -= -velocityX*this.game.clockTick/2;
+            }
+            if(this.yPosition > this.moveBoundsUp && this.yPosition > this.isaac.yPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityY = distY/distance*this.movementSpeed
+                this.yPosition += velocityY*this.game.clockTick/2;
+            }
+            if(this.yPosition < this.moveBoundsDown && this.yPosition < this.isaac.yPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityY = distY/distance*this.movementSpeed
+                this.yPosition += velocityY*this.game.clockTick/2;
+            }
+
+
+
+        }
+
+        if(this.health<=0){
+            this.deadTime += 1*this.game.clockTick
+            this.dead = true;
+        }
+
+    };
+
+    draw(ctx) {
+        this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
+        ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
+        if (this.dead) {
+            this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
+        } else {
+            this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition,this.yPosition);
+        }
+    }
+}
+
 class Spider {
     constructor(locX, locY, game, isaac) {
         this.isaac = isaac
