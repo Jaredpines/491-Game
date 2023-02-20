@@ -627,30 +627,30 @@ class Pooter {
 
             let distX =  this.isaac.xPosition - this.xPosition
             let distY =  this.isaac.yPosition - this.yPosition
-            // if(this.xPosition < this.moveBoundsRight && this.xPosition < this.isaac.xPosition){
-            //     let distance = Math.sqrt(distX*distX+distY*distY)
-            //     let velocityX = distX/distance*this.movementSpeed
-            //     this.xPosition += velocityX*this.game.clockTick/2;
-            //
-            // }
-            // if(this.xPosition > this.moveBoundsLeft && this.xPosition > this.isaac.xPosition){
-            //     let distance = Math.sqrt(distX*distX+distY*distY)
-            //     let velocityX = distX/distance*this.movementSpeed
-            //     this.xPosition -= -velocityX*this.game.clockTick/2;
-            //
-            // }
-            // if(this.yPosition > this.moveBoundsUp && this.yPosition > this.isaac.yPosition){
-            //     let distance = Math.sqrt(distX*distX+distY*distY)
-            //     let velocityY = distY/distance*this.movementSpeed
-            //     this.yPosition += velocityY*this.game.clockTick/2;
-            //
-            // }
-            // if(this.yPosition < this.moveBoundsDown && this.yPosition < this.isaac.yPosition){
-            //     let distance = Math.sqrt(distX*distX+distY*distY)
-            //     let velocityY = distY/distance*this.movementSpeed
-            //     this.yPosition += velocityY*this.game.clockTick/2;
-            //
-            // }
+            if(this.xPosition < this.moveBoundsRight && this.xPosition < this.isaac.xPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityX = distX/distance*this.movementSpeed
+                this.xPosition += velocityX*this.game.clockTick/2;
+
+            }
+            if(this.xPosition > this.moveBoundsLeft && this.xPosition > this.isaac.xPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityX = distX/distance*this.movementSpeed
+                this.xPosition -= -velocityX*this.game.clockTick/2;
+
+            }
+            if(this.yPosition > this.moveBoundsUp && this.yPosition > this.isaac.yPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityY = distY/distance*this.movementSpeed
+                this.yPosition += velocityY*this.game.clockTick/2;
+
+            }
+            if(this.yPosition < this.moveBoundsDown && this.yPosition < this.isaac.yPosition){
+                let distance = Math.sqrt(distX*distX+distY*distY)
+                let velocityY = distY/distance*this.movementSpeed
+                this.yPosition += velocityY*this.game.clockTick/2;
+
+            }
 
             //Attack tears
             if (this.attackPooter && !this.dead) {
