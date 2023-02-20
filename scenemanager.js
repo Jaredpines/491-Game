@@ -50,6 +50,7 @@ class SceneManager {
         this.driftCounter = 0;
         this.tempClock = 0;
         this.devil = false;
+        this.exists = false;
 
 
 
@@ -76,7 +77,7 @@ class SceneManager {
         // this.game.addEntity(this.spider_enemy);
         //this.game.addEntity(this.jumping_spider_enemy);
         // this.game.addEntity(this.sucker_enemy);
-        this.game.addEntity(this.pooter_enemy);
+        //this.game.addEntity(this.pooter_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
         ASSET_MANAGER.pauseBackgroundMusic();
@@ -210,6 +211,13 @@ class SceneManager {
                                         console.log(this.isaac_body.xPosition)
                                         this.devil = true;
                                     }
+                                    if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
+                                        this.game.addEntity(this.spider_enemy);
+                                        //this.game.addEntity(this.jumping_spider_enemy);
+                                        this.game.addEntity(this.sucker_enemy);
+                                        this.game.addEntity(this.pooter_enemy);
+                                        this.exists = true;
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                         this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                         this.game.addEntity(this.itemP);
@@ -302,6 +310,13 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                     this.moveBoundsR = true;
+                                    if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
+                                        this.game.addEntity(this.spider_enemy);
+                                        //this.game.addEntity(this.jumping_spider_enemy);
+                                        this.game.addEntity(this.sucker_enemy);
+                                        this.game.addEntity(this.pooter_enemy);
+                                        this.exists = true;
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
@@ -349,6 +364,13 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY-992;
                                     this.hud.hudHealthY = this.hud.hudHealthY-992;
                                     this.moveBoundsU = true;
+                                    if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
+                                        this.game.addEntity(this.spider_enemy);
+                                        //this.game.addEntity(this.jumping_spider_enemy);
+                                        this.game.addEntity(this.sucker_enemy);
+                                        this.game.addEntity(this.pooter_enemy);
+                                        this.exists = true;
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
@@ -452,6 +474,13 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+992;
                                     this.hud.hudHealthY = this.hud.hudHealthY+992;
                                     this.moveBoundsD = true;
+                                    if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
+                                        this.game.addEntity(this.spider_enemy);
+                                        //this.game.addEntity(this.jumping_spider_enemy);
+                                        this.game.addEntity(this.sucker_enemy);
+                                        this.game.addEntity(this.pooter_enemy);
+                                        this.exists = true;
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);

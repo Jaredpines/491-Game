@@ -195,7 +195,7 @@ class Sucker {
 
     draw(ctx) {
         this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
-        ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
+        //ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         if (this.dead) {
             this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
         } else {
