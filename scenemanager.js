@@ -655,16 +655,19 @@ class SceneManager {
                     this.tempClock = 0;
                 }
             }
-            if(this.pooter_enemy.boundingBox != null && this.pooter_enemy.tear.boundingBox != null){
-                if (this.isaac_head.boundingBox.collide(this.pooter_enemy.boundingBox)
-                    || this.isaac_body.boundingBox.collide(this.pooter_enemy.boundingBox)
-                    || this.isaac_head.boundingBox.collide(this.pooter_enemy.tear.boundingBox)
-                    || this.isaac_body.boundingBox.collide(this.pooter_enemy.tear.boundingBox)) {
-                    this.isaac_body.takeDamage(1);
-                    console.log("took 1 damage");
-                    this.tempClock = 0;
+            if(this.pooter_enemy.tear != null){
+                if(this.pooter_enemy.boundingBox != null && this.pooter_enemy.tear.boundingBox != null){
+                    if (this.isaac_head.boundingBox.collide(this.pooter_enemy.boundingBox)
+                        || this.isaac_body.boundingBox.collide(this.pooter_enemy.boundingBox)
+                        || this.isaac_head.boundingBox.collide(this.pooter_enemy.tear.boundingBox)
+                        || this.isaac_body.boundingBox.collide(this.pooter_enemy.tear.boundingBox)) {
+                        this.isaac_body.takeDamage(1);
+                        console.log("took 1 damage");
+                        this.tempClock = 0;
+                    }
                 }
             }
+            
         }
         if (this.isaac_body != null) {
             if(this.chest.boundingBox != null){
