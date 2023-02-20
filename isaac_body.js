@@ -18,6 +18,10 @@ class Isaac_Body {
 		this.state = 0; // 0 = idle, 1 = walking
 		this.tempCount = 0;
 		this.deadTime = 0;
+		this.L = true;
+		this.R = true;
+		this.U = true;
+		this.D = true;
 
 		//stats
 		this.redHearts = 5;
@@ -128,20 +132,20 @@ class Isaac_Body {
 		this.state = 0;
 		var that = this;
 		if(this.count > 2 && !this.dead){
-			if (this.game.keys.a && !this.game.keys.d) {
+			if (this.game.keys.a && !this.game.keys.d && this.L == true) {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed*this.game.clockTick;
 				}
-			} else if (this.game.keys.d && !this.game.keys.a) {
+			} else if (this.game.keys.d && !this.game.keys.a && this.R == true) {
 				if (this.xPosition <= this.moveBoundsRight) {
 					this.xPosition += this.movementSpeed*this.game.clockTick;
 				}
 			} 
-			if (this.game.keys.w && !this.game.keys.s) {
+			if (this.game.keys.w && !this.game.keys.s && this.U == true) {
 				if (this.yPosition >= this.moveBoundsUp) {
 					this.yPosition -= this.movementSpeed*this.game.clockTick;
 				}
-			} else if (this.game.keys.s && !this.game.keys.w) {
+			} else if (this.game.keys.s && !this.game.keys.w && this.D == true) {
 				if (this.yPosition <= this.moveBoundsDown) {
 					this.yPosition += this.movementSpeed*this.game.clockTick;
 				}

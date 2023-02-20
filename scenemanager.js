@@ -48,7 +48,6 @@ class SceneManager {
         this.driftCounter = 0;
         this.tempClock = 0;
         this.devil = false;
-        this.premade = new Premade_Rooms(160,160,this.game)
 
 
 
@@ -70,7 +69,7 @@ class SceneManager {
         this.game.addEntity(new Controls(0,0,this.game));
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
-        this.premade.addObstacles();
+        
         this.game.addEntity(this.fly_enemy);
         this.game.addEntity(this.spider_enemy);
         //this.game.addEntity(this.jumping_spider_enemy);
@@ -483,6 +482,44 @@ class SceneManager {
             }
         }
         this.tempClock += 1*this.game.clockTick;
+
+
+        if(this.floor1.premade != null){
+            let c = false;
+            for (let index = 0; index < this.floor1.premade.obstacles.length; index++) {
+                for (let index2 = 0; index2 < this.floor1.premade.obstacles[0].length; index2++) {
+                    if(this.floor1.premade.obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
+                        if(this.isaac_body.boundingBox.collide(this.floor1.premade.obstacles[index][index2].boundingBox)){
+                            if(this.isaac_body.xPosition > this.floor1.premade.obstacles[index][index2].locX){
+                                this.isaac_body.L = false
+                                console.log(this.isaac_body.xPosition)
+                                console.log(this.floor1.premade.obstacles[index][index2].locX)
+                            }
+                            if(this.isaac_body.xPosition <= this.floor1.premade.obstacles[index][index2].locX){
+                                this.isaac_body.R = false
+                            }
+                            if(this.isaac_body.yPosition > this.floor1.premade.obstacles[index][index2].locY){
+                                this.isaac_body.U = false
+                            }
+                            if(this.isaac_body.yPosition <= this.floor1.premade.obstacles[index][index2].locY){
+                                this.isaac_body.D = false
+                            }
+                            c = true;
+                            if(this.isaac_body.L == false&&this.isaac_body.R == false&&this.isaac_body.U == false&&this.isaac_body.D == false){
+                                c = false
+                            }
+                        }
+                    }
+                }
+            }
+            if(c == false){
+                this.isaac_body.L = true
+                this.isaac_body.R = true
+                this.isaac_body.U = true
+                this.isaac_body.D = true
+            }
+            
+        }
 
         if(this.isaac_head.tear != null){
             if(this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null){

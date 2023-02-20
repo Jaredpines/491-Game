@@ -17,6 +17,7 @@ class Floor {
         this.TRoomMax = 1;
         this.DRoomMax = 1;
         this.BRoomMax = 1;
+        this.premade = new Premade_Rooms(160,160,this.game, this.floor1)
 
     };
     addBaseRoom(){
@@ -51,8 +52,10 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
+                this.premade.addObstacles(-(this.farthestLeft-(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));              
                 this.col = 21;
                 this.entityCount++;
+                
             }
             
             
@@ -87,8 +90,10 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
+                this.premade.addObstacles((this.farthestRight+(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));
                 this.col = 21;
                 this.entityCount++;
+                
             }
             
             
@@ -120,6 +125,7 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
+                this.premade.addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));
                 this.col = 21;
                 this.entityCount++;
             }
@@ -151,6 +157,7 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
+                this.premade.addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));               
                 this.col = 21;
                 this.entityCount++;
             }
@@ -331,10 +338,6 @@ class Floor {
                     if(index2-1 > 0){
                         if(this.rooms[index][index2] != null && this.rooms[index][index2].skin != "t" && this.rooms[index][index2-1] == null){
                             if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
-                                console.log(index)
-                                console.log(index2)
-                                console.log(this.farthestLeft-(1472*(index2-2)))
-                                console.log(this.farthestUp-(992*(index-1)))
                                 this.rooms[index][index2-1] = new Boss_Room(this.farthestLeft-(1472*(index2-2)),-(this.farthestUp-(992*(index-1))),"BL",this.game)
                                 
                                 this.row = index;

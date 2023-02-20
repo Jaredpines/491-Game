@@ -33,9 +33,9 @@ class Isaac_Head {
 		this.state = 0;
 		this.xPosition = this.body.xPosition;
 		if(this.body.state == 1 && this.body.facing == 0){
-			this.yPosition = this.body.yPosition-42;
+			this.yPosition = this.body.yPosition-40;
 		}else{
-			this.yPosition = this.body.yPosition-42;
+			this.yPosition = this.body.yPosition-40;
 		}
 
 
