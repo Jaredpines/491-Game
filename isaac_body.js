@@ -18,6 +18,10 @@ class Isaac_Body {
 		this.state = 0; // 0 = idle, 1 = walking
 		this.tempCount = 0;
 		this.deadTime = 0;
+		this.slideTL = 0;
+		this.slideTR = 0;
+		this.slideTU = 0;
+		this.slideTD = 0;
 		
 
 		//stats
@@ -128,24 +132,43 @@ class Isaac_Body {
 	update(){
 		this.state = 0;
 		var that = this;
+
 		if(this.count > 2 && !this.dead){
 			if (this.game.keys.a && !this.game.keys.d) {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed*this.game.clockTick;
 				}
-			} else if (this.game.keys.d && !this.game.keys.a) {
+				this.slideTL = 0.4;
+			}else if(this.slideTL > 0){
+				this.slideTL -= 1*this.game.clockTick;
+				this.xPosition -= ((this.movementSpeed*this.game.clockTick))*this.slideTL;
+			}
+			if (this.game.keys.d && !this.game.keys.a) {
 				if (this.xPosition <= this.moveBoundsRight) {
 					this.xPosition += this.movementSpeed*this.game.clockTick;
 				}
+				this.slideTR = 0.4;
+			}else if(this.slideTR > 0){
+				this.slideTR -= 1*this.game.clockTick;
+				this.xPosition += ((this.movementSpeed*this.game.clockTick))*this.slideTR;
 			} 
 			if (this.game.keys.w && !this.game.keys.s) {
 				if (this.yPosition >= this.moveBoundsUp) {
 					this.yPosition -= this.movementSpeed*this.game.clockTick;
 				}
-			} else if (this.game.keys.s && !this.game.keys.w) {
+				this.slideTU = 0.4;
+			}else if(this.slideTU > 0){
+				this.slideTU -= 1*this.game.clockTick;
+				this.yPosition -= ((this.movementSpeed*this.game.clockTick))*this.slideTU;
+			}
+			if (this.game.keys.s && !this.game.keys.w) {
 				if (this.yPosition <= this.moveBoundsDown) {
 					this.yPosition += this.movementSpeed*this.game.clockTick;
 				}
+				this.slideTD = 0.4;
+			}else if(this.slideTD > 0){
+				this.slideTD -= 1*this.game.clockTick;
+				this.yPosition += ((this.movementSpeed*this.game.clockTick))*this.slideTD;
 			}
 		}
 		if(this.count > 2 && !this.dead){
