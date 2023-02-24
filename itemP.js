@@ -104,6 +104,19 @@ class ItemP {
                     this.bounceCount = 0;
                 }
             }
+            // else if(this.rand <= 7){
+            //     if(this.bounceCount<0.5 && this.itemGet == false){
+            //         this.squeezy = true;
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/costume_squeezy.png"),this.locX-5,this.itemY,128,128);
+            //         this.itemY += 25*this.game.clockTick;
+            //     }else if(this.bounceCount < 1 && this.itemGet == false){
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/costume_squeezy.png"),this.locX-5,this.itemY,128,128);
+            //         this.itemY -= 25*this.game.clockTick;
+            //     }else if(this.bounceCount >= 1 && this.itemGet == false){
+            //         ctx.drawImage(ASSET_MANAGER.getAsset("./res/costume_squeezy.png"),this.locX-5,this.itemY,128,128);
+            //         this.bounceCount = 0;
+            //     }
+            // }
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
             this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
             //ctx.strokeRect(this.locX,this.locY,128,128);
