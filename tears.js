@@ -12,6 +12,7 @@ class Tears {
         this.animator3 = new Animator(ASSET_MANAGER.getAsset("./res/tear_animation_three.png"), 0, 0, 62, 53, 4, 0.1, 2);
         this.boundingBox = null;
         this.damage = damage;
+        this.pierced = false;
         // this.skin = "./res/normal_tears.png"
         this.skin = skin;
         //TODO: implement damage scaling size for tears

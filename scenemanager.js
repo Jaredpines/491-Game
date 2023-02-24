@@ -52,7 +52,7 @@ class SceneManager {
         this.devil = false;
         this.exists = false;
 
-
+        this.fire = new Fires("normal", 200, 200, this.game)
 
 
     };
@@ -80,6 +80,7 @@ class SceneManager {
         //this.game.addEntity(this.pooter_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.chest);
+        this.game.addEntity(this.fire);
         ASSET_MANAGER.pauseBackgroundMusic();
         ASSET_MANAGER.playAsset("./music/the_cellar_alt.ogg");
         ASSET_MANAGER.autoRepeat("./music/the_cellar_alt.ogg");
@@ -548,6 +549,16 @@ class SceneManager {
         }
 
         if(this.isaac_head.tear != null){
+            if(this.isaac_head.tear.boundingBox != null && this.fire.boundingBox != null){
+                if(this.isaac_head.tear.boundingBox.collide(this.fire.boundingBox)){
+                    this.fire.fireHealth -= this.isaac_head.tear.damage
+                    console.log(this.fire.fireHealth)
+                    if (!this.isaac_head.piercing && !this.isaac_head.tear.pierced) {
+                        this.isaac_head.tear.range = 0;
+                    }
+                    this.isaac_head.tear.boundingBox = undefined;
+                }
+            }
             if(this.isaac_head.tear.boundingBox != null && this.fly_enemy.boundingBox != null){
                 if(this.isaac_head.tear.boundingBox.collide(this.fly_enemy.boundingBox)){
                     this.fly_enemy.flyHealth -= this.isaac_head.tear.damage
@@ -665,6 +676,14 @@ class SceneManager {
                         console.log("took 1 damage");
                         this.tempClock = 0;
                     }
+                }
+            }
+            if(this.fire.boundingBox != null){
+                if (this.isaac_head.boundingBox.collide(this.fire.boundingBox)
+                    || this.isaac_body.boundingBox.collide(this.fire.boundingBox)) {
+                    this.isaac_body.takeDamage(1);
+                    console.log("took 1 damage");
+                    this.tempClock = 0;
                 }
             }
             

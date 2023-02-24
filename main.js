@@ -94,6 +94,15 @@ ASSET_MANAGER.queueDownload("./res/treasure_door_way_down.png")
 ASSET_MANAGER.queueDownload("./res/rock1.png")
 ASSET_MANAGER.queueDownload("./res/rock2.png")
 ASSET_MANAGER.queueDownload("./res/rock3.png")
+ASSET_MANAGER.queueDownload("./res/fireplace.png")
+ASSET_MANAGER.queueDownload("./res/fireplace_blue.png")
+ASSET_MANAGER.queueDownload("./res/fireplace_red.png")
+
+//effects
+ASSET_MANAGER.queueDownload("./res/effect_fire.png")
+ASSET_MANAGER.queueDownload("./res/effect_fire_blue.png")
+ASSET_MANAGER.queueDownload("./res/effect_fire.red.png")
+
 
 //items
 ASSET_MANAGER.queueDownload("./res/item_synthoil.png")
