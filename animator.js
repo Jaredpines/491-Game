@@ -20,6 +20,20 @@ class Animator {
 			x, y,
 			this.width * this.scale, this.height * this.scale);
 	};
+	drawFrameD(tick, ctx, x, y){
+
+		this.elapsedTime += tick
+		if(this.elapsedTime > this.totalTime){
+			this.elapsedTime -= this.totalTime;
+		}
+		const frame = this.currentFrame();
+
+		ctx.drawImage(this.spriteSheet,
+			this.xStart, this.yStart+ this.height*frame,
+			this.width, this.height,
+			x, y,
+			this.width * this.scale, this.height * this.scale);
+	};
 	drawFrameReverse(tick, ctx, x, y){
 
 		this.elapsedTime += tick
@@ -30,6 +44,19 @@ class Animator {
 
 		ctx.drawImage(this.spriteSheet,
 			288 - this.width*frame, this.yStart,
+			this.width, this.height,
+			x, y,
+			this.width * this.scale, this.height * this.scale);
+	};
+	drawFrameReverseS(tick, ctx, x, y){
+
+		this.elapsedTime += tick
+		if(this.elapsedTime > this.totalTime){
+			this.elapsedTime -= this.totalTime;
+		}
+		const frame = this.currentFrame();
+		ctx.drawImage(this.spriteSheet,
+			this.xStart, 96 - this.height*frame,
 			this.width, this.height,
 			x, y,
 			this.width * this.scale, this.height * this.scale);

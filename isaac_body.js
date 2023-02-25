@@ -138,8 +138,8 @@ class Isaac_Body {
 				if (this.xPosition >= this.moveBoundsLeft) {
 					this.xPosition -= this.movementSpeed*this.game.clockTick;
 				}
-				this.slideTL = 0.4;
-			}else if(this.slideTL > 0){
+				this.slideTL = 0.3;
+			}else if(this.slideTL > 0 && this.xPosition >= this.moveBoundsLeft){
 				this.slideTL -= 1*this.game.clockTick;
 				this.xPosition -= ((this.movementSpeed*this.game.clockTick))*this.slideTL;
 			}
@@ -147,8 +147,8 @@ class Isaac_Body {
 				if (this.xPosition <= this.moveBoundsRight) {
 					this.xPosition += this.movementSpeed*this.game.clockTick;
 				}
-				this.slideTR = 0.4;
-			}else if(this.slideTR > 0){
+				this.slideTR = 0.3;
+			}else if(this.slideTR > 0 && this.xPosition <= this.moveBoundsRight){
 				this.slideTR -= 1*this.game.clockTick;
 				this.xPosition += ((this.movementSpeed*this.game.clockTick))*this.slideTR;
 			} 
@@ -156,8 +156,8 @@ class Isaac_Body {
 				if (this.yPosition >= this.moveBoundsUp) {
 					this.yPosition -= this.movementSpeed*this.game.clockTick;
 				}
-				this.slideTU = 0.4;
-			}else if(this.slideTU > 0){
+				this.slideTU = 0.3;
+			}else if(this.slideTU > 0 && this.yPosition >= this.moveBoundsUp){
 				this.slideTU -= 1*this.game.clockTick;
 				this.yPosition -= ((this.movementSpeed*this.game.clockTick))*this.slideTU;
 			}
@@ -165,8 +165,8 @@ class Isaac_Body {
 				if (this.yPosition <= this.moveBoundsDown) {
 					this.yPosition += this.movementSpeed*this.game.clockTick;
 				}
-				this.slideTD = 0.4;
-			}else if(this.slideTD > 0){
+				this.slideTD = 0.3;
+			}else if(this.slideTD > 0 && this.yPosition <= this.moveBoundsDown){
 				this.slideTD -= 1*this.game.clockTick;
 				this.yPosition += ((this.movementSpeed*this.game.clockTick))*this.slideTD;
 			}

@@ -525,18 +525,29 @@ class SceneManager {
                         for (let index = 0; index < this.floor1.premade[r][c].obstacles.length; index++) {
                             for (let index2 = 0; index2 < this.floor1.premade[r][c].obstacles[0].length; index2++) {
                                 if(this.floor1.premade[r][c].obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
-                                    if(this.isaac_body.boundingBox.collide(this.floor1.premade[r][c].obstacles[index][index2].boundingBox)){
+                                    if(this.isaac_body.boundingBox.collide(this.floor1.premade[r][c].obstacles[index][index2].boundingBox) && this.floor1.premade[r][c].obstacles[index][index2] instanceof Rocks){
                                         if(this.isaac_body.boundingBox.right > this.floor1.premade[r][c].obstacles[index][index2].locX && this.isaac_body.boundingBox.right < this.floor1.premade[r][c].obstacles[index][index2].locX+40){
                                             this.isaac_body.xPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                            this.isaac_body.slideTR = 0;
                                         }
                                         if(this.isaac_body.boundingBox.left < this.floor1.premade[r][c].obstacles[index][index2].locX+128 && this.isaac_body.boundingBox.left > this.floor1.premade[r][c].obstacles[index][index2].locX+128-40){
                                             this.isaac_body.xPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                            this.isaac_body.slideTL = 0;
                                         }
                                         if(this.isaac_body.boundingBox.bottom > this.floor1.premade[r][c].obstacles[index][index2].locY && this.isaac_body.boundingBox.bottom < this.floor1.premade[r][c].obstacles[index][index2].locY+40){
                                             this.isaac_body.yPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                            this.isaac_body.slideTD = 0;
                                         }
                                         if(this.isaac_body.boundingBox.top < this.floor1.premade[r][c].obstacles[index][index2].locY+128 && this.isaac_body.boundingBox.top > this.floor1.premade[r][c].obstacles[index][index2].locY+128-40){
                                             this.isaac_body.yPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                            this.isaac_body.slideTU = 0;
+                                        }
+                                    
+                                    }
+                                    if(this.isaac_body.boundingBox.collide(this.floor1.premade[r][c].obstacles[index][index2].boundingBox) && this.floor1.premade[r][c].obstacles[index][index2] instanceof Spikes){
+                                        if(this.floor1.premade[r][c].obstacles[index][index2].stab == true && this.tempClock > 1){
+                                            this.isaac_body.takeDamage(2);
+                                            this.tempClock = 0;
                                         }
                                     
                                     }
