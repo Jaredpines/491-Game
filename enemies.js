@@ -25,7 +25,7 @@ class Fly {
         this.bbWidth = 32
         this.bbHeight = 24
         this.boundingBox = null;
-        this.flyHealth = 5
+        this.health = 5
     };
 
     loadAnimations() {
@@ -84,7 +84,7 @@ class Fly {
 
         }
 
-        if(this.flyHealth<=0){
+        if(this.health<=0){
             this.deadTime += 1*this.game.clockTick
             this.dead = true;
         }
@@ -572,7 +572,7 @@ class Pooter {
         this.bbWidth = 32
         this.bbHeight = 24
         this.boundingBox = null;
-        this.pooterHealth = 8
+        this.health = 8
     };
 
     loadAnimations() {
@@ -670,7 +670,7 @@ class Pooter {
 
         }
 
-        if(this.pooterHealth<=0){
+        if(this.health<=0){
             this.deadTime += 1*this.game.clockTick
             this.dead = true;
         }
