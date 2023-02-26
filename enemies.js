@@ -333,17 +333,17 @@ class Spider {
                 this.left = false;
                 this.right = false;
             }
-            if(this.xPosition < this.moveBoundsRight && this.left === true){
+            if(this.xPosition < this.moveBoundsRight+35 && this.left === true){
                 this.xPosition += this.game.clockTick*this.movementSpeed;
             }
-            if(this.xPosition > this.moveBoundsLeft && this.right === true){
+            if(this.xPosition > this.moveBoundsLeft+15 && this.right === true){
                 this.xPosition -= this.game.clockTick*this.movementSpeed;
             }
-            if(this.yPosition > this.moveBoundsUp+20 && this.up === true){
+            if(this.yPosition > this.moveBoundsUp+35 && this.up === true){
                 this.yPosition -= this.game.clockTick*this.movementSpeed;
 
             }
-            if(this.yPosition < this.moveBoundsDown && this.down === true){
+            if(this.yPosition < this.moveBoundsDown+50 && this.down === true){
                 this.yPosition += this.game.clockTick*this.movementSpeed;
             }
 
