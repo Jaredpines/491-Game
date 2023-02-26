@@ -90,7 +90,7 @@ class Fires {
             this.thirdStage = false
             this.stageChange = false
             this.fireScale = 2.5;
-            console.log("first stage")
+            //console.log("first stage")
         }
     };
 

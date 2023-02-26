@@ -1,5 +1,5 @@
 class Floor {
-    constructor(game, level){
+    constructor(game, level, isaac){
         this.game = game;
         this.camera = new Camera(this.game);
         this.farthestLeft = 13248;
@@ -17,7 +17,7 @@ class Floor {
         this.TRoomMax = 1;
         this.DRoomMax = 1;
         this.BRoomMax = 1;
-        this.premade = Array.from({length: height}, () => new Array(width));
+        this.isaac = isaac;
 
     };
     addBaseRoom(){
@@ -52,8 +52,7 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
-                this.premade[this.row][this.col].addObstacles(-(this.farthestLeft-(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));                            
+                                            
                 this.col = 21;
                 this.entityCount++;
                 
@@ -91,8 +90,7 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
-                this.premade[this.row][this.col].addObstacles((this.farthestRight+(1472*(this.col-1))),-(this.farthestUp-(992*(this.row-1))));
+                
                 this.col = 21;
                 this.entityCount++;
                 
@@ -127,8 +125,7 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
-                this.premade[this.row][this.col].addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));
+                
                 this.col = 21;
                 this.entityCount++;
             }
@@ -160,8 +157,7 @@ class Floor {
             }
             if(this.col != 21 &&this.rooms[this.row][this.col] != null){
                 this.game.addEntity(this.rooms[this.row][this.col]);
-                this.premade[this.row][this.col] = new Premade_Rooms(160,160,this.game, this.floor1)
-                this.premade[this.row][this.col].addObstacles(-(this.farthestLeft-(1472*(this.col-1))),this.farthestDown+(992*(this.row-1)));               
+                               
                 this.col = 21;
                 this.entityCount++;
             }

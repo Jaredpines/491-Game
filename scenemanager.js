@@ -32,7 +32,6 @@ class SceneManager {
         this.moveBoundsR = false;
         this.moveBoundsU = false;
         this.moveBoundsD = false;
-        this.floor1 = new Floor(this.game,1);
         this.hud = new Hud(this.game, this.isaac_body);
         this.chest = new Chest(400,400,this.game);      
         this.fly_enemy = new Fly(900, 400, this.game, this.isaac_body)
@@ -40,7 +39,8 @@ class SceneManager {
         this.jumping_spider_enemy = new JumpingSpider(400, 600, this.game, this.isaac_body);
         this.sucker_enemy = new Sucker(400, 600, this.game, this.isaac_body);
         this.pooter_enemy = new Pooter(500, 600, this.game, this.isaac_body);
-        this.key = new Key(400,410,this.game);
+        this.floor1 = new Floor(this.game,1, this.isaac_body);
+        this.premade = Array.from({length: 20}, () => new Array(20));
         this.gurgling;
         this.gurgling2;
         this.itemP;
@@ -184,7 +184,7 @@ class SceneManager {
         }
         if(this.floor1.rooms != null){
             for (let index = 0; index < this.floor1.rooms.length; index++) {
-                for (let index2 = 0; index2 < this.floor1.rooms.length; index2++) {
+                for (let index2 = 0; index2 < this.floor1.rooms[index].length; index2++) {
                     if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
                         if(this.floor1.rooms[index][index2].door.boundingBox != null){
                             if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
@@ -203,6 +203,11 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
                                     this.hud.hudHealthX = this.hud.hudHealthX-1472;
                                     this.moveBounds = true;
+                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
+                                        this.game.orderCorrecter();
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                         this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                         this.game.addEntity(this.gurgling);
@@ -256,6 +261,11 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                     this.moveBoundsR = true;
+                                    if(this.premade[index][index2+1] == null && (index != 10 || index2+1 !=10)){
+                                        this.premade[index][index2+1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index][index2+1].addObstacles((this.floor1.farthestRight+(1472*(index2))),-(this.floor1.farthestUp-(992*(index-1))));
+                                        this.game.orderCorrecter();
+                                    }
                                 }
                                 this.onceR = true;
                             }
@@ -284,6 +294,11 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
                                     this.hud.hudHealthX = this.hud.hudHealthX-1472;
                                     this.moveBounds = true;
+                                    if(this.premade[index][index2-1] == null && (index != 10 || index2-1 !=10)){
+                                        this.premade[index][index2-1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index][index2-1].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-2))),-(this.floor1.farthestUp-(992*(index-1))));
+                                        this.game.orderCorrecter();
+                                    }
                                 }
                                 this.once = true;
                             }
@@ -311,6 +326,11 @@ class SceneManager {
                                     this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
                                     this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                     this.moveBoundsR = true;
+                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index][index2].addObstacles((this.floor1.farthestRight+(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
+                                        this.game.orderCorrecter();
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
                                         this.game.addEntity(this.spider_enemy);
                                         //this.game.addEntity(this.jumping_spider_enemy);
@@ -365,6 +385,11 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY-992;
                                     this.hud.hudHealthY = this.hud.hudHealthY-992;
                                     this.moveBoundsU = true;
+                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
+                                        this.game.orderCorrecter();
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
                                         this.game.addEntity(this.spider_enemy);
                                         //this.game.addEntity(this.jumping_spider_enemy);
@@ -418,6 +443,11 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+992;
                                     this.hud.hudHealthY = this.hud.hudHealthY+992;
                                     this.moveBoundsD = true;
+                                    if(this.premade[index+1][index2] == null && (index+1 != 10 || index2 !=10)){
+                                        this.premade[index+1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index+1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index)));
+                                        this.game.orderCorrecter();
+                                    }
                                 }
                                 this.onceD = true;
                             }
@@ -448,6 +478,11 @@ class SceneManager {
                                     this.hud.hudHealthY = this.hud.hudHealthY-992;
                                     this.moveBoundsU = true;
                                     
+                                    if(this.premade[index-1][index2] == null && (index-1 != 10 || index2 !=10)){
+                                        this.premade[index-1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index-1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-2)));
+                                        this.game.orderCorrecter();
+                                    }
                                 }
                                 this.onceU = true;
                             }
@@ -475,6 +510,11 @@ class SceneManager {
                                     this.hud.hudPickupsY = this.hud.hudPickupsY+992;
                                     this.hud.hudHealthY = this.hud.hudHealthY+992;
                                     this.moveBoundsD = true;
+                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
+                                        this.game.orderCorrecter();
+                                    }
                                     if(this.floor1.rooms[index][index2].skin == "n" && this.exists == false){
                                         this.game.addEntity(this.spider_enemy);
                                         //this.game.addEntity(this.jumping_spider_enemy);
@@ -518,38 +558,101 @@ class SceneManager {
         this.tempClock += 1*this.game.clockTick;
 
 
-        if(this.floor1.premade != null){
-            for (let r = 0; r < this.floor1.premade.length; r++) {
-                for (let c = 0; c < this.floor1.premade[0].length; c++) {
-                    if(this.floor1.premade[r][c] != null){
-                        for (let index = 0; index < this.floor1.premade[r][c].obstacles.length; index++) {
-                            for (let index2 = 0; index2 < this.floor1.premade[r][c].obstacles[0].length; index2++) {
-                                if(this.floor1.premade[r][c].obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
-                                    if(this.isaac_body.boundingBox.collide(this.floor1.premade[r][c].obstacles[index][index2].boundingBox) && this.floor1.premade[r][c].obstacles[index][index2] instanceof Rocks){
-                                        if(this.isaac_body.boundingBox.right > this.floor1.premade[r][c].obstacles[index][index2].locX && this.isaac_body.boundingBox.right < this.floor1.premade[r][c].obstacles[index][index2].locX+40){
-                                            this.isaac_body.xPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
-                                            this.isaac_body.slideTR = 0;
+        if(this.premade != null){
+            for (let r = 0; r < this.premade.length; r++) {
+                for (let c = 0; c < this.premade[0].length; c++) {
+                    if(this.premade[r][c] != null){
+                        for (let index = 0; index < this.premade[r][c].obstacles.length; index++) {
+                            for (let index2 = 0; index2 < this.premade[r][c].obstacles[0].length; index2++) {
+                                if(this.premade[r][c].obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
+                                    if(this.premade[r][c].obstacles[index][index2].boundingBox != null){
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Rocks){
+                                            if(this.isaac_body.boundingBox.right > this.premade[r][c].obstacles[index][index2].locX && this.isaac_body.boundingBox.right < this.premade[r][c].obstacles[index][index2].locX+40){
+                                                this.isaac_body.xPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTR = 0;
+                                            }
+                                            if(this.isaac_body.boundingBox.left < this.premade[r][c].obstacles[index][index2].locX+128 && this.isaac_body.boundingBox.left > this.premade[r][c].obstacles[index][index2].locX+128-40){
+                                                this.isaac_body.xPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTL = 0;
+                                            }
+                                            if(this.isaac_body.boundingBox.bottom > this.premade[r][c].obstacles[index][index2].locY && this.isaac_body.boundingBox.bottom < this.premade[r][c].obstacles[index][index2].locY+40){
+                                                this.isaac_body.yPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTD = 0;
+                                            }
+                                            if(this.isaac_body.boundingBox.top < this.premade[r][c].obstacles[index][index2].locY+128 && this.isaac_body.boundingBox.top > this.premade[r][c].obstacles[index][index2].locY+128-40){
+                                                this.isaac_body.yPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTU = 0;
+                                            }
+                                        
                                         }
-                                        if(this.isaac_body.boundingBox.left < this.floor1.premade[r][c].obstacles[index][index2].locX+128 && this.isaac_body.boundingBox.left > this.floor1.premade[r][c].obstacles[index][index2].locX+128-40){
-                                            this.isaac_body.xPosition += this.isaac_body.movementSpeed*this.game.clockTick;
-                                            this.isaac_body.slideTL = 0;
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Spikes){
+                                            if(this.premade[r][c].obstacles[index][index2].stab == true && this.tempClock > 1){
+                                                this.isaac_body.takeDamage(2);
+                                                this.tempClock = 0;
+                                            }
+                                        
                                         }
-                                        if(this.isaac_body.boundingBox.bottom > this.floor1.premade[r][c].obstacles[index][index2].locY && this.isaac_body.boundingBox.bottom < this.floor1.premade[r][c].obstacles[index][index2].locY+40){
-                                            this.isaac_body.yPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
-                                            this.isaac_body.slideTD = 0;
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Fly){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
                                         }
-                                        if(this.isaac_body.boundingBox.top < this.floor1.premade[r][c].obstacles[index][index2].locY+128 && this.isaac_body.boundingBox.top > this.floor1.premade[r][c].obstacles[index][index2].locY+128-40){
-                                            this.isaac_body.yPosition += this.isaac_body.movementSpeed*this.game.clockTick;
-                                            this.isaac_body.slideTU = 0;
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Pooter){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
                                         }
-                                    
-                                    }
-                                    if(this.isaac_body.boundingBox.collide(this.floor1.premade[r][c].obstacles[index][index2].boundingBox) && this.floor1.premade[r][c].obstacles[index][index2] instanceof Spikes){
-                                        if(this.floor1.premade[r][c].obstacles[index][index2].stab == true && this.tempClock > 1){
-                                            this.isaac_body.takeDamage(2);
-                                            this.tempClock = 0;
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Spider){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
                                         }
-                                    
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Sucker){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof JumpingSpider){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Chest){
+                                            if (this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox)) {
+                                                if (this.premade[r][c].obstacles[index][index2].open == false) {
+                                                    ASSET_MANAGER.playAsset("./sounds/chest_open_1.wav")
+                                                }
+                                                this.premade[r][c].obstacles[index][index2].open = true;
+                                                if(this.driftCounter < 0.1 && this.key == undefined){
+                                                    this.key = new Key(this.premade[r][c].obstacles[index][index2].locX,this.premade[r][c].obstacles[index][index2].locY,this.game);
+                                                    this.game.addEntity(this.key);
+                                                }
+                                                if(this.isaac_body.boundingBox.right-80 > this.premade[r][c].obstacles[index][index2].boundingBox.left){
+                                                    this.premade[r][c].obstacles[index][index2].locX -= 500*this.game.clockTick;
+                                                }
+                                                if(this.isaac_body.boundingBox.left+80 < this.premade[r][c].obstacles[index][index2].boundingBox.right){
+                                                    this.premade[r][c].obstacles[index][index2].locX += 500*this.game.clockTick;
+                                                }
+                                                if(this.isaac_body.boundingBox.bottom-60 > this.premade[r][c].obstacles[index][index2].boundingBox.top){
+                                                    this.premade[r][c].obstacles[index][index2].locY -= 500*this.game.clockTick;
+                                                }
+                                                if(this.isaac_body.boundingBox.top+60 < this.premade[r][c].obstacles[index][index2].boundingBox.bottom){
+                                                    this.premade[r][c].obstacles[index][index2].locY += 500*this.game.clockTick;
+                                                }
+                                                
+                                            }
+                                        
+                                        }
                                     }
                                 }
                             }
@@ -557,6 +660,23 @@ class SceneManager {
                     }
                 }
             }           
+        }
+        if(this.key != undefined){
+            if (this.isaac_body != null) {
+                if(this.key.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.key.boundingBox)) {
+                       this.key.boundingBox = undefined;
+                       this.key.removeFromWorld = true;
+                       this.isaac_body.keyPickup += 1
+                        
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.key.locX += 200*this.game.clockTick;
+                this.key.locY += 200*this.game.clockTick;
+            }
         }
 
         if(this.isaac_head.tear != null){
@@ -707,42 +827,25 @@ class SceneManager {
                     }
                     this.chest.open = true;
                     if(this.driftCounter < 0.1){
-                        this.game.addEntity(this.key);
+                        //this.game.addEntity(this.key);
                     }
-                    if(this.isaac_body.boundingBox.right-80 > this.chest.boundingBox.left){
+                    if(this.isaac_body.boundingBox.right > this.chest.locX+128){
                         this.chest.locX -= 500*this.game.clockTick;
                     }
-                    if(this.isaac_body.boundingBox.left+80 < this.chest.boundingBox.right){
+                    if(this.isaac_body.boundingBox.left < this.chest.locX){
                         this.chest.locX += 500*this.game.clockTick;
                     }
-                    if(this.isaac_body.boundingBox.bottom-60 > this.chest.boundingBox.top){
+                    if(this.isaac_body.boundingBox.bottom > this.chest.locY+128){
                         this.chest.locY -= 500*this.game.clockTick;
                     }
-                    if(this.isaac_body.boundingBox.top+60 < this.chest.boundingBox.bottom){
+                    if(this.isaac_body.boundingBox.top < this.chest.locY){
                         this.chest.locY += 500*this.game.clockTick;
                     }
                     
                 }
             }
-            if (this.isaac_body != null) {
-                if(this.key.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.key.boundingBox)) {
-                       this.key.boundingBox = undefined;
-                       this.key.removeFromWorld = true;
-                       this.isaac_body.keyPickup += 1
-                        
-                    }
-                }
-            }
-            if(this.chest != null){
-                if(this.chest.open === true){
-                    this.driftCounter += this.game.clockTick;
-                    if(this.driftCounter < 1){
-                        this.key.locX += 200*this.game.clockTick;
-                        this.key.locY += 200*this.game.clockTick;
-                    }
-                }
-            }
+            
+            
             if (this.isaac_body != null && this.trophy != null) {
                 if (this.trophy.boundingBox != null) {
                     if (this.isaac_body.boundingBox.collide(this.trophy.boundingBox)) {
@@ -846,7 +949,6 @@ class SceneManager {
 
     draw(ctx) {
         this.count += (1*this.game.clockTick);
-
         if (this.title && !this.credits) {
 
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 272, 0, 0, this.titleWidth, this.titleHeight);

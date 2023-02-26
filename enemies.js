@@ -601,7 +601,7 @@ class Pooter {
         } else {
             this.attackPooter = false;
         }
-        console.log(this.attackPooterAnim);
+        //console.log(this.attackPooterAnim);
         if (this.attackPooterAnim = true) {
             if (this.tempCount % 2 * 10 <= 2) {
                 this.attackPooterAnim = true;

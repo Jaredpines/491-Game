@@ -99,6 +99,14 @@ class GameEngine {
         let e
         let b
         let o
+        let c = []
+        let s = []
+        let r = []
+        let f = []
+        let j = []
+        let sp = []
+        let su = []
+        let p = []
         for (let index = 0; index < list.length; index++) {
             if(list[index] instanceof Isaac_Head){
                 e = list.splice(index,1);
@@ -111,6 +119,78 @@ class GameEngine {
             if(list[index] instanceof Hud){
                 b = list.splice(index,1);
                 index--;
+            }
+            if(list[index] instanceof Spikes){
+                s.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Rocks){
+                r.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Fly){
+                f.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof JumpingSpider){
+                j.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Spider){
+                sp.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Sucker){
+                su.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Pooter){
+                p.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Chest){
+                c.push(list.splice(index,1))
+                index--;
+            }
+        }
+        if(s != null){
+            for (let index = 0; index < s.length; index++) {
+                list.push(s[index][0])
+            }
+        }
+        if(r != null){
+            for (let index = 0; index < r.length; index++) {
+                list.push(r[index][0])
+            }
+        }
+        if(c != null){
+            for (let index = 0; index < c.length; index++) {
+                list.push(c[index][0])
+            }
+        }
+        if(f != null){
+            for (let index = 0; index < f.length; index++) {
+                list.push(f[index][0])
+            }
+        }
+        if(j != null){
+            for (let index = 0; index < j.length; index++) {
+                list.push(j[index][0])
+            }
+        }
+        if(sp != null){
+            for (let index = 0; index < sp.length; index++) {
+                list.push(sp[index][0])
+            }
+        }
+        if(su != null){
+            for (let index = 0; index < su.length; index++) {
+                list.push(su[index][0])
+            }
+        }
+        if(p != null){
+            for (let index = 0; index < p.length; index++) {
+                list.push(p[index][0])
             }
         }
         list.push(o[0]);
