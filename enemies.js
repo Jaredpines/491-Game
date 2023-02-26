@@ -307,23 +307,44 @@ class Spider {
                 this.down = true;
                 this.left = false;
                 this.right = false;
+            }else if(r===24){
+                this.up = false;
+                this.down = true;
+                this.left = true;
+                this.right = false;
+            }else if(r===28){
+                this.up = false;
+                this.down = true;
+                this.left = false;
+                this.right = true;
+            }else if(r===32){
+                this.up = true;
+                this.down = false;
+                this.left = true;
+                this.right = false;
+            }else if(r===36){
+                this.up = true;
+                this.down = false;
+                this.left = false;
+                this.right = true;
+            }else if(r == 50){
+                this.up = false;
+                this.down = false;
+                this.left = false;
+                this.right = false;
             }
             if(this.xPosition < this.moveBoundsRight && this.left === true){
                 this.xPosition += this.game.clockTick*this.movementSpeed;
-                this.yPosition += this.game.clockTick*r
             }
             if(this.xPosition > this.moveBoundsLeft && this.right === true){
                 this.xPosition -= this.game.clockTick*this.movementSpeed;
-                this.yPosition -= this.game.clockTick*r;
             }
-            if(this.yPosition > this.moveBoundsUp && this.up === true){
+            if(this.yPosition > this.moveBoundsUp+20 && this.up === true){
                 this.yPosition -= this.game.clockTick*this.movementSpeed;
-                this.xPosition -= this.game.clockTick*r;
 
             }
             if(this.yPosition < this.moveBoundsDown && this.down === true){
                 this.yPosition += this.game.clockTick*this.movementSpeed;
-                this.xPosition -= this.game.clockTick*r;
             }
 
         }
