@@ -557,55 +557,6 @@ class SceneManager {
                                             }
                                         
                                         }
-                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Fly){
-                                            if(this.tempClock > 1){
-                                                this.isaac_body.takeDamage(1);
-                                                this.tempClock = 0;
-                                            }
-                                        
-                                        }
-                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Pooter){
-                                            if(this.tempClock > 1){
-                                                this.isaac_body.takeDamage(1);
-                                                this.tempClock = 0;
-                                            }
-                                        
-                                        }
-                                        if(this.premade[r][c].obstacles[index][index2] instanceof Pooter){
-                                            if(this.premade[r][c].obstacles[index][index2].tear != null){
-                                                if(this.premade[r][c].obstacles[index][index2].tear.boundingBox != null){
-                                                    if(this.premade[r][c].obstacles[index][index2].tear.boundingBox.collide(this.isaac_body.boundingBox)){
-                                                        if(this.tempClock > 1){
-                                                            this.isaac_body.takeDamage(1);
-                                                            this.tempClock = 0;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            
-                                        
-                                        }
-                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Spider){
-                                            if(this.tempClock > 1){
-                                                this.isaac_body.takeDamage(1);
-                                                this.tempClock = 0;
-                                            }
-                                        
-                                        }
-                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Sucker){
-                                            if(this.tempClock > 1){
-                                                this.isaac_body.takeDamage(1);
-                                                this.tempClock = 0;
-                                            }
-                                        
-                                        }
-                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof JumpingSpider){
-                                            if(this.tempClock > 1){
-                                                this.isaac_body.takeDamage(1);
-                                                this.tempClock = 0;
-                                            }
-                                        
-                                        }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Chest){
                                             if (this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox)) {
                                                 if (this.premade[r][c].obstacles[index][index2].open == false) {
@@ -644,6 +595,96 @@ class SceneManager {
                                                 }
                                             }
                                         }
+                                        
+                                        for (let inde = 0; inde < this.premade[r][c].enemies.length; inde++) {
+                                            for (let inde2 = 0; inde2 < this.premade[r][c].enemies[0].length; inde2++) {
+                                                if(this.premade[r][c].enemies[inde][inde2] != null && this.isaac_body.boundingBox != null){
+                                                    if(this.premade[r][c].enemies[inde][inde2].boundingBox != null){
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Fly){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Pooter){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+                                                        if(this.premade[r][c].enemies[inde][inde2] instanceof Pooter){
+                                                            if(this.premade[r][c].enemies[inde][inde2].tear != null){
+                                                                if(this.premade[r][c].enemies[inde][inde2].tear.boundingBox != null){
+                                                                    if(this.premade[r][c].enemies[inde][inde2].tear.boundingBox.collide(this.isaac_body.boundingBox)){
+                                                                        if(this.tempClock > 1){
+                                                                            this.isaac_body.takeDamage(1);
+                                                                            this.tempClock = 0;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            
+                                                        
+                                                        }
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Spider){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+                                                        if(this.premade[r][c].obstacles[index][index2] instanceof Rocks && this.premade[r][c].enemies[inde][inde2] instanceof Spider){
+                                                            if(this.premade[r][c].obstacles[index][index2].boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox)){
+                                                                if(this.premade[r][c].enemies[inde][inde2].boundingBox.right > this.premade[r][c].obstacles[index][index2].locX && this.premade[r][c].enemies[inde][inde2].boundingBox.right < this.premade[r][c].obstacles[index][index2].locX+40){
+                                                                    this.premade[r][c].enemies[inde][inde2].xPosition -= this.game.clockTick*this.premade[r][c].enemies[inde][inde2].movementSpeed;
+                                                                }
+                                                                if(this.premade[r][c].enemies[inde][inde2].boundingBox.left < this.premade[r][c].obstacles[index][index2].locX+128 && this.premade[r][c].enemies[inde][inde2].boundingBox.left > this.premade[r][c].obstacles[index][index2].locX+128-40){
+                                                                    this.premade[r][c].enemies[inde][inde2].xPosition += this.game.clockTick*this.premade[r][c].enemies[inde][inde2].movementSpeed;
+                                                                }
+                                                                if(this.premade[r][c].enemies[inde][inde2].boundingBox.bottom > this.premade[r][c].obstacles[index][index2].locY && this.premade[r][c].enemies[inde][inde2].boundingBox.bottom < this.premade[r][c].obstacles[index][index2].locY+40){
+                                                                    this.premade[r][c].enemies[inde][inde2].yPosition -= this.game.clockTick*this.premade[r][c].enemies[inde][inde2].movementSpeed;
+                                                                }
+                                                                if(this.premade[r][c].enemies[inde][inde2].boundingBox.top < this.premade[r][c].obstacles[index][index2].locY+128 && this.premade[r][c].enemies[inde][inde2].boundingBox.top > this.premade[r][c].obstacles[index][index2].locY+128-40){
+                                                                    this.premade[r][c].enemies[inde][inde2].yPosition += this.game.clockTick*this.premade[r][c].enemies[inde][inde2].movementSpeed;
+                                                                }
+                                                            }
+                                                        }
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Sucker){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof JumpingSpider){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+                                                        if(this.isaac_head.tear != null){
+                                                            if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].enemies[inde][inde2].boundingBox != null){
+                                                                if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox)){
+                                                                    this.premade[r][c].enemies[inde][inde2].health -= this.isaac_head.tear.damage
+                                                                    console.log(this.premade[r][c].enemies[inde][inde2].health)
+                                                                    if (!this.isaac_head.piercing) {
+                                                                        this.isaac_head.tear.range = 0;
+                                                                    }
+                                                                    this.isaac_head.tear.boundingBox = undefined;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+
+
+                                        
+                                        
 
                                     }
                                 }

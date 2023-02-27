@@ -216,10 +216,10 @@ class Spider {
 
         this.xPosition = locX;
         this.yPosition = locY;
-        this.moveBoundsRight = this.isaac.moveBoundsRight
-        this.moveBoundsLeft = this.isaac.moveBoundsLeft
-        this.moveBoundsUp = this.isaac.moveBoundsUp
-        this.moveBoundsDown = this.isaac.moveBoundsDown
+        this.moveBoundsRight = this.isaac.moveBoundsRight+35
+        this.moveBoundsLeft = this.isaac.moveBoundsLeft+15
+        this.moveBoundsUp = this.isaac.moveBoundsUp+35
+        this.moveBoundsDown = this.isaac.moveBoundsDown+50
         this.movementSpeed = 200;
 
         this.spiderSpriteSheet = ASSET_MANAGER.getAsset("./res/monster_spider.png");
@@ -333,17 +333,17 @@ class Spider {
                 this.left = false;
                 this.right = false;
             }
-            if(this.xPosition < this.moveBoundsRight+35 && this.left === true){
+            if(this.xPosition < this.moveBoundsRight && this.left === true){
                 this.xPosition += this.game.clockTick*this.movementSpeed;
             }
-            if(this.xPosition > this.moveBoundsLeft+15 && this.right === true){
+            if(this.xPosition > this.moveBoundsLeft && this.right === true){
                 this.xPosition -= this.game.clockTick*this.movementSpeed;
             }
-            if(this.yPosition > this.moveBoundsUp+35 && this.up === true){
+            if(this.yPosition > this.moveBoundsUp && this.up === true){
                 this.yPosition -= this.game.clockTick*this.movementSpeed;
 
             }
-            if(this.yPosition < this.moveBoundsDown+50 && this.down === true){
+            if(this.yPosition < this.moveBoundsDown && this.down === true){
                 this.yPosition += this.game.clockTick*this.movementSpeed;
             }
 

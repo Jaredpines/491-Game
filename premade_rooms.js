@@ -4,6 +4,7 @@ class Premade_Rooms {
         this.locX = locX;
         this.locY = locY;
         this.obstacles = Array.from({length: 11}, () => new Array(6));
+        this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
         this.r = Math.floor(Math.random() * 7)+1;
         this.isaac = isaac;
@@ -151,14 +152,14 @@ class Premade_Rooms {
     room5(x,y){
         this.obstacles[0][1] = new Rocks(x + 103*0,y + 104*1)
         this.game.addEntity(this.obstacles[0][1])
-        this.obstacles[0][0] = new Spider(x + 103*0,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.obstacles[0][0])
-        this.obstacles[0][5] = new Sucker(x + 103*0,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.obstacles[0][5])
-        this.obstacles[10][0] = new Fly(x + 103*10,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.obstacles[10][0])
-        this.obstacles[10][1] = new Pooter(x + 103*10,y + 104*1,this.game, this.isaac)
-        this.game.addEntity(this.obstacles[10][1])
+        this.enemies[0][0] = new Spider(x + 103*0,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[0][0])
+        this.enemies[0][5] = new Sucker(x + 103*0,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[0][5])
+        this.enemies[10][0] = new Fly(x + 103*10,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[10][0])
+        this.enemies[10][1] = new Pooter(x + 103*10,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[10][1])
         this.obstacles[0][4] = new Rocks(x + 103*0,y + 104*4)
         this.game.addEntity(this.obstacles[0][4])
         this.obstacles[1][1] = new Rocks(x + 103*1,y + 104*1)
