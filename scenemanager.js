@@ -600,6 +600,32 @@ class SceneManager {
                                             for (let inde2 = 0; inde2 < this.premade[r][c].enemies[0].length; inde2++) {
                                                 if(this.premade[r][c].enemies[inde][inde2] != null && this.isaac_body.boundingBox != null){
                                                     if(this.premade[r][c].enemies[inde][inde2].boundingBox != null){
+                                                        for (let ind = 0; ind < this.premade[r][c].enemies.length; ind++) {
+                                                            for (let ind2 = 0; ind2 < this.premade[r][c].enemies[0].length; ind2++) {
+                                                                if(this.premade[r][c].enemies[ind][ind2] != null && this.isaac_body.boundingBox != null){
+                                                                    if(this.premade[r][c].enemies[ind][ind2].boundingBox != null){
+                                                                        if(this.premade[r][c].enemies[inde][inde2].boundingBox.collide(this.premade[r][c].enemies[ind][ind2].boundingBox) && (inde != ind||inde2 != ind2)){
+                                                                            if(this.premade[r][c].enemies[inde][inde2] instanceof Spider){
+                                                                                console.log(this.premade[r][c].enemies[inde][inde2].xPosition)
+                                                                                console.log(this.premade[r][c].enemies[inde][inde2].yPosition)
+                                                                            }
+                                                                            if(this.premade[r][c].enemies[ind][ind2].boundingBox.right > this.premade[r][c].enemies[inde][inde2].xPosition && this.premade[r][c].enemies[ind][ind2].boundingBox.right < this.premade[r][c].enemies[inde][inde2].xPosition+40){
+                                                                                this.premade[r][c].enemies[ind][ind2].xPosition -= this.game.clockTick*this.premade[r][c].enemies[ind][ind2].movementSpeed;
+                                                                            }
+                                                                            if(this.premade[r][c].enemies[ind][ind2].boundingBox.left < this.premade[r][c].enemies[inde][inde2].xPosition+128 && this.premade[r][c].enemies[ind][ind2].boundingBox.left > this.premade[r][c].enemies[inde][inde2].xPosition+128-40){
+                                                                                this.premade[r][c].enemies[ind][ind2].xPosition += this.game.clockTick*this.premade[r][c].enemies[ind][ind2].movementSpeed;
+                                                                            }
+                                                                            if(this.premade[r][c].enemies[ind][ind2].boundingBox.bottom > this.premade[r][c].enemies[inde][inde2].yPosition && this.premade[r][c].enemies[ind][ind2].boundingBox.bottom < this.premade[r][c].enemies[inde][inde2].yPosition+40){
+                                                                                this.premade[r][c].enemies[ind][ind2].yPosition -= this.game.clockTick*this.premade[r][c].enemies[ind][ind2].movementSpeed;
+                                                                            }
+                                                                            if(this.premade[r][c].enemies[ind][ind2].boundingBox.top < this.premade[r][c].enemies[inde][inde2].yPosition+128 && this.premade[r][c].enemies[ind][ind2].boundingBox.top > this.premade[r][c].enemies[inde][inde2].yPosition+128-40){
+                                                                                this.premade[r][c].enemies[ind][ind2].yPosition += this.game.clockTick*this.premade[r][c].enemies[ind][ind2].movementSpeed;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Fly){
                                                             if(this.tempClock > 1){
                                                                 this.isaac_body.takeDamage(1);
