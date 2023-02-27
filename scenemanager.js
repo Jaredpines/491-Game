@@ -176,6 +176,7 @@ class SceneManager {
             this.game.ctx.translate(-2000*this.game.clockTick,0)
         }
         if(this.floor1.rooms != null){
+
             for (let index = 0; index < this.floor1.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.floor1.rooms[index].length; index2++) {
                     if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
