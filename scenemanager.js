@@ -45,7 +45,8 @@ class SceneManager {
         this.tempClock = 0;
         this.devil = false;
         this.exists = false;
-
+        this.EIR = false;
+        this.slideF = false;
         this.fire = new Fires("normal", 200, 200, this.game)
 
 
@@ -175,355 +176,556 @@ class SceneManager {
         if(this.game.keys.l){
             this.game.ctx.translate(-2000*this.game.clockTick,0)
         }
+        //rooms and sliding
         if(this.floor1.rooms != null){
 
             for (let index = 0; index < this.floor1.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.floor1.rooms[index].length; index2++) {
-                    if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
-                        if(this.floor1.rooms[index][index2].door.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("left");
-                                if(this.moveBounds == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1472;
-                                    this.isaac_body.xPosition = this.isaac_body.xPosition - 450
-                                    this.isaac_head.xPosition = this.isaac_head.xPosition - 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX-1472;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
-                                    this.hud.hudHealthX = this.hud.hudHealthX-1472;
-                                    this.moveBounds = true;
-                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
-                                        this.game.orderCorrecter();
+                    if(this.EIR == false  || this.slideF == false){
+                        this.slideF = false
+                        if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
+                            if(this.floor1.rooms[index][index2].door.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                        this.devil = true;
+                                    this.floor1.moveRoom("left");
+                                    if(this.moveBounds == false){
+                                        this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
+                                        this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
+                                        this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
+                                        this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1472;
+                                        this.isaac_body.xPosition = this.isaac_body.xPosition - 450
+                                        this.isaac_head.xPosition = this.isaac_head.xPosition - 450
+                                        this.hud.hudStatsX = this.hud.hudStatsX-1472;
+                                        this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
+                                        this.hud.hudHealthX = this.hud.hudHealthX-1472;
+                                        this.moveBounds = true;
+                                        if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                            this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
+                                            this.game.orderCorrecter();
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling);
+                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling2);
+                                            console.log(this.gurgling.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                            this.devil = true;
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.trophy.bossItem = true;
+                                            this.game.addEntity(this.trophy);
+                                        } 
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.game.addEntity(this.itemP);
-                                        console.log(this.itemP.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
-                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.trophy.bossItem = true;
-                                        this.game.addEntity(this.trophy);
-                                    } 
+                                    this.once = true;
                                 }
-                                this.once = true;
-                            }
-                            else{
-                                this.once = false;
-                                this.moveBounds = false;
+                                else{
+                                    this.once = false;
+                                    this.moveBounds = false;
+                                }
                             }
                         }
-                    }
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
-                        if(this.floor1.rooms[index][index2].doorOp.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("right");
-                                if(this.moveBoundsR == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1472;
-                                    this.isaac_body.xPosition = this.isaac_body.xPosition + 450
-                                    this.isaac_head.xPosition = this.isaac_head.xPosition + 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX+1472;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
-                                    this.hud.hudHealthX = this.hud.hudHealthX+1472;
-                                    this.moveBoundsR = true;
-                                    if(this.premade[index][index2+1] == null && (index != 10 || index2+1 !=10)){
-                                        this.premade[index][index2+1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index][index2+1].addObstacles((this.floor1.farthestRight+(1472*(index2))),-(this.floor1.farthestUp-(992*(index-1))));
-                                        this.game.orderCorrecter();
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
+                            if(this.floor1.rooms[index][index2].doorOp.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
                                     }
-                                }
-                                this.onceR = true;
-                            }
-                            else{
-                                this.onceR = false;
-                                this.moveBoundsR = false;
-                            }
-                        }
-                    }
+                                    this.floor1.moveRoom("right");
+                                    if(this.moveBoundsR == false){
+                                        this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
+                                        this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
+                                        this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
+                                        this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1472;
+                                        this.isaac_body.xPosition = this.isaac_body.xPosition + 450
+                                        this.isaac_head.xPosition = this.isaac_head.xPosition + 450
+                                        this.hud.hudStatsX = this.hud.hudStatsX+1472;
+                                        this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
+                                        this.hud.hudHealthX = this.hud.hudHealthX+1472;
+                                        this.moveBoundsR = true;
+                                        if(this.premade[index][index2+1] == null && (index != 10 || index2+1 !=10)){
 
-                    if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
-                        if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("left");
-                                if(this.moveBounds == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1472;
-                                    this.isaac_body.xPosition = this.isaac_body.xPosition - 450
-                                    this.isaac_head.xPosition = this.isaac_head.xPosition - 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX-1472;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
-                                    this.hud.hudHealthX = this.hud.hudHealthX-1472;
-                                    this.moveBounds = true;
-                                    if(this.premade[index][index2-1] == null && (index != 10 || index2-1 !=10)){
-                                        this.premade[index][index2-1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index][index2-1].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-2))),-(this.floor1.farthestUp-(992*(index-1))));
-                                        this.game.orderCorrecter();
+                                            this.premade[index][index2+1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index][index2+1].addObstacles((this.floor1.farthestRight+(1472*(index2))),-(this.floor1.farthestUp-(992*(index-1))));
+                                            this.game.orderCorrecter();
+                                        }
                                     }
+                                    this.onceR = true;
                                 }
-                                this.once = true;
-                            }
-                            else{
-                                this.once = false;
-                                this.moveBounds = false;
+                                else{
+                                    this.onceR = false;
+                                    this.moveBoundsR = false;
+                                }
                             }
                         }
-                    }
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
-                        if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("right");
-                                if(this.moveBoundsR == false){
-                                    this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
-                                    this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
-                                    this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
-                                    this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1472;
-                                    this.isaac_body.xPosition = this.isaac_body.xPosition + 450
-                                    this.isaac_head.xPosition = this.isaac_head.xPosition + 450
-                                    this.hud.hudStatsX = this.hud.hudStatsX+1472;
-                                    this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
-                                    this.hud.hudHealthX = this.hud.hudHealthX+1472;
-                                    this.moveBoundsR = true;
-                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index][index2].addObstacles((this.floor1.farthestRight+(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
-                                        this.game.orderCorrecter();
+    
+                        if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
+                            if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                        this.devil = true;
+                                    this.floor1.moveRoom("left");
+                                    if(this.moveBounds == false){
+                                        this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
+                                        this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
+                                        this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
+                                        this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight - 1472;
+                                        this.isaac_body.xPosition = this.isaac_body.xPosition - 450
+                                        this.isaac_head.xPosition = this.isaac_head.xPosition - 450
+                                        this.hud.hudStatsX = this.hud.hudStatsX-1472;
+                                        this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
+                                        this.hud.hudHealthX = this.hud.hudHealthX-1472;
+                                        this.moveBounds = true;
+                                        if(this.premade[index][index2-1] == null && (index != 10 || index2-1 !=10)){
+                                            console.log(index)
+                                            console.log(index2-1)
+                                            this.premade[index][index2-1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index][index2-1].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-2))),-(this.floor1.farthestUp-(992*(index-1))));
+                                            this.game.orderCorrecter();
+                                        }
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.game.addEntity(this.itemP);
-                                        console.log(this.itemP.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
-                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.trophy.bossItem = true;
-                                        this.game.addEntity(this.trophy);
-                                    } 
+                                    this.once = true;
                                 }
-                                this.onceR = true;
-                            }
-                            else{
-                                this.onceR = false;
-                                this.moveBoundsR = false;
+                                else{
+                                    this.once = false;
+                                    this.moveBounds = false;
+                                }
                             }
                         }
-                    }
-
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
-                        if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("up");
-                                if(this.moveBoundsU == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 992;
-                                    this.isaac_body.yPosition = this.isaac_body.yPosition - 500
-                                    this.isaac_head.yPosition = this.isaac_head.yPosition - 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY-992;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY-992;
-                                    this.hud.hudHealthY = this.hud.hudHealthY-992;
-                                    this.moveBoundsU = true;
-                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
-                                        this.game.orderCorrecter();
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
+                            if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                        this.devil = true;
+                                    this.floor1.moveRoom("right");
+                                    if(this.moveBoundsR == false){
+                                        this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
+                                        this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
+                                        this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
+                                        this.isaac_head.moveBoundsRight = this.isaac_head.moveBoundsRight + 1472;
+                                        this.isaac_body.xPosition = this.isaac_body.xPosition + 450
+                                        this.isaac_head.xPosition = this.isaac_head.xPosition + 450
+                                        this.hud.hudStatsX = this.hud.hudStatsX+1472;
+                                        this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
+                                        this.hud.hudHealthX = this.hud.hudHealthX+1472;
+                                        this.moveBoundsR = true;
+                                        if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                            this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index][index2].addObstacles((this.floor1.farthestRight+(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
+                                            this.game.orderCorrecter();
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling);
+                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling2);
+                                            console.log(this.gurgling.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                            this.devil = true;
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.trophy.bossItem = true;
+                                            this.game.addEntity(this.trophy);
+                                        } 
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.game.addEntity(this.itemP);
-                                        console.log(this.itemP.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
-                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.trophy.bossItem = true;
-                                        this.game.addEntity(this.trophy);
-                                    } 
+                                    this.onceR = true;
                                 }
-                                this.onceU = true;
-                            }
-                            else{
-                                this.onceU = false;
-                                this.moveBoundsU = false;
+                                else{
+                                    this.onceR = false;
+                                    this.moveBoundsR = false;
+                                }
                             }
                         }
-                    }
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
-                        if(this.floor1.rooms[index][index2].doorOpU.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("down");
-                                if(this.moveBoundsD == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 992;
-                                    this.isaac_body.yPosition = this.isaac_body.yPosition + 500
-                                    this.isaac_head.yPosition = this.isaac_head.yPosition + 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY+992;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY+992;
-                                    this.hud.hudHealthY = this.hud.hudHealthY+992;
-                                    this.moveBoundsD = true;
-                                    if(this.premade[index+1][index2] == null && (index+1 != 10 || index2 !=10)){
-                                        this.premade[index+1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index+1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index)));
-                                        this.game.orderCorrecter();
+    
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
+                            if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
                                     }
+                                    this.floor1.moveRoom("up");
+                                    if(this.moveBoundsU == false){
+                                        this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
+                                        this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
+                                        this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
+                                        this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 992;
+                                        this.isaac_body.yPosition = this.isaac_body.yPosition - 500
+                                        this.isaac_head.yPosition = this.isaac_head.yPosition - 500
+                                        this.hud.hudStatsY = this.hud.hudStatsY-992;
+                                        this.hud.hudPickupsY = this.hud.hudPickupsY-992;
+                                        this.hud.hudHealthY = this.hud.hudHealthY-992;
+                                        this.moveBoundsU = true;
+                                        if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                            this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
+                                            this.game.orderCorrecter();
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling);
+                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling2);
+                                            console.log(this.gurgling.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                            this.devil = true;
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.trophy.bossItem = true;
+                                            this.game.addEntity(this.trophy);
+                                        } 
+                                    }
+                                    this.onceU = true;
                                 }
-                                this.onceD = true;
-                            }
-                            else{
-                                
-                                this.onceD = false;
-                                this.moveBoundsD = false;
+                                else{
+                                    this.onceU = false;
+                                    this.moveBoundsU = false;
+                                }
                             }
                         }
-                    }
-
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
-                        if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
+                            if(this.floor1.rooms[index][index2].doorOpU.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
+                                    }
+                                    this.floor1.moveRoom("down");
+                                    if(this.moveBoundsD == false){
+                                        this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
+                                        this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
+                                        this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
+                                        this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 992;
+                                        this.isaac_body.yPosition = this.isaac_body.yPosition + 500
+                                        this.isaac_head.yPosition = this.isaac_head.yPosition + 500
+                                        this.hud.hudStatsY = this.hud.hudStatsY+992;
+                                        this.hud.hudPickupsY = this.hud.hudPickupsY+992;
+                                        this.hud.hudHealthY = this.hud.hudHealthY+992;
+                                        this.moveBoundsD = true;
+                                        if(this.premade[index+1][index2] == null && (index+1 != 10 || index2 !=10)){
+                                            this.premade[index+1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index+1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index)));
+                                            this.game.orderCorrecter();
+                                        }
+                                    }
+                                    this.onceD = true;
                                 }
-                                this.floor1.moveRoom("up");
-                                if(this.moveBoundsU == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 992;
-                                    this.isaac_body.yPosition = this.isaac_body.yPosition - 500
-                                    this.isaac_head.yPosition = this.isaac_head.yPosition - 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY-992;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY-992;
-                                    this.hud.hudHealthY = this.hud.hudHealthY-992;
-                                    this.moveBoundsU = true;
+                                else{
                                     
-                                    if(this.premade[index-1][index2] == null && (index-1 != 10 || index2 !=10)){
-                                        this.premade[index-1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index-1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-2)));
-                                        this.game.orderCorrecter();
-                                    }
+                                    this.onceD = false;
+                                    this.moveBoundsD = false;
                                 }
-                                this.onceU = true;
-                            }
-                            else{
-                                this.onceU = false;
-                                this.moveBoundsU = false;
                             }
                         }
-                    }
-                    if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
-                        if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
-                            if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
-                                if(this.isaac_head.tear != null){
-                                    this.isaac_head.tear.removeFromWorld = true;
-                                }
-                                this.floor1.moveRoom("down");
-                                if(this.moveBoundsD == false){
-                                    this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
-                                    this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
-                                    this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
-                                    this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 992;
-                                    this.isaac_body.yPosition = this.isaac_body.yPosition + 500
-                                    this.isaac_head.yPosition = this.isaac_head.yPosition + 500
-                                    this.hud.hudStatsY = this.hud.hudStatsY+992;
-                                    this.hud.hudPickupsY = this.hud.hudPickupsY+992;
-                                    this.hud.hudHealthY = this.hud.hudHealthY+992;
-                                    this.moveBoundsD = true;
-                                    if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                        this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
-                                        this.game.orderCorrecter();
+    
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
+                            if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
-                                        this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling);
-                                        this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                        this.game.addEntity(this.gurgling2);
-                                        console.log(this.gurgling.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                        this.devil = true;
+                                    this.floor1.moveRoom("up");
+                                    if(this.moveBoundsU == false){
+                                        this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
+                                        this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
+                                        this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
+                                        this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown - 992;
+                                        this.isaac_body.yPosition = this.isaac_body.yPosition - 500
+                                        this.isaac_head.yPosition = this.isaac_head.yPosition - 500
+                                        this.hud.hudStatsY = this.hud.hudStatsY-992;
+                                        this.hud.hudPickupsY = this.hud.hudPickupsY-992;
+                                        this.hud.hudHealthY = this.hud.hudHealthY-992;
+                                        this.moveBoundsU = true;
+                                        
+                                        if(this.premade[index-1][index2] == null && (index-1 != 10 || index2 !=10)){
+                                            this.premade[index-1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                            this.premade[index-1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-2)));
+                                            this.game.orderCorrecter();
+                                        }
                                     }
-                                    if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
-                                        this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.game.addEntity(this.itemP);
-                                        console.log(this.itemP.locX)
-                                        console.log(this.isaac_body.xPosition)
-                                    }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
-                                        this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                        this.trophy.bossItem = true;
-                                        this.game.addEntity(this.trophy);
-                                    } 
+                                    this.onceU = true;
                                 }
-                                this.onceD = true;
-                            }
-                            else{
-                                
-                                this.onceD = false;
-                                this.moveBoundsD = false;
+                                else{
+                                    this.onceU = false;
+                                    this.moveBoundsU = false;
+                                }
                             }
                         }
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
+                            if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
+                                    if(this.isaac_head.tear != null){
+                                        this.isaac_head.tear.removeFromWorld = true;
+                                    }
+                                    this.floor1.moveRoom("down");
+                                    if(this.moveBoundsD == false){
+                                        this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
+                                        this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
+                                        this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
+                                        this.isaac_head.moveBoundsDown = this.isaac_head.moveBoundsDown + 992;
+                                        this.isaac_body.yPosition = this.isaac_body.yPosition + 500
+                                        this.isaac_head.yPosition = this.isaac_head.yPosition + 500
+                                        this.hud.hudStatsY = this.hud.hudStatsY+992;
+                                        this.hud.hudPickupsY = this.hud.hudPickupsY+992;
+                                        this.hud.hudHealthY = this.hud.hudHealthY+992;
+                                        this.moveBoundsD = true;
+                                        //if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
+                                        //    this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                        //    this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
+                                        //    this.game.orderCorrecter();
+                                        //}
+                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling);
+                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
+                                            this.game.addEntity(this.gurgling2);
+                                            console.log(this.gurgling.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                            this.devil = true;
+                                        }
+                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.trophy.bossItem = true;
+                                            this.game.addEntity(this.trophy);
+                                        } 
+                                    }
+                                    this.onceD = true;
+                                }
+                                else{
+                                    this.onceD = false;
+                                    this.moveBoundsD = false;
+                                }
+                            }
+                        }
+                        if(this.floor1.rooms[index][index2] != null){
+                            if(this.floor1.rooms[index][index2].door != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].door.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].door.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].door.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOp != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorR != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOpR != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorD != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOpD != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorU != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "b"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOpU != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "n"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "b"
+                                }
+                            }
+                        } 
+                    }else{
+                        if(this.floor1.rooms[index][index2] != null){
+                            if(this.floor1.rooms[index][index2].door != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].door.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].door.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].door.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOp != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorR != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOpR != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorD != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOpD != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorU != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "b_closed"
+                                }
+                            }
+                            if(this.floor1.rooms[index][index2].doorOpU != 0){
+                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "n_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "b_closed"
+                                }
+                            }
+                        } 
+                        
                     }
+                    
                 }
                 
             }
         }
+        if(this.EIR == true && this.floor1.camera.slideU == 0 && this.floor1.camera.slideD == 992 && this.floor1.camera.slide == 0 && this.floor1.camera.slideR == 1472){
+            this.slideF = true;
+        }
+        
+        
+        //doors
+        if(this.premade != null){
+            for (let r = 0; r < this.premade.length; r++) {
+                for (let c = 0; c < this.premade[0].length; c++) {
+                    if(this.premade[r][c] != null){
+                        for (let index = 0; index < this.premade[r][c].enemies.length; index++) {
+                            for (let index2 = 0; index2 < this.premade[r][c].enemies[0].length; index2++) {
+                                if(this.premade[r][c].enemies[index][index2] != null){
+                                    console.log(this.premade[r][c].enemies[index][index2].health)
+                                    if(this.premade[r][c].enemies[index][index2].health <= 0){
+                                        this.EIR = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(this.premade != null){
+            for (let r = 0; r < this.premade.length; r++) {
+                for (let c = 0; c < this.premade[0].length; c++) {
+                    if(this.premade[r][c] != null){
+                        for (let index = 0; index < this.premade[r][c].enemies.length; index++) {
+                            for (let index2 = 0; index2 < this.premade[r][c].enemies[0].length; index2++) {
+                                if(this.premade[r][c].enemies[index][index2] != null){
+                                    console.log(this.premade[r][c].enemies[index][index2].health)
+                                    if(this.premade[r][c].enemies[index][index2].health > 0){
+                                        this.EIR = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         this.tempClock += 1*this.game.clockTick;
 
-
+        //obstacles
         if(this.premade != null){
             for (let r = 0; r < this.premade.length; r++) {
                 for (let c = 0; c < this.premade[0].length; c++) {

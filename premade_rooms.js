@@ -29,10 +29,13 @@ class Premade_Rooms {
         }else if(this.r == 6){
             this.room6(x+160,y+160);
         }else{
-            
+            this.room0(x,y)
         }
         this.r = Math.floor(Math.random() * 7)+1;
     };
+    room0(x,y){
+
+    }
     room1(x,y){
         this.obstacles[0][1] = new Rocks(x + 103*0,y + 104*1)
         this.game.addEntity(this.obstacles[0][1])

@@ -23,6 +23,8 @@ class Floor {
     addBaseRoom(){
         this.rooms[this.rooms.length/2][this.rooms[0].length/2] = new Normal_Room(0,0,"",this.game)
         this.game.addEntity(this.rooms[this.rooms.length/2][this.rooms[0].length/2]);
+        console.log(this.rooms.length/2)
+        console.log(this.rooms[0].length/2)
     }
     addRoom(direction){
         if(direction === "left"){
