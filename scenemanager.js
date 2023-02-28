@@ -11,7 +11,7 @@ class SceneManager {
 
         this.title = true;
         this.credits = false;
-        this.level = null;
+        this.level = 1;
         this.titleMusic = true;
         this.win = false;
 
@@ -48,7 +48,10 @@ class SceneManager {
         this.EIR = false;
         this.slideF = false;
         this.fire = new Fires("normal", 200, 200, this.game)
-
+        this.trapDoorE = false;
+        this.bx
+        this.by
+        this.TExist = false;
 
     };
 
@@ -214,6 +217,9 @@ class SceneManager {
                                             console.log(this.gurgling.locX)
                                             console.log(this.isaac_body.xPosition)
                                             this.devil = true;
+                                            this.trapDoorE = true;
+                                            this.bx = -this.floor1.rooms[index][index2].locX
+                                            this.by = this.floor1.rooms[index][index2].locY
                                         }
                                         if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -333,6 +339,9 @@ class SceneManager {
                                             console.log(this.gurgling.locX)
                                             console.log(this.isaac_body.xPosition)
                                             this.devil = true;
+                                            this.trapDoorE = true;
+                                            this.bx = -this.floor1.rooms[index][index2].locX
+                                            this.by = this.floor1.rooms[index][index2].locY                                            
                                         }
                                         if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -385,6 +394,9 @@ class SceneManager {
                                             console.log(this.gurgling.locX)
                                             console.log(this.isaac_body.xPosition)
                                             this.devil = true;
+                                            this.trapDoorE = true;
+                                            this.bx = -this.floor1.rooms[index][index2].locX
+                                            this.by = this.floor1.rooms[index][index2].locY
                                         }
                                         if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -503,6 +515,9 @@ class SceneManager {
                                             console.log(this.gurgling.locX)
                                             console.log(this.isaac_body.xPosition)
                                             this.devil = true;
+                                            this.trapDoorE = true;
+                                            this.bx = -this.floor1.rooms[index][index2].locX
+                                            this.by = this.floor1.rooms[index][index2].locY
                                         }
                                         if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
@@ -692,7 +707,6 @@ class SceneManager {
                         for (let index = 0; index < this.premade[r][c].enemies.length; index++) {
                             for (let index2 = 0; index2 < this.premade[r][c].enemies[0].length; index2++) {
                                 if(this.premade[r][c].enemies[index][index2] != null){
-                                    console.log(this.premade[r][c].enemies[index][index2].health)
                                     if(this.premade[r][c].enemies[index][index2].health <= 0){
                                         this.EIR = false;
                                     }
@@ -710,7 +724,6 @@ class SceneManager {
                         for (let index = 0; index < this.premade[r][c].enemies.length; index++) {
                             for (let index2 = 0; index2 < this.premade[r][c].enemies[0].length; index2++) {
                                 if(this.premade[r][c].enemies[index][index2] != null){
-                                    console.log(this.premade[r][c].enemies[index][index2].health)
                                     if(this.premade[r][c].enemies[index][index2].health > 0){
                                         this.EIR = true;
                                         break;
@@ -790,7 +803,6 @@ class SceneManager {
                                             if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].obstacles[index][index2].boundingBox != null){
                                                 if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox)){
                                                     this.premade[r][c].obstacles[index][index2].health -= this.isaac_head.tear.damage
-                                                    console.log(this.premade[r][c].obstacles[index][index2].health)
                                                     if (!this.isaac_head.piercing) {
                                                         this.isaac_head.tear.range = 0;
                                                     }
@@ -898,7 +910,6 @@ class SceneManager {
                                                             if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].enemies[inde][inde2].boundingBox != null){
                                                                 if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox)){
                                                                     this.premade[r][c].enemies[inde][inde2].health -= this.isaac_head.tear.damage
-                                                                    console.log(this.premade[r][c].enemies[inde][inde2].health)
                                                                     if (!this.isaac_head.piercing) {
                                                                         this.isaac_head.tear.range = 0;
                                                                     }
@@ -1109,8 +1120,65 @@ class SceneManager {
             }
             this.devil = false;
         }
-        
+
+        if(this.trapDoorE == true && this.gurgling.deadS == true && this.gurgling2.deadS == true && this.TExist == false){
+            this.trapDoor = new Trap_Door(this.bx,this.by,this.game,this.floor1)
+            this.game.addEntity(this.trapDoor)
+            this.TExist = true;
+            this.game.orderCorrecter()
+        }
+        if(this.trapDoor != null){
+            if(this.trapDoor.boundingBox != null){
+                if(this.trapDoor.boundingBox.collide(this.isaac_body.boundingBox)){
+                    this.trapDoor = null
+                    console.log("colliding")
+                    this.game.clearS();
+                    this.loadNextFloor(this.level+1)
+                    console.log(this.game.entities)
+                }
+            }
+        }
     };
+
+    loadNextFloor(level){
+        this.level = level;
+        this.game.ctx.translate(this.floor1.camera.ogX,this.floor1.camera.ogY)
+        this.floor1 = new Floor(this.game,this.level, this.isaac_body)
+        this.floor1.addBaseRoom();
+        this.game.addEntity(this.hud);
+        this.game.addEntity(this.isaac_body);
+        this.game.addEntity(this.isaac_head);
+        this.isaac_body.xPosition = 735.5
+		this.isaac_body.yPosition = 498.5
+        this.isaac_body.moveBoundsLeft = 138;
+		this.isaac_body.moveBoundsRight = 1214;
+		this.isaac_body.moveBoundsUp = 123;
+		this.isaac_body.moveBoundsDown = 719;
+        this.hud.hudHealthX = 200;
+        this.hud.hudHealthY = 30;
+        this.hud.hudStatsX = 0
+        this.hud.hudStatsY = 330
+        this.hud.hudPickupsX = 30;
+        this.hud.hudPickupsY = 170;
+        console.log(this.floor1.roomMax)
+        console.log(this.floor1.level)
+        while(this.floor1.roomMax > 0){
+            this.floor1.addRoom("left");
+            this.floor1.addRoom("up");
+            this.floor1.addRoom("right");            
+            this.floor1.addRoom("down");
+            //console.log(this.floor1.roomMax)
+            //max -= this.game.clockTick*100
+        }
+        while(this.floor1.TRoomMax > 0){
+            this.floor1.addTreasureRoom("T");
+        }
+        while(this.floor1.BRoomMax > 0){
+            this.floor1.addBossRoom("B");
+        }
+        
+        this.floor1.toString();
+    }
 
     draw(ctx) {
         this.count += (1*this.game.clockTick);

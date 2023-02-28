@@ -221,6 +221,22 @@ class GameEngine {
         this.entities = list;
     };
     
+    clearS(){
+        let list = this.entities;
+        list.reverse();
+        let s
+        for (let index = 0; index < list.length; index++) {
+            if(list[index] instanceof SceneManager){
+                s = list.splice(index,1);
+                index--;
+            }
+            
+        }
+        list = []
+        list.push(s[0]);
+        list.reverse();
+        this.entities = list;
+    }
 
 
     draw() {
