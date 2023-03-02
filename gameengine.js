@@ -225,14 +225,35 @@ class GameEngine {
         let list = this.entities;
         list.reverse();
         let s
+        let h
+        let i
+        let b
         for (let index = 0; index < list.length; index++) {
             if(list[index] instanceof SceneManager){
                 s = list.splice(index,1);
                 index--;
             }
+            if(list[index] instanceof Hud){
+                h = list.splice(index,1);
+                index--;
+            }
+            if(list[index] instanceof Isaac_Head){
+                i = list.splice(index,1);
+                index--;
+            }
+            if(list[index] instanceof Isaac_Body){
+                b = list.splice(index,1);
+                index--;
+            }
+            if(list[index] != null){
+                list[index].removeFromWorld = true;
+            }
             
         }
-        list = []
+        
+        list.push(h[0]);
+        list.push(i[0]);
+        list.push(b[0]);
         list.push(s[0]);
         list.reverse();
         this.entities = list;

@@ -128,7 +128,6 @@ class Normal_Room {
         }else{
             this.direction = "";
         }
-        
     };
 
     

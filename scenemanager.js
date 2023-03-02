@@ -22,6 +22,8 @@ class SceneManager {
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/title_menu_sprites.png"), 0, 0, 480, 540, 0, 0, this.titleWidth, this.titleHeight);
         this.isaac_body = new Isaac_Body(this.game)
         this.isaac_head = new Isaac_Head(this.game,this.isaac_body)
+        this.iX = 10;
+        this.iY = 10;
         this.animations = [];
         this.loadAnimations();
         this.once = false;
@@ -181,11 +183,11 @@ class SceneManager {
         }
         //rooms and sliding
         if(this.floor1.rooms != null){
-
             for (let index = 0; index < this.floor1.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.floor1.rooms[index].length; index2++) {
                     if(this.EIR == false  || this.slideF == false){
                         this.slideF = false
+                        
                         if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
                             if(this.floor1.rooms[index][index2].door.boundingBox != null){
                                 if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
@@ -193,6 +195,7 @@ class SceneManager {
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("left");
+                                    
                                     if(this.moveBounds == false){
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
@@ -204,11 +207,10 @@ class SceneManager {
                                         this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
                                         this.hud.hudHealthX = this.hud.hudHealthX-1472;
                                         this.moveBounds = true;
-                                        if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                            this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
-                                            this.game.orderCorrecter();
-                                        }
+                                        this.iX--;
+                                        
+                                        
+                                        
                                         if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
@@ -248,6 +250,7 @@ class SceneManager {
                                     }
                                     this.floor1.moveRoom("right");
                                     if(this.moveBoundsR == false){
+                                        console.log("doorOp")
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
                                         this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
@@ -258,12 +261,7 @@ class SceneManager {
                                         this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
                                         this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                         this.moveBoundsR = true;
-                                        if(this.premade[index][index2+1] == null && (index != 10 || index2+1 !=10)){
-
-                                            this.premade[index][index2+1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index][index2+1].addObstacles((this.floor1.farthestRight+(1472*(index2))),-(this.floor1.farthestUp-(992*(index-1))));
-                                            this.game.orderCorrecter();
-                                        }
+                                        this.iX++;
                                     }
                                     this.onceR = true;
                                 }
@@ -282,6 +280,7 @@ class SceneManager {
                                     }
                                     this.floor1.moveRoom("left");
                                     if(this.moveBounds == false){
+                                        console.log("doorOpR")
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
                                         this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
@@ -292,13 +291,7 @@ class SceneManager {
                                         this.hud.hudPickupsX = this.hud.hudPickupsX-1472;
                                         this.hud.hudHealthX = this.hud.hudHealthX-1472;
                                         this.moveBounds = true;
-                                        if(this.premade[index][index2-1] == null && (index != 10 || index2-1 !=10)){
-                                            console.log(index)
-                                            console.log(index2-1)
-                                            this.premade[index][index2-1] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index][index2-1].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-2))),-(this.floor1.farthestUp-(992*(index-1))));
-                                            this.game.orderCorrecter();
-                                        }
+                                        this.iX--;
                                     }
                                     this.once = true;
                                 }
@@ -326,11 +319,8 @@ class SceneManager {
                                         this.hud.hudPickupsX = this.hud.hudPickupsX+1472;
                                         this.hud.hudHealthX = this.hud.hudHealthX+1472;
                                         this.moveBoundsR = true;
-                                        if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                            this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index][index2].addObstacles((this.floor1.farthestRight+(1472*(index2-1))),-(this.floor1.farthestUp-(992*(index-1))));
-                                            this.game.orderCorrecter();
-                                        }
+                                        this.iX++;
+                                        console.log(this.iX)
                                         if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
@@ -381,11 +371,7 @@ class SceneManager {
                                         this.hud.hudPickupsY = this.hud.hudPickupsY-992;
                                         this.hud.hudHealthY = this.hud.hudHealthY-992;
                                         this.moveBoundsU = true;
-                                        if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                            this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
-                                            this.game.orderCorrecter();
-                                        }
+                                        this.iY--;
                                         if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
@@ -425,6 +411,7 @@ class SceneManager {
                                     }
                                     this.floor1.moveRoom("down");
                                     if(this.moveBoundsD == false){
+                                        console.log("doorOpU")
                                         this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
                                         this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
                                         this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
@@ -435,11 +422,7 @@ class SceneManager {
                                         this.hud.hudPickupsY = this.hud.hudPickupsY+992;
                                         this.hud.hudHealthY = this.hud.hudHealthY+992;
                                         this.moveBoundsD = true;
-                                        if(this.premade[index+1][index2] == null && (index+1 != 10 || index2 !=10)){
-                                            this.premade[index+1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index+1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index)));
-                                            this.game.orderCorrecter();
-                                        }
+                                        this.iY++;
                                     }
                                     this.onceD = true;
                                 }
@@ -459,6 +442,7 @@ class SceneManager {
                                     }
                                     this.floor1.moveRoom("up");
                                     if(this.moveBoundsU == false){
+                                        console.log("doorOpD")
                                         this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
                                         this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
                                         this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
@@ -469,12 +453,8 @@ class SceneManager {
                                         this.hud.hudPickupsY = this.hud.hudPickupsY-992;
                                         this.hud.hudHealthY = this.hud.hudHealthY-992;
                                         this.moveBoundsU = true;
+                                        this.iY--;
                                         
-                                        if(this.premade[index-1][index2] == null && (index-1 != 10 || index2 !=10)){
-                                            this.premade[index-1][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                            this.premade[index-1][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-2)));
-                                            this.game.orderCorrecter();
-                                        }
                                     }
                                     this.onceU = true;
                                 }
@@ -502,11 +482,7 @@ class SceneManager {
                                         this.hud.hudPickupsY = this.hud.hudPickupsY+992;
                                         this.hud.hudHealthY = this.hud.hudHealthY+992;
                                         this.moveBoundsD = true;
-                                        //if(this.premade[index][index2] == null && this.floor1.rooms[index][index2].skin == "n"){
-                                        //    this.premade[index][index2] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                        //    this.premade[index][index2].addObstacles(-(this.floor1.farthestLeft-(1472*(index2-1))),this.floor1.farthestDown+(992*(index-1)));
-                                        //    this.game.orderCorrecter();
-                                        //}
+                                        this.iY++;
                                         if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
@@ -612,6 +588,18 @@ class SceneManager {
                                 }
                             }
                         } 
+                        if(this.premade[this.iY][this.iX] == null && (this.iX != 10 || this.iY != 10)){
+                            if(this.floor1.rooms[this.iY][this.iX] != null){
+                                if(this.floor1.rooms[this.iY][this.iX].skin == 'n'){
+                                    this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))));
+                                    this.game.orderCorrecter();
+                                    console.log(this.premade[this.iY][this.iX].roomN)
+                                }
+                            }
+                            
+                            
+                        }
                     }else{
                         if(this.floor1.rooms[index][index2] != null){
                             if(this.floor1.rooms[index][index2].door != 0){
@@ -764,7 +752,6 @@ class SceneManager {
                                                 this.isaac_body.yPosition += this.isaac_body.movementSpeed*this.game.clockTick;
                                                 this.isaac_body.slideTU = 0;
                                             }
-                                        
                                         }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Spikes){
                                             if(this.premade[r][c].obstacles[index][index2].stab == true && this.tempClock > 1){
@@ -1144,10 +1131,14 @@ class SceneManager {
         this.level = level;
         this.game.ctx.translate(this.floor1.camera.ogX,this.floor1.camera.ogY)
         this.floor1 = new Floor(this.game,this.level, this.isaac_body)
+        this.premade = Array.from({length: 20}, () => new Array(20));
+        console.log(this.premade)
         this.floor1.addBaseRoom();
         this.game.addEntity(this.hud);
         this.game.addEntity(this.isaac_body);
         this.game.addEntity(this.isaac_head);
+        this.iX = 10;
+        this.iY = 10;
         this.isaac_body.xPosition = 735.5
 		this.isaac_body.yPosition = 498.5
         this.isaac_body.moveBoundsLeft = 138;
