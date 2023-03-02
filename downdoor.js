@@ -44,7 +44,7 @@ class Down_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_way_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
         }else if(this.skin == "b_closed"){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_down.png"),(this.width/2)-(165/2)-this.locX,-180-this.locY,165,112);
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_closed_down.png"),(this.width/2)-(236/2)-this.locX,-190-this.locY,236,152);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_closed_down.png"),(this.width/2)-(236/2)-this.locX,-220-this.locY,236,200);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_down.png"),(this.width/2)-(236/2)-this.locX,-190-this.locY,236,152);
         }else if(this.skin == "d_closed"){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/devil_door_way_down.png"),(this.width/2)-(125/2)-this.locX,-180-this.locY,125,112);
