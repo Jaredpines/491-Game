@@ -39,9 +39,9 @@ class Up_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_closed_up.png"),(this.width/2)-(196/2)-this.locX,60-this.locY,196,132);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_frame.png"),(this.width/2)-(196/2)-this.locX,60-this.locY,196,132);
         }else if(this.skin == "t_closed"){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way.png"),(this.width/2)-(125/2)-this.locX,80-this.locY,125,112);
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_closed_up.png"),(this.width/2)-(196/2)-this.locX,50-this.locY,196,152);
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_way.png"),(this.width/2)-(196/2)-this.locX,50-this.locY,196,152);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way.png"),(this.width/2)-(125/2)-this.locX,70-this.locY,125,112);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_closed_up.png"),(this.width/2)-(196/2)-this.locX,40-this.locY,196,152);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_way.png"),(this.width/2)-(196/2)-this.locX,40-this.locY,196,152);
         }else if(this.skin == "b_closed"){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way.png"),(this.width/2)-(165/2)-this.locX,80-this.locY,165,112);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_closed_up.png"),(this.width/2)-(236/2)-this.locX,32-this.locY,236,200);
