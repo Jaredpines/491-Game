@@ -19,7 +19,7 @@ class Trap_Door {
     draw(ctx){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/trap_door_open.png"),(this.width/2)-(256/2)+this.locX,this.locY+(this.height/2)-(256/2),256,256);
             this.boundingBox = new BoundingBox((this.width/2)-(256/2)+this.locX+64,64+this.locY+(this.height/2)-(256/2),128,128);
-            ctx.strokeRect((this.width/2)-(256/2)+this.locX+64,64+this.locY+(this.height/2)-(256/2),128,128);
+            //ctx.strokeRect((this.width/2)-(256/2)+this.locX+64,64+this.locY+(this.height/2)-(256/2),128,128);
     };
 
 }

@@ -1132,6 +1132,7 @@ class SceneManager {
         this.game.ctx.translate(this.floor1.camera.ogX,this.floor1.camera.ogY)
         this.floor1 = new Floor(this.game,this.level, this.isaac_body)
         this.premade = Array.from({length: 20}, () => new Array(20));
+        this.itemP = null;
         console.log(this.premade)
         this.floor1.addBaseRoom();
         this.game.addEntity(this.hud);
