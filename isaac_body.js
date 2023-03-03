@@ -29,6 +29,7 @@ class Isaac_Body {
 		this.maxRedHearts = 8;
 		this.blueHearts = 4;
 		this.blackHearts = 2;
+		this.currTotalHearts = this.maxRedHearts + this.blueHearts + this.blackHearts;
 		this.maxHearts = 24;
 		this.movementSpeed = 500;
 		this.tears = 2.73;

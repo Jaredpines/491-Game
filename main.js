@@ -43,7 +43,6 @@ ASSET_MANAGER.queueDownload("./res/isaac_walk.png")
 ASSET_MANAGER.queueDownload("./res/itemP.png")
 ASSET_MANAGER.queueDownload("./res/rb.png")
 ASSET_MANAGER.queueDownload("./res/trophy.png")
-ASSET_MANAGER.queueDownload("./res/key.png")
 ASSET_MANAGER.queueDownload("./res/grid_spikes_ani.png")
 ASSET_MANAGER.queueDownload("./res/grid_spikes_down.png")
 ASSET_MANAGER.queueDownload("./res/ani_down.png")
@@ -120,6 +119,11 @@ ASSET_MANAGER.queueDownload("./res/effect_fire.png")
 ASSET_MANAGER.queueDownload("./res/effect_fire_blue.png")
 ASSET_MANAGER.queueDownload("./res/effect_fire.red.png")
 
+//pickups
+ASSET_MANAGER.queueDownload("./res/pickup_key.png")
+ASSET_MANAGER.queueDownload("./res/pickup_bomb.png")
+ASSET_MANAGER.queueDownload("./res/pickup_hearts.png")
+ASSET_MANAGER.queueDownload("./res/pickup_coin.png")
 
 //items
 ASSET_MANAGER.queueDownload("./res/item_synthoil.png")

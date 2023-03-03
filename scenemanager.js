@@ -55,6 +55,16 @@ class SceneManager {
         this.by
         this.TExist = false;
 
+        this.key = new Pickup_key(200, 300, this.game)
+        this.coin = new Pickup_coin(300, 200, this.game);
+        this.bomb = new Pickup_bomb(400, 200, this.game);
+        this.fullRedHeart = new Pickup_hearts("fullRed", 500, 200, this.game);
+        this.halfRedHeart = new Pickup_hearts("halfRed", 600, 200, this.game);
+        this.fullBlueHeart = new Pickup_hearts("fullBlue", 700, 200, this.game);
+        this.halfBlueHeart = new Pickup_hearts("halfBlue", 800, 200, this.game);
+        this.fullBlackHeart = new Pickup_hearts("fullBlack", 900, 200, this.game);
+        this.halfBlackHeart = new Pickup_hearts("halfBlack", 1000, 200, this.game);
+
     };
 
     clearEntities() {
@@ -80,6 +90,17 @@ class SceneManager {
         //this.game.addEntity(this.pooter_enemy);
         this.game.addEntity(this.hud);
         this.game.addEntity(this.fire);
+
+        this.game.addEntity(this.key);
+        this.game.addEntity(this.coin);
+        this.game.addEntity(this.bomb);
+        this.game.addEntity(this.fullRedHeart);
+        this.game.addEntity(this.halfRedHeart);
+        this.game.addEntity(this.fullBlueHeart);
+        this.game.addEntity(this.halfBlueHeart);
+        this.game.addEntity(this.fullBlackHeart);
+        this.game.addEntity(this.halfBlackHeart);
+
         ASSET_MANAGER.pauseBackgroundMusic();
         ASSET_MANAGER.playAsset("./music/the_cellar_alt.ogg");
         ASSET_MANAGER.autoRepeat("./music/the_cellar_alt.ogg");
@@ -185,18 +206,18 @@ class SceneManager {
         if(this.floor1.rooms != null){
             for (let index = 0; index < this.floor1.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.floor1.rooms[index].length; index2++) {
-                    if(this.EIR == false  || this.slideF == false){
+                    if(!this.EIR  || !this.slideF){
                         this.slideF = false
                         
-                        if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
+                        if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR === 1472){
                             if(this.floor1.rooms[index][index2].door.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide !== 0 && this.once)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("left");
                                     
-                                    if(this.moveBounds == false){
+                                    if(!this.moveBounds){
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
                                         this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight - 1472;
@@ -211,7 +232,7 @@ class SceneManager {
                                         
                                         
                                         
-                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
                                             this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -223,12 +244,12 @@ class SceneManager {
                                             this.bx = -this.floor1.rooms[index][index2].locX
                                             this.by = this.floor1.rooms[index][index2].locY
                                         }
-                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
                                             this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.trophy.bossItem = true;
                                             this.game.addEntity(this.trophy);
@@ -242,14 +263,14 @@ class SceneManager {
                                 }
                             }
                         }
-                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide === 0 )){
                             if(this.floor1.rooms[index][index2].doorOp.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR !== 1472 && this.onceR)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("right");
-                                    if(this.moveBoundsR == false){
+                                    if(!this.moveBoundsR){
                                         console.log("doorOp")
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
@@ -272,14 +293,14 @@ class SceneManager {
                             }
                         }
     
-                        if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR == 1472){
+                        if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR === 1472){
                             if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide != 0 &&this.once == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide !== 0 && this.once)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("left");
-                                    if(this.moveBounds == false){
+                                    if(!this.moveBounds){
                                         console.log("doorOpR")
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft - 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft - 1472;
@@ -301,14 +322,14 @@ class SceneManager {
                                 }
                             }
                         }
-                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide == 0 )){
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide === 0 )){
                             if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1472 &&this.onceR == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR !== 1472 && this.onceR)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("right");
-                                    if(this.moveBoundsR == false){
+                                    if(!this.moveBoundsR){
                                         this.isaac_body.moveBoundsLeft = this.isaac_body.moveBoundsLeft + 1472;
                                         this.isaac_head.moveBoundsLeft = this.isaac_head.moveBoundsLeft + 1472;
                                         this.isaac_body.moveBoundsRight = this.isaac_body.moveBoundsRight + 1472;
@@ -321,7 +342,7 @@ class SceneManager {
                                         this.moveBoundsR = true;
                                         this.iX++;
                                         console.log(this.iX)
-                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
                                             this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -333,12 +354,12 @@ class SceneManager {
                                             this.bx = -this.floor1.rooms[index][index2].locX
                                             this.by = this.floor1.rooms[index][index2].locY                                            
                                         }
-                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
                                             this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.trophy.bossItem = true;
                                             this.game.addEntity(this.trophy);
@@ -353,14 +374,14 @@ class SceneManager {
                             }
                         }
     
-                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD === 992 )){
                             if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU !== 0 && this.onceU)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("up");
-                                    if(this.moveBoundsU == false){
+                                    if(!this.moveBoundsU){
                                         this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
                                         this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
                                         this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown - 992;
@@ -372,7 +393,7 @@ class SceneManager {
                                         this.hud.hudHealthY = this.hud.hudHealthY-992;
                                         this.moveBoundsU = true;
                                         this.iY--;
-                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
                                             this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -384,12 +405,12 @@ class SceneManager {
                                             this.bx = -this.floor1.rooms[index][index2].locX
                                             this.by = this.floor1.rooms[index][index2].locY
                                         }
-                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
                                             this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.trophy.bossItem = true;
                                             this.game.addEntity(this.trophy);
@@ -403,14 +424,14 @@ class SceneManager {
                                 }
                             }
                         }
-                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU === 0 )){
                             if(this.floor1.rooms[index][index2].doorOpU.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD !== 992 && this.onceD)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("down");
-                                    if(this.moveBoundsD == false){
+                                    if(!this.moveBoundsD){
                                         console.log("doorOpU")
                                         this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
                                         this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
@@ -434,14 +455,14 @@ class SceneManager {
                             }
                         }
     
-                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD == 992 )){
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD === 992 )){
                             if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU !== 0 &&this.onceU)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("up");
-                                    if(this.moveBoundsU == false){
+                                    if(!this.moveBoundsU){
                                         console.log("doorOpD")
                                         this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp - 992;
                                         this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp - 992;
@@ -464,14 +485,14 @@ class SceneManager {
                                 }
                             }
                         }
-                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU == 0 )){
+                        if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU === 0 )){
                             if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 992 &&this.onceD == true)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD !== 992 && this.onceD)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
                                     this.floor1.moveRoom("down");
-                                    if(this.moveBoundsD == false){
+                                    if(!this.moveBoundsD){
                                         this.isaac_body.moveBoundsUp = this.isaac_body.moveBoundsUp + 992;
                                         this.isaac_head.moveBoundsUp = this.isaac_head.moveBoundsUp + 992;
                                         this.isaac_body.moveBoundsDown = this.isaac_body.moveBoundsDown + 992;
@@ -483,7 +504,7 @@ class SceneManager {
                                         this.hud.hudHealthY = this.hud.hudHealthY+992;
                                         this.moveBoundsD = true;
                                         this.iY++;
-                                        if(this.floor1.rooms[index][index2].skin == "b"&&this.gurgling == null){
+                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
                                             this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
                                             this.game.addEntity(this.gurgling);
                                             this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
@@ -495,12 +516,12 @@ class SceneManager {
                                             this.bx = -this.floor1.rooms[index][index2].locX
                                             this.by = this.floor1.rooms[index][index2].locY
                                         }
-                                        if(this.floor1.rooms[index][index2].skin == "t"&&this.itemP == null){
+                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin == "d"&& this.trophy == null){
+                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
                                             this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.trophy.bossItem = true;
                                             this.game.addEntity(this.trophy);
@@ -515,82 +536,82 @@ class SceneManager {
                             }
                         }
                         if(this.floor1.rooms[index][index2] != null){
-                            if(this.floor1.rooms[index][index2].door != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].door !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].door.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].door.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].door.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOp != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOp !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorR != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorR !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorR.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorR.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorR.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpR != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOpR !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorD != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorD !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorD.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorD.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorD.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpD != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOpD !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorU != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorU !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorU.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorU.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorU.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpU != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOpU !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "n"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "t"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "b"
                                 }
                             }
                         } 
-                        if(this.premade[this.iY][this.iX] == null && (this.iX != 10 || this.iY != 10)){
+                        if(this.premade[this.iY][this.iX] == null && (this.iX !== 10 || this.iY !== 10)){
                             if(this.floor1.rooms[this.iY][this.iX] != null){
-                                if(this.floor1.rooms[this.iY][this.iX].skin == 'n'){
+                                if(this.floor1.rooms[this.iY][this.iX].skin === 'n'){
                                     this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
                                     this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))));
                                     this.game.orderCorrecter();
@@ -603,74 +624,74 @@ class SceneManager {
                     }else{
                         if(this.floor1.rooms[index][index2] != null){
                             if(this.floor1.rooms[index][index2].door != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].door.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].door.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].door.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOp != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOp !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorR != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorR !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorR.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorR.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorR.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpR != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOpR !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorD != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorD !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorD.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorD.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorD.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpD != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOpD !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorU != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorU !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorU.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorU.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorU.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpU != 0){
-                                if(this.floor1.rooms[index][index2].skin == "n"){
+                            if(this.floor1.rooms[index][index2].doorOpU !== 0){
+                                if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "n_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "t"){
+                                }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "t_closed"
-                                }else if(this.floor1.rooms[index][index2].skin == "b"){
+                                }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "b_closed"
                                 }
                             }
@@ -682,7 +703,7 @@ class SceneManager {
                 
             }
         }
-        if(this.EIR == true && this.floor1.camera.slideU == 0 && this.floor1.camera.slideD == 992 && this.floor1.camera.slide == 0 && this.floor1.camera.slideR == 1472){
+        if(this.EIR && this.floor1.camera.slideU === 0 && this.floor1.camera.slideD === 992 && this.floor1.camera.slide === 0 && this.floor1.camera.slideR === 1472){
             this.slideF = true;
         }
         
@@ -754,7 +775,7 @@ class SceneManager {
                                             }
                                         }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Spikes){
-                                            if(this.premade[r][c].obstacles[index][index2].stab == true && this.tempClock > 1){
+                                            if(this.premade[r][c].obstacles[index][index2].stab && this.tempClock > 1){
                                                 this.isaac_body.takeDamage(2);
                                                 this.tempClock = 0;
                                             }
@@ -762,12 +783,12 @@ class SceneManager {
                                         }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Chest){
                                             if (this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox)) {
-                                                if (this.premade[r][c].obstacles[index][index2].open == false) {
+                                                if (!this.premade[r][c].obstacles[index][index2].open) {
                                                     ASSET_MANAGER.playAsset("./sounds/chest_open_1.wav")
                                                 }
                                                 this.premade[r][c].obstacles[index][index2].open = true;
-                                                if(this.driftCounter < 0.1 && this.key == undefined){
-                                                    this.key = new Key(this.premade[r][c].obstacles[index][index2].locX,this.premade[r][c].obstacles[index][index2].locY,this.game);
+                                                if(this.driftCounter < 0.1 && this.key === undefined){
+                                                    this.key = new Pickup_key(this.premade[r][c].obstacles[index][index2].locX,this.premade[r][c].obstacles[index][index2].locY,this.game);
                                                     this.game.addEntity(this.key);
                                                 }
                                                 if(this.isaac_body.boundingBox.right-80 > this.premade[r][c].obstacles[index][index2].boundingBox.left){
@@ -804,8 +825,8 @@ class SceneManager {
                                                     if(this.premade[r][c].enemies[inde][inde2].boundingBox != null){
                                                         for (let ind = 0; ind < this.premade[r][c].enemies.length; ind++) {
                                                             for (let ind2 = 0; ind2 < this.premade[r][c].enemies[0].length; ind2++) {
-                                                                if(this.premade[r][c].enemies[ind][ind2] != null && this.isaac_body.boundingBox != null){
-                                                                    if(this.premade[r][c].enemies[ind][ind2].boundingBox != null){
+                                                                if(this.premade[r][c].enemies[ind][ind2] !== null && this.isaac_body.boundingBox != null){
+                                                                    if(this.premade[r][c].enemies[ind][ind2].boundingBox !== null){
                                                                         if(this.premade[r][c].enemies[inde][inde2].boundingBox.collide(this.premade[r][c].enemies[ind][ind2].boundingBox) && (inde != ind||inde2 != ind2)){
                                                                             if(this.premade[r][c].enemies[inde][inde2] instanceof Spider){
                                                                                 console.log(this.premade[r][c].enemies[inde][inde2].xPosition)
@@ -921,7 +942,7 @@ class SceneManager {
                 }
             }           
         }
-        if(this.key != undefined){
+        if(this.key !== undefined){
             if (this.isaac_body != null) {
                 if(this.key.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.key.boundingBox)) {
@@ -936,6 +957,161 @@ class SceneManager {
             if(this.driftCounter < 1){
                 this.key.locX += 200*this.game.clockTick;
                 this.key.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.coin !== undefined){
+            if (this.isaac_body != null) {
+                if(this.coin.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.coin.boundingBox)) {
+                        this.coin.boundingBox = undefined;
+                        this.coin.removeFromWorld = true;
+                        this.isaac_body.coinPickup += 1
+
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.coin.locX += 200*this.game.clockTick;
+                this.coin.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.bomb !== undefined){
+            if (this.isaac_body != null) {
+                if(this.bomb.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.bomb.boundingBox)) {
+                        this.bomb.boundingBox = undefined;
+                        this.bomb.removeFromWorld = true;
+                        this.isaac_body.bombPickup += 1
+
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.bomb.locX += 200*this.game.clockTick;
+                this.bomb.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.fullRedHeart !== undefined){
+            if (this.isaac_body != null) {
+                if(this.fullRedHeart.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.fullRedHeart.boundingBox)) {
+                        if (this.isaac_body.redHearts < this.isaac_body.maxRedHearts) {
+                            this.fullRedHeart.boundingBox = undefined;
+                            this.fullRedHeart.removeFromWorld = true;
+                            if (this.isaac_body.maxRedHearts - this.isaac_body.redHearts === 1) {
+                                this.isaac_body.redHearts += 1;
+                            } else {
+                                this.isaac_body.redHearts += 2;
+                            }
+                        }
+
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.fullRedHeart.locX += 200*this.game.clockTick;
+                this.fullRedHeart.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.halfRedHeart !== undefined){
+            if (this.isaac_body != null) {
+                if(this.halfRedHeart.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.halfRedHeart.boundingBox)) {
+                        if (this.isaac_body.redHearts < this.isaac_body.maxRedHearts) {
+                            this.halfRedHeart.boundingBox = undefined;
+                            this.halfRedHeart.removeFromWorld = true;
+                            this.isaac_body.redHearts += 1;
+                        }
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.halfRedHeart.locX += 200*this.game.clockTick;
+                this.halfRedHeart.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.fullBlueHeart !== undefined){
+            if (this.isaac_body != null) {
+                if(this.fullBlueHeart.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.fullBlueHeart.boundingBox)) {
+                        if (this.isaac_body.currTotalHearts < 24) {
+                            this.fullBlueHeart.boundingBox = undefined;
+                            this.fullBlueHeart.removeFromWorld = true;
+                            this.isaac_body.blueHearts += 2;
+                        }
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.fullBlueHeart.locX += 200*this.game.clockTick;
+                this.fullBlueHeart.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.halfBlueHeart !== undefined){
+            if (this.isaac_body != null) {
+                if(this.halfBlueHeart.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.halfBlueHeart.boundingBox)) {
+                        if (this.isaac_body.currTotalHearts < 24) {
+                            this.halfBlueHeart.boundingBox = undefined;
+                            this.halfBlueHeart.removeFromWorld = true;
+                            this.isaac_body.blueHearts += 1;
+                        }
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.halfBlueHeart.locX += 200*this.game.clockTick;
+                this.halfBlueHeart.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.fullBlackHeart !== undefined){
+            if (this.isaac_body != null) {
+                if(this.fullBlackHeart.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.fullBlackHeart.boundingBox)) {
+                        if (this.isaac_body.currTotalHearts < 24) {
+                            this.fullBlackHeart.boundingBox = undefined;
+                            this.fullBlackHeart.removeFromWorld = true;
+                            this.isaac_body.blackHearts += 2;
+                        }
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.fullBlackHeart.locX += 200*this.game.clockTick;
+                this.fullBlackHeart.locY += 200*this.game.clockTick;
+            }
+        }
+
+        if(this.halfBlackHeart !== undefined){
+            if (this.isaac_body != null) {
+                if(this.halfBlackHeart.boundingBox != null){
+                    if (this.isaac_body.boundingBox.collide(this.halfBlackHeart.boundingBox)) {
+                        if (this.isaac_body.currTotalHearts < 24) {
+                            this.halfBlackHeart.boundingBox = undefined;
+                            this.halfBlackHeart.removeFromWorld = true;
+                            this.isaac_body.blackHearts += 1;
+                        }
+                    }
+                }
+            }
+            this.driftCounter += this.game.clockTick;
+            if(this.driftCounter < 1){
+                this.halfBlackHeart.locX += 200*this.game.clockTick;
+                this.halfBlackHeart.locY += 200*this.game.clockTick;
             }
         }
 
@@ -1007,8 +1183,7 @@ class SceneManager {
             
         }
         if (this.isaac_body != null) {
-            
-            
+
             if (this.isaac_body != null && this.trophy != null) {
                 if (this.trophy.boundingBox != null) {
                     if (this.isaac_body.boundingBox.collide(this.trophy.boundingBox)) {
@@ -1114,14 +1289,14 @@ class SceneManager {
 
         this.hud.x = this.floor1.camera.ogX
         this.hud.y = this.floor1.camera.ogY
-        if(this.devil === true && this.gurgling.deadS == true && this.gurgling2.deadS == true){
+        if(this.devil === true && this.gurgling.deadS && this.gurgling2.deadS){
             while(this.floor1.DRoomMax > 0){
                 this.floor1.addDevilRoom("D");
             }
             this.devil = false;
         }
 
-        if(this.trapDoorE == true && this.gurgling.deadS == true && this.gurgling2.deadS == true && this.TExist == false){
+        if(this.trapDoorE && this.gurgling.deadS && this.gurgling2.deadS && !this.TExist){
             this.trapDoor = new Trap_Door(this.bx,this.by,this.game,this.floor1)
             this.game.addEntity(this.trapDoor)
             this.TExist = true;
