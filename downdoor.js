@@ -25,6 +25,10 @@ class Down_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_down.png"),(this.width/2)-(125/2)-this.locX,-180-this.locY,125,112);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_way_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
             this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX+10,-190-this.locY,110,92);
+        }else if(this.skin == "s"){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_down.png"),(this.width/2)-(125/2)-this.locX,-180-this.locY,125,112);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/shop_door_way_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
+            this.boundingBox = new BoundingBox((this.width/2)-(125/2)-this.locX+10,-190-this.locY,110,92);
         }else if(this.skin == "b"){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_down.png"),(this.width/2)-(165/2)-this.locX,-180-this.locY,165,112);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_light_down.png"),(this.width/2)-(236/2)-this.locX,-300-this.locY,236,152);
@@ -42,6 +46,10 @@ class Down_Door {
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_down.png"),(this.width/2)-(125/2)-this.locX,-180-this.locY,125,112);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_closed_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/treasure_door_way_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
+        }else if(this.skin == "s_closed"){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/door_way_down.png"),(this.width/2)-(125/2)-this.locX,-180-this.locY,125,112);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/shop_door_closed_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/shop_door_way_down.png"),(this.width/2)-(196/2)-this.locX,-190-this.locY,196,152);
         }else if(this.skin == "b_closed"){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_way_down.png"),(this.width/2)-(165/2)-this.locX,-180-this.locY,165,112);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/boss_door_closed_down.png"),(this.width/2)-(236/2)-this.locX,-220-this.locY,236,200);

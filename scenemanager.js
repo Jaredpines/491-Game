@@ -172,6 +172,9 @@ class SceneManager {
             while(this.floor1.BRoomMax > 0){
                 this.floor1.addBossRoom("B");
             }
+            while(this.floor1.SRoomMax > 0){
+                this.floor1.addShopRoom("S");
+            }
             
             this.floor1.toString();
             //this.game.ctx.translate(0,-200)
@@ -246,6 +249,11 @@ class SceneManager {
                                         }
                                         if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
@@ -359,6 +367,11 @@ class SceneManager {
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
                                         }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
                                             this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.trophy.bossItem = true;
@@ -407,6 +420,11 @@ class SceneManager {
                                         }
                                         if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
@@ -521,6 +539,11 @@ class SceneManager {
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
+                                            this.game.addEntity(this.itemP);
+                                            console.log(this.itemP.locX)
+                                            console.log(this.isaac_body.xPosition)
                                         }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
                                             this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.trophy.bossItem = true;
@@ -541,6 +564,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].door.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].door.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].door.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].door.skin = "b"
                                 }
@@ -550,6 +575,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOp.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "b"
                                 }
@@ -559,6 +586,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorR.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorR.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorR.skin = "b"
                                 }
@@ -568,6 +597,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpR.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "b"
                                 }
@@ -577,6 +608,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorD.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorD.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorD.skin = "b"
                                 }
@@ -586,6 +619,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpD.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "b"
                                 }
@@ -595,6 +630,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorU.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorU.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorU.skin = "b"
                                 }
@@ -604,6 +641,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpU.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "t"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "s"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "b"
                                 }
@@ -628,6 +667,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].door.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].door.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].door.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].door.skin = "b_closed"
                                 }
@@ -637,6 +678,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOp.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOp.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "b_closed"
                                 }
@@ -646,6 +689,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorR.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorR.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorR.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorR.skin = "b_closed"
                                 }
@@ -655,6 +700,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpR.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOpR.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "b_closed"
                                 }
@@ -664,6 +711,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorD.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorD.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorD.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorD.skin = "b_closed"
                                 }
@@ -673,6 +722,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpD.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOpD.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "b_closed"
                                 }
@@ -682,6 +733,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorU.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorU.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorU.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorU.skin = "b_closed"
                                 }
@@ -691,6 +744,8 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpU.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "t_closed"
+                                }else if(this.floor1.rooms[index][index2].skin === "s"){
+                                    this.floor1.rooms[index][index2].doorOpU.skin = "s_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "b"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "b_closed"
                                 }
@@ -1355,6 +1410,9 @@ class SceneManager {
         }
         while(this.floor1.BRoomMax > 0){
             this.floor1.addBossRoom("B");
+        }
+        while(this.floor1.SRoomMax > 0){
+            this.floor1.addShopRoom("S");
         }
         
         this.floor1.toString();
