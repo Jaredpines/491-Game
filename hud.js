@@ -209,6 +209,14 @@ class Hud {
 
     }
 
+    drawItemPickupBanner(ctx, itemName, itemDesc) {
+        ctx.drawImage(ASSET_MANAGER.getAsset("./res/effect_streak.png"), this.x + 400, this.y + 200, 650, 250)
+        ctx.fontSize = "200pt";
+        ctx.fillText(itemName, this.x + 675, this.y + 300);
+        ctx.fontSize = "100pt";
+        ctx.fillText(itemDesc, this.x + 575, this.y + 330)
+    }
+
     draw(ctx) {
         ctx.font = '25px Calibri';
         ctx.fontSize = "100pt";
@@ -222,6 +230,8 @@ class Hud {
 
         //hud stats
         this.drawStats(ctx);
+
+        // this.drawItemPickupBanner(ctx, "Synthoil", "Damage and Health up")
 
         if (!this.game.camera.title && !this.game.camera.credits && this.game.camera.gameOver && !this.game.camera.win) {
             this.tempCount += 1*this.game.clockTick;

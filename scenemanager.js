@@ -1034,21 +1034,28 @@ class SceneManager {
                             this.isaac_body.maxRedHearts += 2;
                             this.isaac_body.redHearts += 2;
                             this.isaac_head.costumes.push("./res/costume_stigmata.png");
+                            // this.hud.drawItemPickupBanner(ctx, "Stigmata", "Damage and Health up")
                         }
                         if(this.itemP.synthoil && !this.itemP.itemGet){
                             this.isaac_head.damage += 1; this.hud.updateStats(ctx, "damage", 1);
                             this.isaac_head.range += 1.5; this.hud.updateStats(ctx, "range", 1.5);
                             this.isaac_head.costumes.push("./res/costume_synthoil.png");
+                            // this.hud.drawItemPickupBanner(ctx, "Synthoil", "Damage and Health up")
+
                         }
                         if(this.itemP.cupidsarrow && !this.itemP.itemGet){
                             this.isaac_head.piercing = true;
                             this.isaac_head.tearSkin = "./res/cupids_arrow_tear_right.png"
                             this.isaac_head.costumes.push("./res/costume_cupidsarrow.png");
+                            // this.hud.drawItemPickupBanner(ctx, "Cupid's Arrow", "Damage and Health up")
+
                         }
                         if(this.itemP.jesusjuice && !this.itemP.itemGet){
                             this.isaac_head.damage += 0.5; this.hud.updateStats(ctx, "damage", 0.5);
                             this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
                             this.isaac_head.costumes.push("./res/costume_jesusjuice.png");
+                            // this.hud.drawItemPickupBanner(ctx, "Jesus Juice", "Damage and Health up")
+
                         }
                         if(this.itemP.thehalo && !this.itemP.itemGet){
                             this.isaac_body.maxRedHearts += 2;
@@ -1058,16 +1065,22 @@ class SceneManager {
                             this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
                             this.isaac_body.movementSpeed += 0.3; this.hud.updateStats(ctx, "movementSpeed", 0.3);
                             this.isaac_head.costumes.push("./res/costume_halo.png");
+                            // this.hud.drawItemPickupBanner(ctx, "The Halo", "Damage and Health up")
+
                         }
                         if(this.itemP.squeezy && !this.itemP.itemGet){
                             this.isaac_body.blueHearts += 4;
                             this.isaac_head.tears += 0.4;
                             this.isaac_head.costumes.push("./res/costume_squeezy.png");
+                            // this.hud.drawItemPickupBanner(ctx, "Squeezy", "Damage and Health up")
+
                         }
                         if(this.itemP.toothpicks && !this.itemP.itemGet){
                             this.isaac_head.shotSpeed += 0.16;
                             this.isaac_head.tears += 0.70;
                             this.isaac_head.tears = (Math.ceil(this.isaac_head.tears*100))/100
+                            // this.hud.drawItemPickupBanner(ctx, "Toothpicks", "Damage and Health up")
+
                         }
                         this.itemP.itemGet = true;
                         if(this.isaac_body.boundingBox.right-80 > this.itemP.boundingBox.left){
@@ -1101,7 +1114,7 @@ class SceneManager {
 
         this.hud.x = this.floor1.camera.ogX
         this.hud.y = this.floor1.camera.ogY
-        if(this.devil == true && this.gurgling.deadS == true && this.gurgling2.deadS == true){
+        if(this.devil === true && this.gurgling.deadS == true && this.gurgling2.deadS == true){
             while(this.floor1.DRoomMax > 0){
                 this.floor1.addDevilRoom("D");
             }
