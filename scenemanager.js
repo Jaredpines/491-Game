@@ -252,8 +252,14 @@ class SceneManager {
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
+                                            this.game.addEntity(this.itemP);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
@@ -367,8 +373,14 @@ class SceneManager {
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
+                                            this.game.addEntity(this.itemP);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
@@ -423,8 +435,14 @@ class SceneManager {
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
+                                            this.game.addEntity(this.itemP);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
@@ -539,8 +557,14 @@ class SceneManager {
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s"&&this.itemP == null) {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 700, this.floor1.rooms[index][index2].locY + 448.5, this.game)
+                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
+                                            this.game.addEntity(this.fire);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
+                                            this.game.addEntity(this.itemP);
+                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
