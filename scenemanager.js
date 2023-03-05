@@ -214,7 +214,7 @@ class SceneManager {
                         
                         if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR === 1472){
                             if(this.floor1.rooms[index][index2].door.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide !== 0 && this.once)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].door.boundingBox)|| (this.floor1.camera.slide != 0 && this.once)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -279,7 +279,7 @@ class SceneManager {
                         }
                         if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide === 0 )){
                             if(this.floor1.rooms[index][index2].doorOp.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR !== 1472 && this.onceR)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOp.boundingBox)|| (this.floor1.camera.slideR != 1472 && this.onceR)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -309,7 +309,7 @@ class SceneManager {
     
                         if(this.floor1.rooms[index][index2] != null && this.floor1.camera.slideR === 1472){
                             if(this.floor1.rooms[index][index2].doorOpR.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide !== 0 && this.once)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpR.boundingBox)|| (this.floor1.camera.slide != 0 && this.once)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -338,7 +338,7 @@ class SceneManager {
                         }
                         if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slide === 0 )){
                             if(this.floor1.rooms[index][index2].doorR.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR !== 1472 && this.onceR)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorR.boundingBox)|| (this.floor1.camera.slideR != 1472 && this.onceR)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -401,7 +401,7 @@ class SceneManager {
     
                         if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD === 992 )){
                             if(this.floor1.rooms[index][index2].doorU.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU !== 0 && this.onceU)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorU.boundingBox)|| (this.floor1.camera.slideU != 0 && this.onceU)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -462,7 +462,7 @@ class SceneManager {
                         }
                         if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU === 0 )){
                             if(this.floor1.rooms[index][index2].doorOpU.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD !== 992 && this.onceD)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpU.boundingBox)|| (this.floor1.camera.slideD != 992 && this.onceD)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -493,7 +493,7 @@ class SceneManager {
     
                         if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideD === 992 )){
                             if(this.floor1.rooms[index][index2].doorOpD.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU !== 0 &&this.onceU)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorOpD.boundingBox)|| (this.floor1.camera.slideU != 0 &&this.onceU)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -523,7 +523,7 @@ class SceneManager {
                         }
                         if(this.floor1.rooms[index][index2] != null && (this.floor1.camera.slideU === 0 )){
                             if(this.floor1.rooms[index][index2].doorD.boundingBox != null){
-                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD !== 992 && this.onceD)){
+                                if(this.isaac_body.boundingBox.collide(this.floor1.rooms[index][index2].doorD.boundingBox)|| (this.floor1.camera.slideD != 992 && this.onceD)){
                                     if(this.isaac_head.tear != null){
                                         this.isaac_head.tear.removeFromWorld = true;
                                     }
@@ -583,7 +583,7 @@ class SceneManager {
                             }
                         }
                         if(this.floor1.rooms[index][index2] != null){
-                            if(this.floor1.rooms[index][index2].door !== 0){
+                            if(this.floor1.rooms[index][index2].door != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].door.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -594,7 +594,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].door.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOp !== 0){
+                            if(this.floor1.rooms[index][index2].doorOp != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -605,7 +605,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOp.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorR !== 0){
+                            if(this.floor1.rooms[index][index2].doorR != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorR.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -616,7 +616,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorR.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpR !== 0){
+                            if(this.floor1.rooms[index][index2].doorOpR != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -627,7 +627,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpR.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorD !== 0){
+                            if(this.floor1.rooms[index][index2].doorD != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorD.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -638,7 +638,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorD.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpD !== 0){
+                            if(this.floor1.rooms[index][index2].doorOpD != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -649,7 +649,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpD.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorU !== 0){
+                            if(this.floor1.rooms[index][index2].doorU != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorU.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -660,7 +660,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorU.skin = "b"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpU !== 0){
+                            if(this.floor1.rooms[index][index2].doorOpU != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "n"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -672,7 +672,7 @@ class SceneManager {
                                 }
                             }
                         } 
-                        if(this.premade[this.iY][this.iX] == null && (this.iX !== 10 || this.iY !== 10)){
+                        if(this.premade[this.iY][this.iX] == null && (this.iX != 10 || this.iY != 10)){
                             if(this.floor1.rooms[this.iY][this.iX] != null){
                                 if(this.floor1.rooms[this.iY][this.iX].skin === 'n'){
                                     this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
@@ -697,7 +697,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].door.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOp !== 0){
+                            if(this.floor1.rooms[index][index2].doorOp != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOp.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -708,7 +708,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOp.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorR !== 0){
+                            if(this.floor1.rooms[index][index2].doorR != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorR.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -719,7 +719,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorR.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpR !== 0){
+                            if(this.floor1.rooms[index][index2].doorOpR != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpR.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -730,7 +730,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpR.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorD !== 0){
+                            if(this.floor1.rooms[index][index2].doorD != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorD.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -741,7 +741,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorD.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpD !== 0){
+                            if(this.floor1.rooms[index][index2].doorOpD != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpD.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -752,7 +752,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorOpD.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorU !== 0){
+                            if(this.floor1.rooms[index][index2].doorU != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorU.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -763,7 +763,7 @@ class SceneManager {
                                     this.floor1.rooms[index][index2].doorU.skin = "b_closed"
                                 }
                             }
-                            if(this.floor1.rooms[index][index2].doorOpU !== 0){
+                            if(this.floor1.rooms[index][index2].doorOpU != 0){
                                 if(this.floor1.rooms[index][index2].skin === "n"){
                                     this.floor1.rooms[index][index2].doorOpU.skin = "n_closed"
                                 }else if(this.floor1.rooms[index][index2].skin === "t"){
@@ -904,8 +904,8 @@ class SceneManager {
                                                     if(this.premade[r][c].enemies[inde][inde2].boundingBox != null){
                                                         for (let ind = 0; ind < this.premade[r][c].enemies.length; ind++) {
                                                             for (let ind2 = 0; ind2 < this.premade[r][c].enemies[0].length; ind2++) {
-                                                                if(this.premade[r][c].enemies[ind][ind2] !== null && this.isaac_body.boundingBox != null){
-                                                                    if(this.premade[r][c].enemies[ind][ind2].boundingBox !== null){
+                                                                if(this.premade[r][c].enemies[ind][ind2] != null && this.isaac_body.boundingBox != null){
+                                                                    if(this.premade[r][c].enemies[ind][ind2].boundingBox != null){
                                                                         if(this.premade[r][c].enemies[inde][inde2].boundingBox.collide(this.premade[r][c].enemies[ind][ind2].boundingBox) && (inde != ind||inde2 != ind2)){
                                                                             if(this.premade[r][c].enemies[inde][inde2] instanceof Spider){
                                                                                 console.log(this.premade[r][c].enemies[inde][inde2].xPosition)
@@ -1021,7 +1021,7 @@ class SceneManager {
                 }
             }           
         }
-        if(this.key !== undefined){
+        if(this.key != undefined){
             if (this.isaac_body != null) {
                 if(this.key.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.key.boundingBox)) {
@@ -1039,7 +1039,7 @@ class SceneManager {
             }
         }
 
-        if(this.coin !== undefined){
+        if(this.coin != undefined){
             if (this.isaac_body != null) {
                 if(this.coin.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.coin.boundingBox)) {
@@ -1057,7 +1057,7 @@ class SceneManager {
             }
         }
 
-        if(this.bomb !== undefined){
+        if(this.bomb != undefined){
             if (this.isaac_body != null) {
                 if(this.bomb.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.bomb.boundingBox)) {
@@ -1075,7 +1075,7 @@ class SceneManager {
             }
         }
 
-        if(this.fullRedHeart !== undefined){
+        if(this.fullRedHeart != undefined){
             if (this.isaac_body != null) {
                 if(this.fullRedHeart.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.fullRedHeart.boundingBox)) {
@@ -1099,7 +1099,7 @@ class SceneManager {
             }
         }
 
-        if(this.halfRedHeart !== undefined){
+        if(this.halfRedHeart != undefined){
             if (this.isaac_body != null) {
                 if(this.halfRedHeart.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.halfRedHeart.boundingBox)) {
@@ -1118,7 +1118,7 @@ class SceneManager {
             }
         }
 
-        if(this.fullBlueHeart !== undefined){
+        if(this.fullBlueHeart != undefined){
             if (this.isaac_body != null) {
                 if(this.fullBlueHeart.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.fullBlueHeart.boundingBox)) {
@@ -1137,7 +1137,7 @@ class SceneManager {
             }
         }
 
-        if(this.halfBlueHeart !== undefined){
+        if(this.halfBlueHeart != undefined){
             if (this.isaac_body != null) {
                 if(this.halfBlueHeart.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.halfBlueHeart.boundingBox)) {
@@ -1156,7 +1156,7 @@ class SceneManager {
             }
         }
 
-        if(this.fullBlackHeart !== undefined){
+        if(this.fullBlackHeart != undefined){
             if (this.isaac_body != null) {
                 if(this.fullBlackHeart.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.fullBlackHeart.boundingBox)) {
@@ -1175,7 +1175,7 @@ class SceneManager {
             }
         }
 
-        if(this.halfBlackHeart !== undefined){
+        if(this.halfBlackHeart != undefined){
             if (this.isaac_body != null) {
                 if(this.halfBlackHeart.boundingBox != null){
                     if (this.isaac_body.boundingBox.collide(this.halfBlackHeart.boundingBox)) {
