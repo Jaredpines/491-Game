@@ -5,7 +5,6 @@ class Premade_Rooms {
         this.locY = locY;
         this.obstacles = Array.from({length: 11}, () => new Array(6));
         this.enemies = Array.from({length: 11}, () => new Array(6));
-        this.items = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
         this.r = Math.floor(Math.random() * 7)+1;
         this.isaac = isaac;
@@ -38,6 +37,8 @@ class Premade_Rooms {
             this.Broom1(x+160,y+160);
         }else if(type == 's'){
             this.Sroom1(x+160,y+160);
+        }else if(type == 't'){
+            this.Troom1(x+160,y+160);
         }
         
     };
@@ -218,8 +219,22 @@ class Premade_Rooms {
     Sroom1(x,y){
         this.obstacles[4][1] = new Fires("normal",x + 103*4,y + 104*1,this.game)
         this.game.addEntity(this.obstacles[4][1])
+        this.obstacles[3][3] = new ItemP(x + 103*3,y + 104*3,this.game)
+        this.game.addEntity(this.obstacles[3][3])
+        this.obstacles[3][3].payFor = true;
         this.obstacles[6][1] = new Fires("normal",x + 103*6,y + 104*1,this.game)
         this.game.addEntity(this.obstacles[6][1])
+        this.obstacles[7][3] = new ItemP(x + 103*7,y + 104*3,this.game)
+        this.game.addEntity(this.obstacles[7][3])
+        this.obstacles[7][3].payFor = true;
+        console.log(this.obstacles)
         this.roomN = 200
+    };
+
+    //Treasure rooms
+    Troom1(x,y){
+        this.obstacles[5][3] = new ItemP(x + 103*5,y + 104*3,this.game)
+        this.game.addEntity(this.obstacles[5][3])
+        this.roomN = 300
     };
 }

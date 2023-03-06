@@ -37,7 +37,6 @@ class SceneManager {
         this.hud = new Hud(this.game, this.isaac_body);
         this.floor1 = new Floor(this.game,1, this.isaac_body);
         this.premade = Array.from({length: 20}, () => new Array(20));
-        this.itemP;
         this.trophy;
         this.i = 1;
         this.coolDown = 0;
@@ -126,10 +125,10 @@ class SceneManager {
     update(ctx) {
 
 
-        this.isaac_body.damage = this.isaac_head.damage;
-        this.isaac_body.range = this.isaac_head.range;
-        this.isaac_body.shotSpeed = this.isaac_head.shotSpeed;
-        this.isaac_body.tears = this.isaac_head.tears;
+        this.isaac_body.damage = (Math.ceil(this.isaac_head.damage*100))/100;
+        this.isaac_body.range = (Math.ceil(this.isaac_head.range*100))/100;
+        this.isaac_body.shotSpeed = (Math.ceil(this.isaac_head.shotSpeed*100))/100;
+        this.isaac_body.tears = (Math.ceil(this.isaac_head.tears*100))/100;
 
         if (!this.title && !this.paused) {
             if (this.timer === undefined) {
@@ -231,23 +230,7 @@ class SceneManager {
                                         
                                         
                                         
-                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
-                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.trophy.bossItem = true;
-                                            this.game.addEntity(this.trophy);
-                                        } 
+                                        
                                     }
                                     this.once = true;
                                 }
@@ -337,23 +320,7 @@ class SceneManager {
                                         this.iX++;
                                         console.log(this.iX)
                                        
-                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
-                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.trophy.bossItem = true;
-                                            this.game.addEntity(this.trophy);
-                                        } 
+                                        
                                     }
                                     this.onceR = true;
                                 }
@@ -384,23 +351,7 @@ class SceneManager {
                                         this.moveBoundsU = true;
                                         this.iY--;
                                         
-                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
-                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.trophy.bossItem = true;
-                                            this.game.addEntity(this.trophy);
-                                        } 
+                                        
                                     }
                                     this.onceU = true;
                                 }
@@ -491,23 +442,7 @@ class SceneManager {
                                         this.moveBoundsD = true;
                                         this.iY++;
                                         
-                                        if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
-                                            this.game.addEntity(this.itemP);
-                                            console.log(this.itemP.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                        }else if(this.floor1.rooms[index][index2].skin === "d"&& this.trophy == null){
-                                            this.trophy = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
-                                            this.trophy.bossItem = true;
-                                            this.game.addEntity(this.trophy);
-                                        } 
+                                        
                                     }
                                     this.onceD = true;
                                 }
@@ -622,6 +557,11 @@ class SceneManager {
                                 }else if(this.floor1.rooms[this.iY][this.iX].skin === 's'){
                                     this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
                                     this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'s');
+                                    this.game.orderCorrecter();
+                                    console.log(this.premade[this.iY][this.iX].roomN)
+                                }else if(this.floor1.rooms[this.iY][this.iX].skin === 't'){
+                                    this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'t');
                                     this.game.orderCorrecter();
                                     console.log(this.premade[this.iY][this.iX].roomN)
                                 }
@@ -906,6 +846,127 @@ class SceneManager {
                                                 this.tempClock = 0;
                                             }
                                         
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof ItemP){
+                                            if(this.premade[r][c].obstacles[index][index2].payFor === false){
+                                                if(this.premade[r][c].obstacles[index][index2].stigmata && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
+                                                    this.isaac_body.maxRedHearts += 2;
+                                                    this.isaac_body.redHearts += 2;
+                                                    this.isaac_head.costumes.push("./res/costume_stigmata.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Stigmata", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].synthoil && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.damage += 1; this.hud.updateStats(ctx, "damage", 1);
+                                                    this.isaac_head.range += 1.5; this.hud.updateStats(ctx, "range", 1.5);
+                                                    this.isaac_head.costumes.push("./res/costume_synthoil.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Synthoil", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].cupidsarrow && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.piercing = true;
+                                                    this.isaac_head.tearSkin = "./res/cupids_arrow_tear_right.png"
+                                                    this.isaac_head.costumes.push("./res/costume_cupidsarrow.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Cupid's Arrow", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].jesusjuice && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.damage += 0.5; this.hud.updateStats(ctx, "damage", 0.5);
+                                                    this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
+                                                    this.isaac_head.costumes.push("./res/costume_jesusjuice.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Jesus Juice", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].thehalo && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_body.maxRedHearts += 2;
+                                                    this.isaac_body.redHearts += 2;
+                                                    this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
+                                                    this.isaac_head.tears += 0.2; this.hud.updateStats(ctx, "tears", 0.2);
+                                                    this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
+                                                    this.isaac_body.movementSpeed += 0.3; this.hud.updateStats(ctx, "movementSpeed", 0.3);
+                                                    this.isaac_head.costumes.push("./res/costume_halo.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "The Halo", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].squeezy && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_body.blueHearts += 4;
+                                                    this.isaac_head.tears += 0.4;
+                                                    this.isaac_head.costumes.push("./res/costume_squeezy.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Squeezy", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].toothpicks && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.shotSpeed += 0.16;
+                                                    this.isaac_head.tears += 0.70;
+                                                    // this.hud.drawItemPickupBanner(ctx, "Toothpicks", "Damage and Health up")
+                                                }
+                                            
+                                                this.premade[r][c].obstacles[index][index2].itemGet = true;
+                                                if(this.isaac_body.boundingBox.right-80 > this.premade[r][c].obstacles[index][index2].boundingBox.left){
+                                                    this.premade[r][c].obstacles[index][index2].locX -= 500*this.game.clockTick;
+                                                }
+                                                if(this.isaac_body.boundingBox.left+80 < this.premade[r][c].obstacles[index][index2].boundingBox.right){
+                                                    this.premade[r][c].obstacles[index][index2].locX += 500*this.game.clockTick;
+                                                }
+                                                if(this.isaac_body.boundingBox.bottom-60 > this.premade[r][c].obstacles[index][index2].boundingBox.top){
+                                                    this.premade[r][c].obstacles[index][index2].locY -= 500*this.game.clockTick;
+                                                }
+                                                if(this.isaac_body.boundingBox.top+60 < this.premade[r][c].obstacles[index][index2].boundingBox.bottom){
+                                                    this.premade[r][c].obstacles[index][index2].locY += 500*this.game.clockTick;
+                                                }
+                                            }else if(this.premade[r][c].obstacles[index][index2].payFor === true && this.isaac_body.coinPickup >= 15){
+                                                if(this.premade[r][c].obstacles[index][index2].stigmata && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
+                                                    this.isaac_body.maxRedHearts += 2;
+                                                    this.isaac_body.redHearts += 2;
+                                                    this.isaac_head.costumes.push("./res/costume_stigmata.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Stigmata", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].synthoil && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.damage += 1; this.hud.updateStats(ctx, "damage", 1);
+                                                    this.isaac_head.range += 1.5; this.hud.updateStats(ctx, "range", 1.5);
+                                                    this.isaac_head.costumes.push("./res/costume_synthoil.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Synthoil", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].cupidsarrow && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.piercing = true;
+                                                    this.isaac_head.tearSkin = "./res/cupids_arrow_tear_right.png"
+                                                    this.isaac_head.costumes.push("./res/costume_cupidsarrow.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Cupid's Arrow", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].jesusjuice && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.damage += 0.5; this.hud.updateStats(ctx, "damage", 0.5);
+                                                    this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
+                                                    this.isaac_head.costumes.push("./res/costume_jesusjuice.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Jesus Juice", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].thehalo && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_body.maxRedHearts += 2;
+                                                    this.isaac_body.redHearts += 2;
+                                                    this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
+                                                    this.isaac_head.tears += 0.2; this.hud.updateStats(ctx, "tears", 0.2);
+                                                    this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
+                                                    this.isaac_body.movementSpeed += 0.3; this.hud.updateStats(ctx, "movementSpeed", 0.3);
+                                                    this.isaac_head.costumes.push("./res/costume_halo.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "The Halo", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].squeezy && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_body.blueHearts += 4;
+                                                    this.isaac_head.tears += 0.4;
+                                                    this.isaac_head.costumes.push("./res/costume_squeezy.png");
+                                                    // this.hud.drawItemPickupBanner(ctx, "Squeezy", "Damage and Health up")
+                                                }
+                                                if(this.premade[r][c].obstacles[index][index2].toothpicks && !this.premade[r][c].obstacles[index][index2].itemGet){
+                                                    this.isaac_head.shotSpeed += 0.16;
+                                                    this.isaac_head.tears += 0.70;
+                                                    // this.hud.drawItemPickupBanner(ctx, "Toothpicks", "Damage and Health up")
+                                                }
+                                            
+                                                this.premade[r][c].obstacles[index][index2].itemGet = true;
+                                                this.isaac_body.coinPickup -= 15
+                                            }
+                                            
+                                            //TODO: give isaac_head a reference to tears.js object
+                                            //TODO: add jesusjuice costume
+                                        
+                                        } else if(this.premade[r][c].obstacles[index][index2] instanceof ItemP){
+                                            this.premade[r][c].obstacles[index][index2].locX = this.premade[r][c].obstacles[index][index2].locXOg;
+                                            this.premade[r][c].obstacles[index][index2].locY = this.premade[r][c].obstacles[index][index2].locYOg;
                                         }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Fires && !(this.premade[r][c].obstacles[index][index2].health <= 0)){
                                             if(this.tempClock > 1){
@@ -1275,85 +1336,7 @@ class SceneManager {
                     }
                 }
             }
-            //TODO: give isaac_head a reference to tears.js object
-            //TODO: add jesusjuice costume
-            if (this.isaac_body != null && this.itemP != null) {
-                if(this.itemP.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.itemP.boundingBox)) {
-                        if(this.itemP.stigmata && !this.itemP.itemGet){
-                            this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
-                            this.isaac_body.maxRedHearts += 2;
-                            this.isaac_body.redHearts += 2;
-                            this.isaac_head.costumes.push("./res/costume_stigmata.png");
-                            // this.hud.drawItemPickupBanner(ctx, "Stigmata", "Damage and Health up")
-                        }
-                        if(this.itemP.synthoil && !this.itemP.itemGet){
-                            this.isaac_head.damage += 1; this.hud.updateStats(ctx, "damage", 1);
-                            this.isaac_head.range += 1.5; this.hud.updateStats(ctx, "range", 1.5);
-                            this.isaac_head.costumes.push("./res/costume_synthoil.png");
-                            // this.hud.drawItemPickupBanner(ctx, "Synthoil", "Damage and Health up")
-
-                        }
-                        if(this.itemP.cupidsarrow && !this.itemP.itemGet){
-                            this.isaac_head.piercing = true;
-                            this.isaac_head.tearSkin = "./res/cupids_arrow_tear_right.png"
-                            this.isaac_head.costumes.push("./res/costume_cupidsarrow.png");
-                            // this.hud.drawItemPickupBanner(ctx, "Cupid's Arrow", "Damage and Health up")
-
-                        }
-                        if(this.itemP.jesusjuice && !this.itemP.itemGet){
-                            this.isaac_head.damage += 0.5; this.hud.updateStats(ctx, "damage", 0.5);
-                            this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
-                            this.isaac_head.costumes.push("./res/costume_jesusjuice.png");
-                            // this.hud.drawItemPickupBanner(ctx, "Jesus Juice", "Damage and Health up")
-
-                        }
-                        if(this.itemP.thehalo && !this.itemP.itemGet){
-                            this.isaac_body.maxRedHearts += 2;
-                            this.isaac_body.redHearts += 2;
-                            this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
-                            this.isaac_head.tears += 0.2; this.hud.updateStats(ctx, "tears", 0.2);
-                            this.isaac_head.range += 0.38; this.hud.updateStats(ctx, "range", 0.38);
-                            this.isaac_body.movementSpeed += 0.3; this.hud.updateStats(ctx, "movementSpeed", 0.3);
-                            this.isaac_head.costumes.push("./res/costume_halo.png");
-                            // this.hud.drawItemPickupBanner(ctx, "The Halo", "Damage and Health up")
-
-                        }
-                        if(this.itemP.squeezy && !this.itemP.itemGet){
-                            this.isaac_body.blueHearts += 4;
-                            this.isaac_head.tears += 0.4;
-                            this.isaac_head.costumes.push("./res/costume_squeezy.png");
-                            // this.hud.drawItemPickupBanner(ctx, "Squeezy", "Damage and Health up")
-
-                        }
-                        if(this.itemP.toothpicks && !this.itemP.itemGet){
-                            this.isaac_head.shotSpeed += 0.16;
-                            this.isaac_head.tears += 0.70;
-                            this.isaac_head.tears = (Math.ceil(this.isaac_head.tears*100))/100
-                            // this.hud.drawItemPickupBanner(ctx, "Toothpicks", "Damage and Health up")
-
-                        }
-                        this.itemP.itemGet = true;
-                        if(this.isaac_body.boundingBox.right-80 > this.itemP.boundingBox.left){
-                            this.itemP.locX -= 500*this.game.clockTick;
-                        }
-                        if(this.isaac_body.boundingBox.left+80 < this.itemP.boundingBox.right){
-                            this.itemP.locX += 500*this.game.clockTick;
-                        }
-                        if(this.isaac_body.boundingBox.bottom-60 > this.itemP.boundingBox.top){
-                            this.itemP.locY -= 500*this.game.clockTick;
-                        }
-                        if(this.isaac_body.boundingBox.top+60 < this.itemP.boundingBox.bottom){
-                            this.itemP.locY += 500*this.game.clockTick;
-                        }
-                        
-                    }
-                    else{
-                        this.itemP.locX = this.itemP.locXOg;
-                        this.itemP.locY = this.itemP.locYOg;
-                    }
-                }
-            }
+            
         }
 
         if (this.title === true && this.titleMusic === true && this.game.click) {
@@ -1399,7 +1382,6 @@ class SceneManager {
         this.game.ctx.translate(this.floor1.camera.ogX,this.floor1.camera.ogY)
         this.floor1 = new Floor(this.game,this.level, this.isaac_body)
         this.premade = Array.from({length: 20}, () => new Array(20));
-        this.itemP = null;
         this.devil = false;
         this.bossDead = false;
         this.TExist = false;

@@ -19,6 +19,7 @@ class ItemP {
         this.trophy = false;
         this.bossItem = false;
         this.rand = Math.floor(Math.random() * 6)+1
+        this.payFor = false;
     };
 
 
@@ -117,9 +118,19 @@ class ItemP {
             //         this.bounceCount = 0;
             //     }
             // }
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
-            this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
-            //ctx.strokeRect(this.locX,this.locY,128,128);
+            if(this.payFor === false){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/itemP.png"),this.locX,this.locY,128,128);
+                this.boundingBox = new BoundingBox(this.locX,this.locY,128,128)
+                //ctx.strokeRect(this.locX,this.locY,128,128);
+            }else if(this.payFor === true && !this.itemGet){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/1.png"),this.locX,this.locY,64,64);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/5.png"),this.locX+32,this.locY,64,64);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/cents.png"),this.locX+64,this.locY,64,64);
+                this.boundingBox = new BoundingBox(this.locX,this.locY,64,64)
+                this.bounceCount = 0;
+                this.itemY -= 25*this.game.clockTick;
+            }
+            
         }else{
             this.trophy = true;
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/trophy.png"),this.locX,this.locY,128,256);
