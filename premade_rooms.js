@@ -6,7 +6,7 @@ class Premade_Rooms {
         this.obstacles = Array.from({length: 11}, () => new Array(6));
         this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
-        this.r = Math.floor(Math.random() * 7)+1;
+        this.r = Math.floor(Math.random() * 8)+1;
         this.isaac = isaac;
         this.roomN = 0;
     };
@@ -29,10 +29,12 @@ class Premade_Rooms {
                 this.room5(x+160,y+160);
             }else if(this.r == 6){
                 this.room6(x+160,y+160);
+            }else if(this.r == 7){
+                this.room7(x+160,y+160);
             }else{
                 this.room0(x,y)
             }
-            this.r = Math.floor(Math.random() * 7)+1;
+            this.r = Math.floor(Math.random() * 8)+1;
         }else if(type == 'b'){
             this.Broom1(x+160,y+160);
         }else if(type == 's'){
@@ -202,6 +204,27 @@ class Premade_Rooms {
         this.obstacles[5][2] = new Chest(x + 103*5,y + 104*2,this.game)
         this.game.addEntity(this.obstacles[5][2])
         this.roomN = 6
+    };
+    room7(x,y){
+        this.obstacles[0][0] = new Pickup_key(x + 103*0,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[0][0])
+        this.obstacles[1][0] = new Pickup_coin(x + 103*1,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[1][0])
+        this.obstacles[2][0] = new Pickup_bomb(x + 103*2,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[2][0])
+        this.obstacles[3][0] = new Pickup_hearts("fullBlue",x + 103*3,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[3][0])
+        this.obstacles[4][0] = new Pickup_hearts("fullRed",x + 103*4,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[4][0])
+        this.obstacles[5][0] = new Pickup_hearts("fullBlack",x + 103*5,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[5][0])
+        this.obstacles[6][0] = new Pickup_hearts("halfBlue",x + 103*6,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[6][0])
+        this.obstacles[7][0] = new Pickup_hearts("halfBlack",x + 103*7,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[7][0])
+        this.obstacles[8][0] = new Pickup_hearts("halfRed",x + 103*8,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[8][0])
+        
     };
     
     

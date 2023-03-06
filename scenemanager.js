@@ -49,15 +49,6 @@ class SceneManager {
         this.by
         this.TExist = false;
         this.bossDead = false;
-        this.key = new Pickup_key(200, 300, this.game)
-        this.coin = new Pickup_coin(300, 200, this.game);
-        this.bomb = new Pickup_bomb(400, 200, this.game);
-        this.fullRedHeart = new Pickup_hearts("fullRed", 500, 200, this.game);
-        this.halfRedHeart = new Pickup_hearts("halfRed", 600, 200, this.game);
-        this.fullBlueHeart = new Pickup_hearts("fullBlue", 700, 200, this.game);
-        this.halfBlueHeart = new Pickup_hearts("halfBlue", 800, 200, this.game);
-        this.fullBlackHeart = new Pickup_hearts("fullBlack", 900, 200, this.game);
-        this.halfBlackHeart = new Pickup_hearts("halfBlack", 1000, 200, this.game);
 
     };
 
@@ -84,15 +75,6 @@ class SceneManager {
         //this.game.addEntity(this.pooter_enemy);
         this.game.addEntity(this.hud);
 
-        this.game.addEntity(this.key);
-        this.game.addEntity(this.coin);
-        this.game.addEntity(this.bomb);
-        this.game.addEntity(this.fullRedHeart);
-        this.game.addEntity(this.halfRedHeart);
-        this.game.addEntity(this.fullBlueHeart);
-        this.game.addEntity(this.halfBlueHeart);
-        this.game.addEntity(this.fullBlackHeart);
-        this.game.addEntity(this.halfBlackHeart);
 
         ASSET_MANAGER.pauseBackgroundMusic();
         ASSET_MANAGER.playAsset("./music/the_cellar_alt.ogg");
@@ -992,10 +974,6 @@ class SceneManager {
                                                     ASSET_MANAGER.playAsset("./sounds/chest_open_1.wav")
                                                 }
                                                 this.premade[r][c].obstacles[index][index2].open = true;
-                                                if(this.driftCounter < 0.1 && this.key === undefined){
-                                                    this.key = new Pickup_key(this.premade[r][c].obstacles[index][index2].locX,this.premade[r][c].obstacles[index][index2].locY,this.game);
-                                                    this.game.addEntity(this.key);
-                                                }
                                                 if(this.isaac_body.boundingBox.right-80 > this.premade[r][c].obstacles[index][index2].boundingBox.left){
                                                     this.premade[r][c].obstacles[index][index2].locX -= 500*this.game.clockTick;
                                                 }
@@ -1011,6 +989,81 @@ class SceneManager {
                                                 
                                             }
                                         
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Pickup_key){
+                                            if(this.isaac_body.keyPickup <99){
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.keyPickup += 1
+                                                return;
+                                            }
+
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Pickup_coin){
+                                            if(this.isaac_body.coinPickup <99){
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.coinPickup += 1
+                                                return;
+                                            }
+                                            
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Pickup_bomb){
+                                            if(this.isaac_body.bombPickup <100){
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.bombPickup += 1
+                                                return;
+                                            }
+
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Pickup_hearts){
+                                            if (this.isaac_body.currTotalHearts < 24 && this.premade[r][c].obstacles[index][index2].heartType === "fullBlue") {
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.blueHearts += 2;
+                                                return;
+                                            }
+                                            if (this.isaac_body.currTotalHearts < 24 && this.premade[r][c].obstacles[index][index2].heartType === "halfBlue") {
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.blueHearts += 1;
+                                                return;
+                                            }
+                                            if (this.isaac_body.currTotalHearts < 24 && this.premade[r][c].obstacles[index][index2].heartType === "fullBlack") {
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.blackHearts += 2;
+                                                return;
+                                            }
+                                            if (this.isaac_body.currTotalHearts < 24 && this.premade[r][c].obstacles[index][index2].heartType === "halfBlack") {
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.blackHearts += 1;
+                                                return;
+                                            }
+                                            if (this.isaac_body.redHearts < this.isaac_body.maxRedHearts && this.premade[r][c].obstacles[index][index2].heartType === "fullRed") {
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.redHearts += 2;
+                                                return;
+                                            }
+                                            if (this.isaac_body.redHearts < this.isaac_body.maxRedHearts && this.premade[r][c].obstacles[index][index2].heartType === "halfRed") {
+                                                this.premade[r][c].obstacles[index][index2].boundingBox = undefined;
+                                                this.premade[r][c].obstacles[index][index2].removeFromWorld = true;
+                                                this.premade[r][c].obstacles[index][index2] = undefined;
+                                                this.isaac_body.redHearts += 1;
+                                                return;
+                                            }
+
                                         }
                                         if(this.isaac_head.tear != null){
                                             if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].obstacles[index][index2].boundingBox != null){
@@ -1156,178 +1209,10 @@ class SceneManager {
                 }
             }           
         }
-        if(this.key != undefined){
-            if (this.isaac_body != null) {
-                if(this.key.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.key.boundingBox)) {
-                       this.key.boundingBox = undefined;
-                       this.key.removeFromWorld = true;
-                       this.isaac_body.keyPickup += 1
-                        
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.key.locX += 200*this.game.clockTick;
-                this.key.locY += 200*this.game.clockTick;
-            }
-        }
 
-        if(this.coin != undefined){
-            if (this.isaac_body != null) {
-                if(this.coin.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.coin.boundingBox)) {
-                        this.coin.boundingBox = undefined;
-                        this.coin.removeFromWorld = true;
-                        this.isaac_body.coinPickup += 1
 
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.coin.locX += 200*this.game.clockTick;
-                this.coin.locY += 200*this.game.clockTick;
-            }
-        }
 
-        if(this.bomb != undefined){
-            if (this.isaac_body != null) {
-                if(this.bomb.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.bomb.boundingBox)) {
-                        this.bomb.boundingBox = undefined;
-                        this.bomb.removeFromWorld = true;
-                        this.isaac_body.bombPickup += 1
 
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.bomb.locX += 200*this.game.clockTick;
-                this.bomb.locY += 200*this.game.clockTick;
-            }
-        }
-
-        if(this.fullRedHeart != undefined){
-            if (this.isaac_body != null) {
-                if(this.fullRedHeart.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.fullRedHeart.boundingBox)) {
-                        if (this.isaac_body.redHearts < this.isaac_body.maxRedHearts) {
-                            this.fullRedHeart.boundingBox = undefined;
-                            this.fullRedHeart.removeFromWorld = true;
-                            if (this.isaac_body.maxRedHearts - this.isaac_body.redHearts === 1) {
-                                this.isaac_body.redHearts += 1;
-                            } else {
-                                this.isaac_body.redHearts += 2;
-                            }
-                        }
-
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.fullRedHeart.locX += 200*this.game.clockTick;
-                this.fullRedHeart.locY += 200*this.game.clockTick;
-            }
-        }
-
-        if(this.halfRedHeart != undefined){
-            if (this.isaac_body != null) {
-                if(this.halfRedHeart.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.halfRedHeart.boundingBox)) {
-                        if (this.isaac_body.redHearts < this.isaac_body.maxRedHearts) {
-                            this.halfRedHeart.boundingBox = undefined;
-                            this.halfRedHeart.removeFromWorld = true;
-                            this.isaac_body.redHearts += 1;
-                        }
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.halfRedHeart.locX += 200*this.game.clockTick;
-                this.halfRedHeart.locY += 200*this.game.clockTick;
-            }
-        }
-
-        if(this.fullBlueHeart != undefined){
-            if (this.isaac_body != null) {
-                if(this.fullBlueHeart.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.fullBlueHeart.boundingBox)) {
-                        if (this.isaac_body.currTotalHearts < 24) {
-                            this.fullBlueHeart.boundingBox = undefined;
-                            this.fullBlueHeart.removeFromWorld = true;
-                            this.isaac_body.blueHearts += 2;
-                        }
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.fullBlueHeart.locX += 200*this.game.clockTick;
-                this.fullBlueHeart.locY += 200*this.game.clockTick;
-            }
-        }
-
-        if(this.halfBlueHeart != undefined){
-            if (this.isaac_body != null) {
-                if(this.halfBlueHeart.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.halfBlueHeart.boundingBox)) {
-                        if (this.isaac_body.currTotalHearts < 24) {
-                            this.halfBlueHeart.boundingBox = undefined;
-                            this.halfBlueHeart.removeFromWorld = true;
-                            this.isaac_body.blueHearts += 1;
-                        }
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.halfBlueHeart.locX += 200*this.game.clockTick;
-                this.halfBlueHeart.locY += 200*this.game.clockTick;
-            }
-        }
-
-        if(this.fullBlackHeart != undefined){
-            if (this.isaac_body != null) {
-                if(this.fullBlackHeart.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.fullBlackHeart.boundingBox)) {
-                        if (this.isaac_body.currTotalHearts < 24) {
-                            this.fullBlackHeart.boundingBox = undefined;
-                            this.fullBlackHeart.removeFromWorld = true;
-                            this.isaac_body.blackHearts += 2;
-                        }
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.fullBlackHeart.locX += 200*this.game.clockTick;
-                this.fullBlackHeart.locY += 200*this.game.clockTick;
-            }
-        }
-
-        if(this.halfBlackHeart != undefined){
-            if (this.isaac_body != null) {
-                if(this.halfBlackHeart.boundingBox != null){
-                    if (this.isaac_body.boundingBox.collide(this.halfBlackHeart.boundingBox)) {
-                        if (this.isaac_body.currTotalHearts < 24) {
-                            this.halfBlackHeart.boundingBox = undefined;
-                            this.halfBlackHeart.removeFromWorld = true;
-                            this.isaac_body.blackHearts += 1;
-                        }
-                    }
-                }
-            }
-            this.driftCounter += this.game.clockTick;
-            if(this.driftCounter < 1){
-                this.halfBlackHeart.locX += 200*this.game.clockTick;
-                this.halfBlackHeart.locY += 200*this.game.clockTick;
-            }
-        }
 
         
 
