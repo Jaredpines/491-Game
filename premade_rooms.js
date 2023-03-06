@@ -39,6 +39,8 @@ class Premade_Rooms {
             this.Sroom1(x+160,y+160);
         }else if(type == 't'){
             this.Troom1(x+160,y+160);
+        }else if(type == 'd'){
+            this.Droom1(x+160,y+160);
         }
         
     };
@@ -235,6 +237,14 @@ class Premade_Rooms {
     Troom1(x,y){
         this.obstacles[5][3] = new ItemP(x + 103*5,y + 104*3,this.game)
         this.game.addEntity(this.obstacles[5][3])
+        this.roomN = 300
+    };
+
+    //Devil rooms
+    Droom1(x,y){
+        this.obstacles[5][3] = new ItemP(x + 103*5,y + 104*3,this.game)
+        this.game.addEntity(this.obstacles[5][3])
+        this.obstacles[5][3].bossItem = true;
         this.roomN = 300
     };
 }

@@ -188,7 +188,7 @@ class Gurgling {
 
     draw(ctx){
         this.boundingBox = new BoundingBox(this.locX, this.locY, this.bbWidth, this.bbHeight);
-        ctx.strokeRect(this.locX, this.locY, this.bbWidth, this.bbHeight);
+        //ctx.strokeRect(this.locX, this.locY, this.bbWidth, this.bbHeight);
         this.count += (1*this.game.clockTick);
         if(this.dead) {
             this.animationsFace[0].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);

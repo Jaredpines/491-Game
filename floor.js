@@ -259,7 +259,7 @@ class Floor {
             for (let index = 0; index < this.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
                     if(index2-1 > 0){
-                        if(this.rooms[index][index2] != null && this.rooms[index][index2-1] == null && this.rooms[index][index2].skin != "t"){
+                        if(this.rooms[index][index2] != null && this.rooms[index][index2-1] == null && this.rooms[index][index2].skin != "t" && this.rooms[index][index2].skin != "b"){
                             if(r == 4 && roomAdded == false&&this.rooms[index+1][index2-1] == null&&this.rooms[index-1][index2-1] == null){
                                 this.rooms[index][index2-1] = new Shop_Room(this.farthestLeft-(1472*(index2-2)),-(this.farthestUp-(992*(index-1))),"SL",this.game)
 
@@ -276,7 +276,7 @@ class Floor {
             for (let index = 0; index < this.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
                     if(index2+1 < this.rooms[index].length){
-                        if(this.rooms[index][index2] != null && this.rooms[index][index2+1] == null && this.rooms[index][index2].skin != "t"){
+                        if(this.rooms[index][index2] != null && this.rooms[index][index2+1] == null && this.rooms[index][index2].skin != "t" && this.rooms[index][index2].skin != "b"){
                             if(r == 5 && roomAdded == false&&this.rooms[index+1][index2+1] == null&&this.rooms[index-1][index2+1] == null){
 
                                 this.rooms[index][index2+1] = new Shop_Room(-(this.farthestRight+(1472*(index2))),-(this.farthestUp-(992*(index-1))),"SR",this.game);
@@ -294,7 +294,7 @@ class Floor {
                 for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
 
                     if(index-1 > 0 && index+1 < this.rooms.length){
-                        if(this.rooms[index+1][index2] != null && this.rooms[index][index2] == null && this.rooms[index+1][index2].skin != "t"){
+                        if(this.rooms[index+1][index2] != null && this.rooms[index][index2] == null && this.rooms[index+1][index2].skin != "t" && this.rooms[index+1][index2].skin != "b"){
                             if(r == 6 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
                                 this.rooms[index][index2] = new Shop_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"SU",this.game)
                                 this.row = index;
@@ -310,7 +310,7 @@ class Floor {
             for (let index = 0; index < this.rooms.length; index++) {
                 for (let index2 = 0; index2 < this.rooms[0].length; index2++) {
                     if(index+1 < this.rooms.length && index-1 > 0){
-                        if(this.rooms[index-1][index2] != null && this.rooms[index][index2] == null && this.rooms[index-1][index2].skin != "t"){
+                        if(this.rooms[index-1][index2] != null && this.rooms[index][index2] == null && this.rooms[index-1][index2].skin != "t" && this.rooms[index-1][index2].skin != "b"){
                             if(r == 7 && roomAdded == false&&this.rooms[index][index2-1] == null&&this.rooms[index][index2+1] == null){
 
                                 this.rooms[index][index2] = new Shop_Room(this.farthestLeft-(1472*(index2-1)),this.farthestDown+(992*(index-1)),"SD",this.game)

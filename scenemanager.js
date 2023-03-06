@@ -37,7 +37,6 @@ class SceneManager {
         this.hud = new Hud(this.game, this.isaac_body);
         this.floor1 = new Floor(this.game,1, this.isaac_body);
         this.premade = Array.from({length: 20}, () => new Array(20));
-        this.trophy;
         this.i = 1;
         this.coolDown = 0;
         this.driftCounter = 0;
@@ -564,6 +563,11 @@ class SceneManager {
                                     this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'t');
                                     this.game.orderCorrecter();
                                     console.log(this.premade[this.iY][this.iX].roomN)
+                                }else if(this.floor1.rooms[this.iY][this.iX].skin === 'd'){
+                                    this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'d');
+                                    this.game.orderCorrecter();
+                                    console.log(this.premade[this.iY][this.iX].roomN)
                                 }
                             }
                             
@@ -848,7 +852,7 @@ class SceneManager {
                                         
                                         }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof ItemP){
-                                            if(this.premade[r][c].obstacles[index][index2].payFor === false){
+                                            if(this.premade[r][c].obstacles[index][index2].payFor === false && this.premade[r][c].obstacles[index][index2].bossItem === false){
                                                 if(this.premade[r][c].obstacles[index][index2].stigmata && !this.premade[r][c].obstacles[index][index2].itemGet){
                                                     this.isaac_head.damage += 0.3; this.hud.updateStats(ctx, "damage", 0.3);
                                                     this.isaac_body.maxRedHearts += 2;
@@ -959,6 +963,13 @@ class SceneManager {
                                             
                                                 this.premade[r][c].obstacles[index][index2].itemGet = true;
                                                 this.isaac_body.coinPickup -= 15
+                                            }else if(this.premade[r][c].obstacles[index][index2].bossItem === true){
+                                                this.isaac_body.isaacWin = true;
+                                                this.win = true;
+                                                this.gameOver = true;
+                                                this.title = false;
+                                                this.credits = false;
+                                                this.isaac_body.dead = true;
                                             }
                                             
                                             //TODO: give isaac_head a reference to tears.js object
@@ -1319,25 +1330,6 @@ class SceneManager {
         }
 
         
-        if (this.isaac_body != null) {
-
-            if (this.isaac_body != null && this.trophy != null) {
-                if (this.trophy.boundingBox != null) {
-                    if (this.isaac_body.boundingBox.collide(this.trophy.boundingBox)) {
-                        if (this.trophy) {
-                            this.isaac_body.isaacWin = true;
-                            this.win = true;
-                            this.gameOver = true;
-                            this.title = false;
-                            this.credits = false;
-                            this.isaac_body.dead = true;
-
-                        }
-                    }
-                }
-            }
-            
-        }
 
         if (this.title === true && this.titleMusic === true && this.game.click) {
             ASSET_MANAGER.pauseBackgroundMusic();
@@ -1351,7 +1343,7 @@ class SceneManager {
         if(this.bossDead){
             this.devil = true;
         }
-        if(this.devil === true && this.floor1.level >=6){
+        if(this.devil === true && this.floor1.level >= 6){
             while(this.floor1.DRoomMax > 0){
                 this.floor1.addDevilRoom("D");
             }
