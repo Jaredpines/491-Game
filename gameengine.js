@@ -107,6 +107,7 @@ class GameEngine {
         let sp = []
         let su = []
         let p = []
+        let g = []
         for (let index = 0; index < list.length; index++) {
             if(list[index] instanceof Isaac_Head){
                 e = list.splice(index,1);
@@ -146,6 +147,10 @@ class GameEngine {
             }
             if(list[index] instanceof Pooter){
                 p.push(list.splice(index,1))
+                index--;
+            }
+            if(list[index] instanceof Gurgling){
+                g.push(list.splice(index,1))
                 index--;
             }
             if(list[index] instanceof Chest){
@@ -191,6 +196,11 @@ class GameEngine {
         if(p != null){
             for (let index = 0; index < p.length; index++) {
                 list.push(p[index][0])
+            }
+        }
+        if(g != null){
+            for (let index = 0; index < g.length; index++) {
+                list.push(g[index][0])
             }
         }
         list.push(o[0]);

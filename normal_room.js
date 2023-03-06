@@ -1,5 +1,5 @@
 class Normal_Room {
-    constructor(locX, locY, direction, game){
+    constructor(locX, locY, direction, game,level,s){
         this.game = game;
         this.locX = locX;
         this.locY = locY;
@@ -25,6 +25,8 @@ class Normal_Room {
         this.up = false;
         this.down = false;
         this.skin = "n"
+        this.level = level;
+        this.s = s;
     };
 
 
@@ -133,17 +135,88 @@ class Normal_Room {
     
 
     draw(ctx){
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTLX,this.locTLY,768,544);
-        ctx.scale(-1,1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTRX,this.locTRY,768,544);
-        ctx.restore();
-        ctx.scale(-1,-1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBLX,this.locBLY,768,544);
-        ctx.restore();
-        ctx.scale(-1,1);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBRX,this.locBRY,768,544);
-        ctx.scale(-1,-1);
-        ctx.restore();
+        if(this.level < 3){
+            if(this.s == 1){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTLX,this.locTLY,768,544);
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locTRX,this.locTRY,768,544);
+                ctx.restore();
+                ctx.scale(-1,-1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBLX,this.locBLY,768,544);
+                ctx.restore();
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/01_basement_basic.png"),this.locBRX,this.locBRY,768,544);
+                ctx.scale(-1,-1);
+                ctx.restore();
+            }else{
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/02_cellar_basic.png"),this.locTLX,this.locTLY,768,544);
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/02_cellar_basic.png"),this.locTRX,this.locTRY,768,544);
+                ctx.restore();
+                ctx.scale(-1,-1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/02_cellar_basic.png"),this.locBLX,this.locBLY,768,544);
+                ctx.restore();
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/02_cellar_basic.png"),this.locBRX,this.locBRY,768,544);
+                ctx.scale(-1,-1);
+                ctx.restore();
+            }
+        }else if(this.level >= 3 && this.level < 5){
+            if(this.s == 1){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/03_caves_basic.png"),this.locTLX,this.locTLY,768,544);
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/03_caves_basic.png"),this.locTRX,this.locTRY,768,544);
+                ctx.restore();
+                ctx.scale(-1,-1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/03_caves_basic.png"),this.locBLX,this.locBLY,768,544);
+                ctx.restore();
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/03_caves_basic.png"),this.locBRX,this.locBRY,768,544);
+                ctx.scale(-1,-1);
+                ctx.restore();
+            }else{
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/04_catacombs_basic.png"),this.locTLX,this.locTLY,768,544);
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/04_catacombs_basic.png"),this.locTRX,this.locTRY,768,544);
+                ctx.restore();
+                ctx.scale(-1,-1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/04_catacombs_basic.png"),this.locBLX,this.locBLY,768,544);
+                ctx.restore();
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/04_catacombs_basic.png"),this.locBRX,this.locBRY,768,544);
+                ctx.scale(-1,-1);
+                ctx.restore();
+            }
+            
+        }else if(this.level >= 5){
+            if(this.s == 1){
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/05_depths_basic.png"),this.locTLX,this.locTLY,768,544);
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/05_depths_basic.png"),this.locTRX,this.locTRY,768,544);
+                ctx.restore();
+                ctx.scale(-1,-1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/05_depths_basic.png"),this.locBLX,this.locBLY,768,544);
+                ctx.restore();
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/05_depths_basic.png"),this.locBRX,this.locBRY,768,544);
+                ctx.scale(-1,-1);
+                ctx.restore();
+            }else{
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/06_necropolis_basic.png"),this.locTLX,this.locTLY,768,544);
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/06_necropolis_basic.png"),this.locTRX,this.locTRY,768,544);
+                ctx.restore();
+                ctx.scale(-1,-1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/06_necropolis_basic.png"),this.locBLX,this.locBLY,768,544);
+                ctx.restore();
+                ctx.scale(-1,1);
+                ctx.drawImage(ASSET_MANAGER.getAsset("./res/06_necropolis_basic.png"),this.locBRX,this.locBRY,768,544);
+                ctx.scale(-1,-1);
+                ctx.restore();
+            }
+            
+        }
+        
         
     };
 }

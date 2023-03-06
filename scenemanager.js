@@ -37,8 +37,6 @@ class SceneManager {
         this.hud = new Hud(this.game, this.isaac_body);
         this.floor1 = new Floor(this.game,1, this.isaac_body);
         this.premade = Array.from({length: 20}, () => new Array(20));
-        this.gurgling;
-        this.gurgling2;
         this.itemP;
         this.trophy;
         this.i = 1;
@@ -50,11 +48,10 @@ class SceneManager {
         this.EIR = false;
         this.slideF = false;
         this.fire = new Fires("normal", 200, 200, this.game)
-        this.trapDoorE = false;
         this.bx
         this.by
         this.TExist = false;
-
+        this.bossDead = false;
         this.key = new Pickup_key(200, 300, this.game)
         this.coin = new Pickup_coin(300, 200, this.game);
         this.bomb = new Pickup_bomb(400, 200, this.game);
@@ -235,18 +232,6 @@ class SceneManager {
                                         
                                         
                                         
-                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
-                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling);
-                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling2);
-                                            console.log(this.gurgling.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                            this.devil = true;
-                                            this.trapDoorE = true;
-                                            this.bx = -this.floor1.rooms[index][index2].locX
-                                            this.by = this.floor1.rooms[index][index2].locY
-                                        }
                                         if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
@@ -356,18 +341,7 @@ class SceneManager {
                                         this.moveBoundsR = true;
                                         this.iX++;
                                         console.log(this.iX)
-                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
-                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling);
-                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling2);
-                                            console.log(this.gurgling.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                            this.devil = true;
-                                            this.trapDoorE = true;
-                                            this.bx = -this.floor1.rooms[index][index2].locX
-                                            this.by = this.floor1.rooms[index][index2].locY                                            
-                                        }
+                                       
                                         if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
@@ -418,18 +392,7 @@ class SceneManager {
                                         this.hud.hudHealthY = this.hud.hudHealthY-992;
                                         this.moveBoundsU = true;
                                         this.iY--;
-                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
-                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling);
-                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling2);
-                                            console.log(this.gurgling.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                            this.devil = true;
-                                            this.trapDoorE = true;
-                                            this.bx = -this.floor1.rooms[index][index2].locX
-                                            this.by = this.floor1.rooms[index][index2].locY
-                                        }
+                                        
                                         if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
@@ -540,18 +503,7 @@ class SceneManager {
                                         this.hud.hudHealthY = this.hud.hudHealthY+992;
                                         this.moveBoundsD = true;
                                         this.iY++;
-                                        if(this.floor1.rooms[index][index2].skin === "b"&&this.gurgling == null){
-                                            this.gurgling = new Gurgling(-this.floor1.rooms[index][index2].locX+200,this.floor1.rooms[index][index2].locY+200,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling);
-                                            this.gurgling2 = new Gurgling(-this.floor1.rooms[index][index2].locX+1100,this.floor1.rooms[index][index2].locY+650,this.game,this.isaac_body)
-                                            this.game.addEntity(this.gurgling2);
-                                            console.log(this.gurgling.locX)
-                                            console.log(this.isaac_body.xPosition)
-                                            this.devil = true;
-                                            this.trapDoorE = true;
-                                            this.bx = -this.floor1.rooms[index][index2].locX
-                                            this.by = this.floor1.rooms[index][index2].locY
-                                        }
+                                        
                                         if(this.floor1.rooms[index][index2].skin === "t"&&this.itemP == null){
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX+700,this.floor1.rooms[index][index2].locY+448.5,this.game)
                                             this.game.addEntity(this.itemP);
@@ -676,7 +628,12 @@ class SceneManager {
                             if(this.floor1.rooms[this.iY][this.iX] != null){
                                 if(this.floor1.rooms[this.iY][this.iX].skin === 'n'){
                                     this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
-                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))));
+                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'r');
+                                    this.game.orderCorrecter();
+                                    console.log(this.premade[this.iY][this.iX].roomN)
+                                }else if(this.floor1.rooms[this.iY][this.iX].skin === 'b'){
+                                    this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'b');
                                     this.game.orderCorrecter();
                                     console.log(this.premade[this.iY][this.iX].roomN)
                                 }
@@ -797,6 +754,9 @@ class SceneManager {
                                 if(this.premade[r][c].enemies[index][index2] != null){
                                     if(this.premade[r][c].enemies[index][index2].health <= 0){
                                         this.EIR = false;
+                                        if(this.premade[r][c].enemies[index][index2] instanceof Gurgling){
+                                            this.bossDead = true;
+                                        }
                                     }
                                 }
                             }
@@ -814,6 +774,9 @@ class SceneManager {
                                 if(this.premade[r][c].enemies[index][index2] != null){
                                     if(this.premade[r][c].enemies[index][index2].health > 0){
                                         this.EIR = true;
+                                        if(this.premade[r][c].enemies[index][index2] instanceof Gurgling){
+                                            this.bossDead = false;
+                                        }
                                         break;
                                     }
                                 }
@@ -831,6 +794,83 @@ class SceneManager {
             for (let r = 0; r < this.premade.length; r++) {
                 for (let c = 0; c < this.premade[0].length; c++) {
                     if(this.premade[r][c] != null){
+                        for (let inde = 0; inde < this.premade[r][c].enemies.length; inde++) {
+                            for (let inde2 = 0; inde2 < this.premade[r][c].enemies[0].length; inde2++) {
+                                if(this.premade[r][c].enemies[inde][inde2] != null && this.isaac_body.boundingBox != null){
+                                    if(this.premade[r][c].enemies[inde][inde2].boundingBox != null){
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Fly){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Gurgling){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        
+                                    
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Pooter){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.premade[r][c].enemies[inde][inde2] instanceof Pooter){
+                                            if(this.premade[r][c].enemies[inde][inde2].tear != null){
+                                                if(this.premade[r][c].enemies[inde][inde2].tear.boundingBox != null){
+                                                    if(this.premade[r][c].enemies[inde][inde2].tear.boundingBox.collide(this.isaac_body.boundingBox)){
+                                                        if(this.tempClock > 1){
+                                                            this.isaac_body.takeDamage(1);
+                                                            this.tempClock = 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Spider){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Sucker){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof JumpingSpider){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_head.tear != null){
+                                            if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].enemies[inde][inde2].boundingBox != null){
+                                                if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox)){
+                                                    this.premade[r][c].enemies[inde][inde2].health -= this.isaac_head.tear.damage
+                                                    if (!this.isaac_head.piercing) {
+                                                        this.isaac_head.tear.range = 0;
+                                                    }
+                                                    this.isaac_head.tear.boundingBox = undefined;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         for (let index = 0; index < this.premade[r][c].obstacles.length; index++) {
                             for (let index2 = 0; index2 < this.premade[r][c].obstacles[0].length; index2++) {
                                 if(this.premade[r][c].obstacles[index][index2] != null && this.isaac_body.boundingBox != null){
@@ -935,6 +975,15 @@ class SceneManager {
                                                             }
                                                         
                                                         }
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Gurgling){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+                                                            
+                                                    
                                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Pooter){
                                                             if(this.tempClock > 1){
                                                                 this.isaac_body.takeDamage(1);
@@ -1206,50 +1255,8 @@ class SceneManager {
                 }
             }
             
-            if (this.gurgling != null) {
-
-                if (this.isaac_head.tear.boundingBox != null && this.gurgling.boundingBox != null) {
-                    if (this.isaac_head.tear.boundingBox.collide(this.gurgling.boundingBox)) {
-                        this.gurgling.health -= this.isaac_head.tear.damage
-                        if (!this.isaac_head.piercing) {
-                            this.isaac_head.tear.range = 0;
-                        }
-                        this.isaac_head.tear.boundingBox = undefined;
-                    }
-                }
-                if (this.isaac_head.tear.boundingBox != null && this.gurgling2.boundingBox != null) {
-                    if (this.isaac_head.tear.boundingBox.collide(this.gurgling2.boundingBox)) {
-                        this.gurgling2.health -= this.isaac_head.tear.damage
-                        if (!this.isaac_head.piercing) {
-                            this.isaac_head.tear.range = 0;
-                        }
-                        this.isaac_head.tear.boundingBox = undefined;
-                    }
-                }
-            }
         }
-        if (this.gurgling != null) {
-            if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
-                if(this.gurgling.boundingBox != null){
-                    if (this.isaac_head.boundingBox.collide(this.gurgling.boundingBox)
-                        || this.isaac_body.boundingBox.collide(this.gurgling.boundingBox)) {
-                        this.isaac_body.takeDamage(1);
-                        console.log("took 1 damage");
-                        this.tempClock = 0;
-                    }
-                }
-            }
-            if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
-                if(this.gurgling2.boundingBox != null){
-                    if (this.isaac_head.boundingBox.collide(this.gurgling2.boundingBox)
-                        || this.isaac_body.boundingBox.collide(this.gurgling2.boundingBox)) {
-                        this.isaac_body.takeDamage(1);
-                        console.log("took 1 damage");
-                        this.tempClock = 0;
-                    }
-                }
-            }
-        }
+        
         if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
             if(this.fire.boundingBox != null){
                 if (this.isaac_head.boundingBox.collide(this.fire.boundingBox)
@@ -1368,15 +1375,18 @@ class SceneManager {
 
         this.hud.x = this.floor1.camera.ogX
         this.hud.y = this.floor1.camera.ogY
-        if(this.devil === true && this.gurgling.deadS && this.gurgling2.deadS){
+        if(this.bossDead){
+            this.devil = true;
+        }
+        if(this.devil === true && this.floor1.level >=6){
             while(this.floor1.DRoomMax > 0){
                 this.floor1.addDevilRoom("D");
             }
             this.devil = false;
         }
 
-        if(this.trapDoorE && this.gurgling.deadS && this.gurgling2.deadS && !this.TExist){
-            this.trapDoor = new Trap_Door(this.bx,this.by,this.game,this.floor1)
+        if(this.bossDead && !this.TExist && this.floor1.level <6){
+            this.trapDoor = new Trap_Door(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),this.game,this.floor1)
             this.game.addEntity(this.trapDoor)
             this.TExist = true;
             this.game.orderCorrecter()
@@ -1400,6 +1410,9 @@ class SceneManager {
         this.floor1 = new Floor(this.game,this.level, this.isaac_body)
         this.premade = Array.from({length: 20}, () => new Array(20));
         this.itemP = null;
+        this.devil = false;
+        this.bossDead = false;
+        this.TExist = false;
         console.log(this.premade)
         this.floor1.addBaseRoom();
         this.game.addEntity(this.hud);
