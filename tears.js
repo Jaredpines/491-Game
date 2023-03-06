@@ -40,11 +40,11 @@ class Tears {
                 this.locY += this.shotSpeed*(1000*this.game.clockTick);
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
-                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY+35)
+                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX+35, this.locY+35)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
-                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-20, this.locY+20)
+                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX+20, this.locY+20)
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
-                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY+35)
+                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX+35, this.locY+35)
                 }else if(this.animator3.isDone() === true){
                     this.direction = null;
                 }
@@ -65,11 +65,11 @@ class Tears {
                 this.locY -= this.shotSpeed*(1000*this.game.clockTick);
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
-                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY-60)
+                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX+35, this.locY-60)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
-                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-20, this.locY-75)
+                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX+20, this.locY-75)
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
-                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-5, this.locY-60)
+                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX+35, this.locY-60)
                 }else if(this.animator3.isDone() === true){
                     this.direction = null;
                 }
@@ -90,11 +90,11 @@ class Tears {
                 this.locX += this.shotSpeed*(1000*this.game.clockTick);
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
-                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX+45, this.locY-15)
+                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX+45, this.locY+25)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
-                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX+30, this.locY-30)
+                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX+30, this.locY+10)
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
-                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX+45, this.locY-15)
+                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX+45, this.locY+25)
                 }else if(this.animator3.isDone() === true){
                     this.direction = null;
                 }
@@ -115,11 +115,11 @@ class Tears {
                 this.locX -= this.shotSpeed*(1000*this.game.clockTick);
             }else if(this.range <= 0){
                 if(this.animator.isDone() === false){
-                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX-15, this.locY-15)
+                    this.animator.drawFrame(this.game.clockTick, ctx, this.locX-15, this.locY+25)
                 }else if(this.animator.isDone() === true && this.animator2.isDone() === false){
-                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-30, this.locY-30)
+                    this.animator2.drawFrame(this.game.clockTick, ctx, this.locX-30, this.locY+10)
                 }else if(this.animator2.isDone() === true && this.animator3.isDone() === false){
-                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-15, this.locY-15)
+                    this.animator3.drawFrame(this.game.clockTick, ctx, this.locX-15, this.locY+25)
                 }else if(this.animator3.isDone() === true){
                     this.direction = null;
                 }
