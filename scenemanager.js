@@ -166,12 +166,13 @@ class SceneManager {
             while(this.floor1.TRoomMax > 0){
                 this.floor1.addTreasureRoom("T");
             }
-            while(this.floor1.BRoomMax > 0){
-                this.floor1.addBossRoom("B");
-            }
             while(this.floor1.SRoomMax > 0){
                 this.floor1.addShopRoom("S");
             }
+            while(this.floor1.BRoomMax > 0){
+                this.floor1.addBossRoom("B");
+            }
+            
             
             this.floor1.toString();
             //this.game.ctx.translate(0,-200)
