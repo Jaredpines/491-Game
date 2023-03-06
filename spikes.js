@@ -20,17 +20,7 @@ class Spikes {
 
     draw(ctx){
         if(this.c < 10){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/grid_spikes_down.png"),this.locX,this.locY,128,128);
-        }else if(this.c >=10 && this.c < 10.2){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani1.png"),this.locX,this.locY,128,128);
-        }else if(this.c >= 10.2 && this.c < 10.4){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani2.png"),this.locX,this.locY,128,128);
-        }else if(this.c >= 10.4 && this.c < 10.6){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani3.png"),this.locX,this.locY,128,128);
             this.stab = true;
-        }else if(this.c >= 10.6 && this.c < 10.8){
-            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani4.png"),this.locX,this.locY,128,128);
-        }else if(this.c >= 10.8 && this.c < 20.8){
             if(this.r == 0){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/grid_spikes1.png"),this.locX,this.locY,128,128);
             }else if(this.r == 1){
@@ -40,15 +30,26 @@ class Spikes {
             }else if(this.r == 3){
                 ctx.drawImage(ASSET_MANAGER.getAsset("./res/grid_spikes4.png"),this.locX,this.locY,128,128);
             }
-        }else if(this.c >= 20.8 && this.c < 21.0){
+        }else if(this.c >=10 && this.c < 10.2){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani4.png"),this.locX,this.locY,128,128);
-        }else if(this.c >= 21.0 && this.c < 21.2){
+        }else if(this.c >= 10.2 && this.c < 10.4){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani3.png"),this.locX,this.locY,128,128);
-        }else if(this.c >= 21.2 && this.c < 21.4){
+        }else if(this.c >= 10.4 && this.c < 10.6){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani2.png"),this.locX,this.locY,128,128);
             this.stab = false;
-        }else if(this.c >= 21.4 && this.c < 21.6){
+        }else if(this.c >= 10.6 && this.c < 10.8){
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani1.png"),this.locX,this.locY,128,128);
+        }else if(this.c >= 10.8 && this.c < 20.8){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/grid_spikes_down.png"),this.locX,this.locY,128,128);
+        }else if(this.c >= 20.8 && this.c < 21.0){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani1.png"),this.locX,this.locY,128,128);
+        }else if(this.c >= 21.0 && this.c < 21.2){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani2.png"),this.locX,this.locY,128,128);
+        }else if(this.c >= 21.2 && this.c < 21.4){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani3.png"),this.locX,this.locY,128,128);
+            this.stab = true;
+        }else if(this.c >= 21.4 && this.c < 21.6){
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/ani4.png"),this.locX,this.locY,128,128);
         }else{
             this.c = 0;
         }

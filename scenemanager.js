@@ -47,7 +47,6 @@ class SceneManager {
         this.exists = false;
         this.EIR = false;
         this.slideF = false;
-        this.fire = new Fires("normal", 200, 200, this.game)
         this.bx
         this.by
         this.TExist = false;
@@ -86,7 +85,6 @@ class SceneManager {
         // this.game.addEntity(this.sucker_enemy);
         //this.game.addEntity(this.pooter_enemy);
         this.game.addEntity(this.hud);
-        this.game.addEntity(this.fire);
 
         this.game.addEntity(this.key);
         this.game.addEntity(this.coin);
@@ -239,10 +237,6 @@ class SceneManager {
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
                                         }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
@@ -349,10 +343,6 @@ class SceneManager {
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
                                         }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
@@ -400,10 +390,6 @@ class SceneManager {
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
                                         }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
@@ -511,10 +497,6 @@ class SceneManager {
                                             console.log(this.itemP.locX)
                                             console.log(this.isaac_body.xPosition)
                                         }else if(this.floor1.rooms[index][index2].skin === "s") {
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
-                                            this.fire = new Fires("normal", -this.floor1.rooms[index][index2].locX + 1200, this.floor1.rooms[index][index2].locY + 200, this.game)
-                                            this.game.addEntity(this.fire);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 400, this.floor1.rooms[index][index2].locY + 480.5, this.game)
                                             this.game.addEntity(this.itemP);
                                             this.itemP = new ItemP(-this.floor1.rooms[index][index2].locX + 970, this.floor1.rooms[index][index2].locY + 480.5, this.game)
@@ -635,6 +617,11 @@ class SceneManager {
                                 }else if(this.floor1.rooms[this.iY][this.iX].skin === 'b'){
                                     this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
                                     this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'b');
+                                    this.game.orderCorrecter();
+                                    console.log(this.premade[this.iY][this.iX].roomN)
+                                }else if(this.floor1.rooms[this.iY][this.iX].skin === 's'){
+                                    this.premade[this.iY][this.iX] = new Premade_Rooms(160,160,this.game, this.floor1, this.isaac_body)
+                                    this.premade[this.iY][this.iX].addObstacles(-(this.floor1.farthestLeft-(1472*(this.iX-1))),-(this.floor1.farthestUp-(992*(this.iY-1))),'s');
                                     this.game.orderCorrecter();
                                     console.log(this.premade[this.iY][this.iX].roomN)
                                 }
@@ -894,9 +881,35 @@ class SceneManager {
                                                 this.isaac_body.slideTU = 0;
                                             }
                                         }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Fires && !(this.premade[r][c].obstacles[index][index2].health <= 0)){
+                                            if(this.isaac_body.boundingBox.right > this.premade[r][c].obstacles[index][index2].locX && this.isaac_body.boundingBox.right < this.premade[r][c].obstacles[index][index2].locX+40){
+                                                this.isaac_body.xPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTR = 0;
+                                            }
+                                            if(this.isaac_body.boundingBox.left < this.premade[r][c].obstacles[index][index2].locX+110 && this.isaac_body.boundingBox.left > this.premade[r][c].obstacles[index][index2].locX+110-40){
+                                                this.isaac_body.xPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTL = 0;
+                                            }
+                                            if(this.isaac_body.boundingBox.bottom > this.premade[r][c].obstacles[index][index2].locY && this.isaac_body.boundingBox.bottom < this.premade[r][c].obstacles[index][index2].locY+40){
+                                                this.isaac_body.yPosition -= this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTD = 0;
+                                            }
+                                            if(this.isaac_body.boundingBox.top < this.premade[r][c].obstacles[index][index2].locY+110 && this.isaac_body.boundingBox.top > this.premade[r][c].obstacles[index][index2].locY+110-40){
+                                                this.isaac_body.yPosition += this.isaac_body.movementSpeed*this.game.clockTick;
+                                                this.isaac_body.slideTU = 0;
+                                            }
+                                            
+                                        }
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Spikes){
                                             if(this.premade[r][c].obstacles[index][index2].stab && this.tempClock > 1){
                                                 this.isaac_body.takeDamage(2);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && this.premade[r][c].obstacles[index][index2] instanceof Fires && !(this.premade[r][c].obstacles[index][index2].health <= 0)){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
                                                 this.tempClock = 0;
                                             }
                                         
@@ -929,9 +942,9 @@ class SceneManager {
                                         }
                                         if(this.isaac_head.tear != null){
                                             if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].obstacles[index][index2].boundingBox != null){
-                                                if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox)){
+                                                if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && !(this.premade[r][c].obstacles[index][index2] instanceof Spikes)){
                                                     this.premade[r][c].obstacles[index][index2].health -= this.isaac_head.tear.damage
-                                                    if (!this.isaac_head.piercing) {
+                                                    if (!this.isaac_head.piercing && !(this.premade[r][c].obstacles[index][index2].health <= 0)) {
                                                         this.isaac_head.tear.range = 0;
                                                     }
                                                     this.isaac_head.tear.boundingBox = undefined;
@@ -1244,31 +1257,7 @@ class SceneManager {
             }
         }
 
-        if(this.isaac_head.tear != null){
-            if(this.isaac_head.tear.boundingBox != null && this.fire.boundingBox != null){
-                if(this.isaac_head.tear.boundingBox.collide(this.fire.boundingBox)){
-                    this.fire.fireHealth -= this.isaac_head.tear.damage
-                    console.log(this.fire.fireHealth)
-                    if (!this.isaac_head.piercing && !this.isaac_head.tear.pierced) {
-                        this.isaac_head.tear.range = 0;
-                    }
-                    this.isaac_head.tear.boundingBox = undefined;
-                }
-            }
-            
-        }
         
-        if (this.isaac_head != null && this.isaac_body != null && this.tempClock > 1) {
-            if(this.fire.boundingBox != null){
-                if (this.isaac_head.boundingBox.collide(this.fire.boundingBox)
-                    || this.isaac_body.boundingBox.collide(this.fire.boundingBox)) {
-                    this.isaac_body.takeDamage(1);
-                    console.log("took 1 damage");
-                    this.tempClock = 0;
-                }
-            }
-            
-        }
         if (this.isaac_body != null) {
 
             if (this.isaac_body != null && this.trophy != null) {

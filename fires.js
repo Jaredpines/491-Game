@@ -7,9 +7,9 @@ class Fires {
         this.r = Math.floor(Math.random() * 3);
         this.boundingBox = null;
 
-        this.fireHealth = 12
+        this.health = 12
         this.dead = false;
-        this.fireScale = 2.6
+        this.fireScale = 3.5
         this.stageChange = false
         this.firstStage = true
         this.secondStage = false
@@ -50,7 +50,7 @@ class Fires {
 
 
     update(){
-        if(this.fireHealth<=0){
+        if(this.health<=0){
             this.dead = true;
             this.deadTime += this.game.clockTick;
         }
@@ -67,7 +67,7 @@ class Fires {
 
             }
         }
-        if (this.fireHealth > 0 && this.fireHealth <= 4) {
+        if (this.health > 0 && this.health <= 4) {
             this.stageChange = true
             this.firstStage = false
             this.secondStage = false
@@ -75,7 +75,7 @@ class Fires {
             this.stageChange = false
             this.fireScale = 0.5
             console.log("third stage")
-        } else if (this.fireHealth > 4 && this.fireHealth <= 9) {
+        } else if (this.health > 4 && this.health <= 9) {
             this.stageChange = true
             this.firstStage = false
             this.secondStage = true
@@ -83,7 +83,7 @@ class Fires {
             this.stageChange = false
             this.fireScale = 1.5
             console.log("second stage")
-        } else if (this.fireHealth > 9 && this.fireHealth <= 12) {
+        } else if (this.health > 9 && this.health <= 12) {
             this.stageChange = true
             this.firstStage = true
             this.secondStage = false
@@ -99,28 +99,28 @@ class Fires {
             if (this.stageChange) {
                 this.fireAnimator = new Animator(ASSET_MANAGER.getAsset("./res/effect_fire.png"), 0, 0, 48, 48, 6, 0.1, this.fireScale);
             }
-            this.logsAnimator.drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
-            if (this.fireHealth > 0) {
+            this.logsAnimator.drawFrame(this.game.clockTick, ctx, this.locX+2, this.locY+15);
+            if (this.health > 0) {
                 this.fireAnimator.drawFrame(this.game.clockTick, ctx, this.locX-28, this.locY-76);
             }
         } else if (this.blueFire) {
             if (this.stageChange) {
                 this.fireAnimatorBlue = new Animator(ASSET_MANAGER.getAsset("./res/effect_fire_blue.png"), 0, 0, 48, 48, 5, 0.3, this.fireScale);
             }
-            this.logsAnimatorBlue.drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
-            if (this.fireHealth > 0) {
+            this.logsAnimatorBlue.drawFrame(this.game.clockTick, ctx, this.locX+2, this.locY+15);
+            if (this.health > 0) {
                 this.fireAnimatorBlue.drawFrame(this.game.clockTick, ctx, this.locX-28, this.locY-76);
             }
         } else if (this.redFire) {
             if (this.stageChange) {
                 this.fireAnimatorRed = new Animator(ASSET_MANAGER.getAsset("./res/effect_fire_red.png"), 0, 0, 48, 48, 5, 0.3, this.fireScale);
             }
-            this.logsAnimatorRed.drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
-            if (this.fireHealth > 0) {
+            this.logsAnimatorRed.drawFrame(this.game.clockTick, ctx, this.locX+2, this.locY+15);
+            if (this.health > 0) {
                 this.fireAnimatorRed.drawFrame(this.game.clockTick, ctx, this.locX-28, this.locY-76);
             }
         }
-        this.boundingBox = new BoundingBox(this.locX+6,this.locY-32,64,64);
-        ctx.strokeRect(this.locX+6,this.locY-32,64,64);
+        this.boundingBox = new BoundingBox(this.locX+2,this.locY-35,110,110);
+        //ctx.strokeRect(this.locX+2,this.locY-35,110,110);
     };
 }

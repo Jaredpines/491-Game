@@ -36,6 +36,8 @@ class Premade_Rooms {
             this.r = Math.floor(Math.random() * 7)+1;
         }else if(type == 'b'){
             this.Broom1(x+160,y+160);
+        }else if(type == 's'){
+            this.Sroom1(x+160,y+160);
         }
         
     };
@@ -210,5 +212,14 @@ class Premade_Rooms {
         this.enemies[10][5] = new Gurgling(x + 103*10,y + 104*5,this.game, this.isaac)
         this.game.addEntity(this.enemies[10][5])
         this.roomN = 100
+    };
+
+    //Shop rooms
+    Sroom1(x,y){
+        this.obstacles[4][1] = new Fires("normal",x + 103*4,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[4][1])
+        this.obstacles[6][1] = new Fires("normal",x + 103*6,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[6][1])
+        this.roomN = 200
     };
 }
