@@ -19,7 +19,7 @@ class Pickup_bomb {
     draw(ctx){
         ctx.drawImage(ASSET_MANAGER.getAsset("./res/pickup_bomb.png"), 0, 0, 32, 32, this.locX,this.locY,96,96);
         this.boundingBox = new BoundingBox(this.locX,this.locY,56,56);
-        ctx.strokeRect(this.locX+20, this.locY+20,56,56);
+       //ctx.strokeRect(this.locX+20, this.locY+20,56,56);
         
     };
 

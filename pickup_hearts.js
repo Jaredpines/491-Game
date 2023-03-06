@@ -39,7 +39,7 @@ class Pickup_hearts {
 
         }
         this.boundingBox = new BoundingBox(this.locX,this.locY,48,48);
-        ctx.strokeRect(this.locX+20, this.locY+20,48,48);
+        //ctx.strokeRect(this.locX+20, this.locY+20,48,48);
         
     };
 
