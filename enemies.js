@@ -50,7 +50,6 @@ class Fly {
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
-                this.boundingBox = undefined;
                 this.removeFromWorld = true;
 
             }
@@ -92,12 +91,13 @@ class Fly {
     };
 
     draw(ctx) {
-        this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         //ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         if (this.dead) {
             this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
+            this.boundingBox = undefined;
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition,this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         }
     }
 }
@@ -152,7 +152,6 @@ class Sucker {
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
-                this.boundingBox = undefined;
                 this.removeFromWorld = true;
 
             }
@@ -194,12 +193,14 @@ class Sucker {
     };
 
     draw(ctx) {
-        this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
+        
         //ctx.strokeRect(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         if (this.dead) {
             this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
+            this.boundingBox = undefined;
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition,this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         }
     }
 }
@@ -276,7 +277,6 @@ class Spider {
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
-                this.boundingBox = undefined;
                 this.removeFromWorld = true;
 
             }
@@ -357,14 +357,17 @@ class Spider {
     };
 
     draw(ctx) {
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
+        
         //ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
         if (this.dead) {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            this.boundingBox = undefined;
         } else if (this.walking) {
             this.animations[1].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         }
         
     }
@@ -465,7 +468,6 @@ class JumpingSpider {
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
-                this.boundingBox = undefined;
                 this.removeFromWorld = true;
 
             }
@@ -532,30 +534,34 @@ class JumpingSpider {
     };
 
     draw(ctx) {
-        this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         //ctx.strokeRect(this.xPosition+10,this.yPosition+5,this.bbWidth+5,this.bbHeight);
         if (this.dead) {
             this.animations[4].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            this.boundingBox = undefined;
         } else if (this.windUp) {
             this.animations[1].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
             if (this.animations[1].isDone()) {
                 this.windUp = false;
                 this.jumpUp = true;
             }
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         } else if (this.jumpUp) {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
             if (this.animations[2].isDone()) {
                 this.jumpUp = false;
                 this.jumpDown = true;
             }
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         } else if (this.jumpDown) {
             this.animations[3].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
             if (this.animations[3].isDone()) {
                 this.jumpDown = false;
                 this.idle = true;
             }
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition, this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition,this.yPosition,this.bbWidth,this.bbHeight);
         }
     }
 }
@@ -639,7 +645,6 @@ class Pooter {
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")
-                this.boundingBox = undefined;
                 this.removeFromWorld = true;
 
             }
@@ -699,14 +704,17 @@ class Pooter {
     };
 
     draw(ctx) {
-        this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
+
         //ctx.strokeRect(this.xPosition+27,this.yPosition+25,this.bbWidth,this.bbHeight);
         if (this.dead) {
             this.animations[1].drawFrame(this.game.clockTick,ctx, this.xPosition, this.yPosition);
+            this.boundingBox = undefined;
         } else if (this.attackPooterAnim) {
             this.animations[2].drawFrame(this.game.clockTick, ctx, this.xPosition,this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         } else {
             this.animations[0].drawFrame(this.game.clockTick, ctx, this.xPosition,this.yPosition);
+            this.boundingBox = new BoundingBox(this.xPosition+25,this.yPosition+20,this.bbWidth,this.bbHeight);
         }
     }
 }
