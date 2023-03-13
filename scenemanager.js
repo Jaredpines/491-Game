@@ -1074,7 +1074,7 @@ class SceneManager {
                                         }
                                         if(this.isaac_head.tear != null){
                                             if(this.isaac_head.tear.boundingBox != null && this.premade[r][c].obstacles[index][index2].boundingBox != null){
-                                                if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && !(this.premade[r][c].obstacles[index][index2] instanceof Spikes)){
+                                                if(this.isaac_head.tear.boundingBox.collide(this.premade[r][c].obstacles[index][index2].boundingBox) && !(this.premade[r][c].obstacles[index][index2] instanceof Spikes) && !(this.premade[r][c].obstacles[index][index2] instanceof Pickup_coin)&& !(this.premade[r][c].obstacles[index][index2] instanceof Pickup_key)&& !(this.premade[r][c].obstacles[index][index2] instanceof Pickup_bomb)&& !(this.premade[r][c].obstacles[index][index2] instanceof Pickup_hearts)){
                                                     this.premade[r][c].obstacles[index][index2].health -= this.isaac_head.tear.damage
                                                     if (!this.isaac_head.piercing && !(this.premade[r][c].obstacles[index][index2].health <= 0)) {
                                                         this.isaac_head.tear.range = 0;

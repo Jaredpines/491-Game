@@ -9,6 +9,7 @@ class Spikes {
         this.animator = new Animator(ASSET_MANAGER.getAsset("./res/ani_down.png"), 0, 0, 32, 32, 4, 0.5, 4);
         this.animator2 = new Animator(ASSET_MANAGER.getAsset("./res/grid_spikes_ani.png"), 0, 0, 32, 32, 4, 0.1, 4);
         this.stab = false;
+        this.static = false;
     };
 
 
@@ -53,8 +54,10 @@ class Spikes {
         }else{
             this.c = 0;
         }
-        
-        this.c += 2*this.game.clockTick
+        if(this.static == false){
+            this.c += 2*this.game.clockTick
+        }
+
         this.boundingBox = new BoundingBox(this.locX+16,this.locY+16,96,96);
         //ctx.strokeRect(this.locX+16,this.locY+16,96,96);
     };
