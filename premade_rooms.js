@@ -7,7 +7,6 @@ class Premade_Rooms {
         this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
         this.r = Math.floor(Math.random() * 30)+1;
-        this.r = 29
         this.isaac = isaac;
         this.roomN = 0;
     };
