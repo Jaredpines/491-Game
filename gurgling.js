@@ -140,20 +140,41 @@ class Gurgling {
                 this.left = false;
                 this.right = false;
             }
-            if (this.locX < this.moveBoundsRight && this.left === true) {
-                this.locX += this.game.clockTick * 500;
-            }
-            if (this.locX > this.moveBoundsLeft && this.right === true) {
-                this.locX -= this.game.clockTick * 500;
-            }
-            if (this.locY > this.moveBoundsUp && this.up === true) {
-                this.locY -= this.game.clockTick * 500;
-            }
-            if (this.locY < this.moveBoundsDown && this.down === true) {
-                this.locY += this.game.clockTick * 500;
+            if (this.locX === this.isaac.locX) {
+                if (this.locX <= this.isaac.locX) {
+                    while (this.locX <= this.moveBoundsRight) {
+                        this.locX += this.game.clockTick * 700;
+                    }
+                } else {
+                    while (this.locX >= this.isaac.moveBoundsLeft) {
+                        this.locX -= this.game.clockTick * 700;
+                    }
+                }
+            } else if (this.locY <= this.isaac.locY) {
+                if (this.locY <= this.isaac.locY) {
+                    while (this.locY <= this.moveBoundsDown) {
+                        this.locY += this.game.clockTick * 700;
+                    }
+                } else {
+                    while (this.locY >= this.isaac.moveBoundsUp) {
+                        this.locY -= this.game.clockTick * 700;
+                    }
+                }
+            } else {
+                if (this.locX < this.moveBoundsRight && this.left === true) {
+                    this.locX += this.game.clockTick * 500;
+                }
+                if (this.locX > this.moveBoundsLeft && this.right === true) {
+                    this.locX -= this.game.clockTick * 500;
+                }
+                if (this.locY > this.moveBoundsUp && this.up === true) {
+                    this.locY -= this.game.clockTick * 500;
+                }
+                if (this.locY < this.moveBoundsDown && this.down === true) {
+                    this.locY += this.game.clockTick * 500;
+                }
             }
 
-            
         }
 
 
