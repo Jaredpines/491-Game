@@ -21,10 +21,10 @@ class Gurgling {
         this.deadTime = 0;
         this.clocktick = game.clocktick;
         this.tempCount = 0;
-        this.deadS = false;
 
 
         this.gurlgingSpritesheet = ASSET_MANAGER.getAsset("./res/gurgling_spritesheet.png");
+        this.flySpritesheet = ASSET_MANAGER.getAsset("./res/monster_fly.png");
         //this.animator = new Animator(ASSET_MANAGER.getAsset("./res/gurgling_spritesheet.png"), 125, 0, 38, 20, 1, 1, 2.5);
 
 
@@ -85,6 +85,8 @@ class Gurgling {
         this.animationsFace[2] = new Animator(this.gurlgingSpritesheet, 192, 163, 41, 40, 5, 0.1, 3.5);
         //Dead = 3
         this.animationsFace[3] = new Animator(this.gurlgingSpritesheet, 198, 262, 38, 40, 1, 1, 3.5);
+        //Dead V2 = 4
+        this.animationsFace[4] = new Animator(this.flySpritesheet, 0, 75, 64, 64, 12, 0.1, 5.2);
 
     };
 
@@ -103,10 +105,9 @@ class Gurgling {
                 ASSET_MANAGER.playAsset("./sounds/boss_gurgle_lite.wav")
 
             }
-            if (this.deadTime > 1.1) {
+            if (this.deadTime > 4.1) {
                 console.log("runs")
                 this.boundingBox = undefined;
-                this.deadS = true;
                 this.removeFromWorld = true;
             }
         }
@@ -214,6 +215,7 @@ class Gurgling {
         if(this.dead) {
             this.animationsFace[0].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
             this.animationsFeet[2][0].drawFrame(this.game.clockTick, ctx, this.locX+33, this.locY+70);
+            this.animationsFace[4].drawFrame(this.game.clockTick, ctx, this.locX-90, this.locY-40);
 
         } else if(this.down && !this.dead){
             this.animationsFace[this.state].drawFrame(this.game.clockTick, ctx, this.locX, this.locY);
