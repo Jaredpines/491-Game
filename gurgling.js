@@ -98,7 +98,7 @@ class Gurgling {
 
         if (this.dead) {
 
-            if (this.deadTime === 0) {
+            if (this.deadTime <= 0.01) {
                 this.deadTime += this.game.clockTick;
                 ASSET_MANAGER.playAsset("./sounds/boss_gurgle_lite.wav")
 
