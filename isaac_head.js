@@ -93,7 +93,9 @@ class Isaac_Head {
 				// this.drawCostumes(ctx, 0);
 				if(this.tearspawned == 0){
 				this.tear = new Tears(this.xPosition,this.yPosition,"down",this.game,this.damage,this.range,this.shotSpeed, this.tearSkin)
-				this.game.addEntity(this.tear);
+					ASSET_MANAGER.playAsset("./sounds/tear_shoot_2.wav");
+
+					this.game.addEntity(this.tear);
 				}
 				this.tearspawned = 1;
 			}else if(this.tearcount < 0.5){
@@ -112,6 +114,8 @@ class Isaac_Head {
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/right_shot_close.png"),this.xPosition,this.yPosition,128,128);
 				if(this.tearspawned == 0){
 					this.tear = new Tears(this.xPosition,this.yPosition,"right",this.game,this.damage,this.range,this.shotSpeed, this.tearSkin)
+					ASSET_MANAGER.playAsset("./sounds/tear_shoot_1.wav");
+
 					this.game.swapTearEntity(this.tear);
 					}
 					this.tearspawned = 1;
@@ -130,6 +134,8 @@ class Isaac_Head {
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/left_shot_close.png"),this.xPosition,this.yPosition,128,128);
 				if(this.tearspawned == 0){
 					this.tear = new Tears(this.xPosition,this.yPosition,"left",this.game,this.damage,this.range,this.shotSpeed, this.tearSkin)
+					ASSET_MANAGER.playAsset("./sounds/tear_shoot_1.wav");
+
 					this.game.swapTearEntity(this.tear);
 					}
 					this.tearspawned = 1;
@@ -147,6 +153,8 @@ class Isaac_Head {
 				ctx.drawImage(ASSET_MANAGER.getAsset("./res/up_shot_close.png"),this.xPosition,this.yPosition,128,128);
 				if(this.tearspawned == 0){
 					this.tear = new Tears(this.xPosition,this.yPosition,"up",this.game,this.damage,this.range,this.shotSpeed, this.tearSkin)
+					ASSET_MANAGER.playAsset("./sounds/tear_shoot_2.wav");
+
 					this.game.swapTearEntity(this.tear);
 					}
 					this.tearspawned = 1;

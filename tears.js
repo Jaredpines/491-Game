@@ -13,6 +13,7 @@ class Tears {
         this.boundingBox = null;
         this.damage = damage;
         this.pierced = false;
+        this.tempTime = 0;
         // this.skin = "./res/normal_tears.png"
         this.skin = skin;
         //TODO: implement damage scaling size for tears
@@ -25,7 +26,7 @@ class Tears {
 
 
     draw(ctx){
-        
+
         if(this.direction === "down"){
             if (this.skin === "./res/cupids_arrow_tear_right.png" ||
                 this.skin === "./res/cupids_arrow_tear_left.png" ||
@@ -75,6 +76,7 @@ class Tears {
                 }
 
             }
+
             this.range -= (10*this.game.clockTick);
         }else if(this.direction === "right"){
             if (this.skin === "./res/cupids_arrow_tear_right.png" ||

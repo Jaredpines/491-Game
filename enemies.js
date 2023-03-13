@@ -47,6 +47,7 @@ class Fly {
             if (this.deadTime <= 0.01) {
                 this.deadTime += this.game.clockTick;
                 ASSET_MANAGER.playAsset("./sounds/animal_squish_1.wav")
+                ASSET_MANAGER.playAsset("./sounds/fly_cough.wav")
             }
             if (this.deadTime > 1.1) {
                 console.log("runs")

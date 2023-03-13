@@ -61,6 +61,8 @@ class Gurdy_jr {
                 this.speed -= Math.abs(this.distX*this.game.clockTick);
                 this.speedU -= Math.abs(this.distY*this.game.clockTick);
             }else{
+                ASSET_MANAGER.playAsset("./sounds/boss_roar.wav");
+
                 this.distX =  this.isaac.xPosition - this.locX
                 this.distY =  this.isaac.yPosition - this.locY
                 this.speed = Math.abs(this.distX)*2
@@ -104,6 +106,8 @@ class Gurdy_jr {
         if(this.count >= 4){
             this.count = 0
         }
+
+
         if (this.health <= 0) {
             this.dead = true;
             this.deadTime += 1 * this.game.clockTick;

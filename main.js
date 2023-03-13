@@ -186,7 +186,10 @@ ASSET_MANAGER.queueDownload("./sounds/isaac_dies_new.wav")
 ASSET_MANAGER.queueDownload("./sounds/animal_squish_1.wav")
 ASSET_MANAGER.queueDownload("./sounds/boss_gurgle_lite.wav")
 ASSET_MANAGER.queueDownload("./sounds/chest_open_1.wav")
-
+ASSET_MANAGER.queueDownload("./sounds/boss_roar.wav")
+ASSET_MANAGER.queueDownload("./sounds/fly_cough.wav")
+ASSET_MANAGER.queueDownload("./sounds/tear_shoot_1.wav")
+ASSET_MANAGER.queueDownload("./sounds/tear_shoot_2.wav")
 //monsters
 ASSET_MANAGER.queueDownload("./res/monster_spider.png")
 ASSET_MANAGER.queueDownload("./res/monster_jumping_spider.png")
