@@ -16,14 +16,47 @@ class Gurdy_jr {
         this.wall = false
         this.wallU = false
         this.speed = 0
+        this.dead = false;
+        this.deadTime = 0;
         this.speedU = 0
         this.count = 0;
+        this.flySpritesheet = ASSET_MANAGER.getAsset("./res/monster_fly.png");
+        this.animations = [];
+        this.loadAnimations();
+        this.animations[0] = new Animator(this.flySpritesheet, 0, 75, 64, 64, 12, 0.1, 7);
+        this.state = 0;
     };
 
+    loadAnimations() {
+        for (var i = 0; i < 1; i++) { // One State
+            this.animations.push([]);
+        }
+    }
 
     update(){
+
+        if (this.health <= 0) {
+            this.dead = true;
+            this.deadTime += 1 * this.game.clockTick;
+            this.state = 0;
+        }
+
+
+        if (this.dead) {
+            if (this.deadTime <= 0.01) {
+                console.log("runs")
+                this.deadTime += this.game.clockTick;
+                ASSET_MANAGER.playAsset("./sounds/animal_squish_1.wav")
+
+            }
+            if (this.deadTime > 4.1) {
+                console.log("runs")
+                this.boundingBox = undefined;
+                this.removeFromWorld = true;
+            }
+        }
         this.count += 1*this.game.clockTick;
-        if(this.count > 2){
+        if(this.count > 2 && !this.dead){
             if(this.speed > 0 || this.speedU > 0){
                 this.speed -= Math.abs(this.distX*this.game.clockTick);
                 this.speedU -= Math.abs(this.distY*this.game.clockTick);
@@ -73,6 +106,8 @@ class Gurdy_jr {
         }
         if (this.health <= 0) {
             this.dead = true;
+            this.deadTime += 1 * this.game.clockTick;
+            this.state = 0;
         }
 
         
@@ -81,7 +116,11 @@ class Gurdy_jr {
     
 
     draw(ctx){
-        if(!this.dead) {
+        if(this.dead) {
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/gurdy_jr_body.png"),this.locX,this.locY-160,320,320);
+            ctx.drawImage(ASSET_MANAGER.getAsset("./res/gurdy_jr_move.png"),this.locX+60,this.locY-80,192,128);
+            this.animations[0].drawFrame(this.game.clockTick, ctx, this.locX-60, this.locY-110);
+        } else if(!this.dead) {
             this.boundingBox = new BoundingBox(this.locX+20, this.locY, 280, 320/2.5);
             //ctx.strokeRect(this.locX+20, this.locY, 280, 320/2.5);
             ctx.drawImage(ASSET_MANAGER.getAsset("./res/gurdy_jr_body.png"),this.locX,this.locY-160,320,320);
@@ -94,9 +133,6 @@ class Gurdy_jr {
                     ctx.drawImage(ASSET_MANAGER.getAsset("./res/gurdy_jr_move2.png"),this.locX+60,this.locY-80,192,128);
                 }
             }
-        }else{
-            this.boundingBox = undefined;
-            this.game.removeFromWorld = true
         }
     };
 }
