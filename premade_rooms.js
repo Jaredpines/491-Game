@@ -7,8 +7,9 @@ class Premade_Rooms {
         this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
         this.r = Math.floor(Math.random() * 41)+1;
+        this.r = 0
         this.isaac = isaac;
-        this.roomN = 0;
+        this.roomN = 9;
     };
 
 
@@ -31,6 +32,32 @@ class Premade_Rooms {
                 this.room6(x+160,y+160);
             }else if(this.r == 7){
                 this.room7(x+160,y+160);
+            }else if(this.r == 8){
+                this.room8(x+160,y+160);
+            }else if(this.r == 9){
+                this.room9(x+160,y+160);
+            }else if(this.r == 10){
+                this.room10(x+160,y+160);
+            }else if(this.r == 11){
+                this.room11(x+160,y+160);
+            }else if(this.r == 12){
+                this.room12(x+160,y+160);
+            }else if(this.r == 13){
+                this.room13(x+160,y+160);
+            }else if(this.r == 14){
+                this.room14(x+160,y+160);
+            }else if(this.r == 15){
+                this.room15(x+160,y+160);
+            }else if(this.r == 16){
+                this.room16(x+160,y+160);
+            }else if(this.r == 17){
+                this.room17(x+160,y+160);
+            }else if(this.r == 18){
+                this.room18(x+160,y+160);
+            }else if(this.r == 19){
+                this.room19(x+160,y+160);
+            }else if(this.r == 20){
+                this.room20(x+160,y+160);
             }else if(this.r == 21){
                 this.room21(x+160,y+160);
             }else if(this.r == 22){
