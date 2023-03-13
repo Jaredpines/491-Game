@@ -6,7 +6,8 @@ class Premade_Rooms {
         this.obstacles = Array.from({length: 11}, () => new Array(6));
         this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
-        this.r = Math.floor(Math.random() * 26)+1;
+        this.r = Math.floor(Math.random() * 30)+1;
+        this.r = 29
         this.isaac = isaac;
         this.roomN = 0;
     };
@@ -41,10 +42,18 @@ class Premade_Rooms {
                 this.room24(x+160,y+160);
             }else if(this.r == 25){
                 this.room25(x+160,y+160);
+            }else if(this.r == 26){
+                this.room26(x+160,y+160);
+            }else if(this.r == 27){
+                this.room27(x+160,y+160);
+            }else if(this.r == 28){
+                this.room28(x+160,y+160);
+            }else if(this.r == 29){
+                this.room29(x+160,y+160);
             }else{
                 this.room0(x,y)
             }
-            this.r = Math.floor(Math.random() * 23)+1;
+            this.r = Math.floor(Math.random() * 30)+1;
         }else if(type == 'b'){
             this.r = Math.floor(Math.random() * 2)+1;
             if(this.r == 1){
@@ -348,10 +357,6 @@ class Premade_Rooms {
         this.game.addEntity(this.obstacles[7][5])
         
     }room23(x,y){
-        this.enemies[0][0] = new Fly(x + 103*0,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[0][0])
-        this.enemies[0][5] = new Fly(x + 103*0,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[0][5])
         this.obstacles[5][2] = new Rocks(x + 103*5,y + 104*2)
         this.game.addEntity(this.obstacles[5][2])
         this.obstacles[5][1] = new Pickup_coin(x + 103*5,y + 104*1)
@@ -362,38 +367,8 @@ class Premade_Rooms {
         this.game.addEntity(this.obstacles[4][2])
         this.obstacles[6][2] = new Pickup_coin(x + 103*6,y + 104*2)
         this.game.addEntity(this.obstacles[6][2])
-        this.enemies[10][0] = new Fly(x + 103*10,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[10][0])
-        this.enemies[10][5] = new Fly(x + 103*10,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[10][5])
     }
     room24(x,y){
-        this.enemies[0][0] = new Spider(x + 103*0,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[0][0])
-        this.enemies[1][0] = new Spider(x + 103*1,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[1][0])
-        this.enemies[2][0] = new Spider(x + 103*2,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[2][0])
-        this.enemies[8][0] = new Spider(x + 103*8,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[8][0])
-        this.enemies[9][0] = new Spider(x + 103*9,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[9][0])
-        this.enemies[10][0] = new Spider(x + 103*10,y + 104*0,this.game, this.isaac)
-        this.game.addEntity(this.enemies[10][0])
-
-        this.enemies[0][5] = new Spider(x + 103*0,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[0][5])
-        this.enemies[1][5] = new Spider(x + 103*1,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[1][5])
-        this.enemies[2][5] = new Spider(x + 103*2,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[2][5])
-        this.enemies[8][5] = new Spider(x + 103*8,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[8][5])
-        this.enemies[9][5] = new Spider(x + 103*9,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[9][5])
-        this.enemies[10][5] = new Spider(x + 103*10,y + 104*5,this.game, this.isaac)
-        this.game.addEntity(this.enemies[10][5])
-
 
 
         this.obstacles[0][1] = new Rocks(x + 103*0,y + 104*1)
@@ -453,7 +428,432 @@ class Premade_Rooms {
         this.obstacles[0][1] = new Spikes(x + 103*0,y + 104*1,this.game)
         this.obstacles[0][1].static = true;
         this.game.addEntity(this.obstacles[0][1])
+        this.obstacles[1][1] = new Spikes(x + 103*1,y + 104*1,this.game)
+        this.obstacles[1][1].static = true;
+        this.game.addEntity(this.obstacles[1][1])
+        this.obstacles[2][1] = new Spikes(x + 103*2,y + 104*1,this.game)
+        this.obstacles[2][1].static = true;
+        this.game.addEntity(this.obstacles[2][1])
+        this.obstacles[3][1] = new Spikes(x + 103*3,y + 104*1,this.game)
+        this.obstacles[3][1].static = true;
+        this.game.addEntity(this.obstacles[3][1])
+        this.obstacles[3][0] = new Spikes(x + 103*3,y + 104*0,this.game)
+        this.obstacles[3][0].static = true;
+        this.game.addEntity(this.obstacles[3][0])
+
+        this.obstacles[0][4] = new Spikes(x + 103*0,y + 104*4,this.game)
+        this.obstacles[0][4].static = true;
+        this.game.addEntity(this.obstacles[0][4])
+        this.obstacles[1][4] = new Spikes(x + 103*1,y + 104*4,this.game)
+        this.obstacles[1][4].static = true;
+        this.game.addEntity(this.obstacles[1][4])
+        this.obstacles[2][4] = new Spikes(x + 103*2,y + 104*4,this.game)
+        this.obstacles[2][4].static = true;
+        this.game.addEntity(this.obstacles[2][4])
+        this.obstacles[3][4] = new Spikes(x + 103*3,y + 104*4,this.game)
+        this.obstacles[3][4].static = true;
+        this.game.addEntity(this.obstacles[3][4])
+        this.obstacles[3][5] = new Spikes(x + 103*3,y + 104*5,this.game)
+        this.obstacles[3][5].static = true;
+        this.game.addEntity(this.obstacles[3][5])
         
+        this.obstacles[10][1] = new Spikes(x + 103*10,y + 104*1,this.game)
+        this.obstacles[10][1].static = true;
+        this.game.addEntity(this.obstacles[10][1])
+        this.obstacles[9][1] = new Spikes(x + 103*9,y + 104*1,this.game)
+        this.obstacles[9][1].static = true;
+        this.game.addEntity(this.obstacles[9][1])
+        this.obstacles[8][1] = new Spikes(x + 103*8,y + 104*1,this.game)
+        this.obstacles[8][1].static = true;
+        this.game.addEntity(this.obstacles[8][1])
+        this.obstacles[7][1] = new Spikes(x + 103*7,y + 104*1,this.game)
+        this.obstacles[7][1].static = true;
+        this.game.addEntity(this.obstacles[7][1])
+        this.obstacles[7][0] = new Spikes(x + 103*7,y + 104*0,this.game)
+        this.obstacles[7][0].static = true;
+        this.game.addEntity(this.obstacles[7][0])
+
+        this.obstacles[10][4] = new Spikes(x + 103*10,y + 104*4,this.game)
+        this.obstacles[10][4].static = true;
+        this.game.addEntity(this.obstacles[10][4])
+        this.obstacles[9][4] = new Spikes(x + 103*9,y + 104*4,this.game)
+        this.obstacles[9][4].static = true;
+        this.game.addEntity(this.obstacles[9][4])
+        this.obstacles[8][4] = new Spikes(x + 103*8,y + 104*4,this.game)
+        this.obstacles[8][4].static = true;
+        this.game.addEntity(this.obstacles[8][4])
+        this.obstacles[7][4] = new Spikes(x + 103*7,y + 104*4,this.game)
+        this.obstacles[7][4].static = true;
+        this.game.addEntity(this.obstacles[7][4])
+        this.obstacles[7][5] = new Spikes(x + 103*7,y + 104*5,this.game)
+        this.obstacles[7][5].static = true;
+        this.game.addEntity(this.obstacles[7][5])
+
+        this.obstacles[0][0] = new Pickup_coin(x + 103*0,y + 104*0)
+        this.game.addEntity(this.obstacles[0][0])
+        this.obstacles[1][0] = new Pickup_coin(x + 103*1,y + 104*0)
+        this.game.addEntity(this.obstacles[1][0])
+        this.obstacles[2][0] = new Pickup_coin(x + 103*2,y + 104*0)
+        this.game.addEntity(this.obstacles[2][0])
+
+        this.obstacles[8][0] = new Pickup_coin(x + 103*8,y + 104*0)
+        this.game.addEntity(this.obstacles[8][0])
+        this.obstacles[9][0] = new Pickup_coin(x + 103*9,y + 104*0)
+        this.game.addEntity(this.obstacles[9][0])
+        this.obstacles[10][0] = new Pickup_coin(x + 103*10,y + 104*0)
+        this.game.addEntity(this.obstacles[10][0])
+
+        this.obstacles[0][5] = new Pickup_coin(x + 103*0,y + 104*5)
+        this.game.addEntity(this.obstacles[0][5])
+        this.obstacles[1][5] = new Pickup_coin(x + 103*1,y + 104*5)
+        this.game.addEntity(this.obstacles[1][5])
+        this.obstacles[2][5] = new Pickup_coin(x + 103*2,y + 104*5)
+        this.game.addEntity(this.obstacles[2][5])
+
+        this.obstacles[8][5] = new Pickup_coin(x + 103*8,y + 104*5)
+        this.game.addEntity(this.obstacles[8][5])
+        this.obstacles[9][5] = new Pickup_coin(x + 103*9,y + 104*5)
+        this.game.addEntity(this.obstacles[9][5])
+        this.obstacles[10][5] = new Pickup_coin(x + 103*10,y + 104*5)
+        this.game.addEntity(this.obstacles[10][5])
+    }
+    room26(x,y){
+        this.obstacles[0][1] = new Spikes(x + 103*0,y + 104*1,this.game)
+        this.obstacles[0][1].static = true;
+        this.game.addEntity(this.obstacles[0][1])
+        this.obstacles[1][1] = new Spikes(x + 103*1,y + 104*1,this.game)
+        this.obstacles[1][1].static = true;
+        this.game.addEntity(this.obstacles[1][1])
+        this.obstacles[2][1] = new Spikes(x + 103*2,y + 104*1,this.game)
+        this.obstacles[2][1].static = true;
+        this.game.addEntity(this.obstacles[2][1])
+        this.obstacles[3][1] = new Spikes(x + 103*3,y + 104*1,this.game)
+        this.obstacles[3][1].static = true;
+        this.game.addEntity(this.obstacles[3][1])
+        this.obstacles[3][0] = new Spikes(x + 103*3,y + 104*0,this.game)
+        this.obstacles[3][0].static = true;
+        this.game.addEntity(this.obstacles[3][0])
+
+        this.obstacles[0][4] = new Spikes(x + 103*0,y + 104*4,this.game)
+        this.obstacles[0][4].static = true;
+        this.game.addEntity(this.obstacles[0][4])
+        this.obstacles[1][4] = new Spikes(x + 103*1,y + 104*4,this.game)
+        this.obstacles[1][4].static = true;
+        this.game.addEntity(this.obstacles[1][4])
+        this.obstacles[2][4] = new Spikes(x + 103*2,y + 104*4,this.game)
+        this.obstacles[2][4].static = true;
+        this.game.addEntity(this.obstacles[2][4])
+        this.obstacles[3][4] = new Spikes(x + 103*3,y + 104*4,this.game)
+        this.obstacles[3][4].static = true;
+        this.game.addEntity(this.obstacles[3][4])
+        this.obstacles[3][5] = new Spikes(x + 103*3,y + 104*5,this.game)
+        this.obstacles[3][5].static = true;
+        this.game.addEntity(this.obstacles[3][5])
+        
+        this.obstacles[10][1] = new Spikes(x + 103*10,y + 104*1,this.game)
+        this.obstacles[10][1].static = true;
+        this.game.addEntity(this.obstacles[10][1])
+        this.obstacles[9][1] = new Spikes(x + 103*9,y + 104*1,this.game)
+        this.obstacles[9][1].static = true;
+        this.game.addEntity(this.obstacles[9][1])
+        this.obstacles[8][1] = new Spikes(x + 103*8,y + 104*1,this.game)
+        this.obstacles[8][1].static = true;
+        this.game.addEntity(this.obstacles[8][1])
+        this.obstacles[7][1] = new Spikes(x + 103*7,y + 104*1,this.game)
+        this.obstacles[7][1].static = true;
+        this.game.addEntity(this.obstacles[7][1])
+        this.obstacles[7][0] = new Spikes(x + 103*7,y + 104*0,this.game)
+        this.obstacles[7][0].static = true;
+        this.game.addEntity(this.obstacles[7][0])
+
+        this.obstacles[10][4] = new Spikes(x + 103*10,y + 104*4,this.game)
+        this.obstacles[10][4].static = true;
+        this.game.addEntity(this.obstacles[10][4])
+        this.obstacles[9][4] = new Spikes(x + 103*9,y + 104*4,this.game)
+        this.obstacles[9][4].static = true;
+        this.game.addEntity(this.obstacles[9][4])
+        this.obstacles[8][4] = new Spikes(x + 103*8,y + 104*4,this.game)
+        this.obstacles[8][4].static = true;
+        this.game.addEntity(this.obstacles[8][4])
+        this.obstacles[7][4] = new Spikes(x + 103*7,y + 104*4,this.game)
+        this.obstacles[7][4].static = true;
+        this.game.addEntity(this.obstacles[7][4])
+        this.obstacles[7][5] = new Spikes(x + 103*7,y + 104*5,this.game)
+        this.obstacles[7][5].static = true;
+        this.game.addEntity(this.obstacles[7][5])
+
+        this.obstacles[0][0] = new Pickup_coin(x + 103*0,y + 104*0)
+        this.game.addEntity(this.obstacles[0][0])
+        this.obstacles[1][0] = new Pickup_coin(x + 103*1,y + 104*0)
+        this.game.addEntity(this.obstacles[1][0])
+        this.obstacles[2][0] = new Pickup_coin(x + 103*2,y + 104*0)
+        this.game.addEntity(this.obstacles[2][0])
+
+        this.obstacles[8][0] = new Pickup_coin(x + 103*8,y + 104*0)
+        this.game.addEntity(this.obstacles[8][0])
+        this.obstacles[9][0] = new Pickup_coin(x + 103*9,y + 104*0)
+        this.game.addEntity(this.obstacles[9][0])
+        this.obstacles[10][0] = new Pickup_coin(x + 103*10,y + 104*0)
+        this.game.addEntity(this.obstacles[10][0])
+
+        this.obstacles[0][5] = new Pickup_coin(x + 103*0,y + 104*5)
+        this.game.addEntity(this.obstacles[0][5])
+        this.obstacles[1][5] = new Pickup_coin(x + 103*1,y + 104*5)
+        this.game.addEntity(this.obstacles[1][5])
+        this.obstacles[2][5] = new Pickup_coin(x + 103*2,y + 104*5)
+        this.game.addEntity(this.obstacles[2][5])
+
+        this.obstacles[8][5] = new Pickup_coin(x + 103*8,y + 104*5)
+        this.game.addEntity(this.obstacles[8][5])
+        this.obstacles[9][5] = new Pickup_coin(x + 103*9,y + 104*5)
+        this.game.addEntity(this.obstacles[9][5])
+        this.obstacles[10][5] = new Pickup_coin(x + 103*10,y + 104*5)
+        this.game.addEntity(this.obstacles[10][5])
+    }
+    room27(x,y){
+        this.obstacles[0][1] = new Spikes(x + 103*0,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[0][1])
+        this.obstacles[1][1] = new Spikes(x + 103*1,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[1][1])
+        this.obstacles[2][1] = new Spikes(x + 103*2,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[2][1])
+        this.obstacles[3][1] = new Spikes(x + 103*3,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[3][1])
+        this.obstacles[3][0] = new Spikes(x + 103*3,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[3][0])
+
+        this.obstacles[0][4] = new Spikes(x + 103*0,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[0][4])
+        this.obstacles[1][4] = new Spikes(x + 103*1,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[1][4])
+        this.obstacles[2][4] = new Spikes(x + 103*2,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[2][4])
+        this.obstacles[3][4] = new Spikes(x + 103*3,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[3][4])
+        this.obstacles[3][5] = new Spikes(x + 103*3,y + 104*5,this.game)
+        this.game.addEntity(this.obstacles[3][5])
+        
+        this.obstacles[10][1] = new Spikes(x + 103*10,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[10][1])
+        this.obstacles[9][1] = new Spikes(x + 103*9,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[9][1])
+        this.obstacles[8][1] = new Spikes(x + 103*8,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[8][1])
+        this.obstacles[7][1] = new Spikes(x + 103*7,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[7][1])
+        this.obstacles[7][0] = new Spikes(x + 103*7,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[7][0])
+
+        this.obstacles[10][4] = new Spikes(x + 103*10,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[10][4])
+        this.obstacles[9][4] = new Spikes(x + 103*9,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[9][4])
+        this.obstacles[8][4] = new Spikes(x + 103*8,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[8][4])
+        this.obstacles[7][4] = new Spikes(x + 103*7,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[7][4])
+        this.obstacles[7][5] = new Spikes(x + 103*7,y + 104*5,this.game)
+        this.game.addEntity(this.obstacles[7][5])
+
+        this.obstacles[0][0] = new Pickup_coin(x + 103*0,y + 104*0)
+        this.game.addEntity(this.obstacles[0][0])
+        this.obstacles[1][0] = new Pickup_coin(x + 103*1,y + 104*0)
+        this.game.addEntity(this.obstacles[1][0])
+        this.obstacles[2][0] = new Pickup_coin(x + 103*2,y + 104*0)
+        this.game.addEntity(this.obstacles[2][0])
+
+        this.obstacles[8][0] = new Pickup_coin(x + 103*8,y + 104*0)
+        this.game.addEntity(this.obstacles[8][0])
+        this.obstacles[9][0] = new Pickup_coin(x + 103*9,y + 104*0)
+        this.game.addEntity(this.obstacles[9][0])
+        this.obstacles[10][0] = new Pickup_coin(x + 103*10,y + 104*0)
+        this.game.addEntity(this.obstacles[10][0])
+
+        this.obstacles[0][5] = new Pickup_coin(x + 103*0,y + 104*5)
+        this.game.addEntity(this.obstacles[0][5])
+        this.obstacles[1][5] = new Pickup_coin(x + 103*1,y + 104*5)
+        this.game.addEntity(this.obstacles[1][5])
+        this.obstacles[2][5] = new Pickup_coin(x + 103*2,y + 104*5)
+        this.game.addEntity(this.obstacles[2][5])
+
+        this.obstacles[8][5] = new Pickup_coin(x + 103*8,y + 104*5)
+        this.game.addEntity(this.obstacles[8][5])
+        this.obstacles[9][5] = new Pickup_coin(x + 103*9,y + 104*5)
+        this.game.addEntity(this.obstacles[9][5])
+        this.obstacles[10][5] = new Pickup_coin(x + 103*10,y + 104*5)
+        this.game.addEntity(this.obstacles[10][5])
+    }
+    room28(x,y){
+        this.obstacles[0][1] = new Spikes(x + 103*0,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[0][1])
+        this.obstacles[1][1] = new Spikes(x + 103*1,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[1][1])
+        this.obstacles[2][1] = new Spikes(x + 103*2,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[2][1])
+        this.obstacles[3][1] = new Spikes(x + 103*3,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[3][1])
+        this.obstacles[3][0] = new Spikes(x + 103*3,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[3][0])
+
+        this.obstacles[0][4] = new Spikes(x + 103*0,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[0][4])
+        this.obstacles[1][4] = new Spikes(x + 103*1,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[1][4])
+        this.obstacles[2][4] = new Spikes(x + 103*2,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[2][4])
+        this.obstacles[3][4] = new Spikes(x + 103*3,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[3][4])
+        this.obstacles[3][5] = new Spikes(x + 103*3,y + 104*5,this.game)
+        this.game.addEntity(this.obstacles[3][5])
+        
+        this.obstacles[10][1] = new Spikes(x + 103*10,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[10][1])
+        this.obstacles[9][1] = new Spikes(x + 103*9,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[9][1])
+        this.obstacles[8][1] = new Spikes(x + 103*8,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[8][1])
+        this.obstacles[7][1] = new Spikes(x + 103*7,y + 104*1,this.game)
+        this.game.addEntity(this.obstacles[7][1])
+        this.obstacles[7][0] = new Spikes(x + 103*7,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[7][0])
+
+        this.obstacles[10][4] = new Spikes(x + 103*10,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[10][4])
+        this.obstacles[9][4] = new Spikes(x + 103*9,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[9][4])
+        this.obstacles[8][4] = new Spikes(x + 103*8,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[8][4])
+        this.obstacles[7][4] = new Spikes(x + 103*7,y + 104*4,this.game)
+        this.game.addEntity(this.obstacles[7][4])
+        this.obstacles[7][5] = new Spikes(x + 103*7,y + 104*5,this.game)
+        this.game.addEntity(this.obstacles[7][5])
+
+        this.obstacles[0][0] = new Pickup_hearts("halfRed",x + 103*0,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[0][0])
+        this.obstacles[1][0] = new Pickup_hearts("halfRed",x + 103*1,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[1][0])
+        this.obstacles[2][0] = new Pickup_hearts("halfRed",x + 103*2,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[2][0])
+
+        this.obstacles[8][0] = new Pickup_hearts("halfRed",x + 103*8,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[8][0])
+        this.obstacles[9][0] = new Pickup_hearts("halfRed",x + 103*9,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[9][0])
+        this.obstacles[10][0] = new Pickup_hearts("halfRed",x + 103*10,y + 104*0,this.game)
+        this.game.addEntity(this.obstacles[10][0])
+
+        this.obstacles[0][5] = new Pickup_hearts(x + 103*0,y + 104*5)
+        this.game.addEntity(this.obstacles[0][5])
+        this.obstacles[1][5] = new Pickup_hearts(x + 103*1,y + 104*5)
+        this.game.addEntity(this.obstacles[1][5])
+        this.obstacles[2][5] = new Pickup_coin(x + 103*2,y + 104*5)
+        this.game.addEntity(this.obstacles[2][5])
+
+        this.obstacles[8][5] = new Pickup_coin(x + 103*8,y + 104*5)
+        this.game.addEntity(this.obstacles[8][5])
+        this.obstacles[9][5] = new Pickup_coin(x + 103*9,y + 104*5)
+        this.game.addEntity(this.obstacles[9][5])
+        this.obstacles[10][5] = new Pickup_coin(x + 103*10,y + 104*5)
+        this.game.addEntity(this.obstacles[10][5])
+
+        this.enemies[4][1] = new Pooter(x + 103*4,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][1])
+        this.enemies[4][4] = new Pooter(x + 103*4,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][4])
+
+        this.enemies[6][1] = new Pooter(x + 103*6,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][1])
+        this.enemies[6][4] = new Pooter(x + 103*6,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][4])
+    }
+    room29(x,y){
+        this.enemies[0][0] = new Spider(x + 103*0,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[0][0])
+        this.enemies[1][0] = new Spider(x + 103*1,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[1][0])
+        this.enemies[2][0] = new Spider(x + 103*2,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[2][0])
+        this.enemies[3][0] = new Spider(x + 103*3,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[3][0])
+        this.enemies[4][0] = new Spider(x + 103*4,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][0])
+
+        this.enemies[6][0] = new Spider(x + 103*6,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][0])
+        this.enemies[7][0] = new Spider(x + 103*7,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[7][0])
+        this.enemies[8][0] = new Spider(x + 103*8,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[8][0])
+        this.enemies[9][0] = new Spider(x + 103*9,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[9][0])
+        this.enemies[10][0] = new Spider(x + 103*10,y + 104*0,this.game, this.isaac)
+        this.game.addEntity(this.enemies[10][0])
+
+        this.enemies[0][1] = new Spider(x + 103*0,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[0][1])
+        this.enemies[1][1] = new Spider(x + 103*1,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[1][1])
+        this.enemies[2][1] = new Spider(x + 103*2,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[2][1])
+        this.enemies[3][1] = new Spider(x + 103*3,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[3][1])
+        this.enemies[4][1] = new Spider(x + 103*4,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][1])
+
+        this.enemies[6][1] = new Spider(x + 103*6,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][1])
+        this.enemies[7][1] = new Spider(x + 103*7,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[7][1])
+        this.enemies[8][1] = new Spider(x + 103*8,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[8][1])
+        this.enemies[9][1] = new Spider(x + 103*9,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[9][1])
+        this.enemies[10][1] = new Spider(x + 103*10,y + 104*1,this.game, this.isaac)
+        this.game.addEntity(this.enemies[10][1])
+
+        this.enemies[0][4] = new Spider(x + 103*0,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[0][4])
+        this.enemies[1][4] = new Spider(x + 103*1,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[1][4])
+        this.enemies[2][4] = new Spider(x + 103*2,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[2][4])
+        this.enemies[3][4] = new Spider(x + 103*3,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[3][4])
+        this.enemies[4][4] = new Spider(x + 103*4,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][4])
+
+        this.enemies[6][4] = new Spider(x + 103*6,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][4])
+        this.enemies[7][4] = new Spider(x + 103*7,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[7][4])
+        this.enemies[8][4] = new Spider(x + 103*8,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[8][4])
+        this.enemies[9][4] = new Spider(x + 103*9,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[9][4])
+        this.enemies[10][4] = new Spider(x + 103*10,y + 104*4,this.game, this.isaac)
+        this.game.addEntity(this.enemies[10][4])
+
+        this.enemies[0][5] = new Spider(x + 103*0,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[0][5])
+        this.enemies[1][5] = new Spider(x + 103*1,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[1][5])
+        this.enemies[2][5] = new Spider(x + 103*2,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[2][5])
+        this.enemies[3][5] = new Spider(x + 103*3,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[3][5])
+        this.enemies[4][5] = new Spider(x + 103*4,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][5])
+
+        this.enemies[6][5] = new Spider(x + 103*6,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][5])
+        this.enemies[7][5] = new Spider(x + 103*7,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[7][5])
+        this.enemies[8][5] = new Spider(x + 103*8,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[8][5])
+        this.enemies[9][5] = new Spider(x + 103*9,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[9][5])
+        this.enemies[10][5] = new Spider(x + 103*10,y + 104*5,this.game, this.isaac)
+        this.game.addEntity(this.enemies[10][5])
     }
 
     //Boss rooms
