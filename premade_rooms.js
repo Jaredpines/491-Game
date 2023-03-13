@@ -7,7 +7,7 @@ class Premade_Rooms {
         this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
         this.r = Math.floor(Math.random() * 41)+1;
-        this.r = 11
+        this.r = 12
         this.isaac = isaac;
         this.roomN = 9;
     };
@@ -411,14 +411,14 @@ class Premade_Rooms {
     room12(x, y) {
         this.obstacles[2][3] = new Spikes(x + 103*2,y + 104*3,this.game)
         this.game.addEntity(this.obstacles[2][3])
-        this.obstacles[4][3] = new Spikes(x + 103*4,y + 104*3,this.game)
-        this.game.addEntity(this.obstacles[4][3])
-        this.obstacles[5][2] = new Spikes(x + 103*5,y + 104*2,this.game)
-        this.game.addEntity(this.obstacles[5][2])
-        this.obstacles[5][3] = new Spikes(x + 103*5,y + 104*3,this.game)
-        this.game.addEntity(this.obstacles[5][3])
-        this.obstacles[6][2] = new Spikes(x + 103*6,y + 104*2,this.game)
-        this.game.addEntity(this.obstacles[6][2])
+        this.enemies[4][3] = new Pooter(x + 103*4,y + 104*3,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][3])
+        this.enemies[5][2] = new Pooter(x + 103*5,y + 104*2,this.game, this.isaac)
+        this.game.addEntity(this.enemies[5][2])
+        this.enemies[5][3] = new Pooter(x + 103*5,y + 104*3,this.game, this.isaac)
+        this.game.addEntity(this.enemies[5][3])
+        this.enemies[6][2] = new Pooter(x + 103*6,y + 104*2,this.game, this.isaac)
+        this.game.addEntity(this.enemies[6][2])
         this.obstacles[8][3] = new Spikes(x + 103*8,y + 104*3,this.game)
         this.game.addEntity(this.obstacles[8][3])
         this.roomN = 12
