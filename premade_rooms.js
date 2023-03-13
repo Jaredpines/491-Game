@@ -7,7 +7,7 @@ class Premade_Rooms {
         this.enemies = Array.from({length: 11}, () => new Array(6));
         this.floor = floor;
         this.r = Math.floor(Math.random() * 41)+1;
-        this.r = 12
+        this.r = 16
         this.isaac = isaac;
         this.roomN = 9;
     };
@@ -509,14 +509,14 @@ class Premade_Rooms {
         this.game.addEntity(this.obstacles[8][1])
         this.obstacles[8][4] = new Rocks(x + 103*8,y + 104*4)
         this.game.addEntity(this.obstacles[8][4])
-        this.obstacles[9][1] = new Rocks(x + 103*10,y + 104*1)
-        this.game.addEntity(this.obstacles[10][1])
-        this.obstacles[9][2] = new Rocks(x + 103*10,y + 104*2)
-        this.game.addEntity(this.obstacles[10][2])
-        this.obstacles[9][3] = new Rocks(x + 103*10,y + 104*3)
-        this.game.addEntity(this.obstacles[10][3])
-        this.obstacles[9][4] = new Rocks(x + 103*10,y + 104*4)
-        this.game.addEntity(this.obstacles[10][4])
+        this.obstacles[9][1] = new Rocks(x + 103*9,y + 104*1)
+        this.game.addEntity(this.obstacles[9][1])
+        this.obstacles[9][2] = new Rocks(x + 103*9,y + 104*2)
+        this.game.addEntity(this.obstacles[9][2])
+        this.obstacles[9][3] = new Rocks(x + 103*9,y + 104*3)
+        this.game.addEntity(this.obstacles[9][3])
+        this.obstacles[9][4] = new Rocks(x + 103*9,y + 104*4)
+        this.game.addEntity(this.obstacles[9][4])
         this.enemies[2][3] = new Spider(x + 103*2,y + 104*3,this.game, this.isaac)
         this.game.addEntity(this.enemies[2][3])
         this.enemies[3][3] = new Spider(x + 103*3,y + 104*3,this.game, this.isaac)
