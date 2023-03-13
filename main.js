@@ -68,6 +68,10 @@ ASSET_MANAGER.queueDownload("./res/grid_spikes3.png")
 ASSET_MANAGER.queueDownload("./res/grid_spikes4.png")
 ASSET_MANAGER.queueDownload("./res/devil_room.png")
 ASSET_MANAGER.queueDownload("./res/gurgling_spritesheet.png")
+ASSET_MANAGER.queueDownload("./res/gurdy_jr_body.png")
+ASSET_MANAGER.queueDownload("./res/gurdy_jr_idle.png")
+ASSET_MANAGER.queueDownload("./res/gurdy_jr_move.png")
+ASSET_MANAGER.queueDownload("./res/gurdy_jr_move2.png")
 
 //room assets
 ASSET_MANAGER.queueDownload("./res/boss_door.png")

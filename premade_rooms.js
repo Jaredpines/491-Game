@@ -36,7 +36,13 @@ class Premade_Rooms {
             }
             this.r = Math.floor(Math.random() * 8)+1;
         }else if(type == 'b'){
-            this.Broom1(x+160,y+160);
+            this.r = Math.floor(Math.random() * 2)+1;
+            if(this.r == 1){
+                this.Broom1(x+160,y+160);
+            }else if(this.r == 2){
+                this.Broom2(x+160,y+160);
+            }
+            
         }else if(type == 's'){
             this.Sroom1(x+160,y+160);
         }else if(type == 't'){
@@ -239,6 +245,11 @@ class Premade_Rooms {
         this.game.addEntity(this.enemies[10][5])
         this.roomN = 100
     };
+    Broom2(x,y){
+        this.enemies[4][2] = new Gurdy_jr(x + 103*4,y + 104*2,this.game, this.isaac)
+        this.game.addEntity(this.enemies[4][2])
+        this.roomN = 101
+    }
 
     //Shop rooms
     Sroom1(x,y){

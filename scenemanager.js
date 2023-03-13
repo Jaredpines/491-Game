@@ -668,7 +668,7 @@ class SceneManager {
                                 if(this.premade[r][c].enemies[index][index2] != null){
                                     if(this.premade[r][c].enemies[index][index2].health <= 0){
                                         this.EIR = false;
-                                        if(this.premade[r][c].enemies[index][index2] instanceof Gurgling){
+                                        if(this.premade[r][c].enemies[index][index2] instanceof Gurgling || this.premade[r][c].enemies[index][index2] instanceof Gurdy_jr){
                                             this.bossDead = true;
                                         }
                                     }
@@ -688,7 +688,7 @@ class SceneManager {
                                 if(this.premade[r][c].enemies[index][index2] != null){
                                     if(this.premade[r][c].enemies[index][index2].health > 0){
                                         this.EIR = true;
-                                        if(this.premade[r][c].enemies[index][index2] instanceof Gurgling){
+                                        if(this.premade[r][c].enemies[index][index2] instanceof Gurgling || this.premade[r][c].enemies[index][index2] instanceof Gurdy_jr){
                                             this.bossDead = false;
                                         }
                                         break;
@@ -727,6 +727,13 @@ class SceneManager {
                                         
                                         }
                                         
+                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Gurdy_jr){
+                                            if(this.tempClock > 1){
+                                                this.isaac_body.takeDamage(1);
+                                                this.tempClock = 0;
+                                            }
+                                        
+                                        }
                                     
                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Pooter){
                                             if(this.tempClock > 1){
@@ -1115,6 +1122,14 @@ class SceneManager {
                                                         
                                                         }
                                                         if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Gurgling){
+                                                            if(this.tempClock > 1){
+                                                                this.isaac_body.takeDamage(1);
+                                                                this.tempClock = 0;
+                                                            }
+                                                        
+                                                        }
+
+                                                        if(this.isaac_body.boundingBox.collide(this.premade[r][c].enemies[inde][inde2].boundingBox) && this.premade[r][c].enemies[inde][inde2] instanceof Gurdy_jr){
                                                             if(this.tempClock > 1){
                                                                 this.isaac_body.takeDamage(1);
                                                                 this.tempClock = 0;
