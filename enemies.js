@@ -476,49 +476,8 @@ class JumpingSpider {
 
         if (!this.paused && !this.dead && !this.isaac.crying) {
 
-            this.elapsedTime += this.game.clockTick;
-            console.log(this.elapsedTime);
 
-            if (this.idle && this.elapsedTime >= this.intervalTime) {
-                this.idle = false
-                this.windUp = true
-                this.elapsedTime = 0;
-            }
-
-            if (this.windUp) {
-                this.lastIsaacXPosition = this.isaac.xPosition;
-                this.lastIsaacYPosition = this.isaac.yPosition;
-            }
-
-            if (this.jumpUp) {
-                while (this.xPosition !== this.lastIsaacXPosition && this.yPosition !== this.lastIsaacYPosition) {
-                    let distX =  Math.abs(this.isaac.xPosition - this.xPosition);
-                    let distY =  Math.abs(this.isaac.yPosition - this.yPosition);
-                    if(this.xPosition < this.moveBoundsRight && this.xPosition < this.isaac.xPosition){
-                        let distance = Math.sqrt(distX*distX+distY*distY)
-                        let velocityX = distX/distance*this.movementSpeed
-                        this.xPosition += velocityX*this.game.clockTick/2;
-                    }
-                    if(this.xPosition > this.moveBoundsLeft && this.xPosition > this.isaac.xPosition){
-                        let distance = Math.sqrt(distX*distX+distY*distY)
-                        let velocityX = distX/distance*this.movementSpeed
-                        this.xPosition -= -velocityX*this.game.clockTick/2;
-                    }
-                    if(this.yPosition > this.moveBoundsUp && this.yPosition > this.isaac.yPosition){
-                        let distance = Math.sqrt(distX*distX+distY*distY)
-                        let velocityY = distY/distance*this.movementSpeed
-                        this.yPosition += velocityY*this.game.clockTick/2;
-                    }
-                    if(this.yPosition < this.moveBoundsDown && this.yPosition < this.isaac.yPosition){
-                        let distance = Math.sqrt(distX*distX+distY*distY)
-                        let velocityY = distY/distance*this.movementSpeed
-                        this.yPosition += velocityY*this.game.clockTick/2;
-                    }
-                }
-                this.jumpUp = false;
-                this.idle = true;
-                this.elapsedTime = 0;
-            }
+            
 
             // while(this.xPosition){
             //     this.xPosition += this.game.clockTick*this.movementSpeed;
